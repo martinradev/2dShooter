@@ -1,4 +1,4 @@
-package me.martin.radev.game.virtualcommando.virtualcommando;
+package me.martin.radev.game.virtualcommando;
 
 /**
  * Hello world!
