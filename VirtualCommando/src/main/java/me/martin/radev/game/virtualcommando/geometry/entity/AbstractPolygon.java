@@ -33,6 +33,4 @@ public abstract class AbstractPolygon implements GeometricObject {
         return points;
     }
     
-    public abstract boolean contains(Vector2D point);
-    
 }

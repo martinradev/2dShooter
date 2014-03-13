@@ -39,13 +39,9 @@ public class Vector2D implements GeometricObject {
         this.x = x;
     }
 
-    public void translate(float dx, float dy) {
+    public void translate(double dx, double dy) {
         this.x += dx;
         this.y += dy;
-    }
-
-    public void translate(double dx, double dy) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public void rotate(double angle) {
@@ -63,6 +59,13 @@ public class Vector2D implements GeometricObject {
         Vector2D v2do = (Vector2D) o;
         return v2do.getX() == this.getX() && v2do.getY() == this.getY();
     }
+
+    @Override
+    public String toString() {
+        return "[ " + this.getX() + " : " + this.getY() + " ]";
+    }
+    
+    
     
     
      

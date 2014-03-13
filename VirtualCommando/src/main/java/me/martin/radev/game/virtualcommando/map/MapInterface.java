@@ -10,7 +10,7 @@ import java.awt.Graphics2D;
  *
  * @author Marto
  */
-public interface Map {
+public interface MapInterface {
     
-    public void render(Graphics2D g2d);
+    public void render(Graphics2D g2d, int xOffset, int yOffset);
 }

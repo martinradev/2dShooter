@@ -13,30 +13,46 @@ import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalObject
  *
  * @author Marto
  */
-public class SimpleObjectMap implements Map{
+public class SimpleObjectMap implements MapInterface{
     
     private List<GraphicalObject> staticObjects;
+    private double width;
+    private double height;
     
-    public SimpleObjectMap(List<GraphicalObject> objectsList) {
+    public SimpleObjectMap(List<GraphicalObject> objectsList, double width, double height) {
         staticObjects = objectsList;
+        this.width = width;
+        this.height = height;
     }
     
-    public SimpleObjectMap() {
+    public SimpleObjectMap( double width, double height) {
         staticObjects = new ArrayList<GraphicalObject>();
+        this.width = width;
+        this.height = height;
     }
     
     public List<GraphicalObject> getStaticObjects() {
         return staticObjects;
     }
 
-    public void render(Graphics2D g2d) {
+    public void render(Graphics2D g2d, int xOffset, int yOffset) {
         for (GraphicalObject go : staticObjects) {
-            go.render(g2d);
+            go.render(g2d, xOffset, yOffset);
         }
     }
     
     public void add(GraphicalObject go) {
         staticObjects.add(go);
     }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public double getWidth() {
+        return width;
+    }
+    
+    
     
 }

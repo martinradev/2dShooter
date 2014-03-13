@@ -4,7 +4,7 @@
  */
 package me.martin.radev.game.virtualcommando.map.loader;
 
-import me.martin.radev.game.virtualcommando.map.Map;
+import me.martin.radev.game.virtualcommando.map.MapInterface;
 
 
 
@@ -14,6 +14,6 @@ import me.martin.radev.game.virtualcommando.map.Map;
  */
 public interface Loader {
     
-    public Map load(String file);
+    public MapInterface load(String file);
     
 }

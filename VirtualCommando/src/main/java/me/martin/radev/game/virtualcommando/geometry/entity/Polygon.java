@@ -12,9 +12,11 @@ import java.util.List;
  */
 public class Polygon extends AbstractPolygon {
     
-    private List<Vector2D> points;
-    
     public Polygon(List<Vector2D> points) {
+        super(points);
+    }
+    
+    public Polygon(Vector2D [] points) {
         super(points);
     }
 

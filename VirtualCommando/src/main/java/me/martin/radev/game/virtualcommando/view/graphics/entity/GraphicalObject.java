@@ -5,6 +5,7 @@
 package me.martin.radev.game.virtualcommando.view.graphics.entity;
 
 import java.awt.Graphics2D;
+import me.martin.radev.game.virtualcommando.geometry.entity.GeometricObject;
 
 /**
  *
@@ -12,6 +13,7 @@ import java.awt.Graphics2D;
  */
 public interface GraphicalObject {
     
-    public void render(Graphics2D g2d);
+    public GeometricObject getBody();
+    public void render(Graphics2D g2d, int xOffset, int yOffset);
     
 }
