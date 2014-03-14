@@ -6,6 +6,7 @@ package me.martin.radev.game.virtualcommando.view.gui.screens;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import me.martin.radev.game.virtualcommando.map.MapInterface;
 
 /**
@@ -22,6 +23,8 @@ public class GameScreen extends Screen {
         super();
         this.setSize(width, height);
         this.map = map;
+        this.offsetX = 0;
+        this.offsetY = 0;
     }
 
     public void setOffsetX(int offsetX) {
@@ -45,7 +48,10 @@ public class GameScreen extends Screen {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        map.render((Graphics2D)g, this.getOffsetX(), this.getOffsetY());
+        Graphics2D g2d = (Graphics2D)g;
+        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+    RenderingHints.VALUE_ANTIALIAS_ON);
+        map.render(g2d, this.getOffsetX(), this.getOffsetY());
     }
     
 }
