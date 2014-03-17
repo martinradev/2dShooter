@@ -12,7 +12,9 @@ public enum ExceptionHelper {
     
     ParserConfigurationException("Parsing error", "We were not able to parse the document."),
     SAXException("Parsing error", "The file is not xml format. Please check the format."),
-    IOException("Cannot open file", "Please check file for rights.");
+    IOException("Cannot open file", "Please check file for rights."),
+    IllegalArgumentException("A problem occured", "Please notify us"),
+    FontFormatException("Font error", "Font format is not recognized");
     
     private String title;
     private String message;

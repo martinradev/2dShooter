@@ -4,9 +4,14 @@
  */
 package me.martin.radev.game.virtualcommando.view.gui;
 
+import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import me.martin.radev.game.virtualcommando.view.gui.screens.GameScreen;
+import me.martin.radev.game.virtualcommando.Global;
+import me.martin.radev.game.virtualcommando.exception.ExceptionHandler;
+import me.martin.radev.game.virtualcommando.view.graphics.entity.Sprite;
+import me.martin.radev.game.virtualcommando.view.gui.asset.AssetManager;
+import me.martin.radev.game.virtualcommando.view.gui.screens.MenuScreen;
 import me.martin.radev.game.virtualcommando.view.gui.screens.Screen;
 
 /**
@@ -16,23 +21,32 @@ import me.martin.radev.game.virtualcommando.view.gui.screens.Screen;
 public class GameView extends JFrame {
     
     private JPanel screen;
+    private ExceptionHandler exceptionHandler;
+    private AssetManager assetManager;
     
     public GameView(int width, int height) {
         super();
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(width, height);
-        setVisible(true);
-        screen = new JPanel();
-        add(screen);
+        initializeFrame(width, height);
     }
     
-    public void setGameScreen(Screen scr) {
-        this.remove(screen);
-        this.screen = scr;
-        // TODO
-        ((GameScreen)scr).setOffsetX(100);
-        ((GameScreen)scr).setOffsetY(100);
-        this.add(screen);
+    private void initializeFrame(int width, int height) {
+        exceptionHandler = new ExceptionHandler(this);
+        assetManager = new AssetManager(exceptionHandler);
+        Global.setExceptionHandler(exceptionHandler);
+        Global.setAssetManager(assetManager);
+        this.setScreen(new MenuScreen(width, height));
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(width, height);
+        setLayout(new BorderLayout());
+        setVisible(true);
+        
     }
+    public void setScreen(Screen scr) {
+        if (screen != null) this.remove(screen);
+        this.screen = scr;
+        this.getContentPane().add(screen, BorderLayout.CENTER);
+    }
+    
+    
     
 }

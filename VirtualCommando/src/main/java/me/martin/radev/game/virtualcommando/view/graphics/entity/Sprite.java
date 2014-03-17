@@ -22,4 +22,12 @@ public class Sprite {
         return image;
     }
     
+    public int getWidth() {
+        return this.image.getWidth(null);
+    }
+    
+    public int getHeight() {
+        return this.image.getHeight(null);
+    }
+    
 }
