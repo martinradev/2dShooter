@@ -13,6 +13,7 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import me.martin.radev.game.virtualcommando.Global;
 import me.martin.radev.game.virtualcommando.view.graphics.entity.Sprite;
+import me.martin.radev.game.virtualcommando.view.gui.GuiUtil;
 import me.martin.radev.game.virtualcommando.view.gui.asset.AssetType;
 import me.martin.radev.game.virtualcommando.view.gui.entity.buttons.HomeScreenButton;
 import me.martin.radev.game.virtualcommando.view.gui.entity.panels.BackgroundPanel;
@@ -29,9 +30,13 @@ public class MenuScreen extends Screen {
     private HomeScreenButton exitButton;
     private JPanel logo;
     private final int bottomItemMargin = 20;
+    private int width;
+    private int height;
     
     public MenuScreen(int width, int height) {
         super();
+        this.width = width;
+        this.height = height;
         initialize(width, height);
         this.repaint();
     }
@@ -78,5 +83,13 @@ public class MenuScreen extends Screen {
     private void addRigidArea(Container cont, int margin) {
         cont.add(Box.createVerticalStrut(margin));
     }
+
+    @Override
+    public void validate() {
+        this.setSize(GuiUtil.rescale(width), GuiUtil.rescale(height));
+        super.validate();;
+    }
+    
+    
     
 }
