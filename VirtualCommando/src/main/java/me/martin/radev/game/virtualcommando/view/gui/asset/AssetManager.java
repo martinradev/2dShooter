@@ -33,7 +33,6 @@ public class AssetManager {
         if (this.contains(type, file)) {
             return this.get(type, file);
         }
-        System.out.println(this.buildPath(type, file));
         File f = new File(this.buildPath(type, file));
         Object found = null;
         if (type == AssetType.Sprite) {
@@ -59,21 +58,22 @@ public class AssetManager {
     }
     
     private Object get(AssetType type, String file) {
-        return this.assets.get(type).get(file);
+        return this.assets.get(type.toString()).get(file);
     }
     
     private boolean contains(AssetType type, String file) {
-        Map<String, Object> container = this.assets.get(type);
+        Map<String, Object> container = this.assets.get(type.toString());
         if (container == null) return false;
-        return container.containsKey(type);
+        return container.containsKey(file);
     }
     
     private void add(AssetType type, String name,  Object obj) {
-        HashMap<String, Object> objMap = this.assets.get(type);
+        HashMap<String, Object> objMap = this.assets.get(type.toString());
         if (objMap == null) {
             objMap = new HashMap<String, Object>();
             this.assets.put(type.toString(), objMap);
         }
+        System.out.println("added");
         objMap.put(name, obj);
     }
     

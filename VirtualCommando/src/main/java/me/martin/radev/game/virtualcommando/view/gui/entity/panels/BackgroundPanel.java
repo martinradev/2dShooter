@@ -5,7 +5,6 @@
 package me.martin.radev.game.virtualcommando.view.gui.entity.panels;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Graphics;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -21,7 +20,7 @@ public class BackgroundPanel extends JPanel{
     
     public BackgroundPanel(Sprite spr) {
         this.sprite = spr;
-        this.setBackground(Color.yellow);
+        this.setOpaque(false);
     }
     
 

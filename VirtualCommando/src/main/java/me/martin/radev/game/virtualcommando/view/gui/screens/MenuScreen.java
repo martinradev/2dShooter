@@ -28,7 +28,7 @@ public class MenuScreen extends Screen {
     private HomeScreenButton multiPlayerButton;
     private HomeScreenButton exitButton;
     private JPanel logo;
-    private final int bottomItemMargin = 30;
+    private final int bottomItemMargin = 20;
     
     public MenuScreen(int width, int height) {
         super();
@@ -39,11 +39,12 @@ public class MenuScreen extends Screen {
     private void initialize(int width, int height) {
         menuGroup = new JPanel();
         menuGroup.setLayout(new BoxLayout(menuGroup, BoxLayout.Y_AXIS));
-        menuGroup.setPreferredSize(new Dimension(width/2, height/2));
         
-        logo = new BackgroundPanel((Sprite)
-                Global.getAssetManager().load(AssetType.Sprite, "logo.png"));
-        
+        menuGroup.setBackground(Color.black);
+        Sprite logoSprite = (Sprite)
+                Global.getAssetManager().load(AssetType.Sprite, "logo.png");
+        logo = new BackgroundPanel(logoSprite);
+        logo.setPreferredSize(new Dimension(logoSprite.getWidth(), logoSprite.getHeight()));
         logo.setAlignmentX(JComponent.CENTER_ALIGNMENT);
         menuGroup.add(logo);
         this.addRigidArea(menuGroup, bottomItemMargin);
@@ -62,6 +63,7 @@ public class MenuScreen extends Screen {
         exitButton.setAlignmentX(JComponent.CENTER_ALIGNMENT);
         menuGroup.add(exitButton);
         
+        menuGroup.setPreferredSize(menuGroup.getPreferredSize());
         menuGroup.setVisible(true);
         
         this.add(menuGroup);
