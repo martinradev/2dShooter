@@ -4,6 +4,8 @@
  */
 package me.martin.radev.game.virtualcommando.geometry.entity;
 
+import me.martin.radev.game.virtualcommando.geometry.MathUtil;
+
 /**
  *
  * @author Marto
@@ -45,7 +47,10 @@ public class Vector2D implements GeometricObject {
     }
 
     public void rotate(double angle) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        double nx = Math.cos(angle)*this.x - Math.sin(angle)*this.y;
+        double ny = Math.sin(angle)*this.x + Math.cos(angle)*this.y;
+        this.setX(nx);
+        this.setY(ny);
     }
 
     public boolean contains(Vector2D v2d) {
@@ -57,16 +62,26 @@ public class Vector2D implements GeometricObject {
         if (o == null) return false;
         if (o.getClass() != this.getClass()) return false;
         Vector2D v2do = (Vector2D) o;
-        return v2do.getX() == this.getX() && v2do.getY() == this.getY();
+        return MathUtil.relativelyEqual(v2do.getX(),this.getX())
+                && MathUtil.relativelyEqual(v2do.getY(), this.getY());
     }
 
     @Override
     public String toString() {
         return "[ " + this.getX() + " : " + this.getY() + " ]";
     }
+
+    public Vector2D getUnitVector() {
+        double dist = MathUtil.distance(new Vector2D(0d,0d), this);
+        Vector2D temp = new Vector2D(this);
+        if (dist == 0.0) return this;
+        temp.scale(1d / dist);
+        return temp;
+    }
     
-    
-    
-    
-     
+    public void scale(double factor) {
+        this.setX(this.getX()*factor);
+        this.setY(this.getY()*factor);
+    }
+
 }

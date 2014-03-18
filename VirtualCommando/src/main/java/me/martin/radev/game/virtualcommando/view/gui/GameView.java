@@ -5,6 +5,9 @@
 package me.martin.radev.game.virtualcommando.view.gui;
 
 import java.awt.BorderLayout;
+import java.awt.Graphics2D;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import me.martin.radev.game.virtualcommando.Global;
@@ -25,10 +28,12 @@ public class GameView extends JFrame {
     
     public GameView(int width, int height) {
         super();
+        
         initializeFrame(width, height);
     }
     
     private void initializeFrame(int width, int height) {
+        
         exceptionHandler = new ExceptionHandler(this);
         assetManager = new AssetManager(exceptionHandler);
         Global.setExceptionHandler(exceptionHandler);
@@ -36,6 +41,7 @@ public class GameView extends JFrame {
         this.setScreen(new MenuScreen(width, height));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(width, height);
+        setResizable(false);
         setLayout(new BorderLayout());
         setVisible(true);
         
@@ -54,6 +60,7 @@ public class GameView extends JFrame {
         double scalingFactor = (double)this.getWidth() / (double)Global.getDefaultWindowWidth();
         Global.setScalingFactor(scalingFactor);
         this.screen.validate();
+        
     }
     
     

@@ -7,6 +7,7 @@ package me.martin.radev.game.virtualcommando.view.gui.screens;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.Graphics2D;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JComponent;

@@ -14,7 +14,7 @@ public class Circle extends Ellipse {
 
     private Vector2D center;
     
-    public Circle(Vector2D center, float radius) {
+    public Circle(Vector2D center, double radius) {
         super(center, radius, radius);
     }
 
