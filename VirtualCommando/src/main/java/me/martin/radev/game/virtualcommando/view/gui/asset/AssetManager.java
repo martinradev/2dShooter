@@ -10,8 +10,12 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import javax.imageio.ImageIO;
+import me.martin.radev.game.virtualcommando.Global;
 import me.martin.radev.game.virtualcommando.exception.ExceptionHandler;
 import me.martin.radev.game.virtualcommando.exception.ExceptionHelper;
+import me.martin.radev.game.virtualcommando.map.MapInterface;
+import me.martin.radev.game.virtualcommando.map.loader.Loader;
+import me.martin.radev.game.virtualcommando.map.loader.ObjectLoader;
 import me.martin.radev.game.virtualcommando.view.graphics.entity.Sprite;
 
 /**
@@ -37,6 +41,8 @@ public class AssetManager {
         Object found = null;
         if (type == AssetType.Sprite) {
             found = this.loadSprite(f);
+        } else if (type == AssetType.Map) {
+            found = this.loadMap(f);
         } else if (type == AssetType.Font) {
             found = f;
         }
@@ -55,6 +61,11 @@ public class AssetManager {
                     ExceptionHelper.IOException.getMessage());
         }
         return null;
+    }
+    
+    private MapInterface loadMap(File f) {
+        Loader loader = new ObjectLoader(Global.getExceptionHandler());
+        return loader.load(f);
     }
     
     private Object get(AssetType type, String file) {
@@ -78,6 +89,9 @@ public class AssetManager {
     }
     
     private String buildPath(AssetType type, String fileName) {
+        if (type == AssetType.Map) {
+            return this.assetDirectory + "/" + type.getFolder() + "/" + fileName + "/map.tmx";
+        }
         return this.assetDirectory + "/" + type.getFolder() + "/" + fileName;
     }
     

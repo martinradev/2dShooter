@@ -4,11 +4,8 @@
  */
 package me.martin.radev.game.virtualcommando.map.loader;
 
-import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -18,7 +15,6 @@ import me.martin.radev.game.virtualcommando.map.MapInterface;
 import me.martin.radev.game.virtualcommando.map.SimpleObjectMap;
 import me.martin.radev.game.virtualcommando.map.parser.ObjectParser;
 import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalObject;
-import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalRectangle;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -39,11 +35,9 @@ public class ObjectLoader implements Loader {
         this.parser = new ObjectParser();
     }
 
-    public MapInterface load(String file) {
-        File xmlFile = null;
+    public MapInterface load(File xmlFile) {
         try {
 
-            xmlFile = new File(file);
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             try {

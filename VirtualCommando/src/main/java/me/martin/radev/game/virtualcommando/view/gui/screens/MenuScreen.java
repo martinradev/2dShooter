@@ -7,7 +7,6 @@ package me.martin.radev.game.virtualcommando.view.gui.screens;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.Graphics2D;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JComponent;
@@ -17,7 +16,9 @@ import me.martin.radev.game.virtualcommando.view.graphics.entity.Sprite;
 import me.martin.radev.game.virtualcommando.view.gui.GuiUtil;
 import me.martin.radev.game.virtualcommando.view.gui.asset.AssetType;
 import me.martin.radev.game.virtualcommando.view.gui.entity.buttons.HomeScreenButton;
+import me.martin.radev.game.virtualcommando.view.gui.entity.buttons.HomeScreenButtonTypes;
 import me.martin.radev.game.virtualcommando.view.gui.entity.panels.BackgroundPanel;
+import me.martin.radev.game.virtualcommando.view.gui.listener.homescreen.HomeScreenButtonListener;
 
 /**
  *
@@ -55,18 +56,26 @@ public class MenuScreen extends Screen {
         menuGroup.add(logo);
         this.addRigidArea(menuGroup, bottomItemMargin);
         
+        HomeScreenButtonListener buttonListener = new HomeScreenButtonListener();
+        
         singlePlayerButton = new HomeScreenButton("Single player");
         singlePlayerButton.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+        singlePlayerButton.setName(HomeScreenButtonTypes.Singleplayer.toString());
+        singlePlayerButton.addActionListener(buttonListener);
         menuGroup.add(singlePlayerButton);
         this.addRigidArea(menuGroup, bottomItemMargin);
         
         multiPlayerButton = new HomeScreenButton("Multi player");
         multiPlayerButton.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+        multiPlayerButton.setName(HomeScreenButtonTypes.Multiplayer.toString());
+        multiPlayerButton.addActionListener(buttonListener);
         menuGroup.add(multiPlayerButton);
         this.addRigidArea(menuGroup, bottomItemMargin);
         
         exitButton = new HomeScreenButton("Exit");
+        exitButton.setName(HomeScreenButtonTypes.Exit.toString());
         exitButton.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+        exitButton.addActionListener(buttonListener);
         menuGroup.add(exitButton);
         
         menuGroup.setPreferredSize(menuGroup.getPreferredSize());

@@ -4,6 +4,7 @@
  */
 package me.martin.radev.game.virtualcommando;
 
+import javax.swing.JFrame;
 import me.martin.radev.game.virtualcommando.exception.ExceptionHandler;
 import me.martin.radev.game.virtualcommando.view.gui.asset.AssetManager;
 
@@ -20,6 +21,7 @@ public class Global {
     private static int windowWidth;
     private static int windowHeight;
     private static double scalingFactor;
+    private static JFrame frame;
     
     public static void setAssetManager(AssetManager manager) {
         Global.assetManager = manager;
@@ -76,5 +78,15 @@ public class Global {
     public static double getScalingFactor() {
         return scalingFactor;
     }
+
+    public static JFrame getFrame() {
+        return frame;
+    }
+
+    public static void setFrame(JFrame frame) {
+        Global.frame = frame;
+    }
+    
+    
     
 }

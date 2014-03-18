@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="32" tileheight="32">
+ <objectgroup color="#aaff00" name="Object Layer 1" width="100" height="100">
+  <object x="44" y="80" width="159" height="140">
+   <properties>
+    <property name="color" value="EEE123"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
