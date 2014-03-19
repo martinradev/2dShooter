@@ -1,10 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="32" tileheight="32">
- <objectgroup color="#aaff00" name="Object Layer 1" width="100" height="100">
-  <object x="44" y="80" width="159" height="140">
+<map version="1.0" orientation="orthogonal" width="80" height="60" tilewidth="10" tileheight="10">
+ <objectgroup name="Object Layer 1" width="80" height="60">
+  <object x="23" y="-36" width="163" height="131">
    <properties>
-    <property name="color" value="EEE123"/>
+    <property name="color" value="#FF0000"/>
    </properties>
+   <ellipse/>
+  </object>
+  <object x="-43" y="129" width="99" height="59"/>
+  <object x="-41" y="188" width="16" height="69"/>
+  <object x="-43" y="259" width="104" height="27"/>
+  <object x="57" y="139" width="145" height="20">
+   <properties>
+    <property name="color" value="#00FF00"/>
+   </properties>
+  </object>
+  <object x="-33" y="337">
+   <polyline points="0,0 177,0 276,-80 140,-55 0,-1"/>
+  </object>
+  <object x="393" y="-5" width="89" height="71">
+   <properties>
+    <property name="color" value="#FFFF00"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object x="424" y="77" width="24" height="112"/>
+  <object x="491" y="79">
+   <polyline points="0,0 71,56 57,67 -28,29 3,-1"/>
+  </object>
+  <object x="401" y="84">
+   <polyline points="0,0 -83,40 -65,64 -5,29 0,0"/>
+  </object>
+  <object x="415" y="205">
+   <polyline points="0,0 -64,55 -24,87 3,0"/>
+  </object>
+  <object x="440" y="203">
+   <polyline points="0,0 63,136 144,91 1,0"/>
   </object>
  </objectgroup>
 </map>

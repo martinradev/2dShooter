@@ -32,5 +32,11 @@ public abstract class AbstractPolygon implements GeometricObject {
     public List<Vector2D> getPoints() {
         return points;
     }
+
+    public void setPoints(List<Vector2D> points) {
+        this.points = points;
+    }
+    
+    
     
 }

@@ -50,6 +50,7 @@ public class GameView extends JFrame {
         if (screen != null) this.remove(screen);
         this.screen = scr;
         this.getContentPane().add(screen, BorderLayout.CENTER);
+        this.screen.repaint();
     }
 
     @Override
@@ -60,7 +61,10 @@ public class GameView extends JFrame {
         double scalingFactor = (double)this.getWidth() / (double)Global.getDefaultWindowWidth();
         Global.setScalingFactor(scalingFactor);
         this.screen.validate();
-        
+    }
+
+    public JPanel getScreen() {
+        return screen;
     }
     
     

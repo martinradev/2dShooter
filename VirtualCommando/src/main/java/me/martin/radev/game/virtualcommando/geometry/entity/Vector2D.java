@@ -4,6 +4,7 @@
  */
 package me.martin.radev.game.virtualcommando.geometry.entity;
 
+import java.awt.Point;
 import me.martin.radev.game.virtualcommando.geometry.MathUtil;
 
 /**
@@ -23,6 +24,11 @@ public class Vector2D implements GeometricObject {
     public Vector2D(Vector2D u) {
         this.x = u.getX();
         this.y = u.getY();
+    }
+    
+    public Vector2D(Point p) {
+        this.x = p.getX();
+        this.y = p.getY();
     }
 
     public double getY() {
@@ -83,5 +89,17 @@ public class Vector2D implements GeometricObject {
         this.setX(this.getX()*factor);
         this.setY(this.getY()*factor);
     }
+
+    public Vector2D getCenter() {
+        return this;
+    }
+
+    public void relativeRotate(Vector2D center, double angle) {
+        this.translate(-center.getX(), -center.getY());
+        this.rotate(angle);
+        this.translate(center.getX(), center.getY());
+    }
+    
+    
 
 }

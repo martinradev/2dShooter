@@ -10,4 +10,9 @@ package me.martin.radev.game.virtualcommando.game.logic;
  */
 public class SinglePlayerGame extends Game {
     
+    
+    public SinglePlayerGame() {
+        super("Desert");
+    }
+    
 }

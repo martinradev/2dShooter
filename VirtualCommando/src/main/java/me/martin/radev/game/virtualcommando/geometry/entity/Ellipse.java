@@ -47,5 +47,9 @@ public class Ellipse implements GeometricObject {
         double result = (d1 / (majorAxis*majorAxis)) + (d2 / (minorAxis*minorAxis));
         return result <= 1;
     }
+
+    public void relativeRotate(Vector2D center, double angle) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

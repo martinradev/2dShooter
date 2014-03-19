@@ -36,7 +36,6 @@ public class GraphicalPolygon implements GraphicalObject {
         List<Vector2D> points = this.body.getPoints();
         GeneralPath polygon = new GeneralPath(GeneralPath.WIND_EVEN_ODD, 
                 points.size());
-        
         polygon.moveTo(xOffset + points.get(0).getX(), yOffset + points.get(0).getY());
         for (int i = 1; i < points.size(); ++i) {
             polygon.lineTo(xOffset + points.get(i).getX(), yOffset + points.get(i).getY());

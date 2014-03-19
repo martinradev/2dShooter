@@ -40,4 +40,15 @@ public class MathUtil {
        return (a-EPS) <= b && (a+EPS)>=b;
    }
     
+    public static double getAngleBetweenPoints(Vector2D a, Vector2D b) {
+        return Math.atan2(a.getY() - b.getY(), a.getX() - b.getX());
+    }
+    
+    public static double getAngleBetweenVectors(Vector2D a, Vector2D b) {
+        return 
+                Math.acos(MathUtil.dotProduct(a, b) / 
+                (MathUtil.distance(new Vector2D(0,0), a) 
+                + MathUtil.distance(new Vector2D(0,0), b)));
+    }
+    
 }

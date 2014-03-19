@@ -4,6 +4,8 @@
  */
 package me.martin.radev.game.virtualcommando.geometry.entity;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import me.martin.radev.game.virtualcommando.geometry.MathUtil;
 
@@ -33,8 +35,38 @@ public class Polygon extends AbstractPolygon {
     }
     
     public void rotate(double angle) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for (Vector2D v2d : super.getPoints()) {
+            v2d.rotate(angle);
+        }
     }
+
+    public Vector2D getCenter() {
+        double dx = 0d, dy =0d;
+        List<Vector2D> points = this.getPoints();
+        for (Vector2D p : points) {
+            dx += p.getX();
+            dy += p.getY();
+        }
+        double size = (double)points.size();
+        return new Vector2D(dx/ size, dy / size);
+    }
+
+    public void relativeRotate(Vector2D center, double angle) {
+        for (Vector2D v2d : super.getPoints()) {
+            v2d.relativeRotate(center, angle);
+        }
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (Vector2D v2d : super.getPoints()) {
+            sb.append(v2d + ", ");
+        }
+        return sb.toString();
+    }
+    
+    
     
     
 }

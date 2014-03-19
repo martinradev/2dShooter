@@ -10,4 +10,8 @@ package me.martin.radev.game.virtualcommando.game.logic;
  */
 public class MultiPlayerGame extends Game {
     
+    public MultiPlayerGame() {
+        super("Desert");
+    }
+    
 }
