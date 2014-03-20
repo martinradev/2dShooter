@@ -56,7 +56,6 @@ public class GameScreen extends Screen {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
-        g2d.rotate(Global.getAngleOfRotation());
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                 RenderingHints.VALUE_ANTIALIAS_ON);
         map.render(g2d, this.getOffsetX(), this.getOffsetY());
