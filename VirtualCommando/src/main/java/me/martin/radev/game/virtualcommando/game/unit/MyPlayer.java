@@ -22,7 +22,7 @@ public class MyPlayer extends Player {
         super(PlayerType.NormalPlayer.getMaxHealth(),
                 new Vector2D(700,400), PlayerType.NormalPlayer.getWidth(),
                 PlayerType.NormalPlayer.getHeight(),
-                Color.red);
+                new Color(1f,0f,0f,.0f ));
         init();
     }
     

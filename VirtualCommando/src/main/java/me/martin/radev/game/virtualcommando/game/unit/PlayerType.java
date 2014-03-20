@@ -10,10 +10,10 @@ package me.martin.radev.game.virtualcommando.game.unit;
  */
 public enum PlayerType {
     
-    NormalPlayer(100, 20, 20), EasyBot(75, 20, 20),
-    NormalBot(100, 20, 20),
-    HardBot(150, 30, 30),
-    InsaneBot(200, 35, 35);
+    NormalPlayer(100, 40, 40), EasyBot(75, 40, 40),
+    NormalBot(100, 40, 40),
+    HardBot(150, 50, 50),
+    InsaneBot(200, 65, 65);
     
     private int maxHealth;
     private int width;

@@ -37,6 +37,22 @@ public abstract class AbstractPolygon implements GeometricObject {
         this.points = points;
     }
     
+    public Vector2D getBottomLeftCorner() {
+        Vector2D point = new Vector2D(points.get(0));
+        for (Vector2D p : points) {
+            if (point.getY() > p.getY()) point.setY(p.getY());
+            if (point.getX() > p.getX()) point.setX(p.getX());
+        }
+        return point;
+    }
     
+    public Vector2D getTopRightCorner() {
+        Vector2D point = new Vector2D(points.get(0));
+        for (Vector2D p : getPoints()) {
+            if (point.getY() < p.getY()) point.setY(p.getY());
+            if (point.getX() < p.getX()) point.setX(p.getX());
+        }
+        return point;
+    }
     
 }

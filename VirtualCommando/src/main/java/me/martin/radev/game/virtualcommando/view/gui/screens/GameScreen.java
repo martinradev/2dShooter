@@ -14,6 +14,7 @@ import java.awt.geom.Point2D;
 import me.martin.radev.game.virtualcommando.Global;
 import me.martin.radev.game.virtualcommando.game.unit.Player;
 import me.martin.radev.game.virtualcommando.map.MapInterface;
+import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalRectangle;
 
 /**
  *
@@ -60,7 +61,7 @@ public class GameScreen extends Screen {
         map.render(g2d, this.getOffsetX(), this.getOffsetY());
         for (Player p : Global.getGame().getPlayers()) {
             p.processMovement();
-            p.getgObject().render(g2d, 0, 0);
+            ((GraphicalRectangle)p.getgObject()).render(g2d, 0, 0, p.getAngleOffset());
             g2d.setColor(Color.yellow);
             g2d.fillOval((int) p.getgObject().getBody().getCenter().getX(),
                     (int) p.getgObject().getBody().getCenter().getY(),

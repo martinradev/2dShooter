@@ -12,6 +12,7 @@ import me.martin.radev.game.virtualcommando.view.graphics.entity.Sprite;
  */
 public interface Animation {
     
+    public void update();
     public void next();
     public Sprite getCurrent();
     

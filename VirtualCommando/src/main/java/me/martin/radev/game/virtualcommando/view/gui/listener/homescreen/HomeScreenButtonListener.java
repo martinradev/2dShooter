@@ -23,6 +23,7 @@ public class HomeScreenButtonListener implements ActionListener {
         if (button.getName().equals(HomeScreenButtonTypes.Singleplayer.toString())) {
             Game game = new SinglePlayerGame();
             Global.setGame(game);
+            game.init();
         } else if (button.getName().equals(HomeScreenButtonTypes.Multiplayer.toString())) {
             // TODO
             System.out.println("Multi player");

@@ -37,17 +37,10 @@ public class Rectangle extends Polygon {
 
     @Override
     public void translate(double dx, double dy) {
-        super.translate(dx, dy); //To change body of generated methods, choose Tools | Templates.
+        super.translate(dx, dy);
+        System.out.println(getBottomLeftCorner());
     }
     
-    public Vector2D getBottomLeftCorner() {
-        return super.getPoints().get(0);
-    }
-    
-    public Vector2D getTopRightCorner() {
-        return super.getPoints().get(2);
-    }
-
     public double getHeight() {
         return height;
     }

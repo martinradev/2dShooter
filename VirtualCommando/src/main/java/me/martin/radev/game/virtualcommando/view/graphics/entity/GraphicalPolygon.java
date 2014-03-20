@@ -8,7 +8,6 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.GeneralPath;
 import java.util.List;
-import me.martin.radev.game.virtualcommando.geometry.entity.GeometricObject;
 import me.martin.radev.game.virtualcommando.geometry.entity.Polygon;
 import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
 
@@ -44,7 +43,7 @@ public class GraphicalPolygon implements GraphicalObject {
         g2d.fill(polygon);
     }
     
-    public GeometricObject getBody() {
+    public Polygon getBody() {
         return body;
     }
     
