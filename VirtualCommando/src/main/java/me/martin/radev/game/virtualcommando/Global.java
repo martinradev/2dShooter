@@ -25,6 +25,7 @@ public class Global {
     private static GameView frame;
     private static Game game;
     private static int fps = 60;
+    private static double angleOfRotation = 0d;
     
     public static void setAssetManager(AssetManager manager) {
         Global.assetManager = manager;
@@ -100,6 +101,14 @@ public class Global {
 
     public static int getFPS() {
         return fps;
+    }
+
+    public static double getAngleOfRotation() {
+        return angleOfRotation;
+    }
+
+    public static void setAngleOfRotation(double angleOfRotation) {
+        Global.angleOfRotation = angleOfRotation;
     }
     
     

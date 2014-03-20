@@ -86,8 +86,8 @@ public abstract class Player {
                 this.getgObject().getBody().getCenter(),
                 angle-angleOffset);
         currentAngleOfRotation = angle-angleOffset;
+        Global.setAngleOfRotation(angleOffset);
         angleOffset = angle;
-        
     }
 
     public double getCurrentAngleOfRotation() {

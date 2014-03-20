@@ -7,6 +7,7 @@ package me.martin.radev.game.virtualcommando.geometry.entity;
 import java.util.List;
 import static junit.framework.Assert.fail;
 import junit.framework.TestCase;
+import me.martin.radev.game.virtualcommando.geometry.MathUtil;
 
 /**
  *
@@ -57,15 +58,20 @@ public class PolygonTest extends TestCase {
         });
         A.rotate(angle);
         Polygon B = new Polygon(new Vector2D[]{
+            new Vector2D(1, -1),
+            new Vector2D(1, 1),
             new Vector2D(-1, 1),
             new Vector2D(-1, -1),
-            new Vector2D(1, -1),
-            new Vector2D(1, 1)
         });
         List<Vector2D> pointsA = A.getPoints();
         List<Vector2D> pointsB = B.getPoints();
         for (int i = 0; i < pointsA.size(); ++i) {
-            if (!pointsA.get(i).equals(pointsB.get(i))) {
+            Vector2D a = pointsA.get(i);
+            Vector2D b = pointsB.get(i);
+            if (!MathUtil.relativelyEqual(a.getX(), b.getX())) {
+                fail("Not rotated properly.");
+            }
+            if (!MathUtil.relativelyEqual(a.getY(), b.getY())) {
                 fail("Not rotated properly.");
             }
         }
@@ -78,17 +84,17 @@ public class PolygonTest extends TestCase {
         System.out.println("relativeRotate");
         double angle = Math.toRadians(90f);
         Polygon A = new Polygon(new Vector2D[]{
-            new Vector2D(-4, -4),
-            new Vector2D(4, -4),
+            new Vector2D(0, 0),
+            new Vector2D(4, 0),
             new Vector2D(4, 4),
-            new Vector2D(-4, 4)
+            new Vector2D(0, 4)
         });
-        A.relativeRotate(A.getCenter(), angle);
+        A.relativeRotate(new Vector2D(2d,2d), angle);
         Polygon B = new Polygon(new Vector2D[]{
-            new Vector2D(-4, 4),
-            new Vector2D(-4, -4),
-            new Vector2D(4, -4),
-            new Vector2D(4, 4)
+            new Vector2D(4, 0),
+            new Vector2D(4, 4),
+            new Vector2D(0, 4),
+            new Vector2D(0, 0),
         });
         List<Vector2D> pointsA = A.getPoints();
         List<Vector2D> pointsB = B.getPoints();

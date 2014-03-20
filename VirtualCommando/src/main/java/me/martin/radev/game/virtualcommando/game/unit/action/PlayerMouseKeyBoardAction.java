@@ -70,14 +70,13 @@ public class PlayerMouseKeyBoardAction {
         } else {
             player.stopMovement();
         }
-
+        
     }
 
     public void processRotation(Point p) {
         Vector2D mousePosition = new Vector2D(p);
         Vector2D playerPosition = new Vector2D(player.getgObject().getBody().getCenter());
         double angle = MathUtil.getAngleBetweenPoints(mousePosition, playerPosition) + Math.PI / 2d;
-        System.out.println(Math.toDegrees(-angle));
         player.rotate(angle);
     }
 
