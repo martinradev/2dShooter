@@ -6,6 +6,7 @@ package me.martin.radev.game.virtualcommando;
 
 import me.martin.radev.game.virtualcommando.exception.ExceptionHandler;
 import me.martin.radev.game.virtualcommando.game.logic.Game;
+import me.martin.radev.game.virtualcommando.game.logic.GameFlow;
 import me.martin.radev.game.virtualcommando.view.gui.GameView;
 import me.martin.radev.game.virtualcommando.view.gui.asset.AssetManager;
 
@@ -25,7 +26,7 @@ public class Global {
     private static GameView frame;
     private static Game game;
     private static int fps = 60;
-    private static double angleOfRotation = 0d;
+    private static GameFlow gameFlow;
     
     public static void setAssetManager(AssetManager manager) {
         Global.assetManager = manager;
@@ -103,13 +104,15 @@ public class Global {
         return fps;
     }
 
-    public static double getAngleOfRotation() {
-        return angleOfRotation;
+    public static void setGameFlow(GameFlow gameFlow) {
+        Global.gameFlow = gameFlow;
     }
 
-    public static void setAngleOfRotation(double angleOfRotation) {
-        Global.angleOfRotation = angleOfRotation;
+    public static GameFlow getGameFlow() {
+        return gameFlow;
     }
+
+    
     
     
     

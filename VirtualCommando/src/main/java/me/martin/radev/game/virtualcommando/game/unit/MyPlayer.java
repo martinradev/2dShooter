@@ -5,7 +5,6 @@
 package me.martin.radev.game.virtualcommando.game.unit;
 
 import java.awt.Color;
-import javax.swing.KeyStroke;
 import me.martin.radev.game.virtualcommando.Global;
 import me.martin.radev.game.virtualcommando.game.unit.action.PlayerMouseKeyBoardAction;
 import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
@@ -37,5 +36,11 @@ public class MyPlayer extends Player {
     public void processMovement() {
         actionListener.processMovement();
     }
+
+    @Override
+    public void processRotation() {
+        actionListener.processRotation(actionListener.getCurrentPoint());
+    }
+    
     
 }

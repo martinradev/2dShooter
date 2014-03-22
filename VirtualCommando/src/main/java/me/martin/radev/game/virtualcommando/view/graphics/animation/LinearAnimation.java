@@ -30,10 +30,11 @@ public class LinearAnimation implements Animation, Updatable {
     }
     
     public LinearAnimation() {
-        spriteList = new ArrayList<Sprite>();
+        spriteList = new ArrayList<>();
         this.framesPerSprite = Global.getFPS();
     }
     
+    @Override
     public void next() {
         if (spriteList.isEmpty()) {
             Global.getExceptionHandler().notificate(
@@ -44,10 +45,12 @@ public class LinearAnimation implements Animation, Updatable {
         currentIndex = (currentIndex+1)%spriteList.size();
     }
 
+    @Override
     public Sprite getCurrent() {
         return spriteList.get(currentIndex);
     }
 
+    @Override
     public void update() {
         ++framesCount;
         if (framesCount == framesPerSprite) {

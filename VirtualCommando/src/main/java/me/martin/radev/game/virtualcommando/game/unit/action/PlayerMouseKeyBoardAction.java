@@ -12,7 +12,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.HashSet;
-import me.martin.radev.game.virtualcommando.Global;
 import me.martin.radev.game.virtualcommando.game.unit.MyPlayer;
 import me.martin.radev.game.virtualcommando.geometry.MathUtil;
 import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
@@ -23,14 +22,16 @@ import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
  */
 public class PlayerMouseKeyBoardAction {
 
-    private final MyPlayer player;
+    private MyPlayer player;
     private MouseListener mouseListener;
     private MouseMotionListener mouseMotionListener;
     private KeyListener keyListener;
     private HashSet<Integer> keysToProcess;
+    private Point currentPoint;
 
     public PlayerMouseKeyBoardAction(MyPlayer player) {
         this.player = player;
+        currentPoint = new Point(0,0);
         this.mouseListener = new PlayerMouseListener();
         this.mouseMotionListener = new PlayerMouseMotionListener();
         this.keyListener = new PlayerKeyListener();
@@ -73,32 +74,41 @@ public class PlayerMouseKeyBoardAction {
         
     }
 
+    public Point getCurrentPoint() {
+        return currentPoint;
+    }
+
     public void processRotation(Point p) {
         Vector2D mousePosition = new Vector2D(p);
-        Vector2D playerPosition = new Vector2D(player.getgObject().getBody().getCenter());
+        Vector2D playerPosition = new Vector2D(player.getBody().getCenter());
         double angle = MathUtil.getAngleBetweenPoints(mousePosition, playerPosition) + Math.PI / 2d;
         player.rotate(angle);
     }
 
     private class PlayerMouseListener implements MouseListener {
 
+        @Override
         public void mouseClicked(MouseEvent me) {
             // fix
         }
 
+        @Override
         public void mousePressed(MouseEvent me) {
             Vector2D direction = new Vector2D(me.getPoint()).getUnitVector();
             player.shoot(direction);
         }
 
+        @Override
         public void mouseReleased(MouseEvent me) {
             // not implemented
         }
 
+        @Override
         public void mouseEntered(MouseEvent me) {
             // not implemented
         }
 
+        @Override
         public void mouseExited(MouseEvent me) {
             // not implemented
         }
@@ -109,12 +119,14 @@ public class PlayerMouseKeyBoardAction {
         public PlayerMouseMotionListener() {
         }
 
+        @Override
         public void mouseDragged(MouseEvent me) {
         }
 
+        @Override
         public void mouseMoved(MouseEvent me) {
 
-            processRotation(me.getPoint());
+            currentPoint = me.getPoint();
 
         }
     }
@@ -122,16 +134,19 @@ public class PlayerMouseKeyBoardAction {
     public class PlayerKeyListener implements KeyListener {
 
         public PlayerKeyListener() {
-            keysToProcess = new HashSet<Integer>();
+            keysToProcess = new HashSet<>();
         }
 
+        @Override
         public void keyTyped(KeyEvent ke) {
         }
 
+        @Override
         public void keyPressed(KeyEvent ke) {
             keysToProcess.add(ke.getKeyCode());
         }
 
+        @Override
         public void keyReleased(KeyEvent ke) {
             keysToProcess.remove(ke.getKeyCode());
         }

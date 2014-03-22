@@ -14,31 +14,31 @@ import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
  *
  * @author Marto
  */
-public class GraphicalEllipse implements GraphicalObject {
-
-    private Ellipse body;
-    private Color color;
+public class GraphicalEllipse extends GraphicalObject {
     
     public GraphicalEllipse(Vector2D center, double majorAxis, double minorAxis, Color color) {
-        body = new Ellipse(center, majorAxis, minorAxis);
-        this.color = color;
+        super(new Ellipse(center, majorAxis, minorAxis), color);
     }
     
     public GraphicalEllipse(double xCoord, double yCoord, 
             double majorAxis, double minorAxis, Color color) {
-        body = new Ellipse(new Vector2D(xCoord, yCoord), majorAxis, minorAxis);
-        this.color = color;
+        super(new Ellipse(new Vector2D(xCoord, yCoord), majorAxis, minorAxis), color);
     }
     
-    public GeometricObject getBody() {
-        return body;
-    }
-
+    @Override
     public void render(Graphics2D g2d, int xOffset, int yOffset) {
-        g2d.setColor(color);
+        g2d.setColor(super.getColor());
+        Ellipse body = this.getBody();
         Vector2D center = body.getCenter();
         g2d.fillOval((int)center.getX() + xOffset, (int)center.getY() + yOffset, 
                 (int)body.getMajorAxis(), (int)body.getMinorAxis());
     }
+
+    @Override
+    public Ellipse getBody() {
+        return (Ellipse)super.getBody(); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
     
 }

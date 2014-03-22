@@ -4,7 +4,7 @@
  */
 package me.martin.radev.game.virtualcommando.game.logic;
 
-import java.util.ArrayList;
+import me.martin.radev.game.virtualcommando.game.graphics.GameEntityContainer;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Timer;
@@ -24,43 +24,47 @@ import me.martin.radev.game.virtualcommando.view.gui.screens.GameScreen;
 public abstract class Game  {
     
     // TODO add Variable timestep
-    
-    private List<Player> players;
+
     private MapInterface map;
+    private GameEntityContainer gameEntities;
     private GameScreen screen;
     private Timer timer;
     private GameLoop loop;
     private List<Updatable> toUpdate;
     private String level;
+    private GameFlow gameFlow;
     
     public Game(String level) {
         this.level = level;
     }
     
     public void init() {
-        players = new ArrayList<Player>();
+        gameEntities = new GameEntityContainer();
+        gameFlow = new GameFlow(gameEntities);
+        Global.setGameFlow(gameFlow);
         map = (MapInterface)Global.getAssetManager().load(AssetType.Map, level);
-        screen = new GameScreen(map,Global.getWindowWidth(), Global.getWindowHeight());
+        gameEntities.addAllMapObjects(map.getObjects());
+        toUpdate = new LinkedList<>();
+
+        screen = new GameScreen(gameEntities, Global.getWindowWidth(), Global.getWindowHeight());
         Global.getFrame().setScreen(screen);
-        toUpdate = new LinkedList<Updatable>();
+        
         this.addPlayer(new MyPlayer());
+        
         timer = new Timer();
         loop = new GameLoop();
         timer.schedule(loop, 0, 1000 / Global.getFPS());
     }
     
     public void addPlayer(Player p) {
-        players.add(p);
-    }
-
-    public List<Player> getPlayers() {
-        return players;
+        gameEntities.addPlayer(p);
     }
 
     private class GameLoop extends TimerTask {
         
         @Override
         public void run() {
+            gameFlow.processGameFlow();
             update();
             render();
         }
@@ -75,7 +79,7 @@ public abstract class Game  {
         this.toUpdate.add(upd);
     }
     
-    void update() {
+    private void update() {
         for (Updatable upd : toUpdate) {
             upd.update();
         }

@@ -84,7 +84,6 @@ public class AssetManager {
             objMap = new HashMap<String, Object>();
             this.assets.put(type.toString(), objMap);
         }
-        System.out.println("added");
         objMap.put(name, obj);
     }
     

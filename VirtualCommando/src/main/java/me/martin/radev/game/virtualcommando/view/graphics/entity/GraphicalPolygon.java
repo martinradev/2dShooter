@@ -15,25 +15,21 @@ import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
  *
  * @author Marto
  */
-public class GraphicalPolygon implements GraphicalObject {
-    
-    private Polygon body;
-    private Color color;
-    
+public class GraphicalPolygon extends GraphicalObject {
+
     public GraphicalPolygon(List<Vector2D> points, Color color) {
-        this.body = new Polygon(points);
-        this.color = color;
-    }
-    
-    public GraphicalPolygon(Vector2D [] points, Color color) {
-        this.body = new Polygon(points);
-        this.color = color;
+        super(new Polygon(points), color);
     }
 
+    public GraphicalPolygon(Vector2D[] points, Color color) {
+        super(new Polygon(points), color);
+    }
+
+    @Override
     public void render(Graphics2D g2d, int xOffset, int yOffset) {
-        g2d.setColor(this.color);
-        List<Vector2D> points = this.body.getPoints();
-        GeneralPath polygon = new GeneralPath(GeneralPath.WIND_EVEN_ODD, 
+        g2d.setColor(super.getColor());
+        List<Vector2D> points = ((Polygon) super.getBody()).getPoints();
+        GeneralPath polygon = new GeneralPath(GeneralPath.WIND_EVEN_ODD,
                 points.size());
         polygon.moveTo(xOffset + points.get(0).getX(), yOffset + points.get(0).getY());
         for (int i = 1; i < points.size(); ++i) {
@@ -42,11 +38,11 @@ public class GraphicalPolygon implements GraphicalObject {
         polygon.closePath();
         g2d.fill(polygon);
     }
-    
+
+    @Override
     public Polygon getBody() {
-        return body;
+        return (Polygon)super.getBody(); //To change body of generated methods, choose Tools | Templates.
     }
-    
     
     
     

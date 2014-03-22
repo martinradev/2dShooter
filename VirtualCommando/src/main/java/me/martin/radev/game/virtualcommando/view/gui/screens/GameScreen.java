@@ -4,32 +4,27 @@
  */
 package me.martin.radev.game.virtualcommando.view.gui.screens;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Point;
 import java.awt.RenderingHints;
-import java.awt.Shape;
-import java.awt.geom.Point2D;
-import me.martin.radev.game.virtualcommando.Global;
+import java.util.List;
+import me.martin.radev.game.virtualcommando.game.graphics.GameEntityContainer;
+import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalObject;
 import me.martin.radev.game.virtualcommando.game.unit.Player;
-import me.martin.radev.game.virtualcommando.map.MapInterface;
-import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalRectangle;
-
 /**
  *
  * @author Marto
  */
 public class GameScreen extends Screen {
 
-    private MapInterface map;
+    private GameEntityContainer gameEntities;
     private int offsetX;
     private int offsetY;
 
-    public GameScreen(MapInterface map, int width, int height) {
+    public GameScreen(GameEntityContainer gameEntities, int width, int height) {
         super();
         this.setSize(width, height);
-        this.map = map;
+        this.gameEntities = gameEntities;
         this.offsetX = 0;
         this.offsetY = 0;
         this.setFocusable(true);
@@ -58,15 +53,16 @@ public class GameScreen extends Screen {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                 RenderingHints.VALUE_ANTIALIAS_ON);
-        map.render(g2d, this.getOffsetX(), this.getOffsetY());
-        for (Player p : Global.getGame().getPlayers()) {
-            p.processMovement();
-            ((GraphicalRectangle)p.getgObject()).render(g2d, 0, 0, p.getAngleOffset());
-            g2d.setColor(Color.yellow);
-            g2d.fillOval((int) p.getgObject().getBody().getCenter().getX(),
-                    (int) p.getgObject().getBody().getCenter().getY(),
-                    1, 1);
-
+        
+        
+        for (GraphicalObject go : gameEntities.getMapObjects()) {
+            go.render(g2d, offsetX, offsetX);
+        }
+        
+        List<GraphicalObject> players = gameEntities.getPlayers();
+        for (int i = 0; i < players.size(); ++i) {
+            Player p = ((Player)players.get(i));
+            p.render(g2d, 0, 0, p.getAngleOffset());
         }
     }
 }

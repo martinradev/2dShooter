@@ -35,6 +35,7 @@ public class SimpleObjectMap implements MapInterface{
         return staticObjects;
     }
 
+    @Override
     public void render(Graphics2D g2d, int xOffset, int yOffset) {
         for (GraphicalObject go : staticObjects) {
             go.render(g2d, xOffset, yOffset);
@@ -51,6 +52,11 @@ public class SimpleObjectMap implements MapInterface{
 
     public double getWidth() {
         return width;
+    }
+
+    @Override
+    public List<GraphicalObject> getObjects() {
+        return staticObjects;
     }
     
     
