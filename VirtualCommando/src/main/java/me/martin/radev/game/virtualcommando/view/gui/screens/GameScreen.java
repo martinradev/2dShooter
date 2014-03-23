@@ -11,6 +11,7 @@ import java.util.List;
 import me.martin.radev.game.virtualcommando.game.graphics.GameEntityContainer;
 import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalObject;
 import me.martin.radev.game.virtualcommando.game.unit.Player;
+import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
 /**
  *
  * @author Marto
@@ -56,7 +57,7 @@ public class GameScreen extends Screen {
         
         
         for (GraphicalObject go : gameEntities.getMapObjects()) {
-            go.render(g2d, offsetX, offsetX);
+            go.render(g2d, offsetX, offsetY);
         }
         
         List<GraphicalObject> players = gameEntities.getPlayers();
@@ -64,5 +65,10 @@ public class GameScreen extends Screen {
             Player p = ((Player)players.get(i));
             p.render(g2d, 0, 0, p.getAngleOffset());
         }
+    }
+    
+    public void relativeTranslate(Vector2D direction) {
+        this.offsetX += direction.getX();
+        this.offsetY += direction.getY();
     }
 }

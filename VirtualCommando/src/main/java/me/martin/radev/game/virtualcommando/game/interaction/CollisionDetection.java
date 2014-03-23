@@ -39,6 +39,16 @@ public class CollisionDetection {
             } else if (goB.getClass() == Rectangle.class) {
                 throw new IllegalStateException();
             }
+        } else if (goA.getClass() == Rectangle.class) {
+            if (goB.getClass() == Polygon.class) {
+                return CollisionDetection.doCollide(
+                        (Polygon)goB, (Rectangle)goA);
+            } else if (goB.getClass() == Ellipse.class) {
+                throw new IllegalStateException();
+            } else if (goB.getClass() == Rectangle.class) {
+                return CollisionDetection.doCollide(
+                        (Polygon)goB, (Rectangle)goA);
+            }
         } else {
             System.out.println("bug");
         }

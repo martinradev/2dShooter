@@ -13,7 +13,7 @@ import javax.imageio.ImageIO;
 import me.martin.radev.game.virtualcommando.Global;
 import me.martin.radev.game.virtualcommando.exception.ExceptionHandler;
 import me.martin.radev.game.virtualcommando.exception.ExceptionHelper;
-import me.martin.radev.game.virtualcommando.map.MapInterface;
+import me.martin.radev.game.virtualcommando.map.TiledMap;
 import me.martin.radev.game.virtualcommando.map.loader.Loader;
 import me.martin.radev.game.virtualcommando.map.loader.ObjectLoader;
 import me.martin.radev.game.virtualcommando.view.graphics.entity.Sprite;
@@ -63,7 +63,7 @@ public class AssetManager {
         return null;
     }
     
-    private MapInterface loadMap(File f) {
+    private TiledMap loadMap(File f) {
         Loader loader = new ObjectLoader(Global.getExceptionHandler());
         return loader.load(f);
     }

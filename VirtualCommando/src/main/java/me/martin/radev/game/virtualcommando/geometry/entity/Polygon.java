@@ -5,6 +5,7 @@
 package me.martin.radev.game.virtualcommando.geometry.entity;
 
 import java.util.List;
+import me.martin.radev.game.virtualcommando.Global;
 import me.martin.radev.game.virtualcommando.geometry.MathUtil;
 
 /**
@@ -23,6 +24,12 @@ public class Polygon extends AbstractPolygon {
 
     @Override
     public boolean contains(Vector2D point) {
+        /*
+        double offsetX = Global.getGame().getScreen().getOffsetX();
+        double offsetY = Global.getGame().getScreen().getOffsetY();
+        point = new Vector2D(point);
+        point.translate(-offsetX, -offsetY);
+        */
         List<Vector2D> points = super.getPoints();
         int size = super.getPoints().size();
         for (int i = 0; i < size; ++i) {

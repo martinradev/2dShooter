@@ -7,6 +7,7 @@ package me.martin.radev.game.virtualcommando;
 import me.martin.radev.game.virtualcommando.exception.ExceptionHandler;
 import me.martin.radev.game.virtualcommando.game.logic.Game;
 import me.martin.radev.game.virtualcommando.game.logic.GameFlow;
+import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
 import me.martin.radev.game.virtualcommando.view.gui.GameView;
 import me.martin.radev.game.virtualcommando.view.gui.asset.AssetManager;
 
@@ -25,8 +26,9 @@ public class Global {
     private static double scalingFactor;
     private static GameView frame;
     private static Game game;
-    private static int fps = 60;
+    private static int fps = 100;
     private static GameFlow gameFlow;
+    private static Vector2D playerOffset;
     
     public static void setAssetManager(AssetManager manager) {
         Global.assetManager = manager;
@@ -110,6 +112,14 @@ public class Global {
 
     public static GameFlow getGameFlow() {
         return gameFlow;
+    }
+
+    public static Vector2D getPlayerOffset() {
+        return playerOffset;
+    }
+
+    public static void setPlayerOffset(Vector2D playerOffset) {
+        Global.playerOffset = playerOffset;
     }
 
     

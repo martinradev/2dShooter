@@ -18,14 +18,14 @@ import me.martin.radev.game.virtualcommando.view.gui.asset.AssetType;
  */
 public abstract class Player extends GraphicalRectangle {
 
-    private double angleOffset = 0d;
-    private double currentAngleOfRotation = 0d;
-    private int maxHealth;
-    private int currentHealth;
-    private double velocity = 4d;
-    private LinearAnimation walkAnimation;
-    private Sprite staticSprite;
-    private Vector2D lastMovement;
+    protected double angleOffset = 0d;
+    protected double currentAngleOfRotation = 0d;
+    protected int maxHealth;
+    protected int currentHealth;
+    protected double velocity = 2.2d;
+    protected LinearAnimation walkAnimation;
+    protected Sprite staticSprite;
+    protected Vector2D lastMovement;
 
     public Player(int maxHealth, Vector2D startingPosition,
             int gObjectWidth, int gObjectHeight, Color color) {

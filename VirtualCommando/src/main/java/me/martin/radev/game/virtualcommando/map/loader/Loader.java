@@ -5,7 +5,7 @@
 package me.martin.radev.game.virtualcommando.map.loader;
 
 import java.io.File;
-import me.martin.radev.game.virtualcommando.map.MapInterface;
+import me.martin.radev.game.virtualcommando.map.TiledMap;
 
 
 
@@ -15,6 +15,6 @@ import me.martin.radev.game.virtualcommando.map.MapInterface;
  */
 public interface Loader {
     
-    public MapInterface load(File file);
+    public TiledMap load(File file);
     
 }

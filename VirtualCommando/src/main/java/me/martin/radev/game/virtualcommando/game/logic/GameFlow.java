@@ -5,10 +5,12 @@
 package me.martin.radev.game.virtualcommando.game.logic;
 
 import java.util.List;
+import me.martin.radev.game.virtualcommando.Global;
 import me.martin.radev.game.virtualcommando.game.graphics.GameEntityContainer;
 import me.martin.radev.game.virtualcommando.game.interaction.CollisionDetection;
 import me.martin.radev.game.virtualcommando.game.unit.Player;
 import me.martin.radev.game.virtualcommando.geometry.entity.Polygon;
+import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
 import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalObject;
 
 /**
@@ -43,6 +45,19 @@ public class GameFlow {
             }
         }
         return false;
+    }
+    
+    public void relativeTranslateAccordingToPlayer(Vector2D direction) {
+        //Global.getGame().getScreen().relativeTranslate(direction);
+        for (GraphicalObject go : gameEntities.getMapObjects()) {
+            go.getBody().translate(direction.getX(), direction.getY());
+        }
+    }
+    
+    public void translateAccordingToPlayer(Vector2D playerPosition) {
+        for (GraphicalObject go : gameEntities.getMapObjects()) {
+            go.getBody().translate(playerPosition.getX(), playerPosition.getY());
+        }
     }
 
 }

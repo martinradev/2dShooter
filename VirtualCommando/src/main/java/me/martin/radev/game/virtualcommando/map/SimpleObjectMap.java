@@ -13,13 +13,12 @@ import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalObject
  *
  * @author Marto
  */
-public class SimpleObjectMap implements MapInterface{
+public class SimpleObjectMap extends TiledMap{
     
     private List<GraphicalObject> staticObjects;
-    private double width;
-    private double height;
     
     public SimpleObjectMap(List<GraphicalObject> objectsList, double width, double height) {
+        super();
         staticObjects = objectsList;
         this.width = width;
         this.height = height;
@@ -44,14 +43,6 @@ public class SimpleObjectMap implements MapInterface{
     
     public void add(GraphicalObject go) {
         staticObjects.add(go);
-    }
-
-    public double getHeight() {
-        return height;
-    }
-
-    public double getWidth() {
-        return width;
     }
 
     @Override

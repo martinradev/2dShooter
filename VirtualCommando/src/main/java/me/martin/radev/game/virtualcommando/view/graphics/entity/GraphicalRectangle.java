@@ -28,13 +28,16 @@ public class GraphicalRectangle extends GraphicalObject {
     @Override
     public void render(Graphics2D g2d, int xOffset, int yOffset) {
         Vector2D sprV2d = new Vector2D(super.getBody().getCenter());
-        g2d.translate(sprV2d.getX(), sprV2d.getY());
-        g2d.drawImage(sprite.getImage(), -sprite.getWidth() / 2,
-                -sprite.getHeight() / 2, null);
-        g2d.setColor(Color.yellow);
-        g2d.drawRect(-sprite.getWidth() / 2,
-                -sprite.getHeight() / 2,
-                sprite.getWidth(), sprite.getHeight());
+        g2d.translate(sprV2d.getX()+xOffset, sprV2d.getY());
+        if (sprite != null) {
+            g2d.drawImage(sprite.getImage(), -sprite.getWidth() / 2,
+                    -sprite.getHeight() / 2, null);
+        } else {
+            g2d.setColor(super.getColor());
+            g2d.fillRect(- (int)this.getBody().getWidth() / 2,
+                    -(int)this.getBody().getHeight() / 2,
+                    (int)this.getBody().getWidth(),(int)this.getBody().getHeight());
+        }
         g2d.translate(-sprV2d.getX(), -sprV2d.getY());
     }
 

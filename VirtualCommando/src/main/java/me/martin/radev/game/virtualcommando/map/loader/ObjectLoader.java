@@ -11,7 +11,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import me.martin.radev.game.virtualcommando.exception.ExceptionHandler;
 import me.martin.radev.game.virtualcommando.exception.ExceptionHelper;
-import me.martin.radev.game.virtualcommando.map.MapInterface;
+import me.martin.radev.game.virtualcommando.map.TiledMap;
 import me.martin.radev.game.virtualcommando.map.SimpleObjectMap;
 import me.martin.radev.game.virtualcommando.map.parser.ObjectParser;
 import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalObject;
@@ -35,7 +35,7 @@ public class ObjectLoader implements Loader {
         this.parser = new ObjectParser();
     }
 
-    public MapInterface load(File xmlFile) {
+    public TiledMap load(File xmlFile) {
         try {
 
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
