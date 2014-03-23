@@ -98,8 +98,6 @@ public class MyPlayer extends Player {
                 super.setSprite(walkAnimation.getCurrent());
             }
         }
-        
-        System.out.println(playerOffset);
     }
 
 }

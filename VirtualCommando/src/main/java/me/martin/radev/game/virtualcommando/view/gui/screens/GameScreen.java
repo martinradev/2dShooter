@@ -11,6 +11,7 @@ import java.util.List;
 import me.martin.radev.game.virtualcommando.game.graphics.GameEntityContainer;
 import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalObject;
 import me.martin.radev.game.virtualcommando.game.unit.Player;
+import me.martin.radev.game.virtualcommando.game.weapon.bullet.Bullet;
 import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
 /**
  *
@@ -64,6 +65,12 @@ public class GameScreen extends Screen {
         for (int i = 0; i < players.size(); ++i) {
             Player p = ((Player)players.get(i));
             p.render(g2d, 0, 0, p.getAngleOffset());
+        }
+        
+        List<Bullet> bullets = gameEntities.getBullets();
+        for (int i = 0; i < bullets.size(); ++i) {
+            Bullet bullet = ((Bullet)bullets.get(i));
+            bullet.render(g2d, 0, 0);
         }
     }
     

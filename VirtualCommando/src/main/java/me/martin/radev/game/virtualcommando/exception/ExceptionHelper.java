@@ -14,6 +14,7 @@ public enum ExceptionHelper {
     SAXException("Parsing error", "The file is not xml format. Please check the format."),
     IOException("Cannot open file", "Please check file for rights."),
     IllegalArgumentException("A problem occured", "Please notify us"),
+    BulletCloneException("Weapon", "Problem while firing bullet"),
     FontFormatException("Font error", "Font format is not recognized");
     
     private String title;

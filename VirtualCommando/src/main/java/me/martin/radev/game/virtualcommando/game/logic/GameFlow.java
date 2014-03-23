@@ -9,6 +9,7 @@ import me.martin.radev.game.virtualcommando.Global;
 import me.martin.radev.game.virtualcommando.game.graphics.GameEntityContainer;
 import me.martin.radev.game.virtualcommando.game.interaction.CollisionDetection;
 import me.martin.radev.game.virtualcommando.game.unit.Player;
+import me.martin.radev.game.virtualcommando.game.weapon.bullet.Bullet;
 import me.martin.radev.game.virtualcommando.geometry.entity.Polygon;
 import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
 import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalObject;
@@ -35,6 +36,11 @@ public class GameFlow {
             Player p = (Player)players.get(i);
             p.processMovement();
             p.processRotation();
+        }
+        List<Bullet> bullets = gameEntities.getBullets();
+        for (int i = 0; i < bullets.size(); ++i) {
+            Bullet bullet = bullets.get(i);
+            bullet.move();
         }
     }
     

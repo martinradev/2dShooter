@@ -6,6 +6,7 @@ package me.martin.radev.game.virtualcommando.game.graphics;
 
 import java.util.LinkedList;
 import java.util.List;
+import me.martin.radev.game.virtualcommando.game.weapon.bullet.Bullet;
 import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalObject;
 
 /**
@@ -16,7 +17,7 @@ public class GameEntityContainer {
     
     private List<GraphicalObject> players;
     private List<GraphicalObject> mapObjects;
-    private List<GraphicalObject> bullets;
+    private List<Bullet> bullets;
     
     public GameEntityContainer() {
         players = new LinkedList<>();
@@ -40,15 +41,15 @@ public class GameEntityContainer {
         this.mapObjects.addAll(mapObjects);
     }
     
-    public void addBullet(GraphicalObject b) {
+    public void addBullet(Bullet b) {
         bullets.add(b);
     }
     
-    public void addAllBullets(List<GraphicalObject> bullets) {
+    public void addAllBullets(List<Bullet> bullets) {
         this.bullets.addAll(bullets);
     }
 
-    public List<GraphicalObject> getBullets() {
+    public List<Bullet> getBullets() {
         return bullets;
     }
 

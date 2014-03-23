@@ -6,6 +6,9 @@ package me.martin.radev.game.virtualcommando.game.unit;
 
 import java.awt.Color;
 import me.martin.radev.game.virtualcommando.Global;
+import me.martin.radev.game.virtualcommando.game.weapon.NormalWeapon;
+import me.martin.radev.game.virtualcommando.game.weapon.Weapon;
+import me.martin.radev.game.virtualcommando.game.weapon.bullet.Bullet;
 import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
 import me.martin.radev.game.virtualcommando.view.graphics.animation.LinearAnimation;
 import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalRectangle;
@@ -26,6 +29,7 @@ public abstract class Player extends GraphicalRectangle {
     protected LinearAnimation walkAnimation;
     protected Sprite staticSprite;
     protected Vector2D lastMovement;
+    protected Weapon weapon;
 
     public Player(int maxHealth, Vector2D startingPosition,
             int gObjectWidth, int gObjectHeight, Color color) {
@@ -41,6 +45,13 @@ public abstract class Player extends GraphicalRectangle {
         Global.getGame().bind(walkAnimation);
         lastMovement = new Vector2D(0d, 0d);
         currentAngleOfRotation = 0d;
+        
+        initWeapon();
+        
+    }
+    
+    private void initWeapon() {
+        weapon = new NormalWeapon();
     }
 
     public void move(Vector2D direction) {
@@ -57,7 +68,10 @@ public abstract class Player extends GraphicalRectangle {
     }
 
     public void shoot(Vector2D direction) {
-        System.out.println("Shoot: " + direction);
+        Vector2D position = new Vector2D(this.getBody().getCenter());
+        Bullet bullet = weapon.produceBullet(direction, position, this);
+        Global.getGame().getGameEntities().addBullet(bullet);
+        
     }
 
     public void takeDamage(int damage) {

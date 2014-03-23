@@ -99,7 +99,11 @@ public abstract class Game {
     public TiledMap getMap() {
         return map;
     }
+
+    public GameEntityContainer getGameEntities() {
+        return gameEntities;
+    }
     
-    
+     
     
 }
