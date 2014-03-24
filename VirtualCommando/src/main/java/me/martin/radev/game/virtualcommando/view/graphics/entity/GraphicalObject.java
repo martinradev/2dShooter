@@ -12,7 +12,7 @@ import me.martin.radev.game.virtualcommando.game.graphics.Renderable;
  *
  * @author Marto
  */
-public abstract class GraphicalObject implements Renderable {
+public abstract class GraphicalObject implements Renderable, Cloneable {
     
     private GeometricObject body;
     private Color color;
@@ -37,7 +37,10 @@ public abstract class GraphicalObject implements Renderable {
     public void setColor(Color color) {
         this.color = color;
     }
-    
-    
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone(); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

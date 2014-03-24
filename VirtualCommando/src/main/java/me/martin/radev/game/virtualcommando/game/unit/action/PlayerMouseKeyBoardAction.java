@@ -31,7 +31,7 @@ public class PlayerMouseKeyBoardAction {
 
     public PlayerMouseKeyBoardAction(MyPlayer player) {
         this.player = player;
-        currentPoint = new Point(0,0);
+        currentPoint = new Point(0, 0);
         this.mouseListener = new PlayerMouseListener();
         this.mouseMotionListener = new PlayerMouseMotionListener();
         this.keyListener = new PlayerKeyListener();
@@ -71,7 +71,7 @@ public class PlayerMouseKeyBoardAction {
         } else {
             player.stopMovement();
         }
-        
+
     }
 
     public Point getCurrentPoint() {
@@ -94,7 +94,10 @@ public class PlayerMouseKeyBoardAction {
 
         @Override
         public void mousePressed(MouseEvent me) {
-            Vector2D direction = new Vector2D(me.getPoint()).getUnitVector();
+            Vector2D mousePosition = new Vector2D(me.getPoint());
+            Vector2D playerPosition = new Vector2D(player.getBody().getCenter());
+            double angle = MathUtil.getAngleBetweenPoints(mousePosition, playerPosition);
+            Vector2D direction = new Vector2D(Math.cos(angle), Math.sin(angle));
             player.shoot(direction);
         }
 

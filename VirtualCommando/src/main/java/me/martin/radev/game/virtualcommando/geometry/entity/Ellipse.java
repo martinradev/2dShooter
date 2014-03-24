@@ -8,13 +8,14 @@ package me.martin.radev.game.virtualcommando.geometry.entity;
  *
  * @author Marto
  */
-public class Ellipse implements GeometricObject {
+public class Ellipse extends GeometricObject {
 
     private Vector2D center;
     private double majorAxis;
     private double minorAxis;
     
     public Ellipse(Vector2D center, double majorAxis, double minorAxis) {
+        super();
         this.center = center;
         this.majorAxis = majorAxis;
         this.minorAxis = minorAxis;

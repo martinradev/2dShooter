@@ -8,12 +8,19 @@ package me.martin.radev.game.virtualcommando.geometry.entity;
  *
  * @author Marto
  */
-public interface GeometricObject {
+public abstract class GeometricObject implements Cloneable {
     
-    Vector2D getCenter();
-    void translate(double dx, double dy);
-    void rotate(double angle);
-    boolean contains(Vector2D v2d);
-    void relativeRotate(Vector2D center, double angle);
+    public abstract Vector2D getCenter();
+    public abstract void translate(double dx, double dy);
+    public abstract void rotate(double angle);
+    public abstract boolean contains(Vector2D v2d);
+    public abstract void relativeRotate(Vector2D center, double angle);
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone(); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
     
 }

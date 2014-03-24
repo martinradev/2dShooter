@@ -35,6 +35,7 @@ public class Weapon {
         bulletType.setPosition(position);
         bulletType.setOwner(player);
         Bullet b = null;
+        
         try {
             b = (Bullet) bulletType.clone();
         } catch (CloneNotSupportedException ex) {
@@ -42,6 +43,7 @@ public class Weapon {
                     ExceptionHelper.BulletCloneException.getTitle(),
                     ExceptionHelper.BulletCloneException.getMessage());
         }
+
         return b;
     }
 }

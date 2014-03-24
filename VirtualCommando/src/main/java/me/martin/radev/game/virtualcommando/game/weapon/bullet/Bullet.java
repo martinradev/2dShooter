@@ -33,7 +33,9 @@ public abstract class Bullet implements Cloneable {
     }
 
     public void setPosition(Vector2D position) {
-        
+        object.getBody().translate(-object.getBody().getCenter().getX(), 
+                -object.getBody().getCenter().getY());
+        object.getBody().translate(position.getX(), position.getY());
     }
     
     
@@ -57,7 +59,7 @@ public abstract class Bullet implements Cloneable {
     }
     
     public void render(Graphics2D g2d, double offsetX, double offsetY) {
-        g2d.setColor(Color.yellow);
+        object.render(g2d, (int)offsetX, (int)offsetY);
     }
     
 }

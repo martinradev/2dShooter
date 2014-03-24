@@ -11,11 +11,12 @@ import java.util.List;
  *
  * @author Marto
  */
-public abstract class AbstractPolygon implements GeometricObject {
+public abstract class AbstractPolygon extends GeometricObject {
     
     private List<Vector2D> points;
     
     public AbstractPolygon(List<Vector2D> points) {
+        super();
         this.points = points;
     }
     

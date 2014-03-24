@@ -11,12 +11,13 @@ import me.martin.radev.game.virtualcommando.geometry.MathUtil;
  *
  * @author Marto
  */
-public class Vector2D implements GeometricObject {
+public class Vector2D extends GeometricObject {
     
     private double x;
     private double y;
     
     public Vector2D(double x, double y) {
+        super();
         this.x = x;
         this.y = y;
     }
