@@ -4,7 +4,9 @@
  */
 package me.martin.radev.game.virtualcommando.game.logic;
 
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import me.martin.radev.game.virtualcommando.game.graphics.GameEntityContainer;
 import me.martin.radev.game.virtualcommando.game.interaction.CollisionDetection;
 import me.martin.radev.game.virtualcommando.game.unit.Player;
@@ -20,16 +22,18 @@ import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalObject
 public class GameFlow {
 
     private GameEntityContainer gameEntities;
+    
 
     public GameFlow(GameEntityContainer gameEntities) {
         this.gameEntities = gameEntities;
+        
     }
 
     public void processGameFlow() {
         this.processObjectMovement();
     }
 
-    public void processObjectMovement() {
+    private void processObjectMovement() {
         List<GraphicalObject> players = gameEntities.getPlayers();
         for (int i = 0; i < players.size(); ++i) {
             Player p = (Player) players.get(i);
@@ -41,6 +45,10 @@ public class GameFlow {
             Bullet bullet = bullets.get(i);
             bullet.move();
         }
+    }
+    
+    private void processRespawning() {
+        
     }
 
     public boolean isPlayerColliding(Player p) {
@@ -54,10 +62,9 @@ public class GameFlow {
     public Player isBulletCollidingWithPlayer(Bullet b) {
         GeometricObject objBody = b.getObject().getBody();
         for (GraphicalObject go : gameEntities.getPlayers()) {
-            if (b.getOwner() == go) {
-                System.out.println("same player");
-            } else {
+            if (b.getOwner() != go) {
                 if (CollisionDetection.doCollide(go.getBody(), objBody)) {
+                    System.out.println("bullet-player collision");
                     return (Player)go;
                 }
             }
@@ -84,4 +91,7 @@ public class GameFlow {
             b.getObject().getBody().translate(direction.getX(), direction.getY());
         }
     }
+    
+    
+    
 }

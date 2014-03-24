@@ -51,17 +51,22 @@ public abstract class Game {
 
         MyPlayer mp = new MyPlayer();
         this.addPlayer(mp);
-        Global.setPlayerOffset(new Vector2D(mp.getBody().getCenter()));
-
-        double offsetX = screen.getWidth() / 2 - mp.getBody().getCenter().getX();
-        double offsetY = screen.getHeight() / 2 - mp.getBody().getCenter().getY();
-        mp.getBody().translate(offsetX, offsetY);
-        gameFlow.relativeTranslateAccordingToPlayer(new Vector2D(offsetX, offsetY));
+        
+        moveAccordingToMainPlayer(mp);
+        
         
 
         timer = new Timer();
         loop = new GameLoop();
         timer.schedule(loop, 0, 1000 / Global.getFPS());
+    }
+    
+    public void moveAccordingToMainPlayer(Player mp) {
+        Global.setPlayerOffset(new Vector2D(mp.getBody().getCenter()));
+        double offsetX = screen.getWidth() / 2 - mp.getBody().getCenter().getX();
+        double offsetY = screen.getHeight() / 2 - mp.getBody().getCenter().getY();
+        mp.getBody().translate(offsetX, offsetY);
+        gameFlow.relativeTranslateAccordingToPlayer(new Vector2D(offsetX, offsetY));
     }
 
     public void addPlayer(Player p) {

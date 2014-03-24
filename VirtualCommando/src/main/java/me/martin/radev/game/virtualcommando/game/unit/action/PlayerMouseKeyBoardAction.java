@@ -15,6 +15,7 @@ import java.util.HashSet;
 import me.martin.radev.game.virtualcommando.game.unit.MyPlayer;
 import me.martin.radev.game.virtualcommando.geometry.MathUtil;
 import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
+import me.martin.radev.game.virtualcommando.structures.ConcurrentHashSet;
 
 /**
  *
@@ -26,7 +27,7 @@ public class PlayerMouseKeyBoardAction {
     private MouseListener mouseListener;
     private MouseMotionListener mouseMotionListener;
     private KeyListener keyListener;
-    private HashSet<Integer> keysToProcess;
+    private ConcurrentHashSet<Integer> keysToProcess;
     private Point currentPoint;
 
     public PlayerMouseKeyBoardAction(MyPlayer player) {
@@ -51,7 +52,7 @@ public class PlayerMouseKeyBoardAction {
 
     public void processMovement() {
         Vector2D direction = new Vector2D(0d, 0d);
-        for (Integer key : keysToProcess) {
+        for (Integer key : keysToProcess.getHashSet()) {
             if (key == KeyEvent.VK_LEFT) {
                 direction.translate(-1d, 0);
             }
@@ -138,7 +139,7 @@ public class PlayerMouseKeyBoardAction {
     public class PlayerKeyListener implements KeyListener {
 
         public PlayerKeyListener() {
-            keysToProcess = new HashSet<>();
+            keysToProcess = new ConcurrentHashSet<Integer>();
         }
 
         @Override

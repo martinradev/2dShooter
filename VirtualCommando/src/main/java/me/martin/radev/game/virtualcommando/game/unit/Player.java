@@ -30,6 +30,7 @@ public abstract class Player extends GraphicalRectangle {
     protected Sprite staticSprite;
     protected Vector2D lastMovement;
     protected Weapon weapon;
+    private double respawnTime = 0d;
 
     public Player(int maxHealth, Vector2D startingPosition,
             int gObjectWidth, int gObjectHeight, Color color) {
@@ -86,6 +87,16 @@ public abstract class Player extends GraphicalRectangle {
     }
 
     public void kill() {
+        this.respawnTime = 0d;
+        Global.getGame().getGameEntities().getPlayers().remove(this);
+    }
+
+    public double getRespawnTime() {
+        return respawnTime;
+    }
+    
+    public void setRespawnTime(double time) {
+        this.respawnTime = time;
     }
 
     public int getCurrentHealth() {
