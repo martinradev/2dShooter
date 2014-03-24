@@ -6,6 +6,7 @@ package me.martin.radev.game.virtualcommando.map.loader;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -59,15 +60,17 @@ public class ObjectLoader implements Loader {
                 double totalHeight = heightInteger * tileHeightInteger;
 
                 SimpleObjectMap som = new SimpleObjectMap(totalWidth, totalHeight);
+                
 
-                NodeList nList = doc.getElementsByTagName("object");
-                for (int i = 0; i < nList.getLength(); ++i) {
-                    Node node = nList.item(i);
-                    if (node.getNodeType() == Node.ELEMENT_NODE) {
-                        GraphicalObject go = parser.parseObject((Element) node);
-                        som.add(go);
-                    }
-                }
+                NodeList nList = this.getListInContainer("objectgroup", "object", doc.getDocumentElement());
+                List<GraphicalObject> mapObjectList = parser.parseObjectContainer(nList);
+                som.addStaticObjects(mapObjectList);
+                
+                NodeList respawnList = this.getListInContainer("respawngroup", "object", doc.getDocumentElement());
+                List<GraphicalObject> mapRespawnList = parser.parseObjectContainer(respawnList);
+                som.addRespawnPoint(mapRespawnList);
+                System.out.println(mapRespawnList.size());
+                
                 return som;
             } catch (SAXException ex) {
                 exceptionHandler.notificate(ExceptionHelper.SAXException.getTitle(),
@@ -82,4 +85,11 @@ public class ObjectLoader implements Loader {
         }
         return null;
     }
+    
+    private NodeList getListInContainer(String containerName, String nodeName, Element el) {
+        NodeList objectGroupList = el.getElementsByTagName(containerName);
+        Element objectGroupElement = (Element)objectGroupList.item(0);
+        return objectGroupElement.getElementsByTagName(nodeName);
+    }
+    
 }

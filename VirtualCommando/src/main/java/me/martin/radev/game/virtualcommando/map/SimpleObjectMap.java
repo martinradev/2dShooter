@@ -7,6 +7,7 @@ package me.martin.radev.game.virtualcommando.map;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.List;
+import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
 import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalObject;
 
 /**
@@ -16,16 +17,20 @@ import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalObject
 public class SimpleObjectMap extends TiledMap{
     
     private List<GraphicalObject> staticObjects;
+    private List<GraphicalObject> respawnPoints;
     
-    public SimpleObjectMap(List<GraphicalObject> objectsList, double width, double height) {
+    public SimpleObjectMap(List<GraphicalObject> objectsList, 
+            List<GraphicalObject> respawnPoints, double width, double height) {
         super();
         staticObjects = objectsList;
+        this.respawnPoints = respawnPoints;
         this.width = width;
         this.height = height;
     }
     
     public SimpleObjectMap( double width, double height) {
         staticObjects = new ArrayList<GraphicalObject>();
+        respawnPoints = new ArrayList<GraphicalObject>();
         this.width = width;
         this.height = height;
     }
@@ -41,8 +46,20 @@ public class SimpleObjectMap extends TiledMap{
         }
     }
     
-    public void add(GraphicalObject go) {
+    public void addStaticObjects(GraphicalObject go) {
         staticObjects.add(go);
+    }
+    
+    public void addStaticObjects(List<GraphicalObject> goList) {
+        staticObjects.addAll(goList);
+    }
+    
+    public void addRespawnPoint(GraphicalObject v2d) {
+        respawnPoints.add(v2d);
+    }
+    
+    public void addRespawnPoint(List<GraphicalObject> v2d) {
+        respawnPoints.addAll(v2d);
     }
 
     @Override

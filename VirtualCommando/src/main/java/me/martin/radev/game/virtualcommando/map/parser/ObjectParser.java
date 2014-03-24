@@ -7,6 +7,7 @@ package me.martin.radev.game.virtualcommando.map.parser;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
@@ -26,7 +27,8 @@ public class ObjectParser implements Parser {
 
     private final String pointDelimiter = " ";
     private final String coordDelimiter = ",";
-    
+
+    @Override
     public GraphicalObject parseObject(Element el) {
         GraphicalObject gObject = null;
         Color color = null;
@@ -37,7 +39,7 @@ public class ObjectParser implements Parser {
         NodeList propertiesContainer = el.getElementsByTagName("properties");
         NodeList properties = null;
 
-        
+
         Map<String, String> mapProperties = this.parseProperties(properties);
         if (mapProperties.containsKey("color")) {
             color = Color.decode(mapProperties.get("color"));
@@ -68,7 +70,8 @@ public class ObjectParser implements Parser {
     protected Class getObjectType(Element el) {
         if (el.getElementsByTagName("ellipse").getLength() != 0) {
             return GraphicalEllipse.class;
-        } if (el.getElementsByTagName("polyline").getLength() != 0) {
+        }
+        if (el.getElementsByTagName("polyline").getLength() != 0) {
             return GraphicalPolygon.class;
         } else {
             return GraphicalRectangle.class;
@@ -77,7 +80,7 @@ public class ObjectParser implements Parser {
 
     private List<Vector2D> getPolygonPoints(Element el, double xStart, double yStart) {
         NodeList obj = el.getElementsByTagName("polyline");
-        Element polyline = (Element)obj.item(0);
+        Element polyline = (Element) obj.item(0);
         String points = polyline.getAttribute("points");
         List<Vector2D> pointList = this.parsePointsString(points);
         for (Vector2D point : pointList) {
@@ -85,19 +88,20 @@ public class ObjectParser implements Parser {
         }
         return pointList;
     }
-    
+
     private List<Vector2D> parsePointsString(String s) {
-        List<Vector2D> pointList = new ArrayList<Vector2D>();
-        String [] points = s.split(pointDelimiter);
+        List<Vector2D> pointList = new ArrayList<>();
+        String[] points = s.split(pointDelimiter);
         for (String p : points) {
-            String [] pointCoords = p.split(coordDelimiter);
+            String[] pointCoords = p.split(coordDelimiter);
             double x = Double.parseDouble(pointCoords[0]);
             double y = Double.parseDouble(pointCoords[1]);
-            pointList.add(new Vector2D(x,y));
+            pointList.add(new Vector2D(x, y));
         }
         return pointList;
     }
 
+    @Override
     public Map<String, String> parseProperties(NodeList properties) {
         Map<String, String> propertiesMap = new HashMap<String, String>();
         if (properties == null) {
@@ -111,5 +115,17 @@ public class ObjectParser implements Parser {
             }
         }
         return propertiesMap;
+    }
+
+    public List<GraphicalObject> parseObjectContainer(NodeList nList) {
+        List<GraphicalObject> goList = new LinkedList<>();
+        for (int i = 0; i < nList.getLength(); ++i) {
+            Node node = nList.item(i);
+            if (node.getNodeType() == Node.ELEMENT_NODE) {
+                GraphicalObject go = this.parseObject((Element) node);
+                goList.add(go);
+            }
+        }
+        return goList;
     }
 }

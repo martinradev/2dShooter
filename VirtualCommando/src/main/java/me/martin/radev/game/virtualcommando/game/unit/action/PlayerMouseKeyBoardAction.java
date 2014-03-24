@@ -65,6 +65,7 @@ public class PlayerMouseKeyBoardAction {
                 direction.translate(0, 1d);
             }
         }
+        direction = direction.getUnitVector();
         if (direction.getX() != 0 || direction.getY() != 0) {
             player.move(direction);
             processRotation(MouseInfo.getPointerInfo().getLocation());

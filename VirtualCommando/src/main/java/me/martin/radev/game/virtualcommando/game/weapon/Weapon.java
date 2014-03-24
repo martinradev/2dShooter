@@ -18,7 +18,7 @@ import me.martin.radev.game.virtualcommando.view.graphics.entity.Sprite;
  *
  * @author Marto
  */
-public class Weapon {
+public abstract class Weapon {
 
     private Animation shootingAnimation;
     private Sprite staticWeaponAnimation;
@@ -30,20 +30,5 @@ public class Weapon {
         this.bulletType = bulletType;
     }
 
-    public Bullet produceBullet(Vector2D direction, Vector2D position, Player player) {
-        bulletType.setDirection(direction);
-        bulletType.setPosition(position);
-        bulletType.setOwner(player);
-        Bullet b = null;
-        
-        try {
-            b = (Bullet) bulletType.clone();
-        } catch (CloneNotSupportedException ex) {
-            Global.getExceptionHandler().notificate(
-                    ExceptionHelper.BulletCloneException.getTitle(),
-                    ExceptionHelper.BulletCloneException.getMessage());
-        }
-
-        return b;
-    }
+    public abstract Bullet produceBullet(Vector2D direction, Vector2D position, Player player);
 }
