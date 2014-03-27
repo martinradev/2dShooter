@@ -17,7 +17,7 @@ import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalRectan
 public class NormalBullet extends Bullet {
     
     private static final int DAMAGE = 5;
-    private static final double VELOCITY = 2.5d;
+    private static final double VELOCITY = 5d;
     private static final double BULLET_WIDTH = 5d;
     private static final double BULLET_HEIGHT = 5d;
     

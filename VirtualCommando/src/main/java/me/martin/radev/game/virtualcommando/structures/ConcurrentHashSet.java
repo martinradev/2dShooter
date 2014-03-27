@@ -4,7 +4,6 @@
  */
 package me.martin.radev.game.virtualcommando.structures;
 
-import java.util.Collections;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 

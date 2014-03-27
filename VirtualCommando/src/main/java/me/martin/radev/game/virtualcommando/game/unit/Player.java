@@ -71,8 +71,11 @@ public abstract class Player extends GraphicalRectangle {
     public void shoot(Vector2D direction) {
         Vector2D position = new Vector2D(this.getBody().getCenter());
         Bullet bullet = weapon.produceBullet(direction, position, this);
-        Global.getGame().getGameEntities().addBullet(bullet);
-        
+        if (bullet == null) {
+            // notify out of ammo
+        } else {
+            Global.getGame().getGameEntities().addBullet(bullet);
+        }
     }
 
     public void takeDamage(int damage) {

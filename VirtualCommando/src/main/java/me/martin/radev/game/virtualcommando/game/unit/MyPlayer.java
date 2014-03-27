@@ -23,6 +23,7 @@ public class MyPlayer extends Player {
                 PlayerType.NormalPlayer.getHeight(),
                 new Color(1f, 0f, 0f, .0f));
         init();
+        
     }
 
     private void init() {
@@ -30,6 +31,10 @@ public class MyPlayer extends Player {
         Global.getFrame().getScreen().addMouseListener(actionListener.getMouseListener());
         Global.getFrame().getScreen().addKeyListener(actionListener.getKeyListener());
         Global.getFrame().getScreen().addMouseMotionListener(actionListener.getMouseMotionListener());
+        Global.getGame().getScreen().getAmmoBar().setTotalAmmo(
+                    this.weapon.getTotalAmmu());
+        Global.getGame().getScreen().getAmmoBar().setCurrentAmmo(this.weapon.getCurrentAmmuCount());
+        
     }
 
     @Override
@@ -48,19 +53,19 @@ public class MyPlayer extends Player {
         Vector2D yDirection = new Vector2D(0, direction.getY());
         xDirection.scale(-velocity);
         yDirection.scale(-velocity);
-        
+
         Vector2D playerOffset = Global.getPlayerOffset();
-        
-        
+
+
         double mapWidth = Global.getGame().getMap().getWidth();
         double mapHeight = Global.getGame().getMap().getHeight();
-        double mapDiapazoneX =  mapWidth - playerOffset.getX();
+        double mapDiapazoneX = mapWidth - playerOffset.getX();
         double mapDiapazoneY = mapHeight - playerOffset.getY();
         double screenWidth = Global.getGame().getScreen().getWidth();
         double screenHeight = Global.getGame().getScreen().getHeight();
 
-        if (mapDiapazoneX <= screenWidth / 2 || 
-                 mapWidth - mapDiapazoneX <= screenWidth / 2) {
+        if (mapDiapazoneX <= screenWidth / 2
+                || mapWidth - mapDiapazoneX <= screenWidth / 2) {
             this.getBody().translate(-xDirection.getX(), 0);
             if (Global.getGameFlow().isPlayerColliding(this)) {
                 this.getBody().translate(xDirection.getX(), 0);
@@ -78,9 +83,9 @@ public class MyPlayer extends Player {
                 super.setSprite(walkAnimation.getCurrent());
             }
         }
-        
-        if (mapDiapazoneY <= screenHeight / 2 || 
-               mapHeight - mapDiapazoneY  <= screenHeight / 2 ) {
+
+        if (mapDiapazoneY <= screenHeight / 2
+                || mapHeight - mapDiapazoneY <= screenHeight / 2) {
             this.getBody().translate(0, -yDirection.getY());
             if (Global.getGameFlow().isPlayerColliding(this)) {
                 this.getBody().translate(0, yDirection.getY());
@@ -100,4 +105,10 @@ public class MyPlayer extends Player {
         }
     }
 
+    @Override
+    public void shoot(Vector2D direction) {
+        super.shoot(direction);
+        Global.getGame().getScreen().getAmmoBar().setCurrentAmmo(
+                this.weapon.getCurrentAmmuCount());
+    }
 }

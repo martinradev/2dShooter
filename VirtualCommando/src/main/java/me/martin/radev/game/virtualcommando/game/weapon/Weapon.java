@@ -26,8 +26,21 @@ public abstract class Weapon {
     private int totalAmmu;
     private Bullet bulletType;
 
-    public Weapon(Bullet bulletType) {
+    public Weapon(Bullet bulletType, int totalAmmu) {
         this.bulletType = bulletType;
+        this.totalAmmu = this.currentAmmuCount = totalAmmu;
+    }
+    
+    protected void decrementAmmuAcount() {
+        if (currentAmmuCount > 0) --currentAmmuCount;
+    }
+
+    public int getCurrentAmmuCount() {
+        return currentAmmuCount;
+    }
+
+    public int getTotalAmmu() {
+        return totalAmmu;
     }
 
     public abstract Bullet produceBullet(Vector2D direction, Vector2D position, Player player);

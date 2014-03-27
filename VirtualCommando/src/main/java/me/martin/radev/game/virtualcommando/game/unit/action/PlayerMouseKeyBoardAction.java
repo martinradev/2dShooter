@@ -6,12 +6,15 @@ package me.martin.radev.game.virtualcommando.game.unit.action;
 
 import java.awt.MouseInfo;
 import java.awt.Point;
+import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import java.util.HashSet;
+import javax.swing.AbstractAction;
+import javax.swing.ActionMap;
+import me.martin.radev.game.virtualcommando.Global;
 import me.martin.radev.game.virtualcommando.game.unit.MyPlayer;
 import me.martin.radev.game.virtualcommando.geometry.MathUtil;
 import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
@@ -36,6 +39,8 @@ public class PlayerMouseKeyBoardAction {
         this.mouseListener = new PlayerMouseListener();
         this.mouseMotionListener = new PlayerMouseMotionListener();
         this.keyListener = new PlayerKeyListener();
+        Global.getFrame().addKeyListener(keyListener);
+        Global.getFrame().requestFocus();
     }
 
     public KeyListener getKeyListener() {
@@ -73,7 +78,6 @@ public class PlayerMouseKeyBoardAction {
         } else {
             player.stopMovement();
         }
-
     }
 
     public Point getCurrentPoint() {
@@ -156,4 +160,6 @@ public class PlayerMouseKeyBoardAction {
             keysToProcess.remove(ke.getKeyCode());
         }
     }
+    
+    
 }

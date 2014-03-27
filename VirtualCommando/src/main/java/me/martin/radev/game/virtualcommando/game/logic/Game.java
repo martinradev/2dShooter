@@ -54,8 +54,6 @@ public abstract class Game {
         
         moveAccordingToMainPlayer(mp);
         
-        
-
         timer = new Timer();
         loop = new GameLoop();
         timer.schedule(loop, 0, 1000 / Global.getFPS());

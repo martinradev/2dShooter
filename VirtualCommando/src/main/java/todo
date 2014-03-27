@@ -1,0 +1,6 @@
+add screen ammo and health info
+add respawning to game flow. check that it works
+add bots and implement DFS AI so that they move randomly.
+check that the respawn works with the bots
+read the quake ai paper
+try to implement something similar - a basic neural network or something of that sort
