@@ -1,0 +1,861 @@
+<html>
+<head>
+<style type='text/css'>
+html, body, div, span, p, blockquote, pre {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+
+body{
+	line-height: 1;
+	color: black;
+	background: white;
+	margin-left: 20px;
+}
+
+.src { 
+border: 1px solid #dddddd;
+padding-top: 10px;
+padding-right: 5px;
+padding-left: 5px;
+}
+
+
+.covered {background-color: #ddffdd}
+.uncovered {background-color: #ffdddd}
+.killed {background-color: #aaffaa}
+.survived {background-color: #ffaaaa}
+.uncertain {background-color: #dde7ef}
+.run_error {background-color: #dde7ef}
+.na {background-color: #eeeeee}
+.timed_out {background-color: #dde7ef}
+.non_viable {background-color: #aaffaa}
+.memory_error {background-color: #dde7ef}
+.not_started {background-color: #dde7ef; color : red}
+.no_coverage {background-color: #ffaaaa}
+
+</style>
+
+</head>
+<body>
+
+
+<h1>MathUtil.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_1'/>
+1
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_1'></a>
+</td>
+<td class=''><pre><span  class=''>/*</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_2'/>
+2
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_2'></a>
+</td>
+<td class=''><pre><span  class=''> * To change this template, choose Tools | Templates</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_3'/>
+3
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_3'></a>
+</td>
+<td class=''><pre><span  class=''> * and open the template in the editor.</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_4'/>
+4
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_4'></a>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_5'/>
+5
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_5'></a>
+</td>
+<td class=''><pre><span  class=''>package me.martin.radev.game.virtualcommando.geometry;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_6'/>
+6
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_6'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_7'/>
+7
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_7'></a>
+</td>
+<td class=''><pre><span  class=''>import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_8'/>
+8
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_8'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_9'/>
+9
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_9'></a>
+</td>
+<td class=''><pre><span  class=''>/**</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_10'/>
+10
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_10'></a>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_11'/>
+11
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_11'></a>
+</td>
+<td class=''><pre><span  class=''> * @author Marto</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_12'/>
+12
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_12'></a>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_13'/>
+13
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_13'></a>
+</td>
+<td class='uncovered'><pre><span  class=''>public class MathUtil {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_14'/>
+14
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_14'></a>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_15'/>
+15
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_15'></a>
+</td>
+<td class=''><pre><span  class=''>    public static final double EPS = 0.00005;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_16'/>
+16
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_16'></a>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_17'/>
+17
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_17'></a>
+</td>
+<td class=''><pre><span  class=''>    public static double crossProduct(Vector2D a, Vector2D b) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_18'/>
+18
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_18'>4</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        return a.getX()*b.getY() - a.getY()*b.getX();</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_19'/>
+19
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_19'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_20'/>
+20
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_20'></a>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_21'/>
+21
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_21'></a>
+</td>
+<td class=''><pre><span  class=''>    public static double dotProduct(Vector2D a, Vector2D b) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_22'/>
+22
+</td>
+<td class='survived'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_22'>4</a>
+</td>
+<td class='covered'><pre><span  class='survived'>        return a.getX()*b.getX() + a.getY()*b.getY();</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_23'/>
+23
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_23'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_24'/>
+24
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_24'></a>
+</td>
+<td class=''><pre><span  class=''>   </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_25'/>
+25
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_25'></a>
+</td>
+<td class=''><pre><span  class=''>    public static double distance(Vector2D a, Vector2D b) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_26'/>
+26
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_26'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        double dx = a.getX() - b.getX();</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_27'/>
+27
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_27'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        double dy = a.getY() - b.getY();</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_28'/>
+28
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_28'>4</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        return Math.sqrt(dx*dx + dy*dy);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_29'/>
+29
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_29'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_30'/>
+30
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_30'></a>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_31'/>
+31
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_31'></a>
+</td>
+<td class=''><pre><span  class=''>    public static double crossProductFromNewOrigin(Vector2D a, Vector2D b, Vector2D o) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_32'/>
+32
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_32'></a>
+</td>
+<td class='covered'><pre><span  class=''>        Vector2D aCopy = new Vector2D(a);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_33'/>
+33
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_33'></a>
+</td>
+<td class='covered'><pre><span  class=''>        Vector2D bCopy = new Vector2D(b);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_34'/>
+34
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_34'>3</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        aCopy.translate(-o.getX(), -o.getY());</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_35'/>
+35
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_35'>3</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        bCopy.translate(-o.getX(), -o.getY());</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_36'/>
+36
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_36'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        return MathUtil.crossProduct(aCopy, bCopy);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_37'/>
+37
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_37'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_38'/>
+38
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_38'></a>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_39'/>
+39
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_39'></a>
+</td>
+<td class=''><pre><span  class=''>    public static boolean relativelyEqual(double a, double b) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_40'/>
+40
+</td>
+<td class='survived'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_40'>7</a>
+</td>
+<td class='covered'><pre><span  class='survived'>       return (a-EPS) &#60;= b &#38;&#38; (a+EPS)&#62;=b;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_41'/>
+41
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_41'></a>
+</td>
+<td class=''><pre><span  class=''>   }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_42'/>
+42
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_42'></a>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_43'/>
+43
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_43'></a>
+</td>
+<td class=''><pre><span  class=''>    public static double getAngleBetweenPoints(Vector2D a, Vector2D b) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_44'/>
+44
+</td>
+<td class='survived'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_44'>3</a>
+</td>
+<td class='uncovered'><pre><span  class='survived'>        return Math.atan2(a.getY() - b.getY(), a.getX() - b.getX());</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_45'/>
+45
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_45'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_46'/>
+46
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_46'></a>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_47'/>
+47
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_47'></a>
+</td>
+<td class=''><pre><span  class=''>    public static double getAngleBetweenVectors(Vector2D a, Vector2D b) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_48'/>
+48
+</td>
+<td class='survived'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_48'>3</a>
+</td>
+<td class='uncovered'><pre><span  class='survived'>        return </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_49'/>
+49
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_49'></a>
+</td>
+<td class=''><pre><span  class=''>                Math.acos(MathUtil.dotProduct(a, b) / </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_50'/>
+50
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_50'></a>
+</td>
+<td class=''><pre><span  class=''>                (MathUtil.distance(new Vector2D(0,0), a) </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_51'/>
+51
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_51'></a>
+</td>
+<td class=''><pre><span  class=''>                + MathUtil.distance(new Vector2D(0,0), b)));</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_52'/>
+52
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_52'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_53'/>
+53
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_53'></a>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@559656b7_54'/>
+54
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_54'></a>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@559656b7_18'>18</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_18'/> 
+
+<p class='KILLED'>replaced return of double value with -(x + 1) for me/martin/radev/game/virtualcommando/geometry/MathUtil::crossProduct : KILLED -> me.martin.radev.game.virtualcommando.geometry.MathUtilTest.testCrossProductFromNewOrigin(me.martin.radev.game.virtualcommando.geometry.MathUtilTest)</p> <p class='KILLED'>Replaced double subtraction with addition : KILLED -> me.martin.radev.game.virtualcommando.geometry.MathUtilTest.testCrossProductFromNewOrigin(me.martin.radev.game.virtualcommando.geometry.MathUtilTest)</p> <p class='KILLED'>Replaced double multiplication with division : KILLED -> me.martin.radev.game.virtualcommando.geometry.MathUtilTest.testCrossProductFromNewOrigin(me.martin.radev.game.virtualcommando.geometry.MathUtilTest)</p> <p class='KILLED'>Replaced double multiplication with division : KILLED -> me.martin.radev.game.virtualcommando.geometry.MathUtilTest.testCrossProductFromNewOrigin(me.martin.radev.game.virtualcommando.geometry.MathUtilTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@559656b7_22'>22</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_22'/> 
+
+<p class='KILLED'>replaced return of double value with -(x + 1) for me/martin/radev/game/virtualcommando/geometry/MathUtil::dotProduct : KILLED -> me.martin.radev.game.virtualcommando.geometry.MathUtilTest.testDotProduct(me.martin.radev.game.virtualcommando.geometry.MathUtilTest)</p> <p class='SURVIVED'>Replaced double addition with subtraction : SURVIVED</p> <p class='KILLED'>Replaced double multiplication with division : KILLED -> me.martin.radev.game.virtualcommando.geometry.MathUtilTest.testDotProduct(me.martin.radev.game.virtualcommando.geometry.MathUtilTest)</p> <p class='SURVIVED'>Replaced double multiplication with division : SURVIVED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@559656b7_26'>26</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_26'/> 
+
+<p class='KILLED'>Replaced double subtraction with addition : KILLED -> me.martin.radev.game.virtualcommando.geometry.MathUtilTest.testDistance(me.martin.radev.game.virtualcommando.geometry.MathUtilTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@559656b7_27'>27</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_27'/> 
+
+<p class='KILLED'>Replaced double subtraction with addition : KILLED -> me.martin.radev.game.virtualcommando.geometry.MathUtilTest.testDistance(me.martin.radev.game.virtualcommando.geometry.MathUtilTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@559656b7_28'>28</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_28'/> 
+
+<p class='KILLED'>replaced return of double value with -(x + 1) for me/martin/radev/game/virtualcommando/geometry/MathUtil::distance : KILLED -> me.martin.radev.game.virtualcommando.geometry.MathUtilTest.testDistance(me.martin.radev.game.virtualcommando.geometry.MathUtilTest)</p> <p class='KILLED'>Replaced double multiplication with division : KILLED -> me.martin.radev.game.virtualcommando.geometry.MathUtilTest.testDistance(me.martin.radev.game.virtualcommando.geometry.MathUtilTest)</p> <p class='KILLED'>Replaced double multiplication with division : KILLED -> me.martin.radev.game.virtualcommando.geometry.MathUtilTest.testDistance(me.martin.radev.game.virtualcommando.geometry.MathUtilTest)</p> <p class='KILLED'>Replaced double addition with subtraction : KILLED -> me.martin.radev.game.virtualcommando.geometry.MathUtilTest.testDistance(me.martin.radev.game.virtualcommando.geometry.MathUtilTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@559656b7_34'>34</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_34'/> 
+
+<p class='KILLED'>removed negation : KILLED -> me.martin.radev.game.virtualcommando.geometry.MathUtilTest.testCrossProductFromNewOrigin(me.martin.radev.game.virtualcommando.geometry.MathUtilTest)</p> <p class='KILLED'>removed call to me/martin/radev/game/virtualcommando/geometry/entity/Vector2D::translate : KILLED -> me.martin.radev.game.virtualcommando.geometry.MathUtilTest.testCrossProductFromNewOrigin(me.martin.radev.game.virtualcommando.geometry.MathUtilTest)</p> <p class='KILLED'>removed negation : KILLED -> me.martin.radev.game.virtualcommando.geometry.MathUtilTest.testCrossProductFromNewOrigin(me.martin.radev.game.virtualcommando.geometry.MathUtilTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@559656b7_35'>35</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_35'/> 
+
+<p class='KILLED'>removed call to me/martin/radev/game/virtualcommando/geometry/entity/Vector2D::translate : KILLED -> me.martin.radev.game.virtualcommando.geometry.MathUtilTest.testCrossProductFromNewOrigin(me.martin.radev.game.virtualcommando.geometry.MathUtilTest)</p> <p class='KILLED'>removed negation : KILLED -> me.martin.radev.game.virtualcommando.geometry.MathUtilTest.testCrossProductFromNewOrigin(me.martin.radev.game.virtualcommando.geometry.MathUtilTest)</p> <p class='KILLED'>removed negation : KILLED -> me.martin.radev.game.virtualcommando.geometry.MathUtilTest.testCrossProductFromNewOrigin(me.martin.radev.game.virtualcommando.geometry.MathUtilTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@559656b7_36'>36</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_36'/> 
+
+<p class='KILLED'>replaced return of double value with -(x + 1) for me/martin/radev/game/virtualcommando/geometry/MathUtil::crossProductFromNewOrigin : KILLED -> me.martin.radev.game.virtualcommando.geometry.MathUtilTest.testCrossProductFromNewOrigin(me.martin.radev.game.virtualcommando.geometry.MathUtilTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@559656b7_40'>40</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_40'/> 
+
+<p class='KILLED'>Replaced double addition with subtraction : KILLED -> me.martin.radev.game.virtualcommando.geometry.MathUtilTest.testRelativelyEqual(me.martin.radev.game.virtualcommando.geometry.MathUtilTest)</p> <p class='KILLED'>negated conditional : KILLED -> me.martin.radev.game.virtualcommando.geometry.MathUtilTest.testRelativelyEqual(me.martin.radev.game.virtualcommando.geometry.MathUtilTest)</p> <p class='SURVIVED'>changed conditional boundary : SURVIVED</p> <p class='KILLED'>negated conditional : KILLED -> me.martin.radev.game.virtualcommando.geometry.MathUtilTest.testRelativelyEqual(me.martin.radev.game.virtualcommando.geometry.MathUtilTest)</p> <p class='KILLED'>replaced return of integer sized value with (x == 0 ? 1 : 0) : KILLED -> me.martin.radev.game.virtualcommando.geometry.MathUtilTest.testRelativelyEqual(me.martin.radev.game.virtualcommando.geometry.MathUtilTest)</p> <p class='KILLED'>Replaced double subtraction with addition : KILLED -> me.martin.radev.game.virtualcommando.geometry.MathUtilTest.testRelativelyEqual(me.martin.radev.game.virtualcommando.geometry.MathUtilTest)</p> <p class='SURVIVED'>changed conditional boundary : SURVIVED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@559656b7_44'>44</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_44'/> 
+
+<p class='NO_COVERAGE'>replaced return of double value with -(x + 1) for me/martin/radev/game/virtualcommando/geometry/MathUtil::getAngleBetweenPoints : NO_COVERAGE</p> <p class='NO_COVERAGE'>Replaced double subtraction with addition : NO_COVERAGE</p> <p class='NO_COVERAGE'>Replaced double subtraction with addition : NO_COVERAGE</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@559656b7_48'>48</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@559656b7_48'/> 
+
+<p class='NO_COVERAGE'>Replaced double addition with subtraction : NO_COVERAGE</p> <p class='NO_COVERAGE'>Replaced double division with multiplication : NO_COVERAGE</p> <p class='NO_COVERAGE'>replaced return of double value with -(x + 1) for me/martin/radev/game/virtualcommando/geometry/MathUtil::getAngleBetweenVectors : NO_COVERAGE</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+
+<li class='mutator'>INCREMENTS_MUTATOR</li>
+
+<li class='mutator'>CONDITIONALS_BOUNDARY_MUTATOR</li>
+
+<li class='mutator'>RETURN_VALS_MUTATOR</li>
+
+<li class='mutator'>VOID_METHOD_CALL_MUTATOR</li>
+
+<li class='mutator'>INVERT_NEGS_MUTATOR</li>
+
+<li class='mutator'>MATH_MUTATOR</li>
+
+<li class='mutator'>NEGATE_CONDITIONALS_MUTATOR</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>me.martin.radev.game.virtualcommando.geometry.entity.Vector2DTest.testScale(me.martin.radev.game.virtualcommando.geometry.entity.Vector2DTest) (3 ms)</li><li>me.martin.radev.game.virtualcommando.geometry.entity.Vector2DTest.testContains(me.martin.radev.game.virtualcommando.geometry.entity.Vector2DTest) (4 ms)</li><li>me.martin.radev.game.virtualcommando.game.interaction.CollisionDetectionTest.me.martin.radev.game.virtualcommando.game.interaction.CollisionDetectionTest (195 ms)</li><li>me.martin.radev.game.virtualcommando.geometry.MathUtilTest.testDistance(me.martin.radev.game.virtualcommando.geometry.MathUtilTest) (2 ms)</li><li>me.martin.radev.game.virtualcommando.geometry.entity.CircleTest.testRotate(me.martin.radev.game.virtualcommando.geometry.entity.CircleTest) (1 ms)</li><li>me.martin.radev.game.virtualcommando.geometry.entity.PolygonTest.testRelativeRotate(me.martin.radev.game.virtualcommando.geometry.entity.PolygonTest) (3 ms)</li><li>me.martin.radev.game.virtualcommando.geometry.MathUtilTest.testDotProduct(me.martin.radev.game.virtualcommando.geometry.MathUtilTest) (2 ms)</li><li>me.martin.radev.game.virtualcommando.geometry.entity.CircleTest.testContains(me.martin.radev.game.virtualcommando.geometry.entity.CircleTest) (6 ms)</li><li>me.martin.radev.game.virtualcommando.geometry.MathUtilTest.testRelativelyEqual(me.martin.radev.game.virtualcommando.geometry.MathUtilTest) (2 ms)</li><li>me.martin.radev.game.virtualcommando.geometry.entity.PolygonTest.testRotate(me.martin.radev.game.virtualcommando.geometry.entity.PolygonTest) (2 ms)</li><li>me.martin.radev.game.virtualcommando.geometry.MathUtilTest.testCrossProduct(me.martin.radev.game.virtualcommando.geometry.MathUtilTest) (9 ms)</li><li>me.martin.radev.game.virtualcommando.game.unit.action.ai.RandomAILogicTest.me.martin.radev.game.virtualcommando.game.unit.action.ai.RandomAILogicTest (26 ms)</li><li>me.martin.radev.game.virtualcommando.geometry.entity.Vector2DTest.testEquals(me.martin.radev.game.virtualcommando.geometry.entity.Vector2DTest) (4 ms)</li><li>me.martin.radev.game.virtualcommando.geometry.entity.Vector2DTest.testRotate(me.martin.radev.game.virtualcommando.geometry.entity.Vector2DTest) (3 ms)</li><li>me.martin.radev.game.virtualcommando.geometry.entity.Vector2DTest.testGetUnitVector(me.martin.radev.game.virtualcommando.geometry.entity.Vector2DTest) (3 ms)</li><li>me.martin.radev.game.virtualcommando.geometry.MathUtilTest.testCrossProductFromNewOrigin(me.martin.radev.game.virtualcommando.geometry.MathUtilTest) (4 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 0.30
+
+</body>
+</html>

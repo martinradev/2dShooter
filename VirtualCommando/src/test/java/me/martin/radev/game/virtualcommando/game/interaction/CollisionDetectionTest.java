@@ -68,31 +68,34 @@ public class CollisionDetectionTest {
         System.out.println("doCollide");
         Polygon polA = new Polygon(new Vector2D[] {
             new Vector2D(0d, 0d),
-            new Vector2D(3d, 0d),
+            new Vector2D(0d, 3d),
             new Vector2D(3d, 3d),
-            new Vector2D(0d, 0d),
+            new Vector2D(3d, 0d),
         });
         Polygon polB = new Polygon(new Vector2D[] {
             new Vector2D(100d, 100d),
-            new Vector2D(150d, 100d),
-            new Vector2D(150d, 150d),
             new Vector2D(120d, 6004d),
-            new Vector2D(100d, 500d)
+            
+            new Vector2D(150d, 150d),
+            new Vector2D(150d, 100d),
         });
         boolean expResult = false;
         boolean result = CollisionDetection.doCollide(polA, polB);
         assertEquals(expResult, result);
         polA = new Polygon(new Vector2D[] {
             new Vector2D(0d, 0d),
-            new Vector2D(3d, 0d),
+            new Vector2D(0d, 3d),
+            
             new Vector2D(3d, 3d),
-            new Vector2D(0d, 0d),
+            new Vector2D(3d, 0d),
         });
          polB = new Polygon(new Vector2D[] {
             new Vector2D(2d, 2d),
-            new Vector2D(6d, 2d),
-            new Vector2D(6d, 6d),
             new Vector2D(2d, 6d),
+            
+            new Vector2D(6d, 6d),
+            new Vector2D(6d, 2d),
+            
         });
         expResult = true;
         result = CollisionDetection.doCollide(polA, polB);
