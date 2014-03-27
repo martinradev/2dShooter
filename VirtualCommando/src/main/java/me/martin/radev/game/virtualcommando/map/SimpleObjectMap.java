@@ -29,8 +29,8 @@ public class SimpleObjectMap extends TiledMap{
     }
     
     public SimpleObjectMap( double width, double height) {
-        staticObjects = new ArrayList<GraphicalObject>();
-        respawnPoints = new ArrayList<GraphicalObject>();
+        staticObjects = new ArrayList<>();
+        respawnPoints = new ArrayList<>();
         this.width = width;
         this.height = height;
     }

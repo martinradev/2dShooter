@@ -11,6 +11,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import me.martin.radev.game.virtualcommando.Global;
 import me.martin.radev.game.virtualcommando.game.Updatable;
+import me.martin.radev.game.virtualcommando.game.unit.Bot;
 import me.martin.radev.game.virtualcommando.game.unit.MyPlayer;
 import me.martin.radev.game.virtualcommando.game.unit.Player;
 import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
@@ -51,6 +52,12 @@ public abstract class Game {
 
         MyPlayer mp = new MyPlayer();
         this.addPlayer(mp);
+        
+        for (int i = 0; i < 10; ++i) {
+            Bot bot = new Bot();
+            this.addPlayer(bot);
+        }
+        
         
         moveAccordingToMainPlayer(mp);
         

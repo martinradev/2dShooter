@@ -43,5 +43,15 @@ public abstract class Weapon {
         return totalAmmu;
     }
 
+    public void setCurrentAmmuCount(int currentAmmuCount) {
+        this.currentAmmuCount = currentAmmuCount;
+    }
+
+    public void setTotalAmmu(int totalAmmu) {
+        this.totalAmmu = totalAmmu;
+    }
+    
+    
+
     public abstract Bullet produceBullet(Vector2D direction, Vector2D position, Player player);
 }

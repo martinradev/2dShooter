@@ -48,12 +48,8 @@ public abstract class Bullet implements Cloneable {
         Player p = Global.getGameFlow().isBulletCollidingWithPlayer(this);
         if (p!=null) {
             p.takeDamage(this.damage);
+            dispose();
         }
-    }
-    
-    @Override
-    public Object clone() throws CloneNotSupportedException {
-        return super.clone();
     }
 
     public void setDirection(Vector2D direction) {

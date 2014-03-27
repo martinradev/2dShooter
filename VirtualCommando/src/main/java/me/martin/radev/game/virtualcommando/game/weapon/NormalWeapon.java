@@ -15,7 +15,7 @@ import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
  */
 public class NormalWeapon extends Weapon {
     
-    private static final int totalAmmuCapacity = 50;
+    private static final int totalAmmuCapacity = 5000;
     
     public NormalWeapon() {
         super(new NormalBullet(), NormalWeapon.totalAmmuCapacity);

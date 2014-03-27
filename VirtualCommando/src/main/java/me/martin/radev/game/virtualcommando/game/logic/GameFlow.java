@@ -4,11 +4,10 @@
  */
 package me.martin.radev.game.virtualcommando.game.logic;
 
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 import me.martin.radev.game.virtualcommando.game.graphics.GameEntityContainer;
 import me.martin.radev.game.virtualcommando.game.interaction.CollisionDetection;
+import me.martin.radev.game.virtualcommando.game.unit.MyPlayer;
 import me.martin.radev.game.virtualcommando.game.unit.Player;
 import me.martin.radev.game.virtualcommando.game.weapon.bullet.Bullet;
 import me.martin.radev.game.virtualcommando.geometry.entity.GeometricObject;
@@ -23,7 +22,6 @@ public class GameFlow {
 
     private GameEntityContainer gameEntities;
     
-
     public GameFlow(GameEntityContainer gameEntities) {
         this.gameEntities = gameEntities;
         
@@ -64,7 +62,6 @@ public class GameFlow {
         for (GraphicalObject go : gameEntities.getPlayers()) {
             if (b.getOwner() != go) {
                 if (CollisionDetection.doCollide(go.getBody(), objBody)) {
-                    System.out.println("bullet-player collision");
                     return (Player)go;
                 }
             }
@@ -86,6 +83,11 @@ public class GameFlow {
         //Global.getGame().getScreen().relativeTranslate(direction);
         for (GraphicalObject go : gameEntities.getMapObjects()) {
             go.getBody().translate(direction.getX(), direction.getY());
+        }
+        for (GraphicalObject go : gameEntities.getPlayers()) {
+            if (go.getClass() != MyPlayer.class) {
+                go.getBody().translate(direction.getX(), direction.getY());
+            }
         }
         for (Bullet b : gameEntities.getBullets()) {
             b.getObject().getBody().translate(direction.getX(), direction.getY());

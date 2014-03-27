@@ -1,0 +1,37 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package me.martin.radev.game.virtualcommando.game.unit.action.ai;
+
+import java.util.Random;
+import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
+
+/**
+ *
+ * @author Marto
+ */
+public class RandomAILogic implements AILogic {
+
+    private Random rand;
+    private final int epsAccuracy = 100;
+    
+    public RandomAILogic() {
+        rand = new Random();
+    }
+    
+    @Override
+    public Vector2D getDirection() {
+        int yDirection = rand.nextInt(2*epsAccuracy)- epsAccuracy;
+        int xDirection = rand.nextInt(2*epsAccuracy) - epsAccuracy;
+        return new Vector2D(xDirection, yDirection).getUnitVector();
+    }
+
+    @Override
+    public float getRotationAngle() {
+        return (float) (2f*Math.PI*rand.nextFloat());
+    }
+    
+    
+    
+}
