@@ -7,6 +7,7 @@ package me.martin.radev.game.virtualcommando.game.logic;
 import java.util.List;
 import me.martin.radev.game.virtualcommando.game.graphics.GameEntityContainer;
 import me.martin.radev.game.virtualcommando.game.interaction.CollisionDetection;
+import me.martin.radev.game.virtualcommando.game.logic.respawn.Respawner;
 import me.martin.radev.game.virtualcommando.game.unit.MyPlayer;
 import me.martin.radev.game.virtualcommando.game.unit.Player;
 import me.martin.radev.game.virtualcommando.game.weapon.bullet.Bullet;
@@ -21,14 +22,16 @@ import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalObject
 public class GameFlow {
 
     private GameEntityContainer gameEntities;
+    private Respawner respawnerLogic;
     
-    public GameFlow(GameEntityContainer gameEntities) {
+    public GameFlow(GameEntityContainer gameEntities, Respawner respawner) {
         this.gameEntities = gameEntities;
-        
+        this.respawnerLogic = respawner;
     }
 
     public void processGameFlow() {
         this.processObjectMovement();
+        respawnerLogic.processRespawnQueue();
     }
 
     private void processObjectMovement() {
@@ -37,6 +40,7 @@ public class GameFlow {
             Player p = (Player) players.get(i);
             p.processMovement();
             p.processRotation();
+            p.processShooting();
         }
         List<Bullet> bullets = gameEntities.getBullets();
         for (int i = 0; i < bullets.size(); ++i) {
@@ -45,10 +49,6 @@ public class GameFlow {
         }
     }
     
-    private void processRespawning() {
-        
-    }
-
     public boolean isPlayerColliding(Player p) {
         return this.isColliding(gameEntities.getMapObjects(), p);
     }
@@ -78,22 +78,6 @@ public class GameFlow {
         }
         return false;
     }
-
-    public void relativeTranslateAccordingToPlayer(Vector2D direction) {
-        //Global.getGame().getScreen().relativeTranslate(direction);
-        for (GraphicalObject go : gameEntities.getMapObjects()) {
-            go.getBody().translate(direction.getX(), direction.getY());
-        }
-        for (GraphicalObject go : gameEntities.getPlayers()) {
-            if (go.getClass() != MyPlayer.class) {
-                go.getBody().translate(direction.getX(), direction.getY());
-            }
-        }
-        for (Bullet b : gameEntities.getBullets()) {
-            b.getObject().getBody().translate(direction.getX(), direction.getY());
-        }
-    }
-    
     
     
 }

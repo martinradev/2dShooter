@@ -100,6 +100,14 @@ public class Vector2D extends GeometricObject {
         this.rotate(angle);
         this.translate(center.getX(), center.getY());
     }
+
+    @Override
+    public Vector2D[] getBoundingBox() {
+        Vector2D [] boundingBox = new Vector2D[2];
+        boundingBox[0] = new Vector2D(this);
+        boundingBox[1] = new Vector2D(this);
+        return boundingBox;
+    }
     
     
 

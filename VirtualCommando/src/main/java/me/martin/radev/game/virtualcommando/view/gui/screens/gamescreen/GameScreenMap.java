@@ -9,11 +9,14 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.util.List;
 import javax.swing.JPanel;
+import me.martin.radev.game.virtualcommando.Global;
 import me.martin.radev.game.virtualcommando.game.graphics.GameEntityContainer;
 import me.martin.radev.game.virtualcommando.game.unit.Player;
 import me.martin.radev.game.virtualcommando.game.weapon.bullet.Bullet;
 import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
+import me.martin.radev.game.virtualcommando.map.TiledMap;
 import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalObject;
+import me.martin.radev.game.virtualcommando.view.gui.screens.Screen;
 
 /**
  *
@@ -24,33 +27,36 @@ public class GameScreenMap extends JPanel {
     private GameEntityContainer gameEntities;
     private int width;
     private int height;
-    private int offsetX;
-    private int offsetY;
     
     public GameScreenMap(GameEntityContainer gameEntities, int width, int height) {
         super();
         this.setSize(width, height);
         this.gameEntities = gameEntities;
-        this.offsetX = 0;
-        this.offsetY = 0;
         this.setFocusable(true);
         this.requestFocusInWindow();
     }
     
-    public void setOffsetX(int offsetX) {
-        this.offsetX = offsetX;
-    }
-
-    public void setOffsetY(int offsetY) {
-        this.offsetY = offsetY;
-    }
-
-    public int getOffsetX() {
-        return offsetX;
-    }
-
-    public int getOffsetY() {
-        return offsetY;
+    public Vector2D getScreenOffset() {
+        Vector2D mainPlayerPosition = Global.getGame().getMainPlayer().getBody().getCenter();
+        Screen scr = Global.getGame().getScreen();
+        TiledMap map = Global.getGame().getMap();
+        
+        Vector2D offset = new Vector2D(0,0);
+        if (mainPlayerPosition.getX() > scr.getWidth()/2) {
+            offset.setX(mainPlayerPosition.getX() - scr.getWidth()/2);
+        }
+        if (mainPlayerPosition.getY() > scr.getHeight()/2) {
+            offset.setY(mainPlayerPosition.getY() - scr.getHeight()/2);
+        }
+        if (mainPlayerPosition.getX() > map.getWidth()-scr.getWidth()/2) {
+            offset.translate(-mainPlayerPosition.getX() 
+                    + (map.getWidth()-scr.getWidth()/2), 0);
+        }
+        if (mainPlayerPosition.getY() > map.getHeight()-scr.getHeight()/2) {
+            offset.translate(0, -mainPlayerPosition.getY() 
+                    + (map.getHeight()-scr.getHeight()/2));
+        }
+        return offset;
     }
     
     @Override
@@ -61,8 +67,11 @@ public class GameScreenMap extends JPanel {
                 RenderingHints.VALUE_ANTIALIAS_ON);
         
         
+        Vector2D offset = this.getScreenOffset();
+        
+        g2d.translate(-offset.getX(), -offset.getY());
         for (GraphicalObject go : gameEntities.getMapObjects()) {
-            go.render(g2d, offsetX, offsetY);
+            go.render(g2d, 0, 0);
         }
         
         List<GraphicalObject> players = gameEntities.getPlayers();
@@ -76,12 +85,7 @@ public class GameScreenMap extends JPanel {
             Bullet bullet = ((Bullet)bullets.get(i));
             bullet.render(g2d, 0, 0);
         }
-        
-    }
-    
-    public void relativeTranslate(Vector2D direction) {
-        this.offsetX += direction.getX();
-        this.offsetY += direction.getY();
+        g2d.translate(offset.getX(), offset.getY());
     }
     
 }

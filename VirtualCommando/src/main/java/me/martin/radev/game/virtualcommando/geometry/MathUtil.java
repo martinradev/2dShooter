@@ -13,6 +13,8 @@ import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
 public class MathUtil {
     
     public static final double EPS = 0.00005;
+    public static final double POSITIVE_INFINITY = Double.MAX_VALUE;
+    public static final double NEGATIVE_INFINITY = Double.MIN_VALUE;
     
     public static double crossProduct(Vector2D a, Vector2D b) {
         return a.getX()*b.getY() - a.getY()*b.getX();

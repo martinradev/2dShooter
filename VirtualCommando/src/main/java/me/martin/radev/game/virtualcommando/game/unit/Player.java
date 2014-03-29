@@ -46,19 +46,31 @@ public abstract class Player extends GraphicalRectangle {
         Global.getGame().bind(walkAnimation);
         lastMovement = new Vector2D(0d, 0d);
         currentAngleOfRotation = 0d;
-        
+
         initWeapon();
-        
+
     }
-    
+
     private void initWeapon() {
         weapon = new NormalWeapon();
     }
 
     public void move(Vector2D direction) {
-        super.getBody().translate(velocity * direction.getX(), velocity * direction.getY());
+        Vector2D xDirection = new Vector2D(direction.getX(), 0);
+        Vector2D yDirection = new Vector2D(0, direction.getY());
+        xDirection.scale(-velocity);
+        yDirection.scale(-velocity);
+        
+        this.getBody().translate(-xDirection.getX(), 0);
         if (Global.getGameFlow().isPlayerColliding(this)) {
-            super.getBody().translate(-velocity * direction.getX(), -velocity * direction.getY());
+            this.getBody().translate(xDirection.getX(), 0);
+        } else {
+            super.setSprite(walkAnimation.getCurrent());
+        }
+        
+        this.getBody().translate(0, -yDirection.getY());
+        if (Global.getGameFlow().isPlayerColliding(this)) {
+            this.getBody().translate(0, yDirection.getY());
         } else {
             super.setSprite(walkAnimation.getCurrent());
         }
@@ -80,7 +92,7 @@ public abstract class Player extends GraphicalRectangle {
 
     public void takeDamage(int damage) {
         this.currentHealth -= damage;
-        if (this.currentHealth < 0) {
+        if (this.currentHealth <= 0) {
             kill();
         }
     }
@@ -89,15 +101,20 @@ public abstract class Player extends GraphicalRectangle {
         this.currentHealth = Math.min(currentHealth + health, maxHealth);
     }
 
+    public void regenerateFully() {
+        this.currentHealth = maxHealth;
+    }
+
     public void kill() {
         this.respawnTime = 0d;
         Global.getGame().getGameEntities().getPlayers().remove(this);
+        Global.getGame().getRespawner().addPlayer(this);
     }
 
     public double getRespawnTime() {
         return respawnTime;
     }
-    
+
     public void setRespawnTime(double time) {
         this.respawnTime = time;
     }
@@ -110,14 +127,16 @@ public abstract class Player extends GraphicalRectangle {
 
     public abstract void processRotation();
 
+    public abstract void processShooting();
+
     public void rotate(double angle) {
         super.getBody().relativeRotate(
                 super.getBody().getCenter(),
                 angle - angleOffset);
         if (Global.getGameFlow().isPlayerColliding(this)) {
             super.getBody().relativeRotate(
-                super.getBody().getCenter(),
-                -(angle - angleOffset));
+                    super.getBody().getCenter(),
+                    -(angle - angleOffset));
         } else {
             currentAngleOfRotation = angle - angleOffset;
             angleOffset = angle;

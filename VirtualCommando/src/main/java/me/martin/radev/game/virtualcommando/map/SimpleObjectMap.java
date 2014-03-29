@@ -66,6 +66,11 @@ public class SimpleObjectMap extends TiledMap{
     public List<GraphicalObject> getObjects() {
         return staticObjects;
     }
+
+    @Override
+    public List<GraphicalObject> getRespawnPoints() {
+        return respawnPoints;
+    }
     
     
     

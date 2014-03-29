@@ -11,6 +11,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 import me.martin.radev.game.virtualcommando.Global;
 import me.martin.radev.game.virtualcommando.game.Updatable;
+import me.martin.radev.game.virtualcommando.game.logic.respawn.RandomRespawner;
+import me.martin.radev.game.virtualcommando.game.logic.respawn.Respawner;
 import me.martin.radev.game.virtualcommando.game.unit.Bot;
 import me.martin.radev.game.virtualcommando.game.unit.MyPlayer;
 import me.martin.radev.game.virtualcommando.game.unit.Player;
@@ -34,6 +36,8 @@ public abstract class Game {
     private List<Updatable> toUpdate;
     private String level;
     private GameFlow gameFlow;
+    private Respawner respawner;
+    private MyPlayer mainPlayer;
 
     public Game(String level) {
         this.level = level;
@@ -41,39 +45,31 @@ public abstract class Game {
 
     public void init() {
         gameEntities = new GameEntityContainer();
-        gameFlow = new GameFlow(gameEntities);
-        Global.setGameFlow(gameFlow);
         map = (TiledMap) Global.getAssetManager().load(AssetType.Map, level);
         gameEntities.addAllMapObjects(map.getObjects());
+        gameEntities.addAllRespawnPoints(map.getRespawnPoints());
+        respawner = new RandomRespawner(map.getRespawnPoints());
+        gameFlow = new GameFlow(gameEntities, respawner);
+        Global.setGameFlow(gameFlow);
+        
         toUpdate = new LinkedList<>();
 
         screen = new GameScreen(gameEntities, Global.getWindowWidth(), Global.getWindowHeight());
         Global.getFrame().setScreen(screen);
 
-        MyPlayer mp = new MyPlayer();
-        this.addPlayer(mp);
+        mainPlayer = new MyPlayer();
+        this.addPlayer(mainPlayer);
         
-        for (int i = 0; i < 10; ++i) {
+        for (int i = 0; i < 2; ++i) {
             Bot bot = new Bot();
             this.addPlayer(bot);
         }
-        
-        
-        moveAccordingToMainPlayer(mp);
         
         timer = new Timer();
         loop = new GameLoop();
         timer.schedule(loop, 0, 1000 / Global.getFPS());
     }
     
-    public void moveAccordingToMainPlayer(Player mp) {
-        Global.setPlayerOffset(new Vector2D(mp.getBody().getCenter()));
-        double offsetX = screen.getWidth() / 2 - mp.getBody().getCenter().getX();
-        double offsetY = screen.getHeight() / 2 - mp.getBody().getCenter().getY();
-        mp.getBody().translate(offsetX, offsetY);
-        gameFlow.relativeTranslateAccordingToPlayer(new Vector2D(offsetX, offsetY));
-    }
-
     public void addPlayer(Player p) {
         gameEntities.addPlayer(p);
     }
@@ -112,6 +108,14 @@ public abstract class Game {
 
     public GameEntityContainer getGameEntities() {
         return gameEntities;
+    }
+
+    public Respawner getRespawner() {
+        return respawner;
+    }
+
+    public MyPlayer getMainPlayer() {
+        return mainPlayer;
     }
     
      

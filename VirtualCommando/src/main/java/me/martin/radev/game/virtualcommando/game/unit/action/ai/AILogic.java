@@ -14,5 +14,7 @@ public interface AILogic {
     
     public Vector2D getDirection();
     public float getRotationAngle();
+    public boolean shouldShoot();
+    public Vector2D directionOfShooting();
     
 }

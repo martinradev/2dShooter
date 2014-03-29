@@ -35,5 +35,14 @@ public class Bot extends Player  {
     public void processRotation() {
         super.rotate(ai.getRotationAngle());
     }
+
+    @Override
+    public void processShooting() {
+        if (ai.shouldShoot()) {
+            super.shoot(ai.getDirection());
+        }
+    }
+    
+    
     
 }

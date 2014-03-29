@@ -62,7 +62,10 @@ public class ObjectParser implements Parser {
             if (objectType == GraphicalPolygon.class) {
                 List<Vector2D> points = this.getPolygonPoints(el, xCoord, yCoord);
                 gObject = new GraphicalPolygon(points, color);
+            } else if (objectType == Vector2D.class) {
+                gObject = new GraphicalEllipse(xCoord, yCoord,1d,1d, Color.white);
             }
+            
         }
         return gObject;
     }
@@ -73,9 +76,11 @@ public class ObjectParser implements Parser {
         }
         if (el.getElementsByTagName("polyline").getLength() != 0) {
             return GraphicalPolygon.class;
-        } else {
-            return GraphicalRectangle.class;
         }
+        if (el.getElementsByTagName("vector2d").getLength() != 0) {
+            return Vector2D.class;
+        }
+        return GraphicalRectangle.class;
     }
 
     private List<Vector2D> getPolygonPoints(Element el, double xStart, double yStart) {

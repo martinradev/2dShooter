@@ -18,36 +18,43 @@ import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalObject
  * @author Marto
  */
 public abstract class Respawner {
-    
+
     protected List<GraphicalObject> respawnPlaces;
     private List<Player> playersToRespawn;
-    private double timeTillRespawn = 5d;
-    
+    private double timeTillRespawn = 0.5d;
+
     public Respawner(List<GraphicalObject> respawnPlaces) {
         this.respawnPlaces = respawnPlaces;
         playersToRespawn = new LinkedList<>();
     }
-    
+
     public abstract Vector2D getPosition();
-    
+
     public void processRespawnQueue() {
-        double deltaTime = 1000d / Global.getFPS();
-        for (Player p : playersToRespawn) {
-            p.setRespawnTime(p.getRespawnTime()+deltaTime);
+        double deltaTime = 1d / Global.getFPS();
+        LinkedList<Player> copy = new LinkedList<>(playersToRespawn);
+        for (Player p : copy) {
+            p.setRespawnTime(p.getRespawnTime() + deltaTime);
             if (p.getRespawnTime() >= timeTillRespawn) {
                 this.respawn(p);
             }
         }
     }
-    
+
     private void respawn(Player p) {
+        playersToRespawn.remove(p);
         Vector2D position = getPosition();
-        p.getBody().translate(-p.getBody().getCenter().getX(), -p.getBody().getCenter().getY());
+
+
+        p.getBody().translate(-p.getBody().getCenter().getX(),
+                -p.getBody().getCenter().getY());
         p.getBody().translate(position.getX(), position.getY());
-        if (p.getClass() == MyPlayer.class) {
-            Global.getGame().moveAccordingToMainPlayer(p);
-        }
+
+        p.regenerateFully();
         Global.getGame().getGameEntities().getPlayers().add(p);
     }
-    
+
+    public void addPlayer(Player p) {
+        playersToRespawn.add(p);
+    }
 }

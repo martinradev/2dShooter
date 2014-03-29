@@ -73,6 +73,24 @@ public class Polygon extends AbstractPolygon {
         }
         return sb.toString();
     }
+
+    @Override
+    public Vector2D[] getBoundingBox() {
+        Vector2D [] boundingBox = new Vector2D[2];
+        double minX = MathUtil.POSITIVE_INFINITY;
+        double minY = MathUtil.POSITIVE_INFINITY;
+        double maxX = MathUtil.NEGATIVE_INFINITY;
+        double maxY = MathUtil.NEGATIVE_INFINITY;
+        for (Vector2D v2d : super.getPoints()) {
+            if (minX > v2d.getX()) minX = v2d.getX();
+            if (minY > v2d.getY()) minY = v2d.getY();
+            if (maxX < v2d.getX()) maxX = v2d.getX();
+            if (maxY < v2d.getY()) maxY = v2d.getY();
+        }
+        boundingBox[0] = new Vector2D(minX, minY);
+        boundingBox[1] = new Vector2D(maxX, maxY);
+        return boundingBox;
+    }
     
     
     

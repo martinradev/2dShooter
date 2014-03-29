@@ -31,7 +31,18 @@ public class RandomAILogic implements AILogic {
     public float getRotationAngle() {
         return (float) (2f*Math.PI*rand.nextFloat());
     }
-    
-    
-    
+
+    @Override
+    public boolean shouldShoot() {
+        float num = rand.nextFloat();
+        return num > 0.8;
+    }
+
+    @Override
+    public Vector2D directionOfShooting() {
+        int yDirection = rand.nextInt(2*epsAccuracy)- epsAccuracy;
+        int xDirection = rand.nextInt(2*epsAccuracy) - epsAccuracy;
+        return new Vector2D(xDirection, yDirection).getUnitVector();
+    }
+
 }

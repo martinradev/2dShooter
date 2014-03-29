@@ -28,7 +28,6 @@ public class Global {
     private static Game game;
     private static int fps = 100;
     private static GameFlow gameFlow;
-    private static Vector2D playerOffset;
     
     public static void setAssetManager(AssetManager manager) {
         Global.assetManager = manager;
@@ -114,13 +113,6 @@ public class Global {
         return gameFlow;
     }
 
-    public static Vector2D getPlayerOffset() {
-        return playerOffset;
-    }
-
-    public static void setPlayerOffset(Vector2D playerOffset) {
-        Global.playerOffset = playerOffset;
-    }
 
     
     

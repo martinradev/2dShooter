@@ -51,10 +51,10 @@ public class ObjectLoader implements Loader {
                 String tileHeight = mapElement.getAttribute("tileheight");
 
 
-                int widthInteger = Integer.parseInt(width);
-                int heightInteger = Integer.parseInt(height);
-                int tileWidthInteger = Integer.parseInt(tileWidth);
-                int tileHeightInteger = Integer.parseInt(tileHeight);
+                float widthInteger = Float.parseFloat(width);
+                float heightInteger = Float.parseFloat(height);
+                float tileWidthInteger = Float.parseFloat(tileWidth);
+                float tileHeightInteger = Float.parseFloat(tileHeight);
 
                 double totalWidth = widthInteger * tileWidthInteger;
                 double totalHeight = heightInteger * tileHeightInteger;
@@ -69,7 +69,6 @@ public class ObjectLoader implements Loader {
                 NodeList respawnList = this.getListInContainer("respawngroup", "object", doc.getDocumentElement());
                 List<GraphicalObject> mapRespawnList = parser.parseObjectContainer(respawnList);
                 som.addRespawnPoint(mapRespawnList);
-                System.out.println(mapRespawnList.size());
                 
                 return som;
             } catch (SAXException ex) {

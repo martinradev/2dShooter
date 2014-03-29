@@ -6,14 +6,11 @@ package me.martin.radev.game.virtualcommando.game.unit.action;
 
 import java.awt.MouseInfo;
 import java.awt.Point;
-import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import javax.swing.AbstractAction;
-import javax.swing.ActionMap;
 import me.martin.radev.game.virtualcommando.Global;
 import me.martin.radev.game.virtualcommando.game.unit.MyPlayer;
 import me.martin.radev.game.virtualcommando.geometry.MathUtil;
@@ -86,7 +83,10 @@ public class PlayerMouseKeyBoardAction {
 
     public void processRotation(Point p) {
         Vector2D mousePosition = new Vector2D(p);
+        Vector2D offset = Global.getGame().getScreen().getGameScreenMap().getScreenOffset();
+        mousePosition.translate(offset.getX(), offset.getY());
         Vector2D playerPosition = new Vector2D(player.getBody().getCenter());
+        
         double angle = MathUtil.getAngleBetweenPoints(mousePosition, playerPosition) + Math.PI / 2d;
         player.rotate(angle);
     }
@@ -102,6 +102,8 @@ public class PlayerMouseKeyBoardAction {
         public void mousePressed(MouseEvent me) {
             Vector2D mousePosition = new Vector2D(me.getPoint());
             Vector2D playerPosition = new Vector2D(player.getBody().getCenter());
+            Vector2D offset = Global.getGame().getScreen().getGameScreenMap().getScreenOffset();
+            mousePosition.translate(offset.getX(), offset.getY());
             double angle = MathUtil.getAngleBetweenPoints(mousePosition, playerPosition);
             Vector2D direction = new Vector2D(Math.cos(angle), Math.sin(angle));
             player.shoot(direction);

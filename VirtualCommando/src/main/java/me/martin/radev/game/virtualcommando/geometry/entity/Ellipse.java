@@ -52,5 +52,19 @@ public class Ellipse extends GeometricObject {
     public void relativeRotate(Vector2D center, double angle) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public Vector2D[] getBoundingBox() {
+        Vector2D [] boundingBox = new Vector2D[2];
+        double minX = this.getCenter().getX() - this.getMajorAxis();
+        double minY = this.getCenter().getY() - this.getMinorAxis();
+        boundingBox[0] = new Vector2D(minX, minY);
+        double maxX = this.getCenter().getX() + this.getMajorAxis();
+        double maxY = this.getCenter().getY() + this.getMinorAxis();
+        boundingBox[1] = new Vector2D(maxX, maxY);
+        return boundingBox;
+    }
+    
+    
     
 }

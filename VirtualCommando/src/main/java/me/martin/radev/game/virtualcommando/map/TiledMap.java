@@ -23,6 +23,7 @@ public abstract class TiledMap {
     
     public abstract void render(Graphics2D g2d, int xOffset, int yOffset);
     public abstract List<GraphicalObject> getObjects();
+    public abstract List<GraphicalObject> getRespawnPoints();
     
     public double getWidth() {
         return width;
