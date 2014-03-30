@@ -60,6 +60,7 @@ public class GameFlow {
     public Player isBulletCollidingWithPlayer(Bullet b) {
         GeometricObject objBody = b.getObject().getBody();
         for (GraphicalObject go : gameEntities.getPlayers()) {
+            if (((Player)go).getRespawnTime()>0d) continue;
             if (b.getOwner() != go) {
                 if (CollisionDetection.doCollide(go.getBody(), objBody)) {
                     return (Player)go;

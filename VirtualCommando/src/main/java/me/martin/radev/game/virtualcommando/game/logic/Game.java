@@ -36,14 +36,16 @@ public abstract class Game {
     private List<Updatable> toUpdate;
     private String level;
     private GameFlow gameFlow;
-    private Respawner respawner;
-    private MyPlayer mainPlayer;
+    protected Respawner respawner;
+    protected MyPlayer mainPlayer;
 
     public Game(String level) {
         this.level = level;
+        Global.setGame(this);
+        init();
     }
 
-    public void init() {
+    private void init() {
         gameEntities = new GameEntityContainer();
         map = (TiledMap) Global.getAssetManager().load(AssetType.Map, level);
         gameEntities.addAllMapObjects(map.getObjects());
@@ -56,15 +58,13 @@ public abstract class Game {
 
         screen = new GameScreen(gameEntities, Global.getWindowWidth(), Global.getWindowHeight());
         Global.getFrame().setScreen(screen);
-
+        
         mainPlayer = new MyPlayer();
-        this.addPlayer(mainPlayer);
+        respawner.addPlayer(mainPlayer);
         
-        for (int i = 0; i < 2; ++i) {
-            Bot bot = new Bot();
-            this.addPlayer(bot);
-        }
-        
+    }
+    
+    public void startGame() {
         timer = new Timer();
         loop = new GameLoop();
         timer.schedule(loop, 0, 1000 / Global.getFPS());

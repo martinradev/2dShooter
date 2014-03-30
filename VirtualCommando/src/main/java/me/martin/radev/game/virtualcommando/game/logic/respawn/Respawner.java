@@ -21,7 +21,7 @@ public abstract class Respawner {
 
     protected List<GraphicalObject> respawnPlaces;
     private List<Player> playersToRespawn;
-    private double timeTillRespawn = 0.5d;
+    private double timeTillRespawn = 2d;
 
     public Respawner(List<GraphicalObject> respawnPlaces) {
         this.respawnPlaces = respawnPlaces;
@@ -43,6 +43,7 @@ public abstract class Respawner {
 
     private void respawn(Player p) {
         playersToRespawn.remove(p);
+        p.setRespawnTime(0d);
         Vector2D position = getPosition();
 
 

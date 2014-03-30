@@ -16,11 +16,10 @@ import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
 public class MyPlayer extends Player {
 
     private PlayerMouseKeyBoardAction actionListener;
-    private Vector2D vectorOffset;
     
     public MyPlayer() {
         super(PlayerType.NormalPlayer.getMaxHealth(),
-                new Vector2D(100, 100), PlayerType.NormalPlayer.getWidth(),
+                new Vector2D(100d, 100d), PlayerType.NormalPlayer.getWidth(),
                 PlayerType.NormalPlayer.getHeight(),
                 new Color(1f, 0f, 0f, .0f));
         init();
@@ -28,7 +27,6 @@ public class MyPlayer extends Player {
 
     private void init() {
         actionListener = new PlayerMouseKeyBoardAction(this);
-        vectorOffset = new Vector2D(0d,0d);
         Global.getFrame().getScreen().addMouseListener(actionListener.getMouseListener());
         Global.getFrame().getScreen().addKeyListener(actionListener.getKeyListener());
         Global.getFrame().getScreen().addMouseMotionListener(actionListener.getMouseMotionListener());
@@ -67,15 +65,10 @@ public class MyPlayer extends Player {
                 (double)super.currentHealth/(double)super.maxHealth);
     }
 
-    public Vector2D getVectorOffset() {
-        return vectorOffset;
+    @Override
+    public void regenerateFully() {
+        super.regenerateFully();
+        Global.getGame().getScreen().getHealthBar().setPercent(1d);
     }
-
-    public void setVectorOffset(Vector2D vectorOffset) {
-        this.vectorOffset = vectorOffset;
-    }
-    
-    
-    
     
 }

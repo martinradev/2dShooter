@@ -15,7 +15,9 @@ public enum ExceptionHelper {
     IOException("Cannot open file", "Please check file for rights."),
     IllegalArgumentException("A problem occured", "Please notify us"),
     BulletCloneException("Weapon", "Problem while firing bullet"),
-    FontFormatException("Font error", "Font format is not recognized");
+    FontFormatException("Font error", "Font format is not recognized"),
+    LineUnavailableException("Sound error", "Unable to connect to sound line"),
+    AudioFileNotSupportedException("Sound error", "Audio file is not supported");
     
     private String title;
     private String message;

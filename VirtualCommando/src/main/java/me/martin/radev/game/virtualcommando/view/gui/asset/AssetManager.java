@@ -45,6 +45,8 @@ public class AssetManager {
             found = this.loadMap(f);
         } else if (type == AssetType.Font) {
             found = f;
+        } else if (type == AssetType.Sound) {
+            found = f;
         }
         if (found != null) {
             add(type, file, found);

@@ -33,22 +33,26 @@ public class Ellipse extends GeometricObject {
         return minorAxis;
     }
     
+    @Override
     public void translate(double dx, double dy) {
         center.translate(dx, dy);
     }
 
+    @Override
     public void rotate(double angle) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
     public boolean contains(Vector2D v2d) {
         if (v2d == null) return false;
-        double d1 = Math.pow(this.getCenter().getX() - v2d.getX(),2);
-        double d2 = Math.pow(this.getCenter().getY() - v2d.getY(),2);
-        double result = (d1 / (majorAxis*majorAxis)) + (d2 / (minorAxis*minorAxis));
-        return result <= 1;
+        double d1 = Math.pow(0.5*majorAxis + this.getCenter().getX() - v2d.getX(),2);
+        double d2 = Math.pow(0.5*minorAxis + this.getCenter().getY() - v2d.getY(),2);
+        double result = (d1 / (0.25*majorAxis*majorAxis)) + (d2 / (0.25*minorAxis*minorAxis));
+        return result <= 1d;
     }
 
+    @Override
     public void relativeRotate(Vector2D center, double angle) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

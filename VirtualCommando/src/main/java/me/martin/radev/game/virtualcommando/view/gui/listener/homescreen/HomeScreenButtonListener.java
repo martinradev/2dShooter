@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import me.martin.radev.game.virtualcommando.Global;
 import me.martin.radev.game.virtualcommando.game.logic.Game;
+import me.martin.radev.game.virtualcommando.game.logic.MultiPlayerGame;
 import me.martin.radev.game.virtualcommando.game.logic.SinglePlayerGame;
 import me.martin.radev.game.virtualcommando.view.gui.entity.buttons.HomeScreenButtonTypes;
 
@@ -18,15 +19,16 @@ import me.martin.radev.game.virtualcommando.view.gui.entity.buttons.HomeScreenBu
  */
 public class HomeScreenButtonListener implements ActionListener {
     
+    @Override
     public void actionPerformed(ActionEvent ae) {
         JButton button = (JButton)ae.getSource();
         if (button.getName().equals(HomeScreenButtonTypes.Singleplayer.toString())) {
-            Game game = new SinglePlayerGame();
+            Game game = new SinglePlayerGame(8);
             Global.setGame(game);
-            game.init();
         } else if (button.getName().equals(HomeScreenButtonTypes.Multiplayer.toString())) {
-            // TODO
-            System.out.println("Multi player");
+            String port = "16000";
+            String password = "asd";
+            Game game = new MultiPlayerGame(port, password);
         } else if (button.getName().equals(HomeScreenButtonTypes.Exit.toString())) {
             Global.getFrame().dispose();
         }

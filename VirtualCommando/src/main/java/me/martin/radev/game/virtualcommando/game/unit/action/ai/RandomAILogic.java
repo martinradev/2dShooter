@@ -5,6 +5,7 @@
 package me.martin.radev.game.virtualcommando.game.unit.action.ai;
 
 import java.util.Random;
+import me.martin.radev.game.virtualcommando.geometry.MathUtil;
 import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
 
 /**
@@ -35,13 +36,19 @@ public class RandomAILogic implements AILogic {
     @Override
     public boolean shouldShoot() {
         float num = rand.nextFloat();
-        return num > 0.8;
+        return num > 0.98;
     }
 
     @Override
     public Vector2D directionOfShooting() {
-        int yDirection = rand.nextInt(2*epsAccuracy)- epsAccuracy;
+        int yDirection = rand.nextInt(2*epsAccuracy) - epsAccuracy;
         int xDirection = rand.nextInt(2*epsAccuracy) - epsAccuracy;
+        if (MathUtil.relativelyEqual(yDirection, 0d) &&
+                 MathUtil.relativelyEqual(xDirection, 0d)) {
+            xDirection = 1;
+            yDirection = 1;
+            System.out.println("zero");
+        }
         return new Vector2D(xDirection, yDirection).getUnitVector();
     }
 

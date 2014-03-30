@@ -37,7 +37,8 @@ public class CollisionDetection {
                 return CollisionDetection.doCollide(
                         (Ellipse)goA, (Ellipse)goB);
             } else if (goB.getClass() == Rectangle.class) {
-                throw new IllegalStateException();
+                return CollisionDetection.doCollide(
+                        (Polygon)goB, (Ellipse)goA );
             }
         } else if (goA.getClass() == Rectangle.class) {
             if (goB.getClass() == Polygon.class) {
