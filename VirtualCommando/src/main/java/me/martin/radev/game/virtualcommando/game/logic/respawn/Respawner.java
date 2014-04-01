@@ -58,4 +58,15 @@ public abstract class Respawner {
     public void addPlayer(Player p) {
         playersToRespawn.add(p);
     }
+    
+    public void removePlayer(Player p) {
+        playersToRespawn.remove(p);
+    }
+
+    public double getTimeTillRespawn() {
+        return timeTillRespawn;
+    }
+    
+    
+    
 }

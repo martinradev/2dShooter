@@ -5,8 +5,13 @@
 package me.martin.radev.game.virtualcommando.game.unit;
 
 import java.awt.Color;
+import java.awt.MouseInfo;
+import java.awt.event.KeyEvent;
 import me.martin.radev.game.virtualcommando.Global;
+import me.martin.radev.game.virtualcommando.game.logic.MultiPlayerGame;
+import me.martin.radev.game.virtualcommando.game.logic.server.GameServer;
 import me.martin.radev.game.virtualcommando.game.unit.action.PlayerMouseKeyBoardAction;
+import me.martin.radev.game.virtualcommando.geometry.MathUtil;
 import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
 
 /**
@@ -16,9 +21,9 @@ import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
 public class MyPlayer extends Player {
 
     private PlayerMouseKeyBoardAction actionListener;
-    
-    public MyPlayer() {
-        super(PlayerType.NormalPlayer.getMaxHealth(),
+
+    public MyPlayer(String name) {
+        super(name, PlayerType.NormalPlayer.getMaxHealth(),
                 new Vector2D(100d, 100d), PlayerType.NormalPlayer.getWidth(),
                 PlayerType.NormalPlayer.getHeight(),
                 new Color(1f, 0f, 0f, .0f));
@@ -31,19 +36,45 @@ public class MyPlayer extends Player {
         Global.getFrame().getScreen().addKeyListener(actionListener.getKeyListener());
         Global.getFrame().getScreen().addMouseMotionListener(actionListener.getMouseMotionListener());
         Global.getGame().getScreen().getAmmoBar().setTotalAmmo(
-                    this.weapon.getTotalAmmu());
+                this.weapon.getTotalAmmu());
         Global.getGame().getScreen().getAmmoBar().setCurrentAmmo(this.weapon.getCurrentAmmuCount());
-        
+
     }
 
     @Override
     public void processMovement() {
-        actionListener.processMovement();
+        Vector2D direction = new Vector2D(0d, 0d);
+        for (Integer key : actionListener.getKeysToProcess()) {
+            if (key == KeyEvent.VK_LEFT) {
+                direction.translate(-1d, 0);
+            }
+            if (key == KeyEvent.VK_RIGHT) {
+                direction.translate(1d, 0);
+            }
+            if (key == KeyEvent.VK_UP) {
+                direction.translate(0, -1d);
+            }
+            if (key == KeyEvent.VK_DOWN) {
+                direction.translate(0, 1d);
+            }
+        }
+        direction = direction.getUnitVector();
+        if (direction.getX() != 0 || direction.getY() != 0) {
+            move(direction);
+            processRotation();
+        } else {
+            stopMovement();
+        }
     }
 
     @Override
     public void processRotation() {
-        actionListener.processRotation(actionListener.getCurrentPoint());
+        Vector2D mousePosition = new Vector2D(actionListener.getCurrentPoint());
+        Vector2D offset = Global.getGame().getScreen().getGameScreenMap().getScreenOffset();
+        mousePosition.translate(offset.getX(), offset.getY());
+        Vector2D playerPosition = new Vector2D(this.getBody().getCenter());
+        double angle = MathUtil.getAngleBetweenPoints(mousePosition, playerPosition) + Math.PI / 2d;
+        rotate(angle);
     }
 
     @Override
@@ -62,7 +93,7 @@ public class MyPlayer extends Player {
     public void takeDamage(int damage) {
         super.takeDamage(damage);
         Global.getGame().getScreen().getHealthBar().setPercent(
-                (double)super.currentHealth/(double)super.maxHealth);
+                (double) super.currentHealth / (double) super.maxHealth);
     }
 
     @Override
@@ -70,5 +101,4 @@ public class MyPlayer extends Player {
         super.regenerateFully();
         Global.getGame().getScreen().getHealthBar().setPercent(1d);
     }
-    
 }

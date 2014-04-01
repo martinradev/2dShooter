@@ -4,19 +4,19 @@
  */
 package me.martin.radev.game.virtualcommando.game.logic;
 
+import java.util.HashMap;
 import me.martin.radev.game.virtualcommando.game.graphics.GameEntityContainer;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 import me.martin.radev.game.virtualcommando.Global;
 import me.martin.radev.game.virtualcommando.game.Updatable;
 import me.martin.radev.game.virtualcommando.game.logic.respawn.RandomRespawner;
 import me.martin.radev.game.virtualcommando.game.logic.respawn.Respawner;
-import me.martin.radev.game.virtualcommando.game.unit.Bot;
 import me.martin.radev.game.virtualcommando.game.unit.MyPlayer;
 import me.martin.radev.game.virtualcommando.game.unit.Player;
-import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
 import me.martin.radev.game.virtualcommando.map.TiledMap;
 import me.martin.radev.game.virtualcommando.view.gui.asset.AssetType;
 import me.martin.radev.game.virtualcommando.view.gui.screens.GameScreen;
@@ -27,27 +27,28 @@ import me.martin.radev.game.virtualcommando.view.gui.screens.GameScreen;
  */
 public abstract class Game {
 
-    // TODO add Variable timestep
     private TiledMap map;
     private GameEntityContainer gameEntities;
     private GameScreen screen;
     private Timer timer;
     private GameLoop loop;
     private List<Updatable> toUpdate;
-    private String level;
+    private String mapName;
     private GameFlow gameFlow;
     protected Respawner respawner;
     protected MyPlayer mainPlayer;
+    protected Map<String, Player> players;
 
-    public Game(String level) {
-        this.level = level;
+    public Game(String mapName) {
+        this.mapName = mapName;
         Global.setGame(this);
         init();
     }
 
     private void init() {
+        players = new HashMap<>();
         gameEntities = new GameEntityContainer();
-        map = (TiledMap) Global.getAssetManager().load(AssetType.Map, level);
+        map = (TiledMap) Global.getAssetManager().load(AssetType.Map, mapName);
         gameEntities.addAllMapObjects(map.getObjects());
         gameEntities.addAllRespawnPoints(map.getRespawnPoints());
         respawner = new RandomRespawner(map.getRespawnPoints());
@@ -59,9 +60,6 @@ public abstract class Game {
         screen = new GameScreen(gameEntities, Global.getWindowWidth(), Global.getWindowHeight());
         Global.getFrame().setScreen(screen);
         
-        mainPlayer = new MyPlayer();
-        respawner.addPlayer(mainPlayer);
-        
     }
     
     public void startGame() {
@@ -71,11 +69,16 @@ public abstract class Game {
     }
     
     public void addPlayer(Player p) {
-        gameEntities.addPlayer(p);
+        if (p.getRespawnTime() >= respawner.getTimeTillRespawn()) {
+            gameEntities.addPlayer(p);
+        } else {
+            respawner.addPlayer(p);
+        }
+        players.put(p.getName(), p);
     }
 
     private class GameLoop extends TimerTask {
-
+        
         @Override
         public void run() {
             gameFlow.processGameFlow();
@@ -117,7 +120,21 @@ public abstract class Game {
     public MyPlayer getMainPlayer() {
         return mainPlayer;
     }
+
+    public Map<String, Player> getPlayers() {
+        return players;
+    }
     
-     
+    public void removePlayer(Player p) {
+        players.remove(p.getName());
+        gameEntities.getPlayers().remove(p);
+        respawner.removePlayer(p);
+    }
+
+    public String getMapName() {
+        return mapName;
+    }
+    
+    
     
 }

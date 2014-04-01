@@ -17,8 +17,8 @@ public class Bot extends Player  {
 
     private AILogic ai;
     
-    public Bot() {
-        super(PlayerType.EasyBot.getMaxHealth(),
+    public Bot(String name) {
+        super(name, PlayerType.EasyBot.getMaxHealth(),
                 new Vector2D(150, 150), PlayerType.EasyBot.getWidth(),
                 PlayerType.EasyBot.getHeight(),
                 new Color(1f, 0f, 0f, .0f));

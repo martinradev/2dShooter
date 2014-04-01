@@ -4,8 +4,11 @@
  */
 package me.martin.radev.game.virtualcommando.game.logic;
 
-import me.martin.radev.game.virtualcommando.game.logic.server.ServerConnectionListener;
+import me.martin.radev.game.virtualcommando.game.logic.server.GameServer;
+import me.martin.radev.game.virtualcommando.game.unit.DummyPlayer;
 import me.martin.radev.game.virtualcommando.game.unit.MyPlayer;
+import me.martin.radev.game.virtualcommando.game.unit.Player;
+import me.martin.radev.game.virtualcommando.game.unit.ServerPlayer;
 
 /**
  *
@@ -13,15 +16,43 @@ import me.martin.radev.game.virtualcommando.game.unit.MyPlayer;
  */
 public class MultiPlayerGame extends Game {
     
-    private ServerConnectionListener server;
+    private GameServer server;
     
     public MultiPlayerGame(String port,
             String password) {
         super("Desert");
         
-        new Thread(server = new ServerConnectionListener(port, password)).start();
+        // TODO
+        String name = "Martin";
+        mainPlayer = new MyPlayer(name);
+        addPlayer(mainPlayer);
+                
+        new Thread(server = new GameServer(port, password)).start();
         
         startGame();
     }
+
+    public GameServer getServer() {
+        return server;
+    }
+
+    @Override
+    public void addPlayer(Player p) {
+        super.addPlayer(p);
+        if (p.getClass() == ServerPlayer.class) {
+            System.out.println("added to server players");
+            server.getServerPlayers().add((ServerPlayer)p);
+        }
+    }
+
+    @Override
+    public void removePlayer(Player p) {
+        super.removePlayer(p);
+        if (p.getClass() == ServerPlayer.class) {
+            server.getServerPlayers().remove(p);
+        }
+    }
+    
+    
     
 }

@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import me.martin.radev.game.virtualcommando.Global;
+import me.martin.radev.game.virtualcommando.game.logic.ConnectedToServerGame;
 import me.martin.radev.game.virtualcommando.game.logic.Game;
 import me.martin.radev.game.virtualcommando.game.logic.MultiPlayerGame;
 import me.martin.radev.game.virtualcommando.game.logic.SinglePlayerGame;
@@ -29,6 +30,11 @@ public class HomeScreenButtonListener implements ActionListener {
             String port = "16000";
             String password = "asd";
             Game game = new MultiPlayerGame(port, password);
+        } else if (button.getName().equals(HomeScreenButtonTypes.Connect.toString())) {
+            String ip = "127.0.0.1";
+            String port = "16000";
+            String password = "asd";
+            Game game = new ConnectedToServerGame(ip, port, password);
         } else if (button.getName().equals(HomeScreenButtonTypes.Exit.toString())) {
             Global.getFrame().dispose();
         }

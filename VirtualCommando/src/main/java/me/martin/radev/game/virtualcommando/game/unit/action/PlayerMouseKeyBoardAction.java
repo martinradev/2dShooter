@@ -11,6 +11,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.Set;
 import me.martin.radev.game.virtualcommando.Global;
 import me.martin.radev.game.virtualcommando.game.unit.MyPlayer;
 import me.martin.radev.game.virtualcommando.geometry.MathUtil;
@@ -40,6 +41,10 @@ public class PlayerMouseKeyBoardAction {
         Global.getFrame().requestFocus();
     }
 
+    public Set<Integer> getKeysToProcess() {
+        return keysToProcess.getHashSet();
+    }
+
     public KeyListener getKeyListener() {
         return keyListener;
     }
@@ -52,43 +57,8 @@ public class PlayerMouseKeyBoardAction {
         return mouseMotionListener;
     }
 
-    public void processMovement() {
-        Vector2D direction = new Vector2D(0d, 0d);
-        for (Integer key : keysToProcess.getHashSet()) {
-            if (key == KeyEvent.VK_LEFT) {
-                direction.translate(-1d, 0);
-            }
-            if (key == KeyEvent.VK_RIGHT) {
-                direction.translate(1d, 0);
-            }
-            if (key == KeyEvent.VK_UP) {
-                direction.translate(0, -1d);
-            }
-            if (key == KeyEvent.VK_DOWN) {
-                direction.translate(0, 1d);
-            }
-        }
-        direction = direction.getUnitVector();
-        if (direction.getX() != 0 || direction.getY() != 0) {
-            player.move(direction);
-            processRotation(MouseInfo.getPointerInfo().getLocation());
-        } else {
-            player.stopMovement();
-        }
-    }
-
     public Point getCurrentPoint() {
         return currentPoint;
-    }
-
-    public void processRotation(Point p) {
-        Vector2D mousePosition = new Vector2D(p);
-        Vector2D offset = Global.getGame().getScreen().getGameScreenMap().getScreenOffset();
-        mousePosition.translate(offset.getX(), offset.getY());
-        Vector2D playerPosition = new Vector2D(player.getBody().getCenter());
-        
-        double angle = MathUtil.getAngleBetweenPoints(mousePosition, playerPosition) + Math.PI / 2d;
-        player.rotate(angle);
     }
 
     private class PlayerMouseListener implements MouseListener {

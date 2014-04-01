@@ -8,11 +8,9 @@ import java.util.List;
 import me.martin.radev.game.virtualcommando.game.graphics.GameEntityContainer;
 import me.martin.radev.game.virtualcommando.game.interaction.CollisionDetection;
 import me.martin.radev.game.virtualcommando.game.logic.respawn.Respawner;
-import me.martin.radev.game.virtualcommando.game.unit.MyPlayer;
 import me.martin.radev.game.virtualcommando.game.unit.Player;
 import me.martin.radev.game.virtualcommando.game.weapon.bullet.Bullet;
 import me.martin.radev.game.virtualcommando.geometry.entity.GeometricObject;
-import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
 import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalObject;
 
 /**

@@ -36,6 +36,7 @@ public class ObjectLoader implements Loader {
         this.parser = new ObjectParser();
     }
 
+    @Override
     public TiledMap load(File xmlFile) {
         try {
 
@@ -59,7 +60,8 @@ public class ObjectLoader implements Loader {
                 double totalWidth = widthInteger * tileWidthInteger;
                 double totalHeight = heightInteger * tileHeightInteger;
 
-                SimpleObjectMap som = new SimpleObjectMap(totalWidth, totalHeight);
+                SimpleObjectMap som = 
+                        new SimpleObjectMap(totalWidth, totalHeight);
                 
 
                 NodeList nList = this.getListInContainer("objectgroup", "object", doc.getDocumentElement());

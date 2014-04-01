@@ -32,5 +32,7 @@ public abstract class TiledMap {
     public double getHeight() {
         return height;
     }
+
+    
     
 }

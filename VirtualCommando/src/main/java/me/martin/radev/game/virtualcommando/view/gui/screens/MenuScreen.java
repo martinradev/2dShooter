@@ -29,6 +29,7 @@ public class MenuScreen extends Screen {
     private JPanel menuGroup;
     private HomeScreenButton singlePlayerButton;
     private HomeScreenButton multiPlayerButton;
+    private HomeScreenButton connectToServerButton;
     private HomeScreenButton exitButton;
     private JPanel logo;
     private final int bottomItemMargin = 20;
@@ -70,6 +71,13 @@ public class MenuScreen extends Screen {
         multiPlayerButton.setName(HomeScreenButtonTypes.Multiplayer.toString());
         multiPlayerButton.addActionListener(buttonListener);
         menuGroup.add(multiPlayerButton);
+        this.addRigidArea(menuGroup, bottomItemMargin);
+        
+        connectToServerButton = new HomeScreenButton("Connect");
+        connectToServerButton.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+        connectToServerButton.setName(HomeScreenButtonTypes.Connect.toString());
+        connectToServerButton.addActionListener(buttonListener);
+        menuGroup.add(connectToServerButton);
         this.addRigidArea(menuGroup, bottomItemMargin);
         
         exitButton = new HomeScreenButton("Exit");

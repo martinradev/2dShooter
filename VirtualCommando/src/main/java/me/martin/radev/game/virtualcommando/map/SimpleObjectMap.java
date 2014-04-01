@@ -21,14 +21,13 @@ public class SimpleObjectMap extends TiledMap{
     
     public SimpleObjectMap(List<GraphicalObject> objectsList, 
             List<GraphicalObject> respawnPoints, double width, double height) {
-        super();
         staticObjects = objectsList;
         this.respawnPoints = respawnPoints;
         this.width = width;
         this.height = height;
     }
     
-    public SimpleObjectMap( double width, double height) {
+    public SimpleObjectMap(double width, double height) {
         staticObjects = new ArrayList<>();
         respawnPoints = new ArrayList<>();
         this.width = width;

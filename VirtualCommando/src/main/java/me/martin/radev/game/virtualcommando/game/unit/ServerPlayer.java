@@ -7,7 +7,9 @@ package me.martin.radev.game.virtualcommando.game.unit;
 import java.awt.Color;
 import java.util.List;
 import java.util.Queue;
-import me.martin.radev.game.virtualcommando.game.logic.server.ServerPlayerProtocol;
+import me.martin.radev.game.virtualcommando.Global;
+import me.martin.radev.game.virtualcommando.game.logic.MultiPlayerGame;
+import me.martin.radev.game.virtualcommando.game.logic.server.protocols.ServerPlayerProtocol;
 import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
 
 /**
@@ -15,43 +17,35 @@ import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
  * @author Marto
  */
 public class ServerPlayer extends Player {
-
+    
     private ServerPlayerProtocol protocol;
     
-    public ServerPlayer(ServerPlayerProtocol protocol) {
-        super(PlayerType.NormalPlayer.getMaxHealth(),
-                new Vector2D(100d, 100d), PlayerType.NormalPlayer.getWidth(),
+    public ServerPlayer(String name, Vector2D position,
+            ServerPlayerProtocol protocol) {
+        super(name, PlayerType.NormalPlayer.getMaxHealth(),
+                position, PlayerType.NormalPlayer.getWidth(),
                 PlayerType.NormalPlayer.getHeight(),
                 new Color(1f, 0f, 0f, .0f));
         this.protocol = protocol;
     }
-    
+
     @Override
     public void processMovement() {
-        Queue<Vector2D> directions = protocol.getMovement();
-        if (directions.isEmpty()) stopMovement();
-        while (!directions.isEmpty()) {
-            Vector2D direction = directions.poll();
-            move(direction);
-        }
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void processRotation() {
-        Queue<Double> angles = protocol.getRotations();
-        while (!angles.isEmpty()) {
-            double angle = angles.poll();
-            rotate(angle);
-        }
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void processShooting() {
-        Queue<Vector2D> directions = protocol.getShootings();
-        while (!directions.isEmpty()) {
-            Vector2D direction = directions.poll();
-            shoot(direction);
-        }
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public ServerPlayerProtocol getProtocol() {
+        return protocol;
     }
     
 }

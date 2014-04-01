@@ -4,6 +4,8 @@
  */
 package me.martin.radev.game.virtualcommando.exception;
 
+import java.net.UnknownHostException;
+
 /**
  *
  * @author Marto
@@ -17,7 +19,8 @@ public enum ExceptionHelper {
     BulletCloneException("Weapon", "Problem while firing bullet"),
     FontFormatException("Font error", "Font format is not recognized"),
     LineUnavailableException("Sound error", "Unable to connect to sound line"),
-    AudioFileNotSupportedException("Sound error", "Audio file is not supported");
+    AudioFileNotSupportedException("Sound error", "Audio file is not supported"),
+    UnknownHostException("Connection error", "Unable to connect to server");
     
     private String title;
     private String message;
