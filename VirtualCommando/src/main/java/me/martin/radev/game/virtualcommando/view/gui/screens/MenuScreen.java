@@ -15,6 +15,7 @@ import me.martin.radev.game.virtualcommando.Global;
 import me.martin.radev.game.virtualcommando.view.graphics.entity.Sprite;
 import me.martin.radev.game.virtualcommando.view.gui.GuiUtil;
 import me.martin.radev.game.virtualcommando.view.gui.asset.AssetType;
+import me.martin.radev.game.virtualcommando.view.gui.dialogs.UsernameDialog;
 import me.martin.radev.game.virtualcommando.view.gui.entity.buttons.HomeScreenButton;
 import me.martin.radev.game.virtualcommando.view.gui.entity.buttons.HomeScreenButtonTypes;
 import me.martin.radev.game.virtualcommando.view.gui.entity.panels.BackgroundPanel;
@@ -42,6 +43,7 @@ public class MenuScreen extends Screen {
         this.height = height;
         initialize(width, height);
         this.repaint();
+        new UsernameDialog(Global.getFrame());
     }
     
     private void initialize(int width, int height) {

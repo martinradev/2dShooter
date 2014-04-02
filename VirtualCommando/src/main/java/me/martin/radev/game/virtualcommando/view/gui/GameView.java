@@ -27,8 +27,8 @@ public class GameView extends JFrame {
     private AssetManager assetManager;
     
     public GameView(int width, int height) {
-        super();
-        
+        super("Virtual Commando 1.0");
+        Global.setFrame(this);
         initializeFrame(width, height);
     }
     

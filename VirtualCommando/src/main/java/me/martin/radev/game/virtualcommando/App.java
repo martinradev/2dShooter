@@ -17,7 +17,6 @@ public class App
         Global.setDefaultWindowWidth(DEFALUT_WIDTH);
         Global.setDefaultWindowHeight(DEFAULT_HEIGHT);
         GameView gv = new GameView(DEFALUT_WIDTH, DEFAULT_HEIGHT);
-        Global.setFrame(gv);
     }
     
     public static void main( String[] args )
