@@ -21,13 +21,8 @@ public class NormalWeapon extends Weapon {
     
     private static final int totalAmmuCapacity = 5000;
     
-    private SoundEffect weaponFiringSound;
-    
     public NormalWeapon() {
         super(new NormalBullet(), NormalWeapon.totalAmmuCapacity);
-        weaponFiringSound = new SoundEffect(
-                (File)Global.getAssetManager().load(AssetType.Sound,
-                "normalweapon/shoot.wav"));
     }
 
     @Override

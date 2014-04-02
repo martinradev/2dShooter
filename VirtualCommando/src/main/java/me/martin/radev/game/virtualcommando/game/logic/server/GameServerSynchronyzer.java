@@ -26,7 +26,6 @@ public class GameServerSynchronyzer {
     }
     
     public void updatePlayer(Player player) {
-        System.out.println(players.size());
         for (ServerPlayer pl : players) {
             if (pl != player) {
                 ServerProtocol protocol = pl.getProtocol();

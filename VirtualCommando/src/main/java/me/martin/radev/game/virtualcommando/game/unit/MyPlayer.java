@@ -5,11 +5,9 @@
 package me.martin.radev.game.virtualcommando.game.unit;
 
 import java.awt.Color;
-import java.awt.MouseInfo;
 import java.awt.event.KeyEvent;
 import me.martin.radev.game.virtualcommando.Global;
-import me.martin.radev.game.virtualcommando.game.logic.MultiPlayerGame;
-import me.martin.radev.game.virtualcommando.game.logic.server.GameServer;
+import me.martin.radev.game.virtualcommando.Settings;
 import me.martin.radev.game.virtualcommando.game.unit.action.PlayerMouseKeyBoardAction;
 import me.martin.radev.game.virtualcommando.geometry.MathUtil;
 import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
@@ -22,8 +20,8 @@ public class MyPlayer extends Player {
 
     private PlayerMouseKeyBoardAction actionListener;
 
-    public MyPlayer(String name) {
-        super(name, PlayerType.NormalPlayer.getMaxHealth(),
+    public MyPlayer() {
+        super(Settings.NAME, PlayerType.NormalPlayer.getMaxHealth(),
                 new Vector2D(100d, 100d), PlayerType.NormalPlayer.getWidth(),
                 PlayerType.NormalPlayer.getHeight(),
                 new Color(1f, 0f, 0f, .0f));

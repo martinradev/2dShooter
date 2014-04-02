@@ -8,6 +8,7 @@ import java.net.Socket;
 import java.util.LinkedList;
 import java.util.Queue;
 import me.martin.radev.game.virtualcommando.Global;
+import me.martin.radev.game.virtualcommando.game.logic.MultiPlayerGame;
 import me.martin.radev.game.virtualcommando.game.unit.DummyPlayer;
 import me.martin.radev.game.virtualcommando.game.unit.Player;
 import me.martin.radev.game.virtualcommando.game.unit.ServerPlayer;
@@ -88,6 +89,8 @@ public class ServerPlayerProtocol extends ServerProtocol {
         p.getWeapon().setCurrentAmmuCount(currentAmmo);
         p.getWeapon().setTotalAmmu(maxAmmo);
         p.setRespawnTime(respawnTime);
+        ((MultiPlayerGame)Global.getGame()).getServer()
+                .getServerSync().updatePlayer(p);
     }
     
     public void processShootPlayer(String [] tokens) {
@@ -97,7 +100,10 @@ public class ServerPlayerProtocol extends ServerProtocol {
         }
         double directionX = Double.parseDouble(tokens[3]);
         double directionY = Double.parseDouble(tokens[4]);
-        p.shoot(new Vector2D(directionX, directionY));
+        Vector2D direction = new Vector2D(directionX, directionY);
+        p.shoot(direction);
+        ((MultiPlayerGame)Global.getGame()).getServer()
+                .getServerSync().shootPlayer(p, direction);
     }
     
     public void processRotatePlayer(String [] tokens) {
@@ -107,6 +113,8 @@ public class ServerPlayerProtocol extends ServerProtocol {
         }
         double angle = Double.parseDouble(tokens[3]);
         p.rotate(angle);
+        ((MultiPlayerGame)Global.getGame()).getServer()
+                .getServerSync().rotatePlayer(p, angle);
     }
 
     @Override

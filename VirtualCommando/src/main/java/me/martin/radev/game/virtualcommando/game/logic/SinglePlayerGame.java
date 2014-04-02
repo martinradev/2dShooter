@@ -19,9 +19,7 @@ public class SinglePlayerGame extends Game {
         super("Desert");
         this.numberOfBots = numberOfBots;
         
-        // TODO
-        String name = "Martin";
-        mainPlayer = new MyPlayer(name);
+        mainPlayer = new MyPlayer();
         respawner.addPlayer(mainPlayer);
         players.put(mainPlayer.getName(), mainPlayer);
         
@@ -29,8 +27,7 @@ public class SinglePlayerGame extends Game {
             Bot bot = new Bot("Bot " + i);
             respawner.addPlayer(bot);
         }
-        
-        
+
         startGame();
     }
     

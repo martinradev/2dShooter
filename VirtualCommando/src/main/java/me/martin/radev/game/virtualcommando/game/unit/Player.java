@@ -177,6 +177,15 @@ public abstract class Player extends GraphicalRectangle {
                 super.getBody().getCenter(),
                 angle - angleOffset);
         // TODO
+        if (Global.getGameFlow().isPlayerColliding(this)) {
+            super.getBody().relativeRotate(
+                    super.getBody().getCenter(),
+                    -(angle - angleOffset));
+        } else {
+            currentAngleOfRotation = angle - angleOffset;
+            angleOffset = angle;
+        }
+        if (MathUtil.relativelyEqualBigEps(angleOffset, angle)) return;
         if (this.getClass() == MyPlayer.class) {
             if (Global.getGame().getClass() == MultiPlayerGame.class) {
                 GameServer server = ((MultiPlayerGame) Global.getGame()).getServer();
@@ -191,14 +200,7 @@ public abstract class Player extends GraphicalRectangle {
                 server.getServerSync().rotatePlayer(this, angle);
             }
         }
-        if (Global.getGameFlow().isPlayerColliding(this)) {
-            super.getBody().relativeRotate(
-                    super.getBody().getCenter(),
-                    -(angle - angleOffset));
-        } else {
-            currentAngleOfRotation = angle - angleOffset;
-            angleOffset = angle;
-        }
+        
     }
 
     public double getCurrentAngleOfRotation() {

@@ -8,6 +8,7 @@ import java.awt.BorderLayout;
 import java.awt.Graphics2D;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
+import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import me.martin.radev.game.virtualcommando.Global;
@@ -66,7 +67,6 @@ public class GameView extends JFrame {
     public JPanel getScreen() {
         return screen;
     }
-    
     
     
 }

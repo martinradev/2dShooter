@@ -7,13 +7,10 @@ package me.martin.radev.game.virtualcommando.game.logic;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import me.martin.radev.game.virtualcommando.Global;
 import me.martin.radev.game.virtualcommando.exception.ExceptionHelper;
 import me.martin.radev.game.virtualcommando.game.logic.server.ServerCommandBuilder;
 import me.martin.radev.game.virtualcommando.game.logic.server.protocols.GameConcurrencyProtocol;
-import me.martin.radev.game.virtualcommando.game.logic.server.protocols.ServerPlayerProtocol;
 import me.martin.radev.game.virtualcommando.game.unit.MyPlayer;
 import me.martin.radev.game.virtualcommando.view.gui.screens.MenuScreen;
 
@@ -29,7 +26,7 @@ public class ConnectedToServerGame extends Game  {
     
     public ConnectedToServerGame(String ip, String port, String password) {
         super("Desert");
-        mainPlayer = new MyPlayer("Test");
+        mainPlayer = new MyPlayer();
         commandBuilder = new ServerCommandBuilder();
         try {
             socket = new Socket(ip, Integer.parseInt(port));

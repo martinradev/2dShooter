@@ -13,6 +13,7 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import me.martin.radev.game.virtualcommando.Global;
 import me.martin.radev.game.virtualcommando.view.graphics.entity.Sprite;
+import me.martin.radev.game.virtualcommando.view.gui.GameView;
 import me.martin.radev.game.virtualcommando.view.gui.GuiUtil;
 import me.martin.radev.game.virtualcommando.view.gui.asset.AssetType;
 import me.martin.radev.game.virtualcommando.view.gui.dialogs.UsernameDialog;

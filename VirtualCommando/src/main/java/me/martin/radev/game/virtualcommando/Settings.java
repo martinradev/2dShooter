@@ -10,4 +10,6 @@ package me.martin.radev.game.virtualcommando;
  */
 public class Settings {
     
+    public static String NAME;
+    
 }

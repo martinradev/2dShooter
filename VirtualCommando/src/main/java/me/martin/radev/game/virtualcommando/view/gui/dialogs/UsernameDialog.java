@@ -6,6 +6,8 @@ package me.martin.radev.game.virtualcommando.view.gui.dialogs;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import javax.swing.JButton;
@@ -16,6 +18,8 @@ import javax.swing.JRootPane;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import me.martin.radev.game.virtualcommando.Global;
+import me.martin.radev.game.virtualcommando.Settings;
+import me.martin.radev.game.virtualcommando.view.gui.GameView;
 
 /**
  *
@@ -41,6 +45,7 @@ public class UsernameDialog extends JDialog {
         textUsername = new JTextField();
         textUsername.setColumns(10);
         saveButton = new JButton("Save");
+        addButtonActionListener();
         add(labelUsername);
         add(textUsername);
         add(saveButton);
@@ -60,14 +65,12 @@ public class UsernameDialog extends JDialog {
 
             @Override
             public void windowClosing(WindowEvent we) {
-                UsernameDialog.this.dispose();
-                Global.getFrame().setVisible(false);
-                Global.getFrame().dispose();
+                owner.dispose();
+                System.exit(0);
             }
 
             @Override
             public void windowClosed(WindowEvent we) {
-               
             }
 
             @Override
@@ -94,6 +97,28 @@ public class UsernameDialog extends JDialog {
         });
     }
     
+    private void addButtonActionListener() {
+        saveButton.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                String name = textUsername.getText();
+                if (isNameCorrect(name)) {
+                    UsernameDialog.this.dispose();
+                    Settings.NAME = name;
+                }
+            }
+            
+        });
+    }
+    
+    private boolean isNameCorrect(String name) {
+        if (name == null) return false;
+        name = name.trim();
+        if (name.length() < 3) return false;
+        if (name.contains(" ")) return false;
+        return true;
+    }
     
     
 }

@@ -21,10 +21,8 @@ public class MultiPlayerGame extends Game {
     public MultiPlayerGame(String port,
             String password) {
         super("Desert");
-        
-        // TODO
-        String name = "Martin";
-        mainPlayer = new MyPlayer(name);
+
+        mainPlayer = new MyPlayer();
         addPlayer(mainPlayer);
                 
         new Thread(server = new GameServer(port, password)).start();
