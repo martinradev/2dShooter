@@ -17,7 +17,8 @@ import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
 public class CollisionDetection {
     
     /**
-     *
+     * Checks for a collision between a graphical object A and graphical object B.
+     * doCollide will call a separate method accordingly for both objects.
      * @param goA
      * @param goB
      * @return
@@ -63,7 +64,7 @@ public class CollisionDetection {
     }
     
     /**
-     *
+     * Checks for a collision between vectors A and B. The collide if they are equal.
      * @param a
      * @param b
      * @return
@@ -73,7 +74,9 @@ public class CollisionDetection {
     }
     
     /**
-     *
+     * Checks for collision between polygons A and B.
+     * They collide if either one of the vertices of A is in B,
+     * or one of the vertices of B is in A
      * @param polA
      * @param polB
      * @return
@@ -89,7 +92,7 @@ public class CollisionDetection {
     } 
     
     /**
-     *
+     * Checks for a collision between a Rectangle and Polygon.
      * @param polA
      * @param polB
      * @return
@@ -105,7 +108,9 @@ public class CollisionDetection {
     }
     
     /**
-     *
+     * Checks for a collision between a polygon and an ellipse.
+     * It checks only for the case when one of the vertices of the polygon
+     * are in the Ellipse. Not the other way around.
      * @param pol
      * @param ell
      * @return
@@ -121,7 +126,7 @@ public class CollisionDetection {
     }
     
     /**
-     *
+     * Not supported at this point.
      * @param ellA
      * @param ellB
      * @return

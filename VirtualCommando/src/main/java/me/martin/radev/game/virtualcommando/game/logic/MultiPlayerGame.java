@@ -5,7 +5,6 @@
 package me.martin.radev.game.virtualcommando.game.logic;
 
 import me.martin.radev.game.virtualcommando.game.logic.server.GameServer;
-import me.martin.radev.game.virtualcommando.game.unit.DummyPlayer;
 import me.martin.radev.game.virtualcommando.game.unit.MyPlayer;
 import me.martin.radev.game.virtualcommando.game.unit.Player;
 import me.martin.radev.game.virtualcommando.game.unit.ServerPlayer;
@@ -19,7 +18,8 @@ public class MultiPlayerGame extends Game {
     private GameServer server;
     
     /**
-     *
+     * Creates a multiplayer game based on a port and password. The port must be free
+     * in order to start the game.
      * @param port
      * @param password
      */
@@ -36,7 +36,7 @@ public class MultiPlayerGame extends Game {
     }
 
     /**
-     *
+     * returns a game server instance
      * @return
      */
     public GameServer getServer() {
@@ -44,7 +44,7 @@ public class MultiPlayerGame extends Game {
     }
 
     /**
-     *
+     * adds a {@link Player} to the game
      * @param p
      */
     @Override
@@ -57,7 +57,7 @@ public class MultiPlayerGame extends Game {
     }
 
     /**
-     *
+     * removes a {@link Player} from the game
      * @param p
      */
     @Override

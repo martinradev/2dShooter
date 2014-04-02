@@ -25,7 +25,9 @@ public class ConnectedToServerGame extends Game  {
     private ServerCommandBuilder commandBuilder;
     
     /**
-     *
+     * Constructs the objects. Accordingly proper ip, port and password for the
+     * server must be given. If the connection is declined by the server,
+     * it a dialog with information will pop up.
      * @param ip
      * @param port
      * @param password
@@ -61,7 +63,7 @@ public class ConnectedToServerGame extends Game  {
     }
 
     /**
-     *
+     * returns the game concurrency protocol.
      * @return
      */
     public GameConcurrencyProtocol getConcurrencyProtocol() {

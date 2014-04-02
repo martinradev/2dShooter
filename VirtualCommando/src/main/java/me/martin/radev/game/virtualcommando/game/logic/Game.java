@@ -76,7 +76,7 @@ public abstract class Game {
     }
     
     /**
-     *
+     * Starts the game. If the game is not started, the game is not rendered.
      */
     public void startGame() {
         timer = new Timer();
@@ -85,7 +85,9 @@ public abstract class Game {
     }
     
     /**
-     *
+     * Adds a player to the game. The player is processed accordingly:
+     * if player needs to be respawned, then he is added to the respawner
+     * if not, then the player is added to the game entity container to be rendered
      * @param p
      */
     public void addPlayer(Player p) {
@@ -112,7 +114,8 @@ public abstract class Game {
     }
 
     /**
-     *
+     * binds {@link Updatable} classes. Those classes will be updated by 
+     * calling the method {@link Updatable#update()}.
      * @param upd
      */
     public void bind(Updatable upd) {
@@ -134,7 +137,7 @@ public abstract class Game {
     }
 
     /**
-     *
+     * Returns the current map the game is rendering
      * @return
      */
     public TiledMap getMap() {
@@ -142,7 +145,8 @@ public abstract class Game {
     }
 
     /**
-     *
+     * returns the {@link GameEntityContainer} class which contains
+     * all game entities which are rendered.
      * @return
      */
     public GameEntityContainer getGameEntities() {
@@ -150,7 +154,7 @@ public abstract class Game {
     }
 
     /**
-     *
+     * returns the current used respawner in the game
      * @return
      */
     public Respawner getRespawner() {
@@ -158,7 +162,8 @@ public abstract class Game {
     }
 
     /**
-     *
+     * returns the {@link MyPlayer}. {@link MyPlayer} is the main player in the game
+     * by your perspective meaning that this is the player you control by your input device.
      * @return
      */
     public MyPlayer getMainPlayer() {
@@ -166,7 +171,7 @@ public abstract class Game {
     }
 
     /**
-     *
+     * return a {@link Map} of all the players in the game.
      * @return
      */
     public Map<String, Player> getPlayers() {
@@ -174,7 +179,7 @@ public abstract class Game {
     }
     
     /**
-     *
+     * Removes a player from the game. 
      * @param p
      */
     public void removePlayer(Player p) {
@@ -184,7 +189,7 @@ public abstract class Game {
     }
 
     /**
-     *
+     * returns the name of the map
      * @return
      */
     public String getMapName() {

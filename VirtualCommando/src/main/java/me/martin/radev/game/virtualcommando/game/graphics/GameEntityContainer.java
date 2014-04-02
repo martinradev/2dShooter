@@ -33,7 +33,8 @@ public class GameEntityContainer {
     }
 
     /**
-     *
+     * adds a player to the entity container. If a player is added, then the
+     * player will be displayed on the screen.
      * @param p
      */
     public void addPlayer(GraphicalObject p) {
@@ -41,7 +42,7 @@ public class GameEntityContainer {
     }
 
     /**
-     *
+     * Adds a list of players to the game screen. The players will be rendered.
      * @param players
      */
     public void addAllPlayers(List<GraphicalObject> players) {
@@ -49,7 +50,7 @@ public class GameEntityContainer {
     }
 
     /**
-     *
+     * Adds objects to the map. Those objects are static are static.
      * @param go
      */
     public void addMapObject(GraphicalObject go) {
@@ -57,7 +58,7 @@ public class GameEntityContainer {
     }
 
     /**
-     *
+     * Adds a list of objects to the map. Those objects are static. 
      * @param mapObjects
      */
     public void addAllMapObjects(List<GraphicalObject> mapObjects) {
@@ -65,7 +66,9 @@ public class GameEntityContainer {
     }
 
     /**
-     *
+     * Adds a respawn point. Those points can be used by a 
+     * {@link me.martin.radev.game.virtualcommando.game.logic.respawn.Respawner}
+     * as points where to respawn
      * @param go
      */
     public void addRespawnPoint(GraphicalObject go) {
@@ -73,7 +76,7 @@ public class GameEntityContainer {
     }
 
     /**
-     *
+     * Adds a list of respawn points.
      * @param mapObjects
      */
     public void addAllRespawnPoints(List<GraphicalObject> mapObjects) {
@@ -81,7 +84,7 @@ public class GameEntityContainer {
     }
 
     /**
-     *
+     * Adds a bullet to the map.
      * @param b
      */
     public void addBullet(Bullet b) {
@@ -89,7 +92,7 @@ public class GameEntityContainer {
     }
 
     /**
-     *
+     * Adds a list of bullets to the map.
      * @param bullets
      */
     public void addAllBullets(List<Bullet> bullets) {
@@ -97,7 +100,7 @@ public class GameEntityContainer {
     }
 
     /**
-     *
+     * return the list of bullets on the map
      * @return
      */
     public List<Bullet> getBullets() {
@@ -105,7 +108,7 @@ public class GameEntityContainer {
     }
 
     /**
-     *
+     * returns the static objects on the map
      * @return
      */
     public List<GraphicalObject> getMapObjects() {
@@ -113,7 +116,7 @@ public class GameEntityContainer {
     }
 
     /**
-     *
+     * return the players on the map
      * @return
      */
     public List<GraphicalObject> getPlayers() {
@@ -121,7 +124,7 @@ public class GameEntityContainer {
     }
 
     /**
-     *
+     * returnts the respawn points on the map
      * @return
      */
     public List<GraphicalObject> getRespawnPoints() {
@@ -129,7 +132,9 @@ public class GameEntityContainer {
     }
 
     /**
-     *
+     * returns a bounding box for all objects on the map.
+     * Use with care: it will go over all objects and 
+     * it is time consuming and not thread save.
      * @return
      */
     public Vector2D[] getBoundingBox() {

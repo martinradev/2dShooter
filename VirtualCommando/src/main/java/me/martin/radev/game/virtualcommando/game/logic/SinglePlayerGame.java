@@ -16,7 +16,8 @@ public class SinglePlayerGame extends Game {
     private int numberOfBots;
     
     /**
-     *
+     * Creates a single player game. Accordingly the appropriate number of bots
+     * are added to the game.
      * @param numberOfBots
      */
     public SinglePlayerGame(int numberOfBots) {

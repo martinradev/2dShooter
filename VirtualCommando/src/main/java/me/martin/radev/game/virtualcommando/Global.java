@@ -7,7 +7,6 @@ package me.martin.radev.game.virtualcommando;
 import me.martin.radev.game.virtualcommando.exception.ExceptionHandler;
 import me.martin.radev.game.virtualcommando.game.logic.Game;
 import me.martin.radev.game.virtualcommando.game.logic.GameFlow;
-import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
 import me.martin.radev.game.virtualcommando.view.gui.GameView;
 import me.martin.radev.game.virtualcommando.view.gui.asset.AssetManager;
 
@@ -30,7 +29,7 @@ public class Global {
     private static GameFlow gameFlow;
     
     /**
-     *
+     * sets a global asset manager
      * @param manager
      */
     public static void setAssetManager(AssetManager manager) {
@@ -38,7 +37,7 @@ public class Global {
     }
     
     /**
-     *
+     * returns the current asset manager
      * @return
      */
     public static AssetManager getAssetManager() {
@@ -46,7 +45,7 @@ public class Global {
     }
 
     /**
-     *
+     * sets the exception handler
      * @param exceptionHandler
      */
     public static void setExceptionHandler(ExceptionHandler exceptionHandler) {
@@ -54,7 +53,7 @@ public class Global {
     }
 
     /**
-     *
+     * gets the current exception handler
      * @return
      */
     public static ExceptionHandler getExceptionHandler() {
@@ -62,7 +61,7 @@ public class Global {
     }
 
     /**
-     *
+     * return the height of the jframe
      * @return
      */
     public static int getWindowHeight() {
@@ -70,7 +69,7 @@ public class Global {
     }
 
     /**
-     *
+     * return the width of the jframe
      * @return
      */
     public static int getWindowWidth() {
@@ -78,7 +77,7 @@ public class Global {
     }
 
     /**
-     *
+     * sets the height
      * @param windowHeight
      */
     public static void setWindowHeight(int windowHeight) {
@@ -86,7 +85,7 @@ public class Global {
     }
 
     /**
-     *
+     * sets the width
      * @param windowWidth
      */
     public static void setWindowWidth(int windowWidth) {

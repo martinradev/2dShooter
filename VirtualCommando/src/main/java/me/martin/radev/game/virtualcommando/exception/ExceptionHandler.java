@@ -24,7 +24,7 @@ public class ExceptionHandler {
     }
     
     /**
-     *
+     * creates a dialog with a title and message
      * @param title
      * @param message
      */
