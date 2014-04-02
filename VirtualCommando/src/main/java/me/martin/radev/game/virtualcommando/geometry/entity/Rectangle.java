@@ -14,6 +14,12 @@ public class Rectangle extends Polygon {
     private double width;
     private double height;
 
+    /**
+     *
+     * @param bottomLeftCorner
+     * @param width
+     * @param height
+     */
     public Rectangle(Vector2D bottomLeftCorner, double width, double height) {
         super(new Vector2D[]{bottomLeftCorner,
             new Vector2D(bottomLeftCorner.getX(), bottomLeftCorner.getY() + height),
@@ -24,6 +30,13 @@ public class Rectangle extends Polygon {
         this.height = height;
     }
 
+    /**
+     *
+     * @param xCoord
+     * @param yCoord
+     * @param width
+     * @param height
+     */
     public Rectangle(double xCoord, double yCoord,
             double width, double height) {
         super(new Vector2D[]{new Vector2D(xCoord, yCoord),
@@ -35,15 +48,28 @@ public class Rectangle extends Polygon {
         this.height = height;
     }
 
+    /**
+     *
+     * @param dx
+     * @param dy
+     */
     @Override
     public void translate(double dx, double dy) {
         super.translate(dx, dy);
     }
 
+    /**
+     *
+     * @return
+     */
     public double getHeight() {
         return height;
     }
 
+    /**
+     *
+     * @return
+     */
     public double getWidth() {
         return width;
     }

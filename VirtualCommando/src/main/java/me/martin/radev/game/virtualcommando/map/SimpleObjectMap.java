@@ -19,6 +19,13 @@ public class SimpleObjectMap extends TiledMap{
     private List<GraphicalObject> staticObjects;
     private List<GraphicalObject> respawnPoints;
     
+    /**
+     *
+     * @param objectsList
+     * @param respawnPoints
+     * @param width
+     * @param height
+     */
     public SimpleObjectMap(List<GraphicalObject> objectsList, 
             List<GraphicalObject> respawnPoints, double width, double height) {
         staticObjects = objectsList;
@@ -27,6 +34,11 @@ public class SimpleObjectMap extends TiledMap{
         this.height = height;
     }
     
+    /**
+     *
+     * @param width
+     * @param height
+     */
     public SimpleObjectMap(double width, double height) {
         staticObjects = new ArrayList<>();
         respawnPoints = new ArrayList<>();
@@ -34,10 +46,20 @@ public class SimpleObjectMap extends TiledMap{
         this.height = height;
     }
     
+    /**
+     *
+     * @return
+     */
     public List<GraphicalObject> getStaticObjects() {
         return staticObjects;
     }
 
+    /**
+     *
+     * @param g2d
+     * @param xOffset
+     * @param yOffset
+     */
     @Override
     public void render(Graphics2D g2d, int xOffset, int yOffset) {
         for (GraphicalObject go : staticObjects) {
@@ -45,27 +67,51 @@ public class SimpleObjectMap extends TiledMap{
         }
     }
     
+    /**
+     *
+     * @param go
+     */
     public void addStaticObjects(GraphicalObject go) {
         staticObjects.add(go);
     }
     
+    /**
+     *
+     * @param goList
+     */
     public void addStaticObjects(List<GraphicalObject> goList) {
         staticObjects.addAll(goList);
     }
     
+    /**
+     *
+     * @param v2d
+     */
     public void addRespawnPoint(GraphicalObject v2d) {
         respawnPoints.add(v2d);
     }
     
+    /**
+     *
+     * @param v2d
+     */
     public void addRespawnPoint(List<GraphicalObject> v2d) {
         respawnPoints.addAll(v2d);
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<GraphicalObject> getObjects() {
         return staticObjects;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<GraphicalObject> getRespawnPoints() {
         return respawnPoints;

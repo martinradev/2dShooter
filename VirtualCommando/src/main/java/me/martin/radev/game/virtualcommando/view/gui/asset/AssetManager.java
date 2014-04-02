@@ -28,11 +28,21 @@ public class AssetManager {
     private ExceptionHandler exceptionHandler;
     private String assetDirectory = "assets";
     
+    /**
+     *
+     * @param exceptionHandler
+     */
     public AssetManager(ExceptionHandler exceptionHandler) {
         assets = new HashMap<String, HashMap<String, Object>>();
         this.exceptionHandler = exceptionHandler;
     }
     
+    /**
+     *
+     * @param type
+     * @param file
+     * @return
+     */
     public Object load(AssetType type, String file) {
         if (this.contains(type, file)) {
             return this.get(type, file);

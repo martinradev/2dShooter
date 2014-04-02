@@ -30,6 +30,11 @@ public class GameServer implements Runnable {
     private GameServerSynchronyzer serverSync;
     private List<ServerPlayer> serverPlayers;
 
+    /**
+     *
+     * @param port
+     * @param password
+     */
     public GameServer(String port, String password) {
         this.port = port;
         this.password = password;
@@ -46,6 +51,9 @@ public class GameServer implements Runnable {
         }
     }
 
+    /**
+     *
+     */
     @Override
     public void run() {
         if (server == null) {
@@ -81,6 +89,11 @@ public class GameServer implements Runnable {
         }
     }
     
+    /**
+     *
+     * @param p
+     * @param direction
+     */
     public void notifyForMovement(Player p, Vector2D direction) {
         for (ServerPlayer sp : serverPlayers) {
             sp.getProtocol().sendCommand(
@@ -88,6 +101,11 @@ public class GameServer implements Runnable {
         }
     }
     
+    /**
+     *
+     * @param p
+     * @param direction
+     */
     public void notifyForShooting(Player p, Vector2D direction) {
         for (ServerPlayer sp : serverPlayers) {
             sp.getProtocol().sendCommand(
@@ -95,6 +113,11 @@ public class GameServer implements Runnable {
         }
     }
     
+    /**
+     *
+     * @param p
+     * @param angle
+     */
     public void notifyForRotation(Player p, double angle) {
         for (ServerPlayer sp : serverPlayers) {
             sp.getProtocol().sendCommand(
@@ -102,10 +125,18 @@ public class GameServer implements Runnable {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public List<ServerPlayer> getServerPlayers() {
         return serverPlayers;
     }
 
+    /**
+     *
+     * @return
+     */
     public GameServerSynchronyzer getServerSync() {
         return serverSync;
     }

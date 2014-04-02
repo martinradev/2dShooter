@@ -16,6 +16,12 @@ import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
  */
 public class CollisionDetection {
     
+    /**
+     *
+     * @param goA
+     * @param goB
+     * @return
+     */
     public static boolean doCollide(GeometricObject goA, GeometricObject goB) {
         if (goA.getClass() == Polygon.class) {
             if (goB.getClass() == Polygon.class) {
@@ -56,10 +62,22 @@ public class CollisionDetection {
         return false;
     }
     
+    /**
+     *
+     * @param a
+     * @param b
+     * @return
+     */
     public static boolean doCollide(Vector2D a, Vector2D b) {
         return a.contains(b);
     }
     
+    /**
+     *
+     * @param polA
+     * @param polB
+     * @return
+     */
     public static boolean doCollide(Polygon polA, Polygon polB) {
         for (Vector2D v2d : polA.getPoints()) {
             if (polB.contains(v2d)) return true;
@@ -70,6 +88,12 @@ public class CollisionDetection {
         return false;
     } 
     
+    /**
+     *
+     * @param polA
+     * @param polB
+     * @return
+     */
     public static boolean doCollide(Polygon polA, Rectangle polB) {
         for (Vector2D v2d : polA.getPoints()) {
             if (polB.contains(v2d)) return true;
@@ -80,6 +104,12 @@ public class CollisionDetection {
         return false;
     }
     
+    /**
+     *
+     * @param pol
+     * @param ell
+     * @return
+     */
     public static boolean doCollide(Polygon pol, Ellipse ell) {
         for (Vector2D v2d : pol.getPoints()) {
             if (ell.contains(v2d)) {
@@ -90,6 +120,12 @@ public class CollisionDetection {
         return false;
     }
     
+    /**
+     *
+     * @param ellA
+     * @param ellB
+     * @return
+     */
     public static boolean doCollide (Ellipse ellA, Ellipse ellB) {
         throw new IllegalStateException();
         //return false;

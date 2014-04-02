@@ -29,6 +29,10 @@ public class HomeScreenButton extends ScreenButton implements MouseListener {
     private static final String FONT_FILE = "VIDEOPHREAK.ttf";
     private Font font;
     
+    /**
+     *
+     * @param text
+     */
     public HomeScreenButton(String text) {
         super(text, HomeScreenButton.WIDTH, HomeScreenButton.HEIGHT, HomeScreenButton.FONT_SIZE);
         this.setOpaque(false);
@@ -55,22 +59,42 @@ public class HomeScreenButton extends ScreenButton implements MouseListener {
         this.addMouseListener(this);
     }
 
+    /**
+     *
+     * @param me
+     */
     public void mouseClicked(MouseEvent me) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     *
+     * @param me
+     */
     public void mousePressed(MouseEvent me) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     *
+     * @param me
+     */
     public void mouseReleased(MouseEvent me) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     *
+     * @param me
+     */
     public void mouseEntered(MouseEvent me) {
         this.setForeground(HomeScreenButton.HOVER_COLOR);
     }
 
+    /**
+     *
+     * @param me
+     */
     public void mouseExited(MouseEvent me) {
         this.setForeground(HomeScreenButton.DEFAULT_COLOR);
     }

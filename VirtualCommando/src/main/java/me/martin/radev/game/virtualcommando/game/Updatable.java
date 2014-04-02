@@ -10,6 +10,9 @@ package me.martin.radev.game.virtualcommando.game;
  */
 public interface Updatable {
     
+    /**
+     *
+     */
     void update();
     
 }

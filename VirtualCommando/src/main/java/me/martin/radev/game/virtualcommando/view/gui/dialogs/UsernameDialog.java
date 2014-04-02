@@ -32,6 +32,10 @@ public class UsernameDialog extends JDialog {
     private JButton saveButton;
     private JFrame owner;
     
+    /**
+     *
+     * @param owner
+     */
     public UsernameDialog(JFrame owner) {
         super(owner, "Enter username in game", true);
         this.owner = owner;

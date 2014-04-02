@@ -15,6 +15,10 @@ public class SinglePlayerGame extends Game {
     
     private int numberOfBots;
     
+    /**
+     *
+     * @param numberOfBots
+     */
     public SinglePlayerGame(int numberOfBots) {
         super("Desert");
         this.numberOfBots = numberOfBots;

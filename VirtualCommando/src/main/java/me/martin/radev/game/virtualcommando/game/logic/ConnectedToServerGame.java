@@ -24,6 +24,12 @@ public class ConnectedToServerGame extends Game  {
     private GameConcurrencyProtocol concurrencyProtocol;
     private ServerCommandBuilder commandBuilder;
     
+    /**
+     *
+     * @param ip
+     * @param port
+     * @param password
+     */
     public ConnectedToServerGame(String ip, String port, String password) {
         super("Desert");
         mainPlayer = new MyPlayer();
@@ -54,6 +60,10 @@ public class ConnectedToServerGame extends Game  {
         startGame();
     }
 
+    /**
+     *
+     * @return
+     */
     public GameConcurrencyProtocol getConcurrencyProtocol() {
         return concurrencyProtocol;
     }

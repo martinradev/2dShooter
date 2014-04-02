@@ -25,6 +25,13 @@ public class AmmoBar extends JPanel {
     private int parentWidth;
     private int parentHeight;
     
+    /**
+     *
+     * @param totalAmmo
+     * @param currentAmmo
+     * @param parentWidth
+     * @param parentHeight
+     */
     public AmmoBar(int totalAmmo, int currentAmmo, int parentWidth, int parentHeight) {
         this.totalAmmo = totalAmmo;
         this.currentAmmo = currentAmmo;
@@ -39,14 +46,26 @@ public class AmmoBar extends JPanel {
     }
 
 
+    /**
+     *
+     * @param totalAmmo
+     */
     public void setTotalAmmo(int totalAmmo) {
         this.totalAmmo = totalAmmo;
     }
 
+    /**
+     *
+     * @param currentAmmo
+     */
     public void setCurrentAmmo(int currentAmmo) {
         this.currentAmmo = currentAmmo;
     }
 
+    /**
+     *
+     * @param g
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);

@@ -26,6 +26,11 @@ public class HealthBar extends JPanel {
     private final int leftOffset = 10;
     private final int bottomOffset = 10;
     
+    /**
+     *
+     * @param parentWidth
+     * @param parentHeight
+     */
     public HealthBar(int parentWidth, int parentHeight) {
         super();
         setBorder(BorderFactory.createLineBorder(Color.RED, borderWidth));
@@ -36,6 +41,10 @@ public class HealthBar extends JPanel {
         percent = 0.75d;
     }
 
+    /**
+     *
+     * @param g
+     */
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -44,10 +53,18 @@ public class HealthBar extends JPanel {
         g.fillRect(0, 0, endX, super.getHeight());
     }
 
+    /**
+     *
+     * @param percent
+     */
     public void setPercent(double percent) {
         this.percent = percent;
     }
 
+    /**
+     *
+     * @return
+     */
     public double getPercent() {
         return percent;
     }

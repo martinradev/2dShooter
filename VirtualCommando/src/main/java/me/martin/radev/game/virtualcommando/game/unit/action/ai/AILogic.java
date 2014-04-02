@@ -12,9 +12,25 @@ import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
  */
 public interface AILogic {
     
+    /**
+     *
+     * @return
+     */
     public Vector2D getDirection();
+    /**
+     *
+     * @return
+     */
     public float getRotationAngle();
+    /**
+     *
+     * @return
+     */
     public boolean shouldShoot();
+    /**
+     *
+     * @return
+     */
     public Vector2D directionOfShooting();
     
 }

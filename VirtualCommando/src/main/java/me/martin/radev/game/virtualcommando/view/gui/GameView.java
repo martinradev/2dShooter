@@ -27,6 +27,11 @@ public class GameView extends JFrame {
     private ExceptionHandler exceptionHandler;
     private AssetManager assetManager;
     
+    /**
+     *
+     * @param width
+     * @param height
+     */
     public GameView(int width, int height) {
         super("Virtual Commando 1.0");
         Global.setFrame(this);
@@ -47,6 +52,10 @@ public class GameView extends JFrame {
         setVisible(true);
         
     }
+    /**
+     *
+     * @param scr
+     */
     public void setScreen(Screen scr) {
         if (screen != null) this.remove(screen);
         this.screen = scr;
@@ -54,6 +63,9 @@ public class GameView extends JFrame {
         this.screen.repaint();
     }
 
+    /**
+     *
+     */
     @Override
     public void validate() {
         super.validate();
@@ -64,6 +76,10 @@ public class GameView extends JFrame {
         this.screen.validate();
     }
 
+    /**
+     *
+     * @return
+     */
     public JPanel getScreen() {
         return screen;
     }

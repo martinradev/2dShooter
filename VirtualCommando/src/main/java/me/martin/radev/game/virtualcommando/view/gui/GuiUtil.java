@@ -14,10 +14,19 @@ import me.martin.radev.game.virtualcommando.Global;
  */
 public class GuiUtil {
 
+    /**
+     *
+     * @param length
+     * @return
+     */
     public static int rescale(int length) {
         return (int) (Global.getScalingFactor() * length);
     }
 
+    /**
+     *
+     * @return
+     */
     public static Color randomColor() {
         Random rand = new Random();
         float r = rand.nextFloat();

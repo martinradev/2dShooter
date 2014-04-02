@@ -10,6 +10,9 @@ package me.martin.radev.game.virtualcommando.sound;
  */
 public interface Sound {
     
+    /**
+     *
+     */
     public void play();
     
 }

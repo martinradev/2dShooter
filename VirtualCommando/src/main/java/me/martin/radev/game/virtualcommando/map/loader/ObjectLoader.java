@@ -31,11 +31,20 @@ public class ObjectLoader implements Loader {
     private ExceptionHandler exceptionHandler;
     private ObjectParser parser;
 
+    /**
+     *
+     * @param exceptionHandler
+     */
     public ObjectLoader(ExceptionHandler exceptionHandler) {
         this.exceptionHandler = exceptionHandler;
         this.parser = new ObjectParser();
     }
 
+    /**
+     *
+     * @param xmlFile
+     * @return
+     */
     @Override
     public TiledMap load(File xmlFile) {
         try {

@@ -18,12 +18,20 @@ public class BackgroundPanel extends JPanel{
     
     private Sprite sprite;
     
+    /**
+     *
+     * @param spr
+     */
     public BackgroundPanel(Sprite spr) {
         this.sprite = spr;
         this.setOpaque(false);
     }
     
 
+    /**
+     *
+     * @param g
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);

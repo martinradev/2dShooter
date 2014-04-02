@@ -15,10 +15,19 @@ public class ExceptionHandler {
     
     private JFrame frame;
     
+    /**
+     *
+     * @param frame
+     */
     public ExceptionHandler(JFrame frame) {
         this.frame = frame;
     }
     
+    /**
+     *
+     * @param title
+     * @param message
+     */
     public void notificate(String title, String message) {
         JOptionPane.showMessageDialog(frame, title, message, JOptionPane.ERROR_MESSAGE);
     }

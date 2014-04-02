@@ -13,6 +13,17 @@ import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
  */
 public class DummyPlayer extends Player {
 
+    /**
+     *
+     * @param name
+     * @param posX
+     * @param posY
+     * @param currentHealth
+     * @param maxHealth
+     * @param curAmmo
+     * @param maxAmmo
+     * @param respawnTime
+     */
     public DummyPlayer(String name, double posX, double posY,
             int currentHealth, int maxHealth, int curAmmo, int maxAmmo,
             double respawnTime) {
@@ -27,16 +38,25 @@ public class DummyPlayer extends Player {
         super.getWeapon().setCurrentAmmuCount(curAmmo);
     }
     
+    /**
+     *
+     */
     @Override
     public void processMovement() {
         
     }
 
+    /**
+     *
+     */
     @Override
     public void processRotation() {
         
     }
 
+    /**
+     *
+     */
     @Override
     public void processShooting() {
         

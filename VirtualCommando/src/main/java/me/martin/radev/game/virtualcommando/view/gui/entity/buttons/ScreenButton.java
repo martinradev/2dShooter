@@ -14,6 +14,13 @@ import javax.swing.JButton;
  */
 public class ScreenButton extends JButton {
     
+    /**
+     *
+     * @param text
+     * @param width
+     * @param height
+     * @param fontSize
+     */
     public ScreenButton(String text, int width, int height, int fontSize) {
         super(text);
         this.setSize(new Dimension(width, height));

@@ -17,10 +17,17 @@ public class RandomAILogic implements AILogic {
     private Random rand;
     private final int epsAccuracy = 100;
     
+    /**
+     *
+     */
     public RandomAILogic() {
         rand = new Random();
     }
     
+    /**
+     *
+     * @return
+     */
     @Override
     public Vector2D getDirection() {
         int yDirection = rand.nextInt(2*epsAccuracy)- epsAccuracy;
@@ -28,17 +35,29 @@ public class RandomAILogic implements AILogic {
         return new Vector2D(xDirection, yDirection).getUnitVector();
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public float getRotationAngle() {
         return (float) (2f*Math.PI*rand.nextFloat());
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public boolean shouldShoot() {
         float num = rand.nextFloat();
         return num > 0.98;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public Vector2D directionOfShooting() {
         int yDirection = rand.nextInt(2*epsAccuracy) - epsAccuracy;

@@ -38,6 +38,11 @@ public class MenuScreen extends Screen {
     private int width;
     private int height;
     
+    /**
+     *
+     * @param width
+     * @param height
+     */
     public MenuScreen(int width, int height) {
         super();
         this.width = width;
@@ -105,6 +110,9 @@ public class MenuScreen extends Screen {
         cont.add(Box.createVerticalStrut(margin));
     }
 
+    /**
+     *
+     */
     @Override
     public void validate() {
         this.setSize(GuiUtil.rescale(width), GuiUtil.rescale(height));

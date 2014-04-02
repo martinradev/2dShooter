@@ -18,6 +18,11 @@ public class MultiPlayerGame extends Game {
     
     private GameServer server;
     
+    /**
+     *
+     * @param port
+     * @param password
+     */
     public MultiPlayerGame(String port,
             String password) {
         super("Desert");
@@ -30,10 +35,18 @@ public class MultiPlayerGame extends Game {
         startGame();
     }
 
+    /**
+     *
+     * @return
+     */
     public GameServer getServer() {
         return server;
     }
 
+    /**
+     *
+     * @param p
+     */
     @Override
     public void addPlayer(Player p) {
         super.addPlayer(p);
@@ -43,6 +56,10 @@ public class MultiPlayerGame extends Game {
         }
     }
 
+    /**
+     *
+     * @param p
+     */
     @Override
     public void removePlayer(Player p) {
         super.removePlayer(p);

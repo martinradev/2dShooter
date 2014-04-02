@@ -20,6 +20,9 @@ public class MyPlayer extends Player {
 
     private PlayerMouseKeyBoardAction actionListener;
 
+    /**
+     *
+     */
     public MyPlayer() {
         super(Settings.NAME, PlayerType.NormalPlayer.getMaxHealth(),
                 new Vector2D(100d, 100d), PlayerType.NormalPlayer.getWidth(),
@@ -39,6 +42,9 @@ public class MyPlayer extends Player {
 
     }
 
+    /**
+     *
+     */
     @Override
     public void processMovement() {
         Vector2D direction = new Vector2D(0d, 0d);
@@ -65,6 +71,9 @@ public class MyPlayer extends Player {
         }
     }
 
+    /**
+     *
+     */
     @Override
     public void processRotation() {
         Vector2D mousePosition = new Vector2D(actionListener.getCurrentPoint());
@@ -75,6 +84,10 @@ public class MyPlayer extends Player {
         rotate(angle);
     }
 
+    /**
+     *
+     * @param direction
+     */
     @Override
     public void shoot(Vector2D direction) {
         super.shoot(direction);
@@ -82,11 +95,18 @@ public class MyPlayer extends Player {
                 this.weapon.getCurrentAmmuCount());
     }
 
+    /**
+     *
+     */
     @Override
     public void processShooting() {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     *
+     * @param damage
+     */
     @Override
     public void takeDamage(int damage) {
         super.takeDamage(damage);
@@ -94,6 +114,9 @@ public class MyPlayer extends Player {
                 (double) super.currentHealth / (double) super.maxHealth);
     }
 
+    /**
+     *
+     */
     @Override
     public void regenerateFully() {
         super.regenerateFully();

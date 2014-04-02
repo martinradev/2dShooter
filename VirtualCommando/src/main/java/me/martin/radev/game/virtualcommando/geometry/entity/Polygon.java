@@ -14,14 +14,27 @@ import me.martin.radev.game.virtualcommando.geometry.MathUtil;
  */
 public class Polygon extends AbstractPolygon {
     
+    /**
+     *
+     * @param points
+     */
     public Polygon(List<Vector2D> points) {
         super(points);
     }
     
+    /**
+     *
+     * @param points
+     */
     public Polygon(Vector2D [] points) {
         super(points);
     }
 
+    /**
+     *
+     * @param point
+     * @return
+     */
     @Override
     public boolean contains(Vector2D point) {
         /*
@@ -39,6 +52,10 @@ public class Polygon extends AbstractPolygon {
         return true;
     }
     
+    /**
+     *
+     * @param angle
+     */
     @Override
     public void rotate(double angle) {
         for (Vector2D v2d : super.getPoints()) {
@@ -46,6 +63,10 @@ public class Polygon extends AbstractPolygon {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public Vector2D getCenter() {
         double dx = 0d, dy =0d;
@@ -58,6 +79,11 @@ public class Polygon extends AbstractPolygon {
         return new Vector2D(dx/ size, dy / size);
     }
 
+    /**
+     *
+     * @param center
+     * @param angle
+     */
     @Override
     public void relativeRotate(Vector2D center, double angle) {
         for (Vector2D v2d : super.getPoints()) {
@@ -65,6 +91,10 @@ public class Polygon extends AbstractPolygon {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -74,6 +104,10 @@ public class Polygon extends AbstractPolygon {
         return sb.toString();
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public Vector2D[] getBoundingBox() {
         Vector2D [] boundingBox = new Vector2D[2];

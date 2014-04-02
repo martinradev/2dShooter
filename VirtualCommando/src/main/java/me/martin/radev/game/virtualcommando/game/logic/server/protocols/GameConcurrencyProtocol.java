@@ -19,12 +19,21 @@ public class GameConcurrencyProtocol extends ServerProtocol {
 
     private ServerCommandBuilder commandBuilder;
 
+    /**
+     *
+     * @param connection
+     * @param commandBuilder
+     */
     public GameConcurrencyProtocol(Socket connection,
             ServerCommandBuilder commandBuilder) {
         super(connection);
         this.commandBuilder = commandBuilder;
     }
 
+    /**
+     *
+     * @param command
+     */
     @Override
     protected void processCommand(String command) {
         String[] tokens = command.split(" ");
@@ -90,6 +99,10 @@ public class GameConcurrencyProtocol extends ServerProtocol {
         p.setRespawnTime(respawnTime);
     }
     
+    /**
+     *
+     * @param tokens
+     */
     public void processShootPlayer(String [] tokens) {
         Player p = Global.getGame().getPlayers().get(tokens[2]);
         if (p == null) {
@@ -100,6 +113,10 @@ public class GameConcurrencyProtocol extends ServerProtocol {
         p.shoot(new Vector2D(directionX, directionY));
     }
     
+    /**
+     *
+     * @param tokens
+     */
     public void processRotatePlayer(String [] tokens) {
         Player p = Global.getGame().getPlayers().get(tokens[2]);
         if (p == null) {
@@ -109,17 +126,31 @@ public class GameConcurrencyProtocol extends ServerProtocol {
         p.rotate(angle);
     }
 
+    /**
+     *
+     * @param p
+     */
     public void updatePlayer(Player p) {
         String command = commandBuilder.getPlayerStatusCommand(p);
         sendCommand(command);
     }
 
+    /**
+     *
+     * @param p
+     * @param direction
+     */
     public void shootPlayer(Player p, Vector2D direction) {
         String command =
                 commandBuilder.getPlayerShootingCommand(p, direction);
         sendCommand(command);
     }
     
+    /**
+     *
+     * @param p
+     * @param angle
+     */
     public void rotatePlayer(Player p, double angle) {
         String command =
                 commandBuilder.getPlayerRotationCommand(p, angle);

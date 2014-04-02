@@ -28,6 +28,12 @@ public class GameScreenMap extends JPanel {
     private int width;
     private int height;
 
+    /**
+     *
+     * @param gameEntities
+     * @param width
+     * @param height
+     */
     public GameScreenMap(GameEntityContainer gameEntities, int width, int height) {
         super();
         this.setSize(width, height);
@@ -36,6 +42,10 @@ public class GameScreenMap extends JPanel {
         this.requestFocusInWindow();
     }
 
+    /**
+     *
+     * @return
+     */
     public Vector2D getScreenOffset() {
         Vector2D offset = new Vector2D(0, 0);
         if (Global.getGame().getMainPlayer() != null) {
@@ -63,6 +73,10 @@ public class GameScreenMap extends JPanel {
         return offset;
     }
 
+    /**
+     *
+     * @param g
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);

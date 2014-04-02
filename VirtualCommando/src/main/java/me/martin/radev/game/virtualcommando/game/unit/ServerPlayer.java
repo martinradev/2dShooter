@@ -20,6 +20,12 @@ public class ServerPlayer extends Player {
     
     private ServerPlayerProtocol protocol;
     
+    /**
+     *
+     * @param name
+     * @param position
+     * @param protocol
+     */
     public ServerPlayer(String name, Vector2D position,
             ServerPlayerProtocol protocol) {
         super(name, PlayerType.NormalPlayer.getMaxHealth(),
@@ -29,21 +35,34 @@ public class ServerPlayer extends Player {
         this.protocol = protocol;
     }
 
+    /**
+     *
+     */
     @Override
     public void processMovement() {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     *
+     */
     @Override
     public void processRotation() {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     *
+     */
     @Override
     public void processShooting() {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     *
+     * @return
+     */
     public ServerPlayerProtocol getProtocol() {
         return protocol;
     }

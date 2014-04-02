@@ -10,9 +10,25 @@ package me.martin.radev.game.virtualcommando.game.unit;
  */
 public enum PlayerType {
     
-    NormalPlayer(100, 30, 30), EasyBot(75, 30, 30),
+    /**
+     *
+     */
+    NormalPlayer(100, 30, 30),
+    /**
+     *
+     */
+    EasyBot(75, 30, 30),
+    /**
+     *
+     */
     NormalBot(100, 30, 30),
+    /**
+     *
+     */
     HardBot(150, 30, 30),
+    /**
+     *
+     */
     InsaneBot(200, 35, 35);
     
     private int maxHealth;
@@ -25,14 +41,26 @@ public enum PlayerType {
         this.height = height;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getMaxHealth() {
         return maxHealth;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getWidth() {
         return width;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getHeight() {
         return height;
     }

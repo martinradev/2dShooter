@@ -14,18 +14,34 @@ public class Sprite {
     
     private Image image;
     
+    /**
+     *
+     * @param image
+     */
     public Sprite(Image image) {
         this.image = image;
     }
     
+    /**
+     *
+     * @return
+     */
     public Image getImage() {
         return image;
     }
     
+    /**
+     *
+     * @return
+     */
     public int getWidth() {
         return this.image.getWidth(null);
     }
     
+    /**
+     *
+     * @return
+     */
     public int getHeight() {
         return this.image.getHeight(null);
     }

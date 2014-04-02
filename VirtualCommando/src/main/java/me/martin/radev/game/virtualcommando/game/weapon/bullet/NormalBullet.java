@@ -21,6 +21,9 @@ public class NormalBullet extends Bullet {
     private static final double BULLET_WIDTH = 5d;
     private static final double BULLET_HEIGHT = 5d;
     
+    /**
+     *
+     */
     public NormalBullet() {
         super(NormalBullet.DAMAGE, NormalBullet.VELOCITY);
         GraphicalObject go = new GraphicalRectangle(0d, 0d,
@@ -28,6 +31,12 @@ public class NormalBullet extends Bullet {
         super.setObject(go);
     }
     
+    /**
+     *
+     * @param direction
+     * @param owner
+     * @return
+     */
     public NormalBullet getCopy(Vector2D direction, Player owner) {
         NormalBullet b = new NormalBullet();
         b.setDirection(direction);

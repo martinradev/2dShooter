@@ -14,6 +14,12 @@ public class Ellipse extends GeometricObject {
     private double majorAxis;
     private double minorAxis;
     
+    /**
+     *
+     * @param center
+     * @param majorAxis
+     * @param minorAxis
+     */
     public Ellipse(Vector2D center, double majorAxis, double minorAxis) {
         super();
         this.center = center;
@@ -21,28 +27,54 @@ public class Ellipse extends GeometricObject {
         this.minorAxis = minorAxis;
     }
 
+    /**
+     *
+     * @return
+     */
     public Vector2D getCenter() {
         return center;
     }
 
+    /**
+     *
+     * @return
+     */
     public double getMajorAxis() {
         return majorAxis;
     }
 
+    /**
+     *
+     * @return
+     */
     public double getMinorAxis() {
         return minorAxis;
     }
     
+    /**
+     *
+     * @param dx
+     * @param dy
+     */
     @Override
     public void translate(double dx, double dy) {
         center.translate(dx, dy);
     }
 
+    /**
+     *
+     * @param angle
+     */
     @Override
     public void rotate(double angle) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     *
+     * @param v2d
+     * @return
+     */
     @Override
     public boolean contains(Vector2D v2d) {
         if (v2d == null) return false;
@@ -52,11 +84,20 @@ public class Ellipse extends GeometricObject {
         return result <= 1d;
     }
 
+    /**
+     *
+     * @param center
+     * @param angle
+     */
     @Override
     public void relativeRotate(Vector2D center, double angle) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public Vector2D[] getBoundingBox() {
         Vector2D [] boundingBox = new Vector2D[2];

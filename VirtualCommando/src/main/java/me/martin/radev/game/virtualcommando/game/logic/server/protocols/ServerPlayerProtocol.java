@@ -23,11 +23,19 @@ public class ServerPlayerProtocol extends ServerProtocol {
     private Player player;
     private boolean connected;
 
+    /**
+     *
+     * @param connection
+     */
     public ServerPlayerProtocol(Socket connection) {
         super(connection);
         connected = true;
     }
 
+    /**
+     *
+     * @param command
+     */
     @Override
     protected void processCommand(String command) {
         String[] tokens = command.split(" ");
@@ -93,6 +101,10 @@ public class ServerPlayerProtocol extends ServerProtocol {
                 .getServerSync().updatePlayer(p);
     }
     
+    /**
+     *
+     * @param tokens
+     */
     public void processShootPlayer(String [] tokens) {
         Player p = Global.getGame().getPlayers().get(tokens[2]);
         if (p == null) {
@@ -106,6 +118,10 @@ public class ServerPlayerProtocol extends ServerProtocol {
                 .getServerSync().shootPlayer(p, direction);
     }
     
+    /**
+     *
+     * @param tokens
+     */
     public void processRotatePlayer(String [] tokens) {
         Player p = Global.getGame().getPlayers().get(tokens[2]);
         if (p == null) {
@@ -117,6 +133,9 @@ public class ServerPlayerProtocol extends ServerProtocol {
                 .getServerSync().rotatePlayer(p, angle);
     }
 
+    /**
+     *
+     */
     @Override
     public void disconnect() {
         super.disconnect();

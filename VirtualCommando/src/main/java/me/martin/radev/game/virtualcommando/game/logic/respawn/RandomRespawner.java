@@ -17,11 +17,19 @@ public class RandomRespawner extends Respawner {
     
     private Random randomGenerator;
     
+    /**
+     *
+     * @param respawnPlaces
+     */
     public RandomRespawner(List<GraphicalObject> respawnPlaces) {
         super(respawnPlaces);
         randomGenerator = new Random();
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public Vector2D getPosition() {
         int index = randomGenerator.nextInt(super.respawnPlaces.size());

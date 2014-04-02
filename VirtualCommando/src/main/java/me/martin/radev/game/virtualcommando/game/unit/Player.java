@@ -25,18 +25,54 @@ import me.martin.radev.game.virtualcommando.view.gui.asset.AssetType;
  */
 public abstract class Player extends GraphicalRectangle {
 
+    /**
+     *
+     */
     protected double angleOffset = 0d;
+    /**
+     *
+     */
     protected double currentAngleOfRotation = 0d;
+    /**
+     *
+     */
     protected int maxHealth;
+    /**
+     *
+     */
     protected int currentHealth;
+    /**
+     *
+     */
     protected double velocity = 2.2d;
+    /**
+     *
+     */
     protected LinearAnimation walkAnimation;
+    /**
+     *
+     */
     protected Sprite staticSprite;
+    /**
+     *
+     */
     protected Vector2D lastMovement;
+    /**
+     *
+     */
     protected Weapon weapon;
     private double respawnTime = 0d;
     private String name;
 
+    /**
+     *
+     * @param name
+     * @param maxHealth
+     * @param startingPosition
+     * @param gObjectWidth
+     * @param gObjectHeight
+     * @param color
+     */
     public Player(String name, int maxHealth, Vector2D startingPosition,
             int gObjectWidth, int gObjectHeight, Color color) {
         super(startingPosition,
@@ -60,6 +96,10 @@ public abstract class Player extends GraphicalRectangle {
         weapon = new NormalWeapon();
     }
 
+    /**
+     *
+     * @param direction
+     */
     public void move(Vector2D direction) {
         Vector2D xDirection = new Vector2D(direction.getX(), 0);
         Vector2D yDirection = new Vector2D(0, direction.getY());
@@ -100,10 +140,17 @@ public abstract class Player extends GraphicalRectangle {
         } 
     }
 
+    /**
+     *
+     */
     public void stopMovement() {
         super.setSprite(staticSprite);
     }
 
+    /**
+     *
+     * @param direction
+     */
     public void shoot(Vector2D direction) {
         if (respawnTime > 0d) {
             return;
@@ -132,6 +179,10 @@ public abstract class Player extends GraphicalRectangle {
         }
     }
 
+    /**
+     *
+     * @param damage
+     */
     public void takeDamage(int damage) {
         this.currentHealth -= damage;
         if (this.currentHealth <= 0) {
@@ -139,39 +190,74 @@ public abstract class Player extends GraphicalRectangle {
         }
     }
 
+    /**
+     *
+     * @param health
+     */
     public void regenerate(int health) {
         this.currentHealth = Math.min(currentHealth + health, maxHealth);
     }
 
+    /**
+     *
+     */
     public void regenerateFully() {
         this.currentHealth = maxHealth;
         updatePlayerStatus();
     }
 
+    /**
+     *
+     */
     public void kill() {
         this.respawnTime = 0d;
         Global.getGame().getGameEntities().getPlayers().remove(this);
         Global.getGame().getRespawner().addPlayer(this);
     }
 
+    /**
+     *
+     * @return
+     */
     public double getRespawnTime() {
         return respawnTime;
     }
 
+    /**
+     *
+     * @param time
+     */
     public void setRespawnTime(double time) {
         this.respawnTime = time;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getCurrentHealth() {
         return currentHealth;
     }
 
+    /**
+     *
+     */
     public abstract void processMovement();
 
+    /**
+     *
+     */
     public abstract void processRotation();
 
+    /**
+     *
+     */
     public abstract void processShooting();
 
+    /**
+     *
+     * @param angle
+     */
     public void rotate(double angle) {
         super.getBody().relativeRotate(
                 super.getBody().getCenter(),
@@ -203,30 +289,58 @@ public abstract class Player extends GraphicalRectangle {
         
     }
 
+    /**
+     *
+     * @return
+     */
     public double getCurrentAngleOfRotation() {
         return currentAngleOfRotation;
     }
 
+    /**
+     *
+     * @return
+     */
     public double getAngleOffset() {
         return angleOffset;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getMaxHealth() {
         return maxHealth;
     }
 
+    /**
+     *
+     * @return
+     */
     public Weapon getWeapon() {
         return weapon;
     }
 
+    /**
+     *
+     * @param maxHealth
+     */
     public void setMaxHealth(int maxHealth) {
         this.maxHealth = maxHealth;
     }
 
+    /**
+     *
+     * @param currentHealth
+     */
     public void setCurrentHealth(int currentHealth) {
         this.currentHealth = currentHealth;
     }

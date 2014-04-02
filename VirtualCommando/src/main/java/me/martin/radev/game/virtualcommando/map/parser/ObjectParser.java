@@ -28,6 +28,11 @@ public class ObjectParser implements Parser {
     private final String pointDelimiter = " ";
     private final String coordDelimiter = ",";
 
+    /**
+     *
+     * @param el
+     * @return
+     */
     @Override
     public GraphicalObject parseObject(Element el) {
         GraphicalObject gObject = null;
@@ -70,6 +75,11 @@ public class ObjectParser implements Parser {
         return gObject;
     }
 
+    /**
+     *
+     * @param el
+     * @return
+     */
     protected Class getObjectType(Element el) {
         if (el.getElementsByTagName("ellipse").getLength() != 0) {
             return GraphicalEllipse.class;
@@ -106,6 +116,11 @@ public class ObjectParser implements Parser {
         return pointList;
     }
 
+    /**
+     *
+     * @param properties
+     * @return
+     */
     @Override
     public Map<String, String> parseProperties(NodeList properties) {
         Map<String, String> propertiesMap = new HashMap<String, String>();
@@ -122,6 +137,11 @@ public class ObjectParser implements Parser {
         return propertiesMap;
     }
 
+    /**
+     *
+     * @param nList
+     * @return
+     */
     public List<GraphicalObject> parseObjectContainer(NodeList nList) {
         List<GraphicalObject> goList = new LinkedList<>();
         for (int i = 0; i < nList.getLength(); ++i) {

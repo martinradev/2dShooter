@@ -1,6 +1,0 @@
-add bots and implement random AI
-add respawning to game flow. check that it works
-check that the respawn works with the bots
-read the quake ai paper
-add waypoints to map so that bots follow them. Add some logic to the bots at first like
-hiding at places for some time. shooting at the nearest player etc.

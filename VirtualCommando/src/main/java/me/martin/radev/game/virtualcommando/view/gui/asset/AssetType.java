@@ -10,7 +10,22 @@ package me.martin.radev.game.virtualcommando.view.gui.asset;
  */
 public enum AssetType {
     
-    Sprite(),Sound(),Map(), Font();
+    /**
+     *
+     */
+    Sprite(),
+    /**
+     *
+     */
+    Sound(),
+    /**
+     *
+     */
+    Map(),
+    /**
+     *
+     */
+    Font();
     
     private String folder;
     
@@ -18,6 +33,10 @@ public enum AssetType {
         this.folder = this.toString().toLowerCase() + "s";
     }
 
+    /**
+     *
+     * @return
+     */
     public String getFolder() {
         return folder;
     }

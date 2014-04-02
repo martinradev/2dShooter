@@ -35,10 +35,23 @@ public abstract class Game {
     private List<Updatable> toUpdate;
     private String mapName;
     private GameFlow gameFlow;
+    /**
+     *
+     */
     protected Respawner respawner;
+    /**
+     *
+     */
     protected MyPlayer mainPlayer;
+    /**
+     *
+     */
     protected Map<String, Player> players;
 
+    /**
+     *
+     * @param mapName
+     */
     public Game(String mapName) {
         this.mapName = mapName;
         Global.setGame(this);
@@ -62,12 +75,19 @@ public abstract class Game {
         
     }
     
+    /**
+     *
+     */
     public void startGame() {
         timer = new Timer();
         loop = new GameLoop();
         timer.schedule(loop, 0, 1000 / Global.getFPS());
     }
     
+    /**
+     *
+     * @param p
+     */
     public void addPlayer(Player p) {
         if (p.getRespawnTime() >= respawner.getTimeTillRespawn()) {
             gameEntities.addPlayer(p);
@@ -91,6 +111,10 @@ public abstract class Game {
         screen.repaint();
     }
 
+    /**
+     *
+     * @param upd
+     */
     public void bind(Updatable upd) {
         this.toUpdate.add(upd);
     }
@@ -101,36 +125,68 @@ public abstract class Game {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public GameScreen getScreen() {
         return screen;
     }
 
+    /**
+     *
+     * @return
+     */
     public TiledMap getMap() {
         return map;
     }
 
+    /**
+     *
+     * @return
+     */
     public GameEntityContainer getGameEntities() {
         return gameEntities;
     }
 
+    /**
+     *
+     * @return
+     */
     public Respawner getRespawner() {
         return respawner;
     }
 
+    /**
+     *
+     * @return
+     */
     public MyPlayer getMainPlayer() {
         return mainPlayer;
     }
 
+    /**
+     *
+     * @return
+     */
     public Map<String, Player> getPlayers() {
         return players;
     }
     
+    /**
+     *
+     * @param p
+     */
     public void removePlayer(Player p) {
         players.remove(p.getName());
         gameEntities.getPlayers().remove(p);
         respawner.removePlayer(p);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getMapName() {
         return mapName;
     }

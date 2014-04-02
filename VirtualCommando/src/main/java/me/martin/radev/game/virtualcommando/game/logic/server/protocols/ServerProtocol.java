@@ -28,6 +28,10 @@ public abstract class ServerProtocol implements Runnable {
     private List<String> commands;
     private boolean connected;
     
+    /**
+     *
+     * @param connection
+     */
     public ServerProtocol(Socket connection) {
         this.connection = connection;
         try {
@@ -50,10 +54,18 @@ public abstract class ServerProtocol implements Runnable {
         connected = true;
     }
     
+    /**
+     *
+     * @param command
+     */
     public void sendCommand(String command) {
         output.println(command);
     }
 
+    /**
+     *
+     * @return
+     */
     public String readCommand() {
         try {
             String line = input.readLine();
@@ -69,6 +81,9 @@ public abstract class ServerProtocol implements Runnable {
         return null;
     }
 
+    /**
+     *
+     */
     @Override
     public void run() {
         String inputLine = null;
@@ -82,12 +97,23 @@ public abstract class ServerProtocol implements Runnable {
         disconnect();
     }
     
+    /**
+     *
+     * @param command
+     */
     protected abstract void processCommand(String command);
     
+    /**
+     *
+     * @return
+     */
     public boolean isConnected() {
         return connected && connection.isConnected();
     }
     
+    /**
+     *
+     */
     public void disconnect() {
         try {
             connection.close();

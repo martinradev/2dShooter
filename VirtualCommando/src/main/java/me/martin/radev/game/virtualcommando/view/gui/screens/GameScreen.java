@@ -24,6 +24,12 @@ public class GameScreen extends Screen {
     private HealthBar healthBar;
     private AmmoBar ammoBar;
 
+    /**
+     *
+     * @param gameEntities
+     * @param width
+     * @param height
+     */
     public GameScreen(GameEntityContainer gameEntities, int width, int height) {
         super();
         this.setSize(new Dimension(width, height));
@@ -46,14 +52,26 @@ public class GameScreen extends Screen {
 
     }
     
+    /**
+     *
+     * @return
+     */
     public AmmoBar getAmmoBar() {
         return ammoBar;
     }
 
+    /**
+     *
+     * @return
+     */
     public HealthBar getHealthBar() {
         return healthBar;
     }
 
+    /**
+     *
+     * @return
+     */
     public GameScreenMap getGameScreenMap() {
         return gameScreenMap;
     }

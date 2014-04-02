@@ -19,12 +19,21 @@ public class GameServerSynchronyzer {
     private List<ServerPlayer> players;
     private ServerCommandBuilder commandBuilder;
     
+    /**
+     *
+     * @param players
+     * @param commandBuilder
+     */
     public GameServerSynchronyzer(List<ServerPlayer> players,
             ServerCommandBuilder commandBuilder) {
         this.players = players;
         this.commandBuilder = commandBuilder;
     }
     
+    /**
+     *
+     * @param player
+     */
     public void updatePlayer(Player player) {
         for (ServerPlayer pl : players) {
             if (pl != player) {
@@ -35,6 +44,11 @@ public class GameServerSynchronyzer {
         }
     }
     
+    /**
+     *
+     * @param player
+     * @param direction
+     */
     public void shootPlayer(Player player, Vector2D direction) {
         for (ServerPlayer pl : players) {
             if (pl != player) {
@@ -46,6 +60,11 @@ public class GameServerSynchronyzer {
         }
     }
     
+    /**
+     *
+     * @param player
+     * @param angle
+     */
     public void rotatePlayer(Player player, double angle) {
         for (ServerPlayer pl : players) {
             if (pl != player) {

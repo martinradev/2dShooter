@@ -10,6 +10,21 @@ package me.martin.radev.game.virtualcommando.view.gui.entity.buttons;
  */
 public enum HomeScreenButtonTypes {
     
-    Singleplayer, Multiplayer, Connect, Exit;
+    /**
+     *
+     */
+    Singleplayer,
+    /**
+     *
+     */
+    Multiplayer,
+    /**
+     *
+     */
+    Connect,
+    /**
+     *
+     */
+    Exit;
     
 }

@@ -15,6 +15,16 @@ import org.w3c.dom.NodeList;
  */
 public interface Parser {
     
+    /**
+     *
+     * @param properties
+     * @return
+     */
     Map<String, String> parseProperties(NodeList properties);
+    /**
+     *
+     * @param el
+     * @return
+     */
     GraphicalObject parseObject(Element el);
 }

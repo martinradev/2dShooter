@@ -22,11 +22,19 @@ public class GameFlow {
     private GameEntityContainer gameEntities;
     private Respawner respawnerLogic;
     
+    /**
+     *
+     * @param gameEntities
+     * @param respawner
+     */
     public GameFlow(GameEntityContainer gameEntities, Respawner respawner) {
         this.gameEntities = gameEntities;
         this.respawnerLogic = respawner;
     }
 
+    /**
+     *
+     */
     public void processGameFlow() {
         this.processObjectMovement();
         respawnerLogic.processRespawnQueue();
@@ -47,14 +55,29 @@ public class GameFlow {
         }
     }
     
+    /**
+     *
+     * @param p
+     * @return
+     */
     public boolean isPlayerColliding(Player p) {
         return this.isColliding(gameEntities.getMapObjects(), p);
     }
 
+    /**
+     *
+     * @param b
+     * @return
+     */
     public boolean isBulletCollidingWithMap(Bullet b) {
         return this.isColliding(gameEntities.getMapObjects(), b.getObject());
     }
 
+    /**
+     *
+     * @param b
+     * @return
+     */
     public Player isBulletCollidingWithPlayer(Bullet b) {
         GeometricObject objBody = b.getObject().getBody();
         for (GraphicalObject go : gameEntities.getPlayers()) {
@@ -68,6 +91,12 @@ public class GameFlow {
         return null;
     }
 
+    /**
+     *
+     * @param objectList
+     * @param obj
+     * @return
+     */
     public boolean isColliding(List<GraphicalObject> objectList, GraphicalObject obj) {
         GeometricObject objBody = obj.getBody();
         for (GraphicalObject go : objectList) {

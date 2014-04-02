@@ -29,86 +29,170 @@ public class Global {
     private static int fps = 100;
     private static GameFlow gameFlow;
     
+    /**
+     *
+     * @param manager
+     */
     public static void setAssetManager(AssetManager manager) {
         Global.assetManager = manager;
     }
     
+    /**
+     *
+     * @return
+     */
     public static AssetManager getAssetManager() {
         return Global.assetManager;
     }
 
+    /**
+     *
+     * @param exceptionHandler
+     */
     public static void setExceptionHandler(ExceptionHandler exceptionHandler) {
         Global.exceptionHandler = exceptionHandler;
     }
 
+    /**
+     *
+     * @return
+     */
     public static ExceptionHandler getExceptionHandler() {
         return exceptionHandler;
     }
 
+    /**
+     *
+     * @return
+     */
     public static int getWindowHeight() {
         return windowHeight;
     }
 
+    /**
+     *
+     * @return
+     */
     public static int getWindowWidth() {
         return windowWidth;
     }
 
+    /**
+     *
+     * @param windowHeight
+     */
     public static void setWindowHeight(int windowHeight) {
         Global.windowHeight = windowHeight;
     }
 
+    /**
+     *
+     * @param windowWidth
+     */
     public static void setWindowWidth(int windowWidth) {
         Global.windowWidth = windowWidth;
     }
 
+    /**
+     *
+     * @param defaultWindowHeight
+     */
     public static void setDefaultWindowHeight(int defaultWindowHeight) {
         Global.defaultWindowHeight = defaultWindowHeight;
     }
 
+    /**
+     *
+     * @param defaultWindowWidth
+     */
     public static void setDefaultWindowWidth(int defaultWindowWidth) {
         Global.defaultWindowWidth = defaultWindowWidth;
     }
 
+    /**
+     *
+     * @return
+     */
     public static int getDefaultWindowHeight() {
         return defaultWindowHeight;
     }
 
+    /**
+     *
+     * @return
+     */
     public static int getDefaultWindowWidth() {
         return defaultWindowWidth;
     }
 
+    /**
+     *
+     * @param scalingFactor
+     */
     public static void setScalingFactor(double scalingFactor) {
         Global.scalingFactor = scalingFactor;
     }
 
+    /**
+     *
+     * @return
+     */
     public static double getScalingFactor() {
         return scalingFactor;
     }
 
+    /**
+     *
+     * @return
+     */
     public static GameView getFrame() {
         return frame;
     }
 
+    /**
+     *
+     * @param gv
+     */
     public static void setFrame(GameView gv) {
         Global.frame = gv;
     }
 
+    /**
+     *
+     * @return
+     */
     public static Game getGame() {
         return game;
     }
 
+    /**
+     *
+     * @param game
+     */
     public static void setGame(Game game) {
         Global.game = game;
     }
 
+    /**
+     *
+     * @return
+     */
     public static int getFPS() {
         return fps;
     }
 
+    /**
+     *
+     * @param gameFlow
+     */
     public static void setGameFlow(GameFlow gameFlow) {
         Global.gameFlow = gameFlow;
     }
 
+    /**
+     *
+     * @return
+     */
     public static GameFlow getGameFlow() {
         return gameFlow;
     }

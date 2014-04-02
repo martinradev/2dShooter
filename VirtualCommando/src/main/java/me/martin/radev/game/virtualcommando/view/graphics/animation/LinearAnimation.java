@@ -23,17 +23,28 @@ public class LinearAnimation implements Animation, Updatable {
     private int framesPerSprite;
     private int framesCount;
     
+    /**
+     *
+     * @param sprites
+     * @param framesPerSprite
+     */
     public LinearAnimation(Sprite [] sprites, int framesPerSprite) {
         spriteList.addAll(Arrays.asList(sprites));
         this.framesPerSprite = framesPerSprite;
         this.framesCount = 0;
     }
     
+    /**
+     *
+     */
     public LinearAnimation() {
         spriteList = new ArrayList<>();
         this.framesPerSprite = Global.getFPS();
     }
     
+    /**
+     *
+     */
     @Override
     public void next() {
         if (spriteList.isEmpty()) {
@@ -45,11 +56,18 @@ public class LinearAnimation implements Animation, Updatable {
         currentIndex = (currentIndex+1)%spriteList.size();
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public Sprite getCurrent() {
         return spriteList.get(currentIndex);
     }
 
+    /**
+     *
+     */
     @Override
     public void update() {
         ++framesCount;
@@ -59,6 +77,10 @@ public class LinearAnimation implements Animation, Updatable {
         }
     }
     
+    /**
+     *
+     * @param spr
+     */
     public void addSprite(Sprite spr) {
         this.spriteList.add(spr);
     }

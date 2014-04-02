@@ -22,6 +22,10 @@ public class SoundEffect implements Sound {
 
     private Clip clip;
     
+    /**
+     *
+     * @param f
+     */
     public SoundEffect(File f) {
         try {
             loadSoundEffect(f);
@@ -48,6 +52,9 @@ public class SoundEffect implements Sound {
         clip.open(ais);
     }
     
+    /**
+     *
+     */
     @Override
     public void play() {
         clip.start();

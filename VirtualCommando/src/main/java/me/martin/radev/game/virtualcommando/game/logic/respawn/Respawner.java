@@ -19,17 +19,31 @@ import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalObject
  */
 public abstract class Respawner {
 
+    /**
+     *
+     */
     protected List<GraphicalObject> respawnPlaces;
     private List<Player> playersToRespawn;
     private double timeTillRespawn = 2d;
 
+    /**
+     *
+     * @param respawnPlaces
+     */
     public Respawner(List<GraphicalObject> respawnPlaces) {
         this.respawnPlaces = respawnPlaces;
         playersToRespawn = new LinkedList<>();
     }
 
+    /**
+     *
+     * @return
+     */
     public abstract Vector2D getPosition();
 
+    /**
+     *
+     */
     public void processRespawnQueue() {
         double deltaTime = 1d / Global.getFPS();
         LinkedList<Player> copy = new LinkedList<>(playersToRespawn);
@@ -55,14 +69,26 @@ public abstract class Respawner {
         Global.getGame().getGameEntities().getPlayers().add(p);
     }
 
+    /**
+     *
+     * @param p
+     */
     public void addPlayer(Player p) {
         playersToRespawn.add(p);
     }
     
+    /**
+     *
+     * @param p
+     */
     public void removePlayer(Player p) {
         playersToRespawn.remove(p);
     }
 
+    /**
+     *
+     * @return
+     */
     public double getTimeTillRespawn() {
         return timeTillRespawn;
     }

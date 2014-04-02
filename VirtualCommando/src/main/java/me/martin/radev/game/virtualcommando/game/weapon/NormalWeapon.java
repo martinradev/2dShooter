@@ -21,10 +21,20 @@ public class NormalWeapon extends Weapon {
     
     private static final int totalAmmuCapacity = 5000;
     
+    /**
+     *
+     */
     public NormalWeapon() {
         super(new NormalBullet(), NormalWeapon.totalAmmuCapacity);
     }
 
+    /**
+     *
+     * @param direction
+     * @param position
+     * @param player
+     * @return
+     */
     @Override
     public Bullet produceBullet(Vector2D direction, Vector2D position, Player player) {
         if (super.getCurrentAmmuCount() == 0) return null;

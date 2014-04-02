@@ -12,5 +12,11 @@ import java.awt.Graphics2D;
  */
 public interface Renderable {
 
+    /**
+     *
+     * @param g2d
+     * @param xOffset
+     * @param yOffset
+     */
     void render(Graphics2D g2d, int xOffset, int yOffset);
 }

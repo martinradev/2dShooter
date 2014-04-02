@@ -31,6 +31,10 @@ public class PlayerMouseKeyBoardAction {
     private ConcurrentHashSet<Integer> keysToProcess;
     private Point currentPoint;
 
+    /**
+     *
+     * @param player
+     */
     public PlayerMouseKeyBoardAction(MyPlayer player) {
         this.player = player;
         currentPoint = new Point(0, 0);
@@ -41,22 +45,42 @@ public class PlayerMouseKeyBoardAction {
         Global.getFrame().requestFocus();
     }
 
+    /**
+     *
+     * @return
+     */
     public Set<Integer> getKeysToProcess() {
         return keysToProcess.getHashSet();
     }
 
+    /**
+     *
+     * @return
+     */
     public KeyListener getKeyListener() {
         return keyListener;
     }
 
+    /**
+     *
+     * @return
+     */
     public MouseListener getMouseListener() {
         return mouseListener;
     }
 
+    /**
+     *
+     * @return
+     */
     public MouseMotionListener getMouseMotionListener() {
         return mouseMotionListener;
     }
 
+    /**
+     *
+     * @return
+     */
     public Point getCurrentPoint() {
         return currentPoint;
     }
@@ -112,21 +136,39 @@ public class PlayerMouseKeyBoardAction {
         }
     }
 
+    /**
+     *
+     */
     public class PlayerKeyListener implements KeyListener {
 
+        /**
+         *
+         */
         public PlayerKeyListener() {
             keysToProcess = new ConcurrentHashSet<Integer>();
         }
 
+        /**
+         *
+         * @param ke
+         */
         @Override
         public void keyTyped(KeyEvent ke) {
         }
 
+        /**
+         *
+         * @param ke
+         */
         @Override
         public void keyPressed(KeyEvent ke) {
             keysToProcess.add(ke.getKeyCode());
         }
 
+        /**
+         *
+         * @param ke
+         */
         @Override
         public void keyReleased(KeyEvent ke) {
             keysToProcess.remove(ke.getKeyCode());

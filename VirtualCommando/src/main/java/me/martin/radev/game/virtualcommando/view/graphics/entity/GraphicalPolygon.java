@@ -17,14 +17,30 @@ import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
  */
 public class GraphicalPolygon extends GraphicalObject {
 
+    /**
+     *
+     * @param points
+     * @param color
+     */
     public GraphicalPolygon(List<Vector2D> points, Color color) {
         super(new Polygon(points), color);
     }
 
+    /**
+     *
+     * @param points
+     * @param color
+     */
     public GraphicalPolygon(Vector2D[] points, Color color) {
         super(new Polygon(points), color);
     }
 
+    /**
+     *
+     * @param g2d
+     * @param xOffset
+     * @param yOffset
+     */
     @Override
     public void render(Graphics2D g2d, int xOffset, int yOffset) {
         g2d.setColor(super.getColor());
@@ -39,6 +55,10 @@ public class GraphicalPolygon extends GraphicalObject {
         g2d.fill(polygon);
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public Polygon getBody() {
         return (Polygon)super.getBody(); //To change body of generated methods, choose Tools | Templates.
