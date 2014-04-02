@@ -14,7 +14,8 @@ import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
 public class DummyPlayer extends Player {
 
     /**
-     *
+     * Creates a dummy player. The dummy player doesn't do anything on it's own.
+     * It receives commands from another object like a {@link GameServerSynchronizer}
      * @param name
      * @param posX
      * @param posY

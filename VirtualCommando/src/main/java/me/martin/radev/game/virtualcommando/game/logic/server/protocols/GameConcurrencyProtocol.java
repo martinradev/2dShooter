@@ -20,7 +20,9 @@ public class GameConcurrencyProtocol extends ServerProtocol {
     private ServerCommandBuilder commandBuilder;
 
     /**
-     *
+     * Creates a game concurrency protocol. This protocol is used for the client
+     * who is connected on the server. It accordingly receives information about the states 
+     * of the other players of the server and sends information about the state of the main player.
      * @param connection
      * @param commandBuilder
      */
@@ -31,7 +33,7 @@ public class GameConcurrencyProtocol extends ServerProtocol {
     }
 
     /**
-     *
+     * processes a command from the server
      * @param command
      */
     @Override
@@ -59,7 +61,6 @@ public class GameConcurrencyProtocol extends ServerProtocol {
                 processRotatePlayer(tokens);
             }
         }
-        System.out.println(command);
     }
 
     private void processAddPlayer(String[] tokens) {
@@ -99,11 +100,8 @@ public class GameConcurrencyProtocol extends ServerProtocol {
         p.setRespawnTime(respawnTime);
     }
     
-    /**
-     *
-     * @param tokens
-     */
-    public void processShootPlayer(String [] tokens) {
+   
+    private void processShootPlayer(String [] tokens) {
         Player p = Global.getGame().getPlayers().get(tokens[2]);
         if (p == null) {
             return;
@@ -113,11 +111,8 @@ public class GameConcurrencyProtocol extends ServerProtocol {
         p.shoot(new Vector2D(directionX, directionY));
     }
     
-    /**
-     *
-     * @param tokens
-     */
-    public void processRotatePlayer(String [] tokens) {
+
+    private void processRotatePlayer(String [] tokens) {
         Player p = Global.getGame().getPlayers().get(tokens[2]);
         if (p == null) {
             return;
@@ -127,7 +122,8 @@ public class GameConcurrencyProtocol extends ServerProtocol {
     }
 
     /**
-     *
+     * updates the player on the server. Accordingly it generates an
+     * update command and sends information to the server
      * @param p
      */
     public void updatePlayer(Player p) {
@@ -136,7 +132,7 @@ public class GameConcurrencyProtocol extends ServerProtocol {
     }
 
     /**
-     *
+     * Generates a shoot player command and sends it to the server
      * @param p
      * @param direction
      */
@@ -147,7 +143,7 @@ public class GameConcurrencyProtocol extends ServerProtocol {
     }
     
     /**
-     *
+     * Generates a rotate player command and sends it to the server
      * @param p
      * @param angle
      */

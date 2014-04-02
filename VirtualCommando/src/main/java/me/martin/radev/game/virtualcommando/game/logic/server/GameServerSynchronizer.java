@@ -14,24 +14,25 @@ import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
  *
  * @author Marto
  */
-public class GameServerSynchronyzer {
+public class GameServerSynchronizer {
     
     private List<ServerPlayer> players;
     private ServerCommandBuilder commandBuilder;
     
     /**
-     *
+     * Creates a game synchronizer. The game synchronizer is responsible 
+     * for synchronizing the concurrency between players in the server
      * @param players
      * @param commandBuilder
      */
-    public GameServerSynchronyzer(List<ServerPlayer> players,
+    public GameServerSynchronizer(List<ServerPlayer> players,
             ServerCommandBuilder commandBuilder) {
         this.players = players;
         this.commandBuilder = commandBuilder;
     }
     
     /**
-     *
+     * updates the location of a player on the screen for every other server player
      * @param player
      */
     public void updatePlayer(Player player) {
@@ -45,7 +46,7 @@ public class GameServerSynchronyzer {
     }
     
     /**
-     *
+     * notifies that a player has shot in a direction.
      * @param player
      * @param direction
      */
@@ -61,7 +62,7 @@ public class GameServerSynchronyzer {
     }
     
     /**
-     *
+     * notifies for rotation of a player. Every player will be called accordingly.
      * @param player
      * @param angle
      */

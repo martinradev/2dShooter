@@ -6,9 +6,7 @@ package me.martin.radev.game.virtualcommando.game.logic.respawn;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 import me.martin.radev.game.virtualcommando.Global;
-import me.martin.radev.game.virtualcommando.game.unit.MyPlayer;
 import me.martin.radev.game.virtualcommando.game.unit.Player;
 import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
 import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalObject;
@@ -36,13 +34,14 @@ public abstract class Respawner {
     }
 
     /**
-     *
+     * An abstract method for returning a position.
      * @return
      */
     public abstract Vector2D getPosition();
 
     /**
-     *
+     * Given a respawn queue we update the time left to respawn and accordingly
+     * respawn the player
      */
     public void processRespawnQueue() {
         double deltaTime = 1d / Global.getFPS();
@@ -70,7 +69,7 @@ public abstract class Respawner {
     }
 
     /**
-     *
+     * adds a player to the respawn list
      * @param p
      */
     public void addPlayer(Player p) {
@@ -78,7 +77,7 @@ public abstract class Respawner {
     }
     
     /**
-     *
+     * removes a {@link Player} from the respawn list
      * @param p
      */
     public void removePlayer(Player p) {
@@ -86,7 +85,8 @@ public abstract class Respawner {
     }
 
     /**
-     *
+     * returns the pre-defined time till the respawn. Every player must wait that time
+     * in order to respawn
      * @return
      */
     public double getTimeTillRespawn() {

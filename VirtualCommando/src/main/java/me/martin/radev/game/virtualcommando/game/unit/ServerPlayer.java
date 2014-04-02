@@ -5,10 +5,6 @@
 package me.martin.radev.game.virtualcommando.game.unit;
 
 import java.awt.Color;
-import java.util.List;
-import java.util.Queue;
-import me.martin.radev.game.virtualcommando.Global;
-import me.martin.radev.game.virtualcommando.game.logic.MultiPlayerGame;
 import me.martin.radev.game.virtualcommando.game.logic.server.protocols.ServerPlayerProtocol;
 import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
 
@@ -21,7 +17,7 @@ public class ServerPlayer extends Player {
     private ServerPlayerProtocol protocol;
     
     /**
-     *
+     * A player which is added on the server side. This player contains the server protocol.
      * @param name
      * @param position
      * @param protocol
@@ -60,7 +56,7 @@ public class ServerPlayer extends Player {
     }
 
     /**
-     *
+     * returns the protocol
      * @return
      */
     public ServerPlayerProtocol getProtocol() {

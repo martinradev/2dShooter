@@ -14,7 +14,8 @@ import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
 public class ServerCommandBuilder {
     
     /**
-     *
+     * The class is responsible for building server commands like adding a player,
+     * deleting a player, etc
      */
     public ServerCommandBuilder() {
         
@@ -22,7 +23,7 @@ public class ServerCommandBuilder {
     
     // add|del player|object [optional] coordX coordY curHealth maxHealth curBullets maxBullets respawnTime
     /**
-     *
+     * return an add player command for a {@link Player} object.
      * @param p
      * @return
      */
@@ -38,7 +39,8 @@ public class ServerCommandBuilder {
     }
     
     /**
-     *
+     * returns a map command for a given map name. This command should be handled so that
+     * it loads the map.
      * @param mapName
      * @return
      */
@@ -49,7 +51,7 @@ public class ServerCommandBuilder {
     }
     
     /**
-     *
+     * returns a command with information about the player like 
      * @param p
      * @return
      */
@@ -65,7 +67,7 @@ public class ServerCommandBuilder {
     }
     
     /**
-     *
+     * returns a server command for the movement of a player p in a given direction
      * @param p
      * @param direction
      * @return
@@ -77,7 +79,7 @@ public class ServerCommandBuilder {
     }
     
     /**
-     *
+     * returns a command for a shooting of player with a given direction
      * @param p
      * @param direction
      * @return
@@ -89,7 +91,7 @@ public class ServerCommandBuilder {
     }
     
     /**
-     *
+     * returns a command for the rotation of a player with a given angle
      * @param p
      * @param angle
      * @return

@@ -11,8 +11,6 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import me.martin.radev.game.virtualcommando.Global;
 import me.martin.radev.game.virtualcommando.exception.ExceptionHelper;
 
@@ -29,7 +27,7 @@ public abstract class ServerProtocol implements Runnable {
     private boolean connected;
     
     /**
-     *
+     * Creates a server protocol with a given connection socket.
      * @param connection
      */
     public ServerProtocol(Socket connection) {
@@ -55,7 +53,7 @@ public abstract class ServerProtocol implements Runnable {
     }
     
     /**
-     *
+     * sends a command to the socket
      * @param command
      */
     public void sendCommand(String command) {
@@ -63,7 +61,7 @@ public abstract class ServerProtocol implements Runnable {
     }
 
     /**
-     *
+     * reads a command from the socket
      * @return
      */
     public String readCommand() {
@@ -104,7 +102,7 @@ public abstract class ServerProtocol implements Runnable {
     protected abstract void processCommand(String command);
     
     /**
-     *
+     * checks whether the socket is connected.
      * @return
      */
     public boolean isConnected() {
@@ -112,7 +110,7 @@ public abstract class ServerProtocol implements Runnable {
     }
     
     /**
-     *
+     * disconnects the socket
      */
     public void disconnect() {
         try {

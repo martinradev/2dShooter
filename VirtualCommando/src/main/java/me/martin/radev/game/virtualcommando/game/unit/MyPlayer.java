@@ -21,7 +21,7 @@ public class MyPlayer extends Player {
     private PlayerMouseKeyBoardAction actionListener;
 
     /**
-     *
+     * This is the main player in the game. The one which is controlled by an input device
      */
     public MyPlayer() {
         super(Settings.NAME, PlayerType.NormalPlayer.getMaxHealth(),
@@ -43,7 +43,8 @@ public class MyPlayer extends Player {
     }
 
     /**
-     *
+     * Processed the movement of the main player. The commands are received from a
+     * set of pressed keys.
      */
     @Override
     public void processMovement() {
@@ -72,7 +73,7 @@ public class MyPlayer extends Player {
     }
 
     /**
-     *
+     * Processed the rotation of the main player accordingly to the mouse pointer.
      */
     @Override
     public void processRotation() {
@@ -85,7 +86,7 @@ public class MyPlayer extends Player {
     }
 
     /**
-     *
+     * Shoots at a given direction. The direction must be a unit vector. 
      * @param direction
      */
     @Override
@@ -96,7 +97,7 @@ public class MyPlayer extends Player {
     }
 
     /**
-     *
+     * Doesn't need to process the shooting
      */
     @Override
     public void processShooting() {
@@ -104,7 +105,7 @@ public class MyPlayer extends Player {
     }
 
     /**
-     *
+     * Takes damage.
      * @param damage
      */
     @Override
@@ -115,7 +116,7 @@ public class MyPlayer extends Player {
     }
 
     /**
-     *
+     * regenerates the health to maximum
      */
     @Override
     public void regenerateFully() {

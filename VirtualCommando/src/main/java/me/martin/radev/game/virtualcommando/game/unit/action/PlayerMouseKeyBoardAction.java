@@ -4,7 +4,6 @@
  */
 package me.martin.radev.game.virtualcommando.game.unit.action;
 
-import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;

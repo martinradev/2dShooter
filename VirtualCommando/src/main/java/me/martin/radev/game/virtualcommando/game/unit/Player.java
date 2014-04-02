@@ -65,7 +65,7 @@ public abstract class Player extends GraphicalRectangle {
     private String name;
 
     /**
-     *
+     * Creates a player with a given name, maxHealth, startingPosition, width, height and oclor
      * @param name
      * @param maxHealth
      * @param startingPosition
@@ -97,7 +97,7 @@ public abstract class Player extends GraphicalRectangle {
     }
 
     /**
-     *
+     * moves the player to a given direction. The direction is multiplied by the velocity of the player
      * @param direction
      */
     public void move(Vector2D direction) {
@@ -141,14 +141,16 @@ public abstract class Player extends GraphicalRectangle {
     }
 
     /**
-     *
+     * stops the movements of the player. The sprite of the player will
+     * be set to static.
      */
     public void stopMovement() {
         super.setSprite(staticSprite);
     }
 
     /**
-     *
+     * The player shoots at a given direction. 
+     * This produces a bullet. The direction should be a unit vector
      * @param direction
      */
     public void shoot(Vector2D direction) {
@@ -180,7 +182,8 @@ public abstract class Player extends GraphicalRectangle {
     }
 
     /**
-     *
+     * the player takes damage. If the damage is more than the current health,
+     * the player is killed
      * @param damage
      */
     public void takeDamage(int damage) {
@@ -191,7 +194,7 @@ public abstract class Player extends GraphicalRectangle {
     }
 
     /**
-     *
+     * the player regenerates with a given health.
      * @param health
      */
     public void regenerate(int health) {
@@ -199,7 +202,7 @@ public abstract class Player extends GraphicalRectangle {
     }
 
     /**
-     *
+     * the player regenerate to its maximum health
      */
     public void regenerateFully() {
         this.currentHealth = maxHealth;
@@ -207,7 +210,8 @@ public abstract class Player extends GraphicalRectangle {
     }
 
     /**
-     *
+     * the player is killed. The player is added to be processed by the respawner
+     * and removed from the rendering objects
      */
     public void kill() {
         this.respawnTime = 0d;
@@ -216,7 +220,7 @@ public abstract class Player extends GraphicalRectangle {
     }
 
     /**
-     *
+     * returns the current respawn time of the player
      * @return
      */
     public double getRespawnTime() {
@@ -224,7 +228,7 @@ public abstract class Player extends GraphicalRectangle {
     }
 
     /**
-     *
+     * sets the respawn time of the player
      * @param time
      */
     public void setRespawnTime(double time) {
@@ -232,7 +236,7 @@ public abstract class Player extends GraphicalRectangle {
     }
 
     /**
-     *
+     * returns the current health of the player
      * @return
      */
     public int getCurrentHealth() {
@@ -255,7 +259,7 @@ public abstract class Player extends GraphicalRectangle {
     public abstract void processShooting();
 
     /**
-     *
+     * rotates the player to a given angle
      * @param angle
      */
     public void rotate(double angle) {
@@ -290,15 +294,7 @@ public abstract class Player extends GraphicalRectangle {
     }
 
     /**
-     *
-     * @return
-     */
-    public double getCurrentAngleOfRotation() {
-        return currentAngleOfRotation;
-    }
-
-    /**
-     *
+     * returns the current angle of rotation
      * @return
      */
     public double getAngleOffset() {
@@ -306,7 +302,7 @@ public abstract class Player extends GraphicalRectangle {
     }
 
     /**
-     *
+     * returns the name of the player
      * @return
      */
     public String getName() {
@@ -314,7 +310,7 @@ public abstract class Player extends GraphicalRectangle {
     }
 
     /**
-     *
+     * returns the max health of the player
      * @return
      */
     public int getMaxHealth() {
@@ -322,7 +318,7 @@ public abstract class Player extends GraphicalRectangle {
     }
 
     /**
-     *
+     * returns the weapon of the player
      * @return
      */
     public Weapon getWeapon() {
@@ -330,7 +326,7 @@ public abstract class Player extends GraphicalRectangle {
     }
 
     /**
-     *
+     * sets the max health of the player
      * @param maxHealth
      */
     public void setMaxHealth(int maxHealth) {
@@ -338,7 +334,7 @@ public abstract class Player extends GraphicalRectangle {
     }
 
     /**
-     *
+     * returns the current health of the player
      * @param currentHealth
      */
     public void setCurrentHealth(int currentHealth) {

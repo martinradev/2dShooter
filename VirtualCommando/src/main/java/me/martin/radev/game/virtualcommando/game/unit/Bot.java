@@ -18,7 +18,7 @@ public class Bot extends Player  {
     private AILogic ai;
     
     /**
-     *
+     * Creates a bot with a given name. The bot is controlled by AI.
      * @param name
      */
     public Bot(String name) {
@@ -30,7 +30,7 @@ public class Bot extends Player  {
     }
     
     /**
-     *
+     * processes the movement of the bot. The commands are returned from the AI logic.
      */
     @Override
     public void processMovement() {
@@ -39,7 +39,7 @@ public class Bot extends Player  {
     }
 
     /**
-     *
+     * processes the rotation of the bot. The commands are returned from the AI logic.
      */
     @Override
     public void processRotation() {
@@ -47,7 +47,7 @@ public class Bot extends Player  {
     }
 
     /**
-     *
+     * processes the shooting of the bot. The commands are returned from the AI logic.
      */
     @Override
     public void processShooting() {

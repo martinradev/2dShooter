@@ -15,7 +15,7 @@ import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalObject
  *
  * @author Marto
  */
-public abstract class Bullet implements Cloneable {
+public abstract class Bullet {
     
     private int damage;
     private Vector2D direction;

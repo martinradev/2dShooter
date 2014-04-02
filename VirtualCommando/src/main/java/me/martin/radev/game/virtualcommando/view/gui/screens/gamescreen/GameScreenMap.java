@@ -4,15 +4,18 @@
  */
 package me.martin.radev.game.virtualcommando.view.gui.screens.gamescreen;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.image.BufferedImage;
 import java.util.List;
 import javax.swing.JPanel;
 import me.martin.radev.game.virtualcommando.Global;
 import me.martin.radev.game.virtualcommando.game.graphics.GameEntityContainer;
 import me.martin.radev.game.virtualcommando.game.unit.Player;
 import me.martin.radev.game.virtualcommando.game.weapon.bullet.Bullet;
+import me.martin.radev.game.virtualcommando.geometry.MathUtil;
 import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
 import me.martin.radev.game.virtualcommando.map.TiledMap;
 import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalObject;
@@ -25,9 +28,8 @@ import me.martin.radev.game.virtualcommando.view.gui.screens.Screen;
 public class GameScreenMap extends JPanel {
 
     private GameEntityContainer gameEntities;
-    private int width;
-    private int height;
-
+    private final double DEFAULT_VISION_RANGE = 285d;
+    private int mask = 0;
     /**
      *
      * @param gameEntities
@@ -40,6 +42,11 @@ public class GameScreenMap extends JPanel {
         this.gameEntities = gameEntities;
         this.setFocusable(true);
         this.requestFocusInWindow();
+        for (int i = 1; i<= 32; ++i) {
+            if (i%2==0) {
+                mask |= (1<<i);
+            }
+        }
     }
 
     /**
@@ -81,28 +88,63 @@ public class GameScreenMap extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
-        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+        int width = this.getParent().getWidth();
+        int height = this.getParent().getHeight();
+        BufferedImage image = 
+                new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D imageGraphics = image.createGraphics();
+        imageGraphics.setBackground(Color.white);
+        imageGraphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                 RenderingHints.VALUE_ANTIALIAS_ON);
 
 
-        Vector2D offset = this.getScreenOffset();
+        Vector2D offset = new Vector2D(this.getScreenOffset());
 
-        g2d.translate(-offset.getX(), -offset.getY());
+        imageGraphics.translate(-offset.getX(), -offset.getY());
         for (GraphicalObject go : gameEntities.getMapObjects()) {
-            go.render(g2d, 0, 0);
+            go.render(imageGraphics, 0, 0);
         }
 
+        Player mainPlayer = Global.getGame().getMainPlayer();
         List<GraphicalObject> players = gameEntities.getPlayers();
         for (int i = 0; i < players.size(); ++i) {
             Player p = ((Player) players.get(i));
-            p.render(g2d, 0, 0, p.getAngleOffset());
+            if (this.canSee(mainPlayer, p)) {
+                p.render(imageGraphics, 0, 0, p.getAngleOffset());
+            }
         }
 
         List<Bullet> bullets = gameEntities.getBullets();
         for (int i = 0; i < bullets.size(); ++i) {
             Bullet bullet = ((Bullet) bullets.get(i));
-            bullet.render(g2d, 0, 0);
+            if (this.canSee(mainPlayer, bullet.getObject())) {
+                bullet.render(imageGraphics, 0, 0);
+            }
         }
-        g2d.translate(offset.getX(), offset.getY());
+        imageGraphics.translate(offset.getX(), offset.getY());
+        imageGraphics.dispose();
+        offset.setX(mainPlayer.getBody().getCenter().getX() - offset.getX());
+        offset.setY(mainPlayer.getBody().getCenter().getY() - offset.getY());
+        drawFogOfWar(image, offset);
+        g2d.drawImage(image, null, this);
     }
+    
+    private void drawFogOfWar(BufferedImage img, Vector2D playerPosition) {
+        Vector2D tmp = new Vector2D(0,0);
+        for (int i = 0; i < img.getWidth(); ++i) {
+            for (int j = 0; j < img.getHeight(); ++j) {
+                tmp.setX(i);
+                tmp.setY(j);
+                if (MathUtil.distance(tmp, playerPosition) > DEFAULT_VISION_RANGE) {
+                    img.setRGB(i, j, img.getRGB(i, j)&mask);
+                }
+            }
+        }
+    }
+
+    private boolean canSee(GraphicalObject a, GraphicalObject b) {
+        double distance = MathUtil.distance(a.getBody().getCenter(), b.getBody().getCenter());
+        return distance <= DEFAULT_VISION_RANGE;
+    }
+    
 }

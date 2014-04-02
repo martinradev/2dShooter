@@ -27,11 +27,12 @@ public class GameServer implements Runnable {
     private String password;
     private ServerSocket server;
     private ServerCommandBuilder commandBuilder;
-    private GameServerSynchronyzer serverSync;
+    private GameServerSynchronizer serverSync;
     private List<ServerPlayer> serverPlayers;
 
     /**
-     *
+     * Creates a GameServer. The GameServer is responsible for handling part of the logic
+     * for the multi player server.
      * @param port
      * @param password
      */
@@ -40,7 +41,7 @@ public class GameServer implements Runnable {
         this.password = password;
         this.commandBuilder = new ServerCommandBuilder();
         this.serverPlayers = new LinkedList<>();
-        this.serverSync = new GameServerSynchronyzer(serverPlayers, commandBuilder);
+        this.serverSync = new GameServerSynchronizer(serverPlayers, commandBuilder);
         
         try {
             server = new ServerSocket(Integer.parseInt(port));
@@ -90,7 +91,8 @@ public class GameServer implements Runnable {
     }
     
     /**
-     *
+     * Notifies for movement of player. The command will be sent to every other
+     * player connected to the server
      * @param p
      * @param direction
      */
@@ -102,7 +104,7 @@ public class GameServer implements Runnable {
     }
     
     /**
-     *
+     * Notifies if a player has fired. The command will be sent to every other player.
      * @param p
      * @param direction
      */
@@ -114,7 +116,7 @@ public class GameServer implements Runnable {
     }
     
     /**
-     *
+     * Notifies for rotation of a player. All other players in the server are called.
      * @param p
      * @param angle
      */
@@ -126,7 +128,7 @@ public class GameServer implements Runnable {
     }
 
     /**
-     *
+     * returns a {@link List} of all the players in the server
      * @return
      */
     public List<ServerPlayer> getServerPlayers() {
@@ -134,10 +136,10 @@ public class GameServer implements Runnable {
     }
 
     /**
-     *
+     * returns a {@link GameServerSynchronizer}
      * @return
      */
-    public GameServerSynchronyzer getServerSync() {
+    public GameServerSynchronizer getServerSync() {
         return serverSync;
     }
     

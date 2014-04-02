@@ -18,7 +18,8 @@ public class RandomRespawner extends Respawner {
     private Random randomGenerator;
     
     /**
-     *
+     * Creates a random respawner. The random respawner gives a random
+     * place for a player to spawn
      * @param respawnPlaces
      */
     public RandomRespawner(List<GraphicalObject> respawnPlaces) {
@@ -27,7 +28,7 @@ public class RandomRespawner extends Respawner {
     }
 
     /**
-     *
+     * returns a random position from a list of respawn places
      * @return
      */
     @Override

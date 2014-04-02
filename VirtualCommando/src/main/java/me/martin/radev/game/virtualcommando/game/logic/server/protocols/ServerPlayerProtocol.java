@@ -5,11 +5,8 @@
 package me.martin.radev.game.virtualcommando.game.logic.server.protocols;
 
 import java.net.Socket;
-import java.util.LinkedList;
-import java.util.Queue;
 import me.martin.radev.game.virtualcommando.Global;
 import me.martin.radev.game.virtualcommando.game.logic.MultiPlayerGame;
-import me.martin.radev.game.virtualcommando.game.unit.DummyPlayer;
 import me.martin.radev.game.virtualcommando.game.unit.Player;
 import me.martin.radev.game.virtualcommando.game.unit.ServerPlayer;
 import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
@@ -24,7 +21,8 @@ public class ServerPlayerProtocol extends ServerProtocol {
     private boolean connected;
 
     /**
-     *
+     * Creates a server player protocol. This is protocol is connected to every player
+     * in the game. This is the client protocol on the server side.
      * @param connection
      */
     public ServerPlayerProtocol(Socket connection) {
@@ -33,7 +31,7 @@ public class ServerPlayerProtocol extends ServerProtocol {
     }
 
     /**
-     *
+     * Processes a command.
      * @param command
      */
     @Override
@@ -101,11 +99,7 @@ public class ServerPlayerProtocol extends ServerProtocol {
                 .getServerSync().updatePlayer(p);
     }
     
-    /**
-     *
-     * @param tokens
-     */
-    public void processShootPlayer(String [] tokens) {
+    private void processShootPlayer(String [] tokens) {
         Player p = Global.getGame().getPlayers().get(tokens[2]);
         if (p == null) {
             return;
@@ -118,11 +112,7 @@ public class ServerPlayerProtocol extends ServerProtocol {
                 .getServerSync().shootPlayer(p, direction);
     }
     
-    /**
-     *
-     * @param tokens
-     */
-    public void processRotatePlayer(String [] tokens) {
+    private void processRotatePlayer(String [] tokens) {
         Player p = Global.getGame().getPlayers().get(tokens[2]);
         if (p == null) {
             return;
@@ -134,7 +124,7 @@ public class ServerPlayerProtocol extends ServerProtocol {
     }
 
     /**
-     *
+     * Disconnects a player
      */
     @Override
     public void disconnect() {
