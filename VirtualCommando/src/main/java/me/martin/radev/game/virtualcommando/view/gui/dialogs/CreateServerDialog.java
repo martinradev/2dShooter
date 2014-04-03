@@ -34,6 +34,10 @@ public class CreateServerDialog extends JDialog {
     private JButton createButton;
     private JFrame owner;
 
+    /**
+     *
+     * @param owner
+     */
     public CreateServerDialog(JFrame owner) {
         super(owner, "Create server", true);
         this.owner = owner;
@@ -83,10 +87,18 @@ public class CreateServerDialog extends JDialog {
 
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTextSocket() {
         return textSocket;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTextPassword() {
         return textPassword;
     }

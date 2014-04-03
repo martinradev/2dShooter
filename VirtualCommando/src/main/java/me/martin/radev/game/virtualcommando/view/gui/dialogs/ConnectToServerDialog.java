@@ -34,6 +34,10 @@ public class ConnectToServerDialog extends JDialog {
     private JButton createButton;
     private JFrame owner;
     
+    /**
+     *
+     * @param owner
+     */
     public ConnectToServerDialog(JFrame owner) {
         super(owner, "Connect to server", true);
         this.owner = owner;
@@ -97,14 +101,26 @@ public class ConnectToServerDialog extends JDialog {
         
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTextSocket() {
         return textSocket;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTextPassword() {
         return textPassword;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTextIp() {
         return textIp;
     }
