@@ -15,7 +15,7 @@ public class Rectangle extends Polygon {
     private double height;
 
     /**
-     *
+     * Creates a rectangle with a bottom left corner, width and height
      * @param bottomLeftCorner
      * @param width
      * @param height
@@ -31,7 +31,7 @@ public class Rectangle extends Polygon {
     }
 
     /**
-     *
+     * Creates a rectangle with a bottom left corner, width and height
      * @param xCoord
      * @param yCoord
      * @param width
@@ -49,17 +49,7 @@ public class Rectangle extends Polygon {
     }
 
     /**
-     *
-     * @param dx
-     * @param dy
-     */
-    @Override
-    public void translate(double dx, double dy) {
-        super.translate(dx, dy);
-    }
-
-    /**
-     *
+     * returns the height of the rectangle
      * @return
      */
     public double getHeight() {
@@ -67,7 +57,7 @@ public class Rectangle extends Polygon {
     }
 
     /**
-     *
+     * returns the with of the polygon
      * @return
      */
     public double getWidth() {

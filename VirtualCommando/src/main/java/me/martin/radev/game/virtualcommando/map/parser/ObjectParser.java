@@ -29,7 +29,7 @@ public class ObjectParser implements Parser {
     private final String coordDelimiter = ",";
 
     /**
-     *
+     * parses an object from an xml element
      * @param el
      * @return
      */
@@ -76,7 +76,8 @@ public class ObjectParser implements Parser {
     }
 
     /**
-     *
+     * return the object type of an element. The element can be an ellipse,
+     * a polyline, a vector
      * @param el
      * @return
      */
@@ -117,7 +118,7 @@ public class ObjectParser implements Parser {
     }
 
     /**
-     *
+     * parses the attributes for a given node in the dom tree
      * @param properties
      * @return
      */
@@ -138,7 +139,7 @@ public class ObjectParser implements Parser {
     }
 
     /**
-     *
+     * parses all objects in a node list
      * @param nList
      * @return
      */

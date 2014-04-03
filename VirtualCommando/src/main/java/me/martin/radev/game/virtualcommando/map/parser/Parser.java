@@ -16,13 +16,13 @@ import org.w3c.dom.NodeList;
 public interface Parser {
     
     /**
-     *
+     * parses all properties in a node
      * @param properties
      * @return
      */
     Map<String, String> parseProperties(NodeList properties);
     /**
-     *
+     * parses an object
      * @param el
      * @return
      */

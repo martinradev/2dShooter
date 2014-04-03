@@ -15,7 +15,7 @@ public class Ellipse extends GeometricObject {
     private double minorAxis;
     
     /**
-     *
+     * Creates an ellipse with a center, a major and minor axes
      * @param center
      * @param majorAxis
      * @param minorAxis
@@ -28,15 +28,16 @@ public class Ellipse extends GeometricObject {
     }
 
     /**
-     *
+     * returns the center of the ellipse
      * @return
      */
+    @Override
     public Vector2D getCenter() {
         return center;
     }
 
     /**
-     *
+     * returns the major axis of the ellipse
      * @return
      */
     public double getMajorAxis() {
@@ -44,7 +45,7 @@ public class Ellipse extends GeometricObject {
     }
 
     /**
-     *
+     * returns the minor axis of the ellipse
      * @return
      */
     public double getMinorAxis() {
@@ -52,7 +53,7 @@ public class Ellipse extends GeometricObject {
     }
     
     /**
-     *
+     * translates the center of the ellipse
      * @param dx
      * @param dy
      */
@@ -62,7 +63,7 @@ public class Ellipse extends GeometricObject {
     }
 
     /**
-     *
+     * rotate is not supported
      * @param angle
      */
     @Override
@@ -71,7 +72,7 @@ public class Ellipse extends GeometricObject {
     }
 
     /**
-     *
+     * checks whether the ellipse contains a point
      * @param v2d
      * @return
      */
@@ -85,7 +86,7 @@ public class Ellipse extends GeometricObject {
     }
 
     /**
-     *
+     * relativeRotate is not supported
      * @param center
      * @param angle
      */
@@ -95,7 +96,7 @@ public class Ellipse extends GeometricObject {
     }
 
     /**
-     *
+     * returns a bounding box for the ellipse
      * @return
      */
     @Override

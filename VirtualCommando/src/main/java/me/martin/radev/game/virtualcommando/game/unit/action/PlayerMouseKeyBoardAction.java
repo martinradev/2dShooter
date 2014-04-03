@@ -18,7 +18,8 @@ import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
 import me.martin.radev.game.virtualcommando.structures.ConcurrentHashSet;
 
 /**
- *
+ * A general action listener for a player. 
+ * It processes movement, rotation and clicking (shooting)
  * @author Marto
  */
 public class PlayerMouseKeyBoardAction {
@@ -45,7 +46,7 @@ public class PlayerMouseKeyBoardAction {
     }
 
     /**
-     *
+     * returns a set of keys to process. The keys are just a mapping of KeyEvent
      * @return
      */
     public Set<Integer> getKeysToProcess() {
@@ -53,7 +54,7 @@ public class PlayerMouseKeyBoardAction {
     }
 
     /**
-     *
+     * returns the key listener
      * @return
      */
     public KeyListener getKeyListener() {
@@ -61,7 +62,7 @@ public class PlayerMouseKeyBoardAction {
     }
 
     /**
-     *
+     * returns the mouse listener
      * @return
      */
     public MouseListener getMouseListener() {
@@ -69,7 +70,7 @@ public class PlayerMouseKeyBoardAction {
     }
 
     /**
-     *
+     * returns the mouse motion listener
      * @return
      */
     public MouseMotionListener getMouseMotionListener() {
@@ -77,7 +78,7 @@ public class PlayerMouseKeyBoardAction {
     }
 
     /**
-     *
+     * returns the current point of the mouse
      * @return
      */
     public Point getCurrentPoint() {

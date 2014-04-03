@@ -4,10 +4,6 @@
  */
 package me.martin.radev.game.virtualcommando.game.weapon;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import me.martin.radev.game.virtualcommando.Global;
-import me.martin.radev.game.virtualcommando.exception.ExceptionHelper;
 import me.martin.radev.game.virtualcommando.game.unit.Player;
 import me.martin.radev.game.virtualcommando.game.weapon.bullet.Bullet;
 import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
@@ -15,7 +11,7 @@ import me.martin.radev.game.virtualcommando.view.graphics.animation.Animation;
 import me.martin.radev.game.virtualcommando.view.graphics.entity.Sprite;
 
 /**
- *
+ * Creates a weapon
  * @author Marto
  */
 public abstract class Weapon {
@@ -37,14 +33,14 @@ public abstract class Weapon {
     }
     
     /**
-     *
+     * Decrements the ammo count after shooting. The ammo count cannot be less than 0
      */
     protected void decrementAmmuAcount() {
         if (currentAmmuCount > 0) --currentAmmuCount;
     }
 
     /**
-     *
+     * return the current ammo acount
      * @return
      */
     public int getCurrentAmmuCount() {
@@ -52,7 +48,7 @@ public abstract class Weapon {
     }
 
     /**
-     *
+     * returns the total ammo of the weapon
      * @return
      */
     public int getTotalAmmu() {
@@ -60,7 +56,7 @@ public abstract class Weapon {
     }
 
     /**
-     *
+     * sets the current number of bullets
      * @param currentAmmuCount
      */
     public void setCurrentAmmuCount(int currentAmmuCount) {
@@ -68,7 +64,7 @@ public abstract class Weapon {
     }
 
     /**
-     *
+     * sets the upper bound for ammo count
      * @param totalAmmu
      */
     public void setTotalAmmu(int totalAmmu) {
@@ -78,7 +74,9 @@ public abstract class Weapon {
     
 
     /**
-     *
+     * produces a bullet with a given direction, position to start from and a
+     * given owner. The direction must be a unit vector. Setting the owner, means
+     * that the bullet cannot hit the player.
      * @param direction
      * @param position
      * @param player

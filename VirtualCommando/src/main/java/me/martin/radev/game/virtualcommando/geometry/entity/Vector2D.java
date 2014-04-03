@@ -17,7 +17,7 @@ public class Vector2D extends GeometricObject {
     private double y;
     
     /**
-     *
+     * Creates a vector with given x and y values
      * @param x
      * @param y
      */
@@ -28,7 +28,7 @@ public class Vector2D extends GeometricObject {
     }
     
     /**
-     *
+     * Creates a copy of a vector u
      * @param u
      */
     public Vector2D(Vector2D u) {
@@ -37,7 +37,7 @@ public class Vector2D extends GeometricObject {
     }
     
     /**
-     *
+     * Creates a vector from an awt point
      * @param p
      */
     public Vector2D(Point p) {
@@ -46,15 +46,15 @@ public class Vector2D extends GeometricObject {
     }
 
     /**
-     *
+     * returns the y-coordinate of the vector
      * @return
      */
     public double getY() {
         return y;
     }
 
-    /**
-     *
+    /** 
+     * sets the y-coordinate of the vector
      * @param y
      */
     public void setY(double y) {
@@ -62,7 +62,7 @@ public class Vector2D extends GeometricObject {
     }
 
     /**
-     *
+     * returns the x-coordinate of the vector
      * @return
      */
     public double getX() {
@@ -70,7 +70,7 @@ public class Vector2D extends GeometricObject {
     }
 
     /**
-     *
+     * sets the x-coordinate of the vector
      * @param x
      */
     public void setX(double x) {
@@ -78,19 +78,21 @@ public class Vector2D extends GeometricObject {
     }
 
     /**
-     *
+     * translates the vector by dx and dy
      * @param dx
      * @param dy
      */
+    @Override
     public void translate(double dx, double dy) {
         this.x += dx;
         this.y += dy;
     }
 
     /**
-     *
+     * rotates the vector around the origin by a given angle
      * @param angle
      */
+    @Override
     public void rotate(double angle) {
         double nx = Math.cos(angle)*this.x - Math.sin(angle)*this.y;
         double ny = Math.sin(angle)*this.x + Math.cos(angle)*this.y;
@@ -99,16 +101,18 @@ public class Vector2D extends GeometricObject {
     }
 
     /**
-     *
+     * checks whether the vector contains another vector. This is only true
+     * when the coordinates of both vectors are equal
      * @param v2d
      * @return
      */
+    @Override
     public boolean contains(Vector2D v2d) {
         return this.equals(v2d);
     }
 
     /**
-     *
+     * returns true if both vectors have the same coordinates
      * @param o
      * @return
      */
@@ -122,7 +126,7 @@ public class Vector2D extends GeometricObject {
     }
 
     /**
-     *
+     * returns a tuple of the x and y coordinates
      * @return
      */
     @Override
@@ -131,7 +135,8 @@ public class Vector2D extends GeometricObject {
     }
 
     /**
-     *
+     * returns an unit vector of the given vector. The unit vector contains only
+     * the direction, but not the magnitude.
      * @return
      */
     public Vector2D getUnitVector() {
@@ -143,7 +148,7 @@ public class Vector2D extends GeometricObject {
     }
     
     /**
-     *
+     * scales the magnitude of the vector by a given factor
      * @param factor
      */
     public void scale(double factor) {
@@ -152,18 +157,20 @@ public class Vector2D extends GeometricObject {
     }
 
     /**
-     *
+     * returns the vector itself
      * @return
      */
+    @Override
     public Vector2D getCenter() {
         return this;
     }
 
     /**
-     *
+     * rotates the vector around a new center by a given angle
      * @param center
      * @param angle
      */
+    @Override
     public void relativeRotate(Vector2D center, double angle) {
         this.translate(-center.getX(), -center.getY());
         this.rotate(angle);
@@ -171,7 +178,7 @@ public class Vector2D extends GeometricObject {
     }
 
     /**
-     *
+     * the bounding box is the vector itself.
      * @return
      */
     @Override

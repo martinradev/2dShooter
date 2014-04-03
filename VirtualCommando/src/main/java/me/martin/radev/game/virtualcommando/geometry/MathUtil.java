@@ -13,15 +13,15 @@ import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
 public class MathUtil {
 
     /**
-     *
+     * A small epsilon
      */
     public static final double EPS = 0.00005;
     /**
-     *
+     * a big epsilon
      */
     public static final double BIG_EPS = 0.02;
     /**
-     *
+     * 
      */
     public static final double POSITIVE_INFINITY = Double.MAX_VALUE;
     /**
@@ -30,7 +30,7 @@ public class MathUtil {
     public static final double NEGATIVE_INFINITY = Double.MIN_VALUE;
 
     /**
-     *
+     * returns the cross product of vectors a and b
      * @param a
      * @param b
      * @return
@@ -40,7 +40,7 @@ public class MathUtil {
     }
 
     /**
-     *
+     * returns the dot product of and b
      * @param a
      * @param b
      * @return
@@ -50,7 +50,7 @@ public class MathUtil {
     }
 
     /**
-     *
+     * returns the distance between points a and b
      * @param a
      * @param b
      * @return
@@ -62,7 +62,7 @@ public class MathUtil {
     }
 
     /**
-     *
+     * return the cross product of and b relative to a new origin o
      * @param a
      * @param b
      * @param o
@@ -77,7 +77,8 @@ public class MathUtil {
     }
 
     /**
-     *
+     * returns whether a and b are equal in some small range.
+     * For example relativelyEqual(0.0000000001, 0.0000000002) will return true 
      * @param a
      * @param b
      * @return
@@ -87,7 +88,7 @@ public class MathUtil {
     }
 
     /**
-     *
+     * returns whether a and b are relatively equal for a bigger epsilon
      * @param a
      * @param b
      * @return
@@ -97,7 +98,7 @@ public class MathUtil {
     }
 
     /**
-     *
+     * returns the angle between two points
      * @param a
      * @param b
      * @return
@@ -107,7 +108,7 @@ public class MathUtil {
     }
 
     /**
-     *
+     * returns the angles between two vectors
      * @param a
      * @param b
      * @return

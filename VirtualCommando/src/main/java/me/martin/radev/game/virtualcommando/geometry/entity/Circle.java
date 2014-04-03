@@ -15,7 +15,7 @@ public class Circle extends Ellipse {
     private Vector2D center;
     
     /**
-     *
+     * Creates a circle with a center and a radius
      * @param center
      * @param radius
      */
@@ -24,7 +24,7 @@ public class Circle extends Ellipse {
     }
 
     /**
-     *
+     * returns true if the circle contains a point
      * @param v2d
      * @return
      */
@@ -35,7 +35,7 @@ public class Circle extends Ellipse {
     }
 
     /**
-     *
+     * rotate doesn't do anything since a rotated circle is still the same circle
      * @param angle
      */
     @Override
@@ -44,7 +44,7 @@ public class Circle extends Ellipse {
     }
 
     /**
-     *
+     * returns the radius of the circle
      * @return
      */
     public double getRadius() {

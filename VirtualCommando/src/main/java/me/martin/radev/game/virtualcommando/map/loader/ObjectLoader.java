@@ -18,7 +18,6 @@ import me.martin.radev.game.virtualcommando.map.parser.ObjectParser;
 import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalObject;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
@@ -32,7 +31,8 @@ public class ObjectLoader implements Loader {
     private ObjectParser parser;
 
     /**
-     *
+     * Creates an object loader. The object loader handles loading of the 
+     * map and the objects in the map.
      * @param exceptionHandler
      */
     public ObjectLoader(ExceptionHandler exceptionHandler) {
@@ -41,7 +41,7 @@ public class ObjectLoader implements Loader {
     }
 
     /**
-     *
+     * loads the tiled map from an xml file
      * @param xmlFile
      * @return
      */
@@ -79,7 +79,7 @@ public class ObjectLoader implements Loader {
                 
                 NodeList respawnList = this.getListInContainer("respawngroup", "object", doc.getDocumentElement());
                 List<GraphicalObject> mapRespawnList = parser.parseObjectContainer(respawnList);
-                som.addRespawnPoint(mapRespawnList);
+                som.addRespawnPoints(mapRespawnList);
                 
                 return som;
             } catch (SAXException ex) {

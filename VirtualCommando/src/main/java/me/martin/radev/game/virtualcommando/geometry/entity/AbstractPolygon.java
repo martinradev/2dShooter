@@ -16,7 +16,8 @@ public abstract class AbstractPolygon extends GeometricObject {
     private List<Vector2D> points;
     
     /**
-     *
+     * constructs an abstract polygon given a list of points. The points must be
+     * in counterclockwise direction.
      * @param points
      */
     public AbstractPolygon(List<Vector2D> points) {
@@ -25,7 +26,8 @@ public abstract class AbstractPolygon extends GeometricObject {
     }
     
     /**
-     *
+     * constructs an abstract polygon given an array of points.
+     * The points must be in counterclockwise direction.
      * @param points
      */
     public AbstractPolygon(Vector2D [] points) {
@@ -33,10 +35,11 @@ public abstract class AbstractPolygon extends GeometricObject {
     }
 
     /**
-     *
+     * translates the object with an offset of dx,dy
      * @param dx
      * @param dy
      */
+    @Override
     public void translate(double dx, double dy) {
         for (Vector2D v : points) {
             v.translate(dx, dy);
@@ -44,7 +47,7 @@ public abstract class AbstractPolygon extends GeometricObject {
     }
 
     /**
-     *
+     * returns a list of the points forming the object
      * @return
      */
     public List<Vector2D> getPoints() {
@@ -52,7 +55,7 @@ public abstract class AbstractPolygon extends GeometricObject {
     }
 
     /**
-     *
+     * sets the points of the figure
      * @param points
      */
     public void setPoints(List<Vector2D> points) {
@@ -60,7 +63,7 @@ public abstract class AbstractPolygon extends GeometricObject {
     }
     
     /**
-     *
+     * returns the bottom left corner of the bounding box for this figure
      * @return
      */
     public Vector2D getBottomLeftCorner() {
@@ -73,7 +76,7 @@ public abstract class AbstractPolygon extends GeometricObject {
     }
     
     /**
-     *
+     * returns top right corner for the bounding box of the figure
      * @return
      */
     public Vector2D getTopRightCorner() {

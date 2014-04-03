@@ -4,17 +4,13 @@
  */
 package me.martin.radev.game.virtualcommando.game.weapon;
 
-import java.io.File;
-import me.martin.radev.game.virtualcommando.Global;
 import me.martin.radev.game.virtualcommando.game.unit.Player;
 import me.martin.radev.game.virtualcommando.game.weapon.bullet.Bullet;
 import me.martin.radev.game.virtualcommando.game.weapon.bullet.NormalBullet;
 import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
-import me.martin.radev.game.virtualcommando.sound.SoundEffect;
-import me.martin.radev.game.virtualcommando.view.gui.asset.AssetType;
 
 /**
- *
+ * It is a normal weapon
  * @author Marto
  */
 public class NormalWeapon extends Weapon {
@@ -29,7 +25,7 @@ public class NormalWeapon extends Weapon {
     }
 
     /**
-     *
+     * produces a normal bullet
      * @param direction
      * @param position
      * @param player

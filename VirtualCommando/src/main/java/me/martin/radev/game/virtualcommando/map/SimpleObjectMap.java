@@ -7,7 +7,6 @@ package me.martin.radev.game.virtualcommando.map;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.List;
-import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
 import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalObject;
 
 /**
@@ -20,7 +19,8 @@ public class SimpleObjectMap extends TiledMap{
     private List<GraphicalObject> respawnPoints;
     
     /**
-     *
+     * Creates a SimpleObjectMap from a list of static graphical objects,
+     * list of respawn points, a given width and height
      * @param objectsList
      * @param respawnPoints
      * @param width
@@ -35,7 +35,7 @@ public class SimpleObjectMap extends TiledMap{
     }
     
     /**
-     *
+     * creates a map with a given width and height
      * @param width
      * @param height
      */
@@ -47,7 +47,7 @@ public class SimpleObjectMap extends TiledMap{
     }
     
     /**
-     *
+     * returns the static objects on the map
      * @return
      */
     public List<GraphicalObject> getStaticObjects() {
@@ -55,7 +55,8 @@ public class SimpleObjectMap extends TiledMap{
     }
 
     /**
-     *
+     * renders the map on a graphics2d object with a given x offset and 
+     * y offset
      * @param g2d
      * @param xOffset
      * @param yOffset
@@ -68,7 +69,7 @@ public class SimpleObjectMap extends TiledMap{
     }
     
     /**
-     *
+     * adds a static object to the map
      * @param go
      */
     public void addStaticObjects(GraphicalObject go) {
@@ -76,7 +77,7 @@ public class SimpleObjectMap extends TiledMap{
     }
     
     /**
-     *
+     * add static objects to the map
      * @param goList
      */
     public void addStaticObjects(List<GraphicalObject> goList) {
@@ -84,7 +85,7 @@ public class SimpleObjectMap extends TiledMap{
     }
     
     /**
-     *
+     * adds a respawn point to the map
      * @param v2d
      */
     public void addRespawnPoint(GraphicalObject v2d) {
@@ -92,15 +93,15 @@ public class SimpleObjectMap extends TiledMap{
     }
     
     /**
-     *
+     * adds repawn points to the map
      * @param v2d
      */
-    public void addRespawnPoint(List<GraphicalObject> v2d) {
+    public void addRespawnPoints(List<GraphicalObject> v2d) {
         respawnPoints.addAll(v2d);
     }
 
     /**
-     *
+     * returns all static objects on the map
      * @return
      */
     @Override
@@ -109,7 +110,7 @@ public class SimpleObjectMap extends TiledMap{
     }
 
     /**
-     *
+     * returns all respawn points on the map
      * @return
      */
     @Override

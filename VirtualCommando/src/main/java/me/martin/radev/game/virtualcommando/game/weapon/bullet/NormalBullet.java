@@ -32,7 +32,7 @@ public class NormalBullet extends Bullet {
     }
     
     /**
-     *
+     * returns a copy of a bullet structure with a given direction and owner
      * @param direction
      * @param owner
      * @return

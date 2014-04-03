@@ -9,7 +9,7 @@ import me.martin.radev.game.virtualcommando.geometry.MathUtil;
 import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
 
 /**
- *
+ * Random logic for the bots.
  * @author Marto
  */
 public class RandomAILogic implements AILogic {
@@ -25,7 +25,7 @@ public class RandomAILogic implements AILogic {
     }
     
     /**
-     *
+     * returns a random a direction for the player
      * @return
      */
     @Override
@@ -36,7 +36,7 @@ public class RandomAILogic implements AILogic {
     }
 
     /**
-     *
+     * returns a random angl of rotation
      * @return
      */
     @Override
@@ -45,7 +45,7 @@ public class RandomAILogic implements AILogic {
     }
 
     /**
-     *
+     * returns a random decision whether the player should shoot
      * @return
      */
     @Override
@@ -55,7 +55,7 @@ public class RandomAILogic implements AILogic {
     }
 
     /**
-     *
+     * return a random unit vector for shooting
      * @return
      */
     @Override

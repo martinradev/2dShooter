@@ -5,7 +5,6 @@
 package me.martin.radev.game.virtualcommando.geometry.entity;
 
 import java.util.List;
-import me.martin.radev.game.virtualcommando.Global;
 import me.martin.radev.game.virtualcommando.geometry.MathUtil;
 
 /**
@@ -15,7 +14,8 @@ import me.martin.radev.game.virtualcommando.geometry.MathUtil;
 public class Polygon extends AbstractPolygon {
     
     /**
-     *
+     * Creates a polygon given a list of points. The points must be in 
+     * counterclockwise direction.
      * @param points
      */
     public Polygon(List<Vector2D> points) {
@@ -23,7 +23,8 @@ public class Polygon extends AbstractPolygon {
     }
     
     /**
-     *
+     * Creates a polygon given an array of points. The points must be in 
+     * counterclockwise direction.
      * @param points
      */
     public Polygon(Vector2D [] points) {
@@ -31,18 +32,14 @@ public class Polygon extends AbstractPolygon {
     }
 
     /**
-     *
+     * Checks whether the polygon contains a point. This is computed by 
+     * examining the cross product of the points and the selected point.
+     * It will work only for convex polygons.
      * @param point
      * @return
      */
     @Override
     public boolean contains(Vector2D point) {
-        /*
-        double offsetX = Global.getGame().getScreen().getOffsetX();
-        double offsetY = Global.getGame().getScreen().getOffsetY();
-        point = new Vector2D(point);
-        point.translate(-offsetX, -offsetY);
-        */
         List<Vector2D> points = super.getPoints();
         int size = super.getPoints().size();
         for (int i = 0; i < size; ++i) {
@@ -53,7 +50,7 @@ public class Polygon extends AbstractPolygon {
     }
     
     /**
-     *
+     * rotates the figure by an angle
      * @param angle
      */
     @Override
@@ -64,7 +61,8 @@ public class Polygon extends AbstractPolygon {
     }
 
     /**
-     *
+     * returns the center of the polygon. It is computed by taking the 
+     * average of all x and y values of the points;
      * @return
      */
     @Override
@@ -80,7 +78,7 @@ public class Polygon extends AbstractPolygon {
     }
 
     /**
-     *
+     * Rotates the polygon around a new center by a given angle.
      * @param center
      * @param angle
      */
@@ -92,20 +90,21 @@ public class Polygon extends AbstractPolygon {
     }
 
     /**
-     *
+     * returns the string of the polygon. This is just a list representation
+     * of all of the vertices.
      * @return
      */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for (Vector2D v2d : super.getPoints()) {
-            sb.append(v2d + ", ");
+            sb.append(v2d).append(", ");
         }
         return sb.toString();
     }
 
     /**
-     *
+     * returns the bounding box of the polygon
      * @return
      */
     @Override

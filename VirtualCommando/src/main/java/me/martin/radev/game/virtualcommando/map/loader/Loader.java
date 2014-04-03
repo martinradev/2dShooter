@@ -16,7 +16,7 @@ import me.martin.radev.game.virtualcommando.map.TiledMap;
 public interface Loader {
     
     /**
-     *
+     * loads a tiled map from a file
      * @param file
      * @return
      */

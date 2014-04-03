@@ -31,25 +31,25 @@ public abstract class TiledMap {
     }
     
     /**
-     *
+     * renders the on a graphics2d object with a given x offset and y offset.
      * @param g2d
      * @param xOffset
      * @param yOffset
      */
     public abstract void render(Graphics2D g2d, int xOffset, int yOffset);
     /**
-     *
+     * returns the static objects
      * @return
      */
     public abstract List<GraphicalObject> getObjects();
     /**
-     *
+     * returns the respawn points for the map
      * @return
      */
     public abstract List<GraphicalObject> getRespawnPoints();
     
     /**
-     *
+     * returns the width of the map
      * @return
      */
     public double getWidth() {
@@ -57,7 +57,7 @@ public abstract class TiledMap {
     }
     
     /**
-     *
+     * returns the height of the map
      * @return
      */
     public double getHeight() {
