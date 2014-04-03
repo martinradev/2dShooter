@@ -30,6 +30,8 @@ public class GameScreenMap extends JPanel {
     private GameEntityContainer gameEntities;
     private final double DEFAULT_VISION_RANGE = 285d;
     private int mask = 0;
+    private BufferedImage imageMask;
+
     /**
      *
      * @param gameEntities
@@ -42,9 +44,22 @@ public class GameScreenMap extends JPanel {
         this.gameEntities = gameEntities;
         this.setFocusable(true);
         this.requestFocusInWindow();
-        for (int i = 1; i<= 32; ++i) {
-            if (i%2==0) {
-                mask |= (1<<i);
+        imageMask = new BufferedImage(width<<1, height<<1, BufferedImage.TYPE_INT_ARGB);
+        precomputeImageMask();
+    }
+
+    private void precomputeImageMask() {
+        imageMask.getGraphics().setColor(Color.black);
+        Vector2D center = new Vector2D(imageMask.getWidth() / 2,
+                imageMask.getHeight() / 2);
+        for (int i = 0; i < imageMask.getWidth(); ++i) {
+            for (int j = 0; j < imageMask.getHeight(); ++j) {
+
+                if (MathUtil.distance(new Vector2D(i, j), center) <= DEFAULT_VISION_RANGE) {
+                    imageMask.setRGB(i, j, Color.white.getRGB()&0x00000000);
+                } else {
+                    imageMask.setRGB(i, j, Color.black.getRGB()&0x99FFFFFF);
+                }
             }
         }
     }
@@ -88,21 +103,15 @@ public class GameScreenMap extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
-        int width = this.getParent().getWidth();
-        int height = this.getParent().getHeight();
-        BufferedImage image = 
-                new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-        Graphics2D imageGraphics = image.createGraphics();
-        imageGraphics.setBackground(Color.white);
-       /* imageGraphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                RenderingHints.VALUE_ANTIALIAS_ON);*/
+         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+         RenderingHints.VALUE_ANTIALIAS_ON);
 
 
         Vector2D offset = new Vector2D(this.getScreenOffset());
 
-        imageGraphics.translate(-offset.getX(), -offset.getY());
+        g2d.translate(-offset.getX(), -offset.getY());
         for (GraphicalObject go : gameEntities.getMapObjects()) {
-            go.render(imageGraphics, 0, 0);
+            go.render(g2d, 0, 0);
         }
 
         Player mainPlayer = Global.getGame().getMainPlayer();
@@ -110,7 +119,7 @@ public class GameScreenMap extends JPanel {
         for (int i = 0; i < players.size(); ++i) {
             Player p = ((Player) players.get(i));
             if (this.canSee(mainPlayer, p)) {
-                p.render(imageGraphics, 0, 0, p.getAngleOffset());
+                p.render(g2d, 0, 0, p.getAngleOffset());
             }
         }
 
@@ -118,33 +127,19 @@ public class GameScreenMap extends JPanel {
         for (int i = 0; i < bullets.size(); ++i) {
             Bullet bullet = ((Bullet) bullets.get(i));
             if (this.canSee(mainPlayer, bullet.getObject())) {
-                bullet.render(imageGraphics, 0, 0);
+                bullet.render(g2d, 0, 0);
             }
         }
-        imageGraphics.translate(offset.getX(), offset.getY());
-        imageGraphics.dispose();
+        g2d.translate(offset.getX(), offset.getY());
         offset.setX(mainPlayer.getBody().getCenter().getX() - offset.getX());
         offset.setY(mainPlayer.getBody().getCenter().getY() - offset.getY());
-        drawFogOfWar(image, offset);
-        g2d.drawImage(image, null, this);
-    }
-    
-    private void drawFogOfWar(BufferedImage img, Vector2D playerPosition) {
-        Vector2D tmp = new Vector2D(0,0);
-        for (int i = 0; i < img.getWidth(); ++i) {
-            for (int j = 0; j < img.getHeight(); ++j) {
-                tmp.setX(i);
-                tmp.setY(j);
-                if (MathUtil.distance(tmp, playerPosition) > DEFAULT_VISION_RANGE) {
-                    img.setRGB(i, j, img.getRGB(i, j)&mask);
-                }
-            }
-        }
+        //drawFogOfWar(image, offset);
+        g2d.drawImage(imageMask, (int)offset.getX()-imageMask.getWidth()/2,
+                (int)offset.getY()-imageMask.getHeight()/2, this);
     }
 
     private boolean canSee(GraphicalObject a, GraphicalObject b) {
         double distance = MathUtil.distance(a.getBody().getCenter(), b.getBody().getCenter());
         return distance <= DEFAULT_VISION_RANGE;
     }
-    
 }
