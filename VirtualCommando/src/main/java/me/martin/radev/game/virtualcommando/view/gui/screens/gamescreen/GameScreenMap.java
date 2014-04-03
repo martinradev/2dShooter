@@ -94,8 +94,8 @@ public class GameScreenMap extends JPanel {
                 new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         Graphics2D imageGraphics = image.createGraphics();
         imageGraphics.setBackground(Color.white);
-        imageGraphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                RenderingHints.VALUE_ANTIALIAS_ON);
+       /* imageGraphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+                RenderingHints.VALUE_ANTIALIAS_ON);*/
 
 
         Vector2D offset = new Vector2D(this.getScreenOffset());

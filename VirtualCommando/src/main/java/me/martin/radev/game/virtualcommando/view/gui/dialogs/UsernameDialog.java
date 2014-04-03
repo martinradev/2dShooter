@@ -14,12 +14,8 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JRootPane;
 import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
-import me.martin.radev.game.virtualcommando.Global;
 import me.martin.radev.game.virtualcommando.Settings;
-import me.martin.radev.game.virtualcommando.view.gui.GameView;
 
 /**
  *

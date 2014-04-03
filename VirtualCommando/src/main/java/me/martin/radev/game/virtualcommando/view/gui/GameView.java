@@ -5,15 +5,12 @@
 package me.martin.radev.game.virtualcommando.view.gui;
 
 import java.awt.BorderLayout;
-import java.awt.Graphics2D;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
-import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import me.martin.radev.game.virtualcommando.Global;
 import me.martin.radev.game.virtualcommando.exception.ExceptionHandler;
 import me.martin.radev.game.virtualcommando.view.gui.asset.AssetManager;
+import me.martin.radev.game.virtualcommando.view.gui.dialogs.UsernameDialog;
 import me.martin.radev.game.virtualcommando.view.gui.screens.MenuScreen;
 import me.martin.radev.game.virtualcommando.view.gui.screens.Screen;
 
@@ -36,6 +33,7 @@ public class GameView extends JFrame {
         super("Virtual Commando 1.0");
         Global.setFrame(this);
         initializeFrame(width, height);
+        new UsernameDialog(this);
     }
     
     private void initializeFrame(int width, int height) {

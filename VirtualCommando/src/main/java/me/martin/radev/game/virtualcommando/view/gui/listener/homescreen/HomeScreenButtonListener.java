@@ -12,6 +12,9 @@ import me.martin.radev.game.virtualcommando.game.logic.ConnectedToServerGame;
 import me.martin.radev.game.virtualcommando.game.logic.Game;
 import me.martin.radev.game.virtualcommando.game.logic.MultiPlayerGame;
 import me.martin.radev.game.virtualcommando.game.logic.SinglePlayerGame;
+import me.martin.radev.game.virtualcommando.view.gui.dialogs.ConnectToServerDialog;
+import me.martin.radev.game.virtualcommando.view.gui.dialogs.CreateServerDialog;
+import me.martin.radev.game.virtualcommando.view.gui.dialogs.UsernameDialog;
 import me.martin.radev.game.virtualcommando.view.gui.entity.buttons.HomeScreenButtonTypes;
 
 /**
@@ -31,13 +34,17 @@ public class HomeScreenButtonListener implements ActionListener {
             Game game = new SinglePlayerGame(8);
             Global.setGame(game);
         } else if (button.getName().equals(HomeScreenButtonTypes.Multiplayer.toString())) {
-            String port = "16000";
-            String password = "asd";
+            CreateServerDialog csDialog = 
+                    new CreateServerDialog(Global.getFrame());
+            String port = csDialog.getTextSocket().getText();
+            String password = csDialog.getTextPassword().getText();
             Game game = new MultiPlayerGame(port, password);
         } else if (button.getName().equals(HomeScreenButtonTypes.Connect.toString())) {
-            String ip = "127.0.0.1";
-            String port = "16000";
-            String password = "asd";
+            ConnectToServerDialog ctsDialog = 
+                    new ConnectToServerDialog(Global.getFrame());
+            String ip = ctsDialog.getTextIp().getText();
+            String port = ctsDialog.getTextSocket().getText();
+            String password = ctsDialog.getTextPassword().getText();
             Game game = new ConnectedToServerGame(ip, port, password);
         } else if (button.getName().equals(HomeScreenButtonTypes.Exit.toString())) {
             Global.getFrame().dispose();

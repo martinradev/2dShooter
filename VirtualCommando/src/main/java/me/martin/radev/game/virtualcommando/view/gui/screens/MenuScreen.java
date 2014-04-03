@@ -49,7 +49,7 @@ public class MenuScreen extends Screen {
         this.height = height;
         initialize(width, height);
         this.repaint();
-        new UsernameDialog(Global.getFrame());
+        
     }
     
     private void initialize(int width, int height) {

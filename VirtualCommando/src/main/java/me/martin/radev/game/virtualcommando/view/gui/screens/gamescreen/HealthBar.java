@@ -38,7 +38,7 @@ public class HealthBar extends JPanel {
                 (parentHeight-bottomOffset)-startingHeight
                 , startingWidth, startingHeight);
         this.setBackground(Color.white);
-        percent = 0.75d;
+        percent = 1d;
     }
 
     /**
