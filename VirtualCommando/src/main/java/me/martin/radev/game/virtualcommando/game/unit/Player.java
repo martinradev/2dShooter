@@ -154,7 +154,7 @@ public abstract class Player extends GraphicalRectangle {
      * @param direction
      */
     public void shoot(Vector2D direction) {
-        if (respawnTime > 0d) {
+        if (!isPlayerActive()) {
             return;
         }
         Vector2D position = new Vector2D(this.getBody().getCenter());
@@ -275,7 +275,7 @@ public abstract class Player extends GraphicalRectangle {
             currentAngleOfRotation = angle - angleOffset;
             angleOffset = angle;
         }
-        if (MathUtil.relativelyEqualBigEps(angleOffset, angle)) return;
+        if (MathUtil.relativelyEqualBigEps(currentAngleOfRotation, 0d)) return;
         if (this.getClass() == MyPlayer.class) {
             if (Global.getGame().getClass() == MultiPlayerGame.class) {
                 GameServer server = ((MultiPlayerGame) Global.getGame()).getServer();
@@ -284,13 +284,17 @@ public abstract class Player extends GraphicalRectangle {
                 ((ConnectedToServerGame)Global.getGame())
                         .getConcurrencyProtocol().rotatePlayer(this, angle);
             } 
-        } else if (this.getClass() == DummyPlayer.class) {
+        } else if (this.getClass() == ServerPlayer.class) {
             if (Global.getGame().getClass() == MultiPlayerGame.class) {
                 GameServer server = ((MultiPlayerGame) Global.getGame()).getServer();
                 server.getServerSync().rotatePlayer(this, angle);
             }
         }
         
+    }
+    
+    public boolean isPlayerActive() {
+        return getRespawnTime()<=0d || getRespawnTime() >= Global.getGame().getRespawner().getTimeTillRespawn();
     }
 
     /**
@@ -340,5 +344,13 @@ public abstract class Player extends GraphicalRectangle {
     public void setCurrentHealth(int currentHealth) {
         this.currentHealth = currentHealth;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null) return false;
+        return this.getName().equals(((Player)o).getName());
+    }
+    
+    
     
 }

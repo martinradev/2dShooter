@@ -4,6 +4,8 @@
  */
 package me.martin.radev.game.virtualcommando.game.logic;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import me.martin.radev.game.virtualcommando.game.graphics.GameEntityContainer;
 import java.util.LinkedList;
@@ -11,6 +13,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import me.martin.radev.game.virtualcommando.Global;
 import me.martin.radev.game.virtualcommando.game.Updatable;
 import me.martin.radev.game.virtualcommando.game.logic.respawn.RandomRespawner;
@@ -18,6 +22,7 @@ import me.martin.radev.game.virtualcommando.game.logic.respawn.Respawner;
 import me.martin.radev.game.virtualcommando.game.unit.MyPlayer;
 import me.martin.radev.game.virtualcommando.game.unit.Player;
 import me.martin.radev.game.virtualcommando.map.TiledMap;
+import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalObject;
 import me.martin.radev.game.virtualcommando.view.gui.asset.AssetType;
 import me.martin.radev.game.virtualcommando.view.gui.screens.GameScreen;
 
@@ -35,6 +40,7 @@ public abstract class Game {
     private List<Updatable> toUpdate;
     private String mapName;
     private GameFlow gameFlow;
+    private Class respawnerType;
     /**
      *
      */
@@ -52,19 +58,20 @@ public abstract class Game {
      *
      * @param mapName
      */
-    public Game(String mapName) {
+    public Game(String mapName, Class respawnerType) {
         this.mapName = mapName;
+        this.respawnerType = respawnerType;
         Global.setGame(this);
         init();
     }
 
     private void init() {
         players = new HashMap<>();
-        gameEntities = new GameEntityContainer();
         map = (TiledMap) Global.getAssetManager().load(AssetType.Map, mapName);
+        gameEntities = new GameEntityContainer();
         gameEntities.addAllMapObjects(map.getObjects());
         gameEntities.addAllRespawnPoints(map.getRespawnPoints());
-        respawner = new RandomRespawner(map.getRespawnPoints());
+        initRespawner();
         gameFlow = new GameFlow(gameEntities, respawner);
         Global.setGameFlow(gameFlow);
         
@@ -73,6 +80,27 @@ public abstract class Game {
         screen = new GameScreen(gameEntities, Global.getWindowWidth(), Global.getWindowHeight());
         Global.getFrame().setScreen(screen);
         
+    }
+    
+    private void initRespawner() {
+        Constructor<?> respawnConstructor = null;
+        try {
+            respawnConstructor = respawnerType.getConstructor(map.getRespawnPoints().getClass());
+        } catch (NoSuchMethodException | SecurityException ex) {
+            // todo show error and back to menu screen
+            Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            respawner = (Respawner) respawnConstructor.newInstance(map.getRespawnPoints());
+        } catch (InstantiationException ex) {
+            Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     /**

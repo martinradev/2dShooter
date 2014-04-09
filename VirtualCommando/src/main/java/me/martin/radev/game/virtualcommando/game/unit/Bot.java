@@ -52,7 +52,7 @@ public class Bot extends Player  {
     @Override
     public void processShooting() {
         if (ai.shouldShoot()) {
-            super.shoot(ai.getDirection());
+            super.shoot(ai.directionOfShooting(this));
         }
     }
     

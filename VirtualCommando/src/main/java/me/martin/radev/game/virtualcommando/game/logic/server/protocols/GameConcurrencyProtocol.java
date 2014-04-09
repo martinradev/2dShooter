@@ -6,6 +6,7 @@ package me.martin.radev.game.virtualcommando.game.logic.server.protocols;
 
 import java.net.Socket;
 import me.martin.radev.game.virtualcommando.Global;
+import me.martin.radev.game.virtualcommando.game.logic.respawn.DummyRespawner;
 import me.martin.radev.game.virtualcommando.game.logic.server.ServerCommandBuilder;
 import me.martin.radev.game.virtualcommando.game.unit.DummyPlayer;
 import me.martin.radev.game.virtualcommando.game.unit.Player;
@@ -47,6 +48,11 @@ public class GameConcurrencyProtocol extends ServerProtocol {
             if (tokens[1].equals("player")) {
                 
             }
+        } else if (tokens[0].equals("respawn")) {
+            if (tokens[1].equals("player")) {
+                processRespawnPlayer(tokens);
+                System.out.println("received respawn");
+            }
         } else if (tokens[0].equals("map")) {
         } else if (tokens[0].equals("update")) {
             if (tokens[1].equals("player")) {
@@ -75,6 +81,13 @@ public class GameConcurrencyProtocol extends ServerProtocol {
         DummyPlayer player = new DummyPlayer(playerName, xPosition, yPosition,
                 currentHealth, maxHealth, currentAmmo, maxAmmo, respawnTime);
         Global.getGame().addPlayer(player);
+    }
+    
+    private void processRespawnPlayer(String [] tokens) {
+        Player p = Global.getGame().getPlayers().get(tokens[2]);
+        ((DummyRespawner)Global.getGame().getRespawner()).respawn(p);
+            processUpdatePlayer(tokens);
+        
     }
     
     private void processUpdatePlayer(String [] tokens) {
@@ -152,4 +165,11 @@ public class GameConcurrencyProtocol extends ServerProtocol {
                 commandBuilder.getPlayerRotationCommand(p, angle);
         sendCommand(command);
     }
+    
+    public void respawnPlayer(Player p) {
+        String command =
+                commandBuilder.getRespawnPlayerCommand(p);
+        sendCommand(command);
+    }
+    
 }

@@ -19,7 +19,7 @@ public class MathUtil {
     /**
      * a big epsilon
      */
-    public static final double BIG_EPS = 0.02;
+    public static final double BIG_EPS = 0.0002;
     /**
      * 
      */

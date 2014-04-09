@@ -142,6 +142,10 @@ public class GameServer implements Runnable {
     public GameServerSynchronizer getServerSync() {
         return serverSync;
     }
+
+    public ServerCommandBuilder getCommandBuilder() {
+        return commandBuilder;
+    }
     
     
     

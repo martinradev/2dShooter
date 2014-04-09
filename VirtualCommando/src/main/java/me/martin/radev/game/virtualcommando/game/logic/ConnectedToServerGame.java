@@ -9,6 +9,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import me.martin.radev.game.virtualcommando.Global;
 import me.martin.radev.game.virtualcommando.exception.ExceptionHelper;
+import me.martin.radev.game.virtualcommando.game.logic.respawn.DummyRespawner;
 import me.martin.radev.game.virtualcommando.game.logic.server.ServerCommandBuilder;
 import me.martin.radev.game.virtualcommando.game.logic.server.protocols.GameConcurrencyProtocol;
 import me.martin.radev.game.virtualcommando.game.unit.MyPlayer;
@@ -33,7 +34,7 @@ public class ConnectedToServerGame extends Game  {
      * @param password
      */
     public ConnectedToServerGame(String ip, String port, String password) {
-        super("Desert");
+        super("Desert", DummyRespawner.class);
         mainPlayer = new MyPlayer();
         commandBuilder = new ServerCommandBuilder();
         try {
@@ -58,6 +59,7 @@ public class ConnectedToServerGame extends Game  {
         
         concurrencyProtocol = new GameConcurrencyProtocol(socket, commandBuilder);
         new Thread(concurrencyProtocol).start();
+        concurrencyProtocol.updatePlayer(mainPlayer);
         addPlayer(mainPlayer);
         startGame();
     }

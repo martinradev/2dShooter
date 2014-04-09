@@ -77,4 +77,15 @@ public class GameServerSynchronizer {
         }
     }
     
+    public void respawnPlayer(Player player) {
+        for (ServerPlayer pl : players) {
+            
+                ServerProtocol protocol = pl.getProtocol();
+                String command = 
+                        commandBuilder.getRespawnPlayerCommand(player);
+                protocol.sendCommand(command);
+
+        }
+    }
+    
 }

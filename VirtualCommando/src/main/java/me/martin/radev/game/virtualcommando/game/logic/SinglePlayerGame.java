@@ -4,6 +4,7 @@
  */
 package me.martin.radev.game.virtualcommando.game.logic;
 
+import me.martin.radev.game.virtualcommando.game.logic.respawn.RandomRespawner;
 import me.martin.radev.game.virtualcommando.game.unit.Bot;
 import me.martin.radev.game.virtualcommando.game.unit.MyPlayer;
 
@@ -21,7 +22,7 @@ public class SinglePlayerGame extends Game {
      * @param numberOfBots
      */
     public SinglePlayerGame(int numberOfBots) {
-        super("Desert");
+        super("Desert", RandomRespawner.class);
         this.numberOfBots = numberOfBots;
         
         mainPlayer = new MyPlayer();

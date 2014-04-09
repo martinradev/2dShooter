@@ -4,6 +4,7 @@
  */
 package me.martin.radev.game.virtualcommando.game.unit.action.ai;
 
+import me.martin.radev.game.virtualcommando.game.unit.Player;
 import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
 
 /**
@@ -31,6 +32,6 @@ public interface AILogic {
      * return the direction of shooting. The vector is a unit vector.
      * @return
      */
-    public Vector2D directionOfShooting();
+    public Vector2D directionOfShooting(Player player);
     
 }

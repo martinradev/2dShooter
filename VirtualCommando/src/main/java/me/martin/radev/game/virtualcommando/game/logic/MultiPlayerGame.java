@@ -4,6 +4,7 @@
  */
 package me.martin.radev.game.virtualcommando.game.logic;
 
+import me.martin.radev.game.virtualcommando.game.logic.respawn.RandomRespawner;
 import me.martin.radev.game.virtualcommando.game.logic.server.GameServer;
 import me.martin.radev.game.virtualcommando.game.unit.MyPlayer;
 import me.martin.radev.game.virtualcommando.game.unit.Player;
@@ -25,7 +26,7 @@ public class MultiPlayerGame extends Game {
      */
     public MultiPlayerGame(String port,
             String password) {
-        super("Desert");
+        super("Desert", RandomRespawner.class);
 
         mainPlayer = new MyPlayer();
         addPlayer(mainPlayer);

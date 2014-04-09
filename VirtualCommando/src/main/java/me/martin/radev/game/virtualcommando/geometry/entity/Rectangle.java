@@ -29,6 +29,16 @@ public class Rectangle extends Polygon {
         this.width = width;
         this.height = height;
     }
+    
+    public Rectangle(Vector2D bottomLeftCorner, Vector2D topRightCorner) {
+        super(new Vector2D[]{bottomLeftCorner,
+            new Vector2D(bottomLeftCorner.getX(), topRightCorner.getY()),
+            new Vector2D(topRightCorner.getX(), topRightCorner.getY()),
+            new Vector2D(topRightCorner.getX(), bottomLeftCorner.getY())});
+        this.bottomLeftCorner = bottomLeftCorner;
+        this.width = topRightCorner.getX() - bottomLeftCorner.getX();
+        this.height = topRightCorner.getY() - bottomLeftCorner.getY();
+    }
 
     /**
      * Creates a rectangle with a bottom left corner, width and height

@@ -21,8 +21,9 @@ public class ServerPlayerProtocol extends ServerProtocol {
     private boolean connected;
 
     /**
-     * Creates a server player protocol. This is protocol is connected to every player
-     * in the game. This is the client protocol on the server side.
+     * Creates a server player protocol. This is protocol is connected to every
+     * player in the game. This is the client protocol on the server side.
+     *
      * @param connection
      */
     public ServerPlayerProtocol(Socket connection) {
@@ -32,6 +33,7 @@ public class ServerPlayerProtocol extends ServerProtocol {
 
     /**
      * Processes a command.
+     *
      * @param command
      */
     @Override
@@ -43,7 +45,6 @@ public class ServerPlayerProtocol extends ServerProtocol {
             }
         } else if (tokens[0].equals("remove")) {
             if (tokens[1].equals("player")) {
-                
             }
         } else if (tokens[0].equals("map")) {
         } else if (tokens[0].equals("update")) {
@@ -69,12 +70,13 @@ public class ServerPlayerProtocol extends ServerProtocol {
         int maxHealth = Integer.parseInt(tokens[6]);
         int currentAmmo = Integer.parseInt(tokens[7]);
         int maxAmmo = Integer.parseInt(tokens[8]);
-        double respawnTime = Double.parseDouble(tokens[9]);
+        //double respawnTime = Double.parseDouble(tokens[9]);
+        double respawnTime = 0d;
         player = new ServerPlayer(playerName, new Vector2D(xPosition, yPosition), this);
         Global.getGame().addPlayer(player);
     }
-    
-    private void processUpdatePlayer(String [] tokens) {
+
+    private void processUpdatePlayer(String[] tokens) {
         Player p = Global.getGame().getPlayers().get(tokens[2]);
         if (p == null) {
             processAddPlayer(tokens);
@@ -87,19 +89,22 @@ public class ServerPlayerProtocol extends ServerProtocol {
         int currentAmmo = Integer.parseInt(tokens[7]);
         int maxAmmo = Integer.parseInt(tokens[8]);
         double respawnTime = Double.parseDouble(tokens[9]);
-        p.getBody().translate(-p.getBody().getCenter().getX(),
-                -p.getBody().getCenter().getY());
-        p.getBody().translate(xPosition, yPosition);
+        if (!(xPosition == 0d && yPosition == 0d)) {
+            p.getBody().translate(-p.getBody().getCenter().getX(),
+                    -p.getBody().getCenter().getY());
+            p.getBody().translate(xPosition, yPosition);
+        }
+
         p.setCurrentHealth(currentHealth);
         p.setMaxHealth(maxHealth);
         p.getWeapon().setCurrentAmmuCount(currentAmmo);
         p.getWeapon().setTotalAmmu(maxAmmo);
         p.setRespawnTime(respawnTime);
-        ((MultiPlayerGame)Global.getGame()).getServer()
+        ((MultiPlayerGame) Global.getGame()).getServer()
                 .getServerSync().updatePlayer(p);
     }
-    
-    private void processShootPlayer(String [] tokens) {
+
+    private void processShootPlayer(String[] tokens) {
         Player p = Global.getGame().getPlayers().get(tokens[2]);
         if (p == null) {
             return;
@@ -108,18 +113,18 @@ public class ServerPlayerProtocol extends ServerProtocol {
         double directionY = Double.parseDouble(tokens[4]);
         Vector2D direction = new Vector2D(directionX, directionY);
         p.shoot(direction);
-        ((MultiPlayerGame)Global.getGame()).getServer()
+        ((MultiPlayerGame) Global.getGame()).getServer()
                 .getServerSync().shootPlayer(p, direction);
     }
-    
-    private void processRotatePlayer(String [] tokens) {
+
+    private void processRotatePlayer(String[] tokens) {
         Player p = Global.getGame().getPlayers().get(tokens[2]);
         if (p == null) {
             return;
         }
         double angle = Double.parseDouble(tokens[3]);
         p.rotate(angle);
-        ((MultiPlayerGame)Global.getGame()).getServer()
+        ((MultiPlayerGame) Global.getGame()).getServer()
                 .getServerSync().rotatePlayer(p, angle);
     }
 
@@ -129,9 +134,8 @@ public class ServerPlayerProtocol extends ServerProtocol {
     @Override
     public void disconnect() {
         super.disconnect();
-        if (player != null) Global.getGame().removePlayer(player);
+        if (player != null) {
+            Global.getGame().removePlayer(player);
+        }
     }
-    
-    
-    
 }

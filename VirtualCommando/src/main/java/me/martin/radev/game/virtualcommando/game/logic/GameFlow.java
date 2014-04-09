@@ -63,7 +63,8 @@ public class GameFlow {
      * @return
      */
     public boolean isPlayerColliding(Player p) {
-        return this.isColliding(gameEntities.getMapObjects(), p);
+        return this.isColliding(
+                gameEntities.getBinarySpaceTree().getObjectsInClosingArea(p), p);
     }
 
     /**
@@ -72,7 +73,8 @@ public class GameFlow {
      * @return
      */
     public boolean isBulletCollidingWithMap(Bullet b) {
-        return this.isColliding(gameEntities.getMapObjects(), b.getObject());
+        return this.isColliding(
+                gameEntities.getBinarySpaceTree().getObjectsInClosingArea(b.getObject()), b.getObject());
     }
 
     /**
@@ -83,7 +85,7 @@ public class GameFlow {
     public Player isBulletCollidingWithPlayer(Bullet b) {
         GeometricObject objBody = b.getObject().getBody();
         for (GraphicalObject go : gameEntities.getPlayers()) {
-            if (((Player)go).getRespawnTime()>0d) continue;
+            if (!((Player)go).isPlayerActive()) continue;
             if (b.getOwner() != go) {
                 if (CollisionDetection.doCollide(go.getBody(), objBody)) {
                     return (Player)go;

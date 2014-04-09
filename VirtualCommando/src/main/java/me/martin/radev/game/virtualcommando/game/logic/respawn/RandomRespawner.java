@@ -4,6 +4,7 @@
  */
 package me.martin.radev.game.virtualcommando.game.logic.respawn;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
@@ -22,7 +23,7 @@ public class RandomRespawner extends Respawner {
      * place for a player to spawn
      * @param respawnPlaces
      */
-    public RandomRespawner(List<GraphicalObject> respawnPlaces) {
+    public RandomRespawner(ArrayList<GraphicalObject> respawnPlaces) {
         super(respawnPlaces);
         randomGenerator = new Random();
     }

@@ -6,9 +6,12 @@ package me.martin.radev.game.virtualcommando.game.graphics;
 
 import java.util.LinkedList;
 import java.util.List;
+import me.martin.radev.game.virtualcommando.Global;
+import me.martin.radev.game.virtualcommando.game.unit.Player;
 import me.martin.radev.game.virtualcommando.game.weapon.bullet.Bullet;
 import me.martin.radev.game.virtualcommando.geometry.MathUtil;
 import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
+import me.martin.radev.game.virtualcommando.structures.BinarySpaceTree;
 import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalObject;
 
 /**
@@ -21,6 +24,7 @@ public class GameEntityContainer {
     private List<GraphicalObject> mapObjects;
     private List<GraphicalObject> respawnPoints;
     private List<Bullet> bullets;
+    private BinarySpaceTree binarySpaceTree;
 
     /**
      *
@@ -30,6 +34,12 @@ public class GameEntityContainer {
         mapObjects = new LinkedList<>();
         respawnPoints = new LinkedList<>();
         bullets = new LinkedList<>();
+        binarySpaceTree = new BinarySpaceTree(
+                (int)Global.getGame().getMap().getWidth(),
+                (int)Global.getGame().getMap().getHeight(),
+                Global.getFrame().getWidth(),
+                Global.getFrame().getHeight()
+                );
     }
 
     /**
@@ -39,6 +49,7 @@ public class GameEntityContainer {
      */
     public void addPlayer(GraphicalObject p) {
         players.add(p);
+        ((Player)p).setRespawnTime(0d);
     }
 
     /**
@@ -55,6 +66,7 @@ public class GameEntityContainer {
      */
     public void addMapObject(GraphicalObject go) {
         mapObjects.add(go);
+        binarySpaceTree.addElement(go);
     }
 
     /**
@@ -63,6 +75,9 @@ public class GameEntityContainer {
      */
     public void addAllMapObjects(List<GraphicalObject> mapObjects) {
         this.mapObjects.addAll(mapObjects);
+        for (GraphicalObject go : mapObjects) {
+            binarySpaceTree.addElement(go);
+        }
     }
 
     /**
@@ -166,4 +181,10 @@ public class GameEntityContainer {
         boundingBox[1] = new Vector2D(maxX, maxY);
         return boundingBox;
     }
+
+    public BinarySpaceTree getBinarySpaceTree() {
+        return binarySpaceTree;
+    }
+    
+    
 }

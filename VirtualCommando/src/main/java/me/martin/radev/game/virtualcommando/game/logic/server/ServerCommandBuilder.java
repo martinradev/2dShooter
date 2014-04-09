@@ -38,6 +38,17 @@ public class ServerCommandBuilder {
         return command;
     }
     
+    public String getRespawnPlayerCommand(Player p) {
+        String command;
+        command = "respawn player " + p.getName() 
+                + " " + p.getBody().getCenter().getX() + " "
+                + p.getBody().getCenter().getY() + " "
+                + p.getCurrentHealth() + " " + p.getMaxHealth()
+                + " " + p.getWeapon().getCurrentAmmuCount() + " " + p.getWeapon().getTotalAmmu() + " "
+                + p.getRespawnTime();
+        return command;
+    }
+    
     /**
      * returns a map command for a given map name. This command should be handled so that
      * it loads the map.
