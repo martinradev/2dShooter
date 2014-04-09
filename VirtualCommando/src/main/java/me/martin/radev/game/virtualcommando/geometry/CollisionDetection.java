@@ -2,10 +2,12 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package me.martin.radev.game.virtualcommando.game.interaction;
+package me.martin.radev.game.virtualcommando.geometry;
 
+import java.util.List;
 import me.martin.radev.game.virtualcommando.geometry.entity.Ellipse;
 import me.martin.radev.game.virtualcommando.geometry.entity.GeometricObject;
+import me.martin.radev.game.virtualcommando.geometry.entity.Line;
 import me.martin.radev.game.virtualcommando.geometry.entity.Polygon;
 import me.martin.radev.game.virtualcommando.geometry.entity.Rectangle;
 import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
@@ -83,11 +85,20 @@ public class CollisionDetection {
      * @return
      */
     public static boolean doCollide(Polygon polA, Polygon polB) {
-        for (Vector2D v2d : polA.getPoints()) {
+        List<Vector2D> aPoints = polA.getPoints();
+        List<Vector2D> bPoints = polB.getPoints();
+        for (Vector2D v2d : aPoints) {
             if (polB.contains(v2d)) return true;
         }
-        for (Vector2D v2d : polB.getPoints()) {
+        for (Vector2D v2d : bPoints) {
             if (polA.contains(v2d)) return true;
+        }
+        for (int i = 0; i < aPoints.size()-1; ++i) {
+            Line a = new Line(aPoints.get(i), aPoints.get(i+1));
+            for (int j = i; j < bPoints.size()-1; ++j) {
+                Line b = new Line(bPoints.get(j), bPoints.get(j+1));
+                if (MathUtil.linesIntersect(a, b)) return true;
+            }
         }
         return false;
     } 
@@ -99,13 +110,7 @@ public class CollisionDetection {
      * @return
      */
     public static boolean doCollide(Polygon polA, Rectangle polB) {
-        for (Vector2D v2d : polA.getPoints()) {
-            if (polB.contains(v2d)) return true;
-        }
-        for (Vector2D v2d : polB.getPoints()) {
-            if (polA.contains(v2d)) return true;
-        }
-        return false;
+        return doCollide(polA, (Polygon)polB);
     }
     
     /**
@@ -122,8 +127,7 @@ public class CollisionDetection {
                 return true;
             }
         }
-        
-        return false;
+        return pol.contains(ell.getCenter());
     }
     
     /**

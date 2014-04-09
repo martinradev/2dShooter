@@ -9,8 +9,7 @@ package me.martin.radev.game.virtualcommando.geometry.entity;
  * @author Marto
  */
 public class Rectangle extends Polygon {
-
-    private Vector2D bottomLeftCorner;
+    
     private double width;
     private double height;
 
@@ -25,7 +24,6 @@ public class Rectangle extends Polygon {
             new Vector2D(bottomLeftCorner.getX(), bottomLeftCorner.getY() + height),
             new Vector2D(bottomLeftCorner.getX() + width, bottomLeftCorner.getY() + height),
             new Vector2D(bottomLeftCorner.getX() + width, bottomLeftCorner.getY())});
-        this.bottomLeftCorner = bottomLeftCorner;
         this.width = width;
         this.height = height;
     }
@@ -35,7 +33,6 @@ public class Rectangle extends Polygon {
             new Vector2D(bottomLeftCorner.getX(), topRightCorner.getY()),
             new Vector2D(topRightCorner.getX(), topRightCorner.getY()),
             new Vector2D(topRightCorner.getX(), bottomLeftCorner.getY())});
-        this.bottomLeftCorner = bottomLeftCorner;
         this.width = topRightCorner.getX() - bottomLeftCorner.getX();
         this.height = topRightCorner.getY() - bottomLeftCorner.getY();
     }
@@ -53,7 +50,6 @@ public class Rectangle extends Polygon {
             new Vector2D(xCoord, yCoord + height),
             new Vector2D(xCoord + width, yCoord + height),
             new Vector2D(xCoord + width, yCoord)});
-        this.bottomLeftCorner = new Vector2D(xCoord, yCoord);
         this.width = width;
         this.height = height;
     }
@@ -73,4 +69,18 @@ public class Rectangle extends Polygon {
     public double getWidth() {
         return width;
     }
+    
+    /*
+    @Override
+    public boolean contains(Vector2D point) {
+        Vector2D bottomLeft = getBottomLeftCorner();
+        if (point.getX() < bottomLeft.getX() || 
+                point.getY() < bottomLeft.getY()) return false;
+        if (point.getX() > bottomLeft.getX()+getWidth() ||
+                point.getY() > bottomLeft.getY()+getHeight()) return false;
+        return true;
+    }
+    */
+    
+    
 }

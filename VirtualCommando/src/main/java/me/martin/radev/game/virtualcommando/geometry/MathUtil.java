@@ -4,6 +4,7 @@
  */
 package me.martin.radev.game.virtualcommando.geometry;
 
+import me.martin.radev.game.virtualcommando.geometry.entity.Line;
 import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
 
 /**
@@ -118,4 +119,20 @@ public class MathUtil {
                 / (MathUtil.distance(new Vector2D(0, 0), a)
                 + MathUtil.distance(new Vector2D(0, 0), b)));
     }
+    
+    public static boolean inBounds(Vector2D lowerBound, Vector2D upperBound,
+            Vector2D point) {
+        if (lowerBound.getX() > point.getX()) return false;
+        if (lowerBound.getY() > point.getY()) return false;
+        if (upperBound.getX() < point.getX()) return false;
+        if (upperBound.getY() < point.getY()) return false;
+        return true;
+    }
+    
+    public static boolean linesIntersect(Line a, Line b) {
+        return !a.onSameSideOfLine(b.getHead(), b.getTail()) &&
+                !b.onSameSideOfLine(a.getHead(), a.getTail());
+    }
+
+    
 }

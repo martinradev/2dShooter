@@ -6,7 +6,7 @@ package me.martin.radev.game.virtualcommando.structures;
 
 import java.util.LinkedList;
 import java.util.List;
-import me.martin.radev.game.virtualcommando.game.interaction.CollisionDetection;
+import me.martin.radev.game.virtualcommando.geometry.CollisionDetection;
 import me.martin.radev.game.virtualcommando.geometry.entity.Rectangle;
 import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
 import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalObject;
@@ -74,11 +74,17 @@ public class BinarySpaceTree {
             }
             if (A != null && B != null) {
                 A.addAll(B);
+                return A;
+            } else if (A != null) {
+                return A;
             } else if (B != null) {
-                A = B;
+                return B;
+            } else {
+                System.out.println("ERROR");
+                System.out.println(object.getBody().getCenter());
             }
-            return A;
         }
+        return null;
     }
     
     public class PartitionSpace {

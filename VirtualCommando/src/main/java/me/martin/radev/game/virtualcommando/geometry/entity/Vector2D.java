@@ -189,6 +189,8 @@ public class Vector2D extends GeometricObject {
         return boundingBox;
     }
     
-    
+    public double getMagnitude() {
+        return Math.sqrt(x*x + y*y);
+    }
 
 }
