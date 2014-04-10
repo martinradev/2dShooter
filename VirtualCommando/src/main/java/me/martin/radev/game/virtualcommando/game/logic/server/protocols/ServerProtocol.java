@@ -58,6 +58,7 @@ public abstract class ServerProtocol implements Runnable {
      */
     public void sendCommand(String command) {
         output.println(command);
+        System.out.println(command);
     }
 
     /**
@@ -67,6 +68,7 @@ public abstract class ServerProtocol implements Runnable {
     public String readCommand() {
         try {
             String line = input.readLine();
+            System.out.println(line);
             return line;
         } catch (IOException ex) {
             Global.getExceptionHandler().notificate(

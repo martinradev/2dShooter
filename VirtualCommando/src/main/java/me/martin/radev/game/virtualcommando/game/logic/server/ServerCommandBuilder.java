@@ -21,6 +21,10 @@ public class ServerCommandBuilder {
         
     }
     
+    private String removePrecision(double d) {
+        return String.format("%.2f", d);
+    }
+    
     // add|del player|object [optional] coordX coordY curHealth maxHealth curBullets maxBullets respawnTime
     /**
      * return an add player command for a {@link Player} object.
@@ -29,23 +33,23 @@ public class ServerCommandBuilder {
      */
     public String getAddPlayerCommand(Player p) {
         String command;
-        command = "add player " + p.getName() 
-                + " " + p.getBody().getCenter().getX() + " "
-                + p.getBody().getCenter().getY() + " "
+        command = "ap " + p.getName() 
+                + " " + (int)p.getBody().getCenter().getX() + " "
+                + (int)p.getBody().getCenter().getY() + " "
                 + p.getCurrentHealth() + " " + p.getMaxHealth()
                 + " " + p.getWeapon().getCurrentAmmuCount() + " " + p.getWeapon().getTotalAmmu() + " "
-                + p.getRespawnTime();
+                + removePrecision(p.getRespawnTime());
         return command;
     }
     
     public String getRespawnPlayerCommand(Player p) {
         String command;
-        command = "respawn player " + p.getName() 
-                + " " + p.getBody().getCenter().getX() + " "
-                + p.getBody().getCenter().getY() + " "
+        command = "gp " + p.getName() 
+                + " " + (int)p.getBody().getCenter().getX() + " "
+                + (int)p.getBody().getCenter().getY() + " "
                 + p.getCurrentHealth() + " " + p.getMaxHealth()
                 + " " + p.getWeapon().getCurrentAmmuCount() + " " + p.getWeapon().getTotalAmmu() + " "
-                + p.getRespawnTime();
+                + removePrecision(p.getRespawnTime());
         return command;
     }
     
@@ -57,7 +61,7 @@ public class ServerCommandBuilder {
      */
     public String getMapCommand(String mapName) {
         String command;
-        command = "map " + mapName;
+        command = "m " + mapName;
         return command;
     }
     
@@ -68,12 +72,12 @@ public class ServerCommandBuilder {
      */
     public String getPlayerStatusCommand(Player p) {
         String command;
-        command = "update player " + p.getName() 
-                + " " + p.getBody().getCenter().getX() + " "
-                + p.getBody().getCenter().getY() + " "
+        command = "up " + p.getName() 
+                + " " + (int)p.getBody().getCenter().getX() + " "
+                + (int)p.getBody().getCenter().getY() + " "
                 + p.getCurrentHealth() + " " + p.getMaxHealth()
                 + " " + p.getWeapon().getCurrentAmmuCount() + " " + p.getWeapon().getTotalAmmu() + " "
-                + p.getRespawnTime();
+                + removePrecision(p.getRespawnTime());
         return command;
     }
     
@@ -85,7 +89,8 @@ public class ServerCommandBuilder {
      */
     public String getPlayerMovementCommand(Player p, Vector2D direction) {
         String command;
-        command = "move player " + p.getName() + " " + direction.getX() + " " + direction.getY();
+        command = "mp " + p.getName() + " " + removePrecision(direction.getX()) 
+                + " " + removePrecision(direction.getY());
         return command;
     }
     
@@ -97,7 +102,8 @@ public class ServerCommandBuilder {
      */
     public String getPlayerShootingCommand(Player p, Vector2D direction) {
         String command;
-        command = "shoot player " + p.getName() + " " + direction.getX() + " " + direction.getY();
+        command = "sp " + p.getName() + " " + removePrecision(direction.getX())
+                + " " + removePrecision(direction.getY());
         return command;
     }
     
@@ -109,7 +115,7 @@ public class ServerCommandBuilder {
      */
     public String getPlayerRotationCommand(Player p, double angle) {
         String command;
-        command = "rotate player " + p.getName() + " " + angle;
+        command = "rp " + p.getName() + " " + removePrecision(angle);
         return command;
     }
     

@@ -56,7 +56,7 @@ public class Line extends GeometricObject {
 
     @Override
     public boolean contains(Vector2D v2d) {
-        return this.liesOnLine(tail);
+        return this.liesOnLine(v2d);
     }
 
     @Override

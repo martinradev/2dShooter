@@ -39,37 +39,38 @@ public class ServerPlayerProtocol extends ServerProtocol {
     @Override
     protected void processCommand(String command) {
         String[] tokens = command.split(" ");
-        if (tokens[0].equals("add")) {
-            if (tokens[1].equals("player")) {
+        if (tokens[0].charAt(0) == 'a') {
+            if (tokens[0].charAt(1) == 'p') {
                 processAddPlayer(tokens);
             }
-        } else if (tokens[0].equals("remove")) {
-            if (tokens[1].equals("player")) {
+        } else if (tokens[0].charAt(0) == 'e') {
+            if (tokens[0].charAt(1) == 'p') {
+                
             }
-        } else if (tokens[0].equals("map")) {
-        } else if (tokens[0].equals("update")) {
-            if (tokens[1].equals("player")) {
+        } else if (tokens[0].charAt(0) == 'm') {
+        } else if (tokens[0].charAt(0) == 'u') {
+            if (tokens[0].charAt(1) == 'p') {
                 processUpdatePlayer(tokens);
             }
-        } else if (tokens[0].equals("shoot")) {
-            if (tokens[1].equals("player")) {
+        } else if (tokens[0].charAt(0) == 's') {
+            if (tokens[0].charAt(1) == 'p') {
                 processShootPlayer(tokens);
             }
-        } else if (tokens[0].equals("rotate")) {
-            if (tokens[1].equals("player")) {
+        } else if (tokens[0].charAt(0) == 'r') {
+            if (tokens[0].charAt(1) == 'p') {
                 processRotatePlayer(tokens);
             }
         }
     }
 
     private void processAddPlayer(String[] tokens) {
-        String playerName = tokens[2];
-        Double xPosition = Double.parseDouble(tokens[3]);
-        Double yPosition = Double.parseDouble(tokens[4]);
-        int currentHealth = Integer.parseInt(tokens[5]);
-        int maxHealth = Integer.parseInt(tokens[6]);
-        int currentAmmo = Integer.parseInt(tokens[7]);
-        int maxAmmo = Integer.parseInt(tokens[8]);
+        String playerName = tokens[1];
+        Double xPosition = Double.parseDouble(tokens[2]);
+        Double yPosition = Double.parseDouble(tokens[3]);
+        int currentHealth = Integer.parseInt(tokens[4]);
+        int maxHealth = Integer.parseInt(tokens[5]);
+        int currentAmmo = Integer.parseInt(tokens[6]);
+        int maxAmmo = Integer.parseInt(tokens[7]);
         //double respawnTime = Double.parseDouble(tokens[9]);
         double respawnTime = 0d;
         player = new ServerPlayer(playerName, new Vector2D(xPosition, yPosition), this);
@@ -77,18 +78,18 @@ public class ServerPlayerProtocol extends ServerProtocol {
     }
 
     private void processUpdatePlayer(String[] tokens) {
-        Player p = Global.getGame().getPlayers().get(tokens[2]);
+        Player p = Global.getGame().getPlayers().get(tokens[1]);
         if (p == null) {
             processAddPlayer(tokens);
             return;
         }
-        Double xPosition = Double.parseDouble(tokens[3]);
-        Double yPosition = Double.parseDouble(tokens[4]);
-        int currentHealth = Integer.parseInt(tokens[5]);
-        int maxHealth = Integer.parseInt(tokens[6]);
-        int currentAmmo = Integer.parseInt(tokens[7]);
-        int maxAmmo = Integer.parseInt(tokens[8]);
-        double respawnTime = Double.parseDouble(tokens[9]);
+        Double xPosition = Double.parseDouble(tokens[2]);
+        Double yPosition = Double.parseDouble(tokens[3]);
+        int currentHealth = Integer.parseInt(tokens[4]);
+        int maxHealth = Integer.parseInt(tokens[5]);
+        int currentAmmo = Integer.parseInt(tokens[6]);
+        int maxAmmo = Integer.parseInt(tokens[7]);
+        double respawnTime = Double.parseDouble(tokens[8]);
         if (!(xPosition == 0d && yPosition == 0d)) {
             p.getBody().translate(-p.getBody().getCenter().getX(),
                     -p.getBody().getCenter().getY());
@@ -105,12 +106,12 @@ public class ServerPlayerProtocol extends ServerProtocol {
     }
 
     private void processShootPlayer(String[] tokens) {
-        Player p = Global.getGame().getPlayers().get(tokens[2]);
+        Player p = Global.getGame().getPlayers().get(tokens[1]);
         if (p == null) {
             return;
         }
-        double directionX = Double.parseDouble(tokens[3]);
-        double directionY = Double.parseDouble(tokens[4]);
+        double directionX = Double.parseDouble(tokens[2]);
+        double directionY = Double.parseDouble(tokens[3]);
         Vector2D direction = new Vector2D(directionX, directionY);
         p.shoot(direction);
         ((MultiPlayerGame) Global.getGame()).getServer()
@@ -118,11 +119,11 @@ public class ServerPlayerProtocol extends ServerProtocol {
     }
 
     private void processRotatePlayer(String[] tokens) {
-        Player p = Global.getGame().getPlayers().get(tokens[2]);
+        Player p = Global.getGame().getPlayers().get(tokens[1]);
         if (p == null) {
             return;
         }
-        double angle = Double.parseDouble(tokens[3]);
+        double angle = Double.parseDouble(tokens[2]);
         p.rotate(angle);
         ((MultiPlayerGame) Global.getGame()).getServer()
                 .getServerSync().rotatePlayer(p, angle);

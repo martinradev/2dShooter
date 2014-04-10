@@ -64,7 +64,7 @@ public class ConnectToServerDialog extends JDialog {
         textPassword = new JTextField("");
         textPassword.setColumns(12);
         
-        createButton = new JButton("Create");
+        createButton = new JButton("Connect");
         addButtonActionListener();
         
         JPanel firstRow = new JPanel();
