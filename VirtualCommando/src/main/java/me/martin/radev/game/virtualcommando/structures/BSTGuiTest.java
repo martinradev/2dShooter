@@ -18,16 +18,16 @@ import me.martin.radev.game.virtualcommando.structures.BinarySpaceTree.Partition
  *
  * @author Marto
  */
-public class BinarySpaceTreeTest {
+public class BSTGuiTest {
     
     private static BinarySpaceTree bst;
     private static PaintingScreen drawScreen;
     
     public static void main( String[] args )
     {
-        final int width = 800;
-        final int height = 600;
-        bst = new BinarySpaceTree(width, height, 40, 40);
+        final int width = 300;
+        final int height = 300;
+        bst = new BinarySpaceTree(width, height, 70, 40);
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(width, height);

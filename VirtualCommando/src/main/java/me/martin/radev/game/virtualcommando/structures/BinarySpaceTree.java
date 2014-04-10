@@ -4,8 +4,11 @@
  */
 package me.martin.radev.game.virtualcommando.structures;
 
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 import me.martin.radev.game.virtualcommando.geometry.CollisionDetection;
 import me.martin.radev.game.virtualcommando.geometry.entity.Rectangle;
 import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
@@ -57,15 +60,15 @@ public class BinarySpaceTree {
         }
     }
     
-    public List<GraphicalObject> getObjectsInClosingArea(GraphicalObject object) {
+    public Collection<GraphicalObject> getObjectsInClosingArea(GraphicalObject object) {
         return getObjectsInClosingAreaRecursively(root, object);
     }
     
-    private List<GraphicalObject> getObjectsInClosingAreaRecursively(PartitionSpace tree, GraphicalObject object) {
+    private Set<GraphicalObject> getObjectsInClosingAreaRecursively(PartitionSpace tree, GraphicalObject object) {
         if (tree.leftSubspace == null) {
-            return new LinkedList<>(tree.getObjects());
+            return new HashSet<>(tree.getObjects());
         } else {
-            List<GraphicalObject> A = null, B = null;
+            Set<GraphicalObject> A = null, B = null;
             if (CollisionDetection.doCollide(tree.leftSubspace.getBox(), object.getBody())) {
                 A = getObjectsInClosingAreaRecursively(tree.leftSubspace, object);
             }

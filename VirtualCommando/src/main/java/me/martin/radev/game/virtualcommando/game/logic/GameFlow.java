@@ -4,6 +4,7 @@
  */
 package me.martin.radev.game.virtualcommando.game.logic;
 
+import java.util.Collection;
 import java.util.List;
 import me.martin.radev.game.virtualcommando.game.graphics.GameEntityContainer;
 import me.martin.radev.game.virtualcommando.geometry.CollisionDetection;
@@ -101,7 +102,7 @@ public class GameFlow {
      * @param obj
      * @return
      */
-    public boolean isColliding(List<GraphicalObject> objectList, GraphicalObject obj) {
+    public boolean isColliding(Collection<GraphicalObject> objectList, GraphicalObject obj) {
         GeometricObject objBody = obj.getBody();
         for (GraphicalObject go : objectList) {
             if (CollisionDetection.doCollide(go.getBody(), objBody)) {
