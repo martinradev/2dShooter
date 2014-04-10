@@ -10,11 +10,15 @@ import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
 import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalObject;
 
 /**
- *
+ * DummyRespawner is used for {@link ConnectedToServerGame}. It doesn't have any logic implemented.
  * @author Marto
  */
 public class DummyRespawner extends Respawner {
     
+    /**
+     *
+     * @param list
+     */
     public DummyRespawner(ArrayList<GraphicalObject> list) {
         super(list);
     }
@@ -29,6 +33,10 @@ public class DummyRespawner extends Respawner {
         // do nothing
     }
 
+    /**
+     *
+     * @param p
+     */
     @Override
     public void respawn(Player p) {
         super.respawn(p);

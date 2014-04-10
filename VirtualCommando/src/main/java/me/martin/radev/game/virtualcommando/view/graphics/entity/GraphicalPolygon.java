@@ -12,13 +12,14 @@ import me.martin.radev.game.virtualcommando.geometry.entity.Polygon;
 import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
 
 /**
- *
+ * A graphical polygon wraps a geometric polygon. The different is that the
+ * graphical polygon gets rendered.
  * @author Marto
  */
 public class GraphicalPolygon extends GraphicalObject {
 
     /**
-     *
+     * Creates a graphical polygon from a list of points and a color
      * @param points
      * @param color
      */
@@ -27,7 +28,7 @@ public class GraphicalPolygon extends GraphicalObject {
     }
 
     /**
-     *
+     * creates a graphical polygon from an array of lists and a color
      * @param points
      * @param color
      */
@@ -36,7 +37,7 @@ public class GraphicalPolygon extends GraphicalObject {
     }
 
     /**
-     *
+     * render the polygon on a {@link Graphics2D} object with an x offset and y offset
      * @param g2d
      * @param xOffset
      * @param yOffset
@@ -56,7 +57,7 @@ public class GraphicalPolygon extends GraphicalObject {
     }
 
     /**
-     *
+     * returns the body of the polygon
      * @return
      */
     @Override

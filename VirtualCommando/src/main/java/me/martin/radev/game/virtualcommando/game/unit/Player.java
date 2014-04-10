@@ -293,6 +293,10 @@ public abstract class Player extends GraphicalRectangle {
         
     }
     
+    /**
+     *
+     * @return
+     */
     public boolean isPlayerActive() {
         return getRespawnTime()<=0d || getRespawnTime() >= Global.getGame().getRespawner().getTimeTillRespawn();
     }
@@ -345,6 +349,11 @@ public abstract class Player extends GraphicalRectangle {
         this.currentHealth = currentHealth;
     }
 
+    /**
+     *
+     * @param o
+     * @return
+     */
     @Override
     public boolean equals(Object o) {
         if (o == null) return false;

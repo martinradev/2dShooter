@@ -30,6 +30,7 @@ public interface AILogic {
     public boolean shouldShoot();
     /**
      * return the direction of shooting. The vector is a unit vector.
+     * @param player 
      * @return
      */
     public Vector2D directionOfShooting(Player player);

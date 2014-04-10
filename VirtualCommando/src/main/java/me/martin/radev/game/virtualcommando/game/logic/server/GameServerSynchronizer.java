@@ -77,6 +77,10 @@ public class GameServerSynchronizer {
         }
     }
     
+    /**
+     * sends the appropriate the commands about the respawn of player
+     * @param player
+     */
     public void respawnPlayer(Player player) {
         for (ServerPlayer pl : players) {
             

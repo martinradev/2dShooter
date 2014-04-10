@@ -21,7 +21,8 @@ import me.martin.radev.game.virtualcommando.Global;
 import me.martin.radev.game.virtualcommando.view.gui.screens.MenuScreen;
 
 /**
- *
+ * A ConnectToServerDialog is an instance of {@link JDialog} which asks for
+ * an ip, port and password for the remote game server.
  * @author Marto
  */
 public class ConnectToServerDialog extends JDialog {
@@ -35,7 +36,7 @@ public class ConnectToServerDialog extends JDialog {
     private JFrame owner;
     
     /**
-     *
+     * Creates the dialog with an owner
      * @param owner
      */
     public ConnectToServerDialog(JFrame owner) {
@@ -102,7 +103,7 @@ public class ConnectToServerDialog extends JDialog {
     }
 
     /**
-     *
+     * returns the port text field
      * @return
      */
     public JTextField getTextSocket() {
@@ -110,7 +111,7 @@ public class ConnectToServerDialog extends JDialog {
     }
 
     /**
-     *
+     * returns the password text field
      * @return
      */
     public JTextField getTextPassword() {
@@ -118,7 +119,7 @@ public class ConnectToServerDialog extends JDialog {
     }
 
     /**
-     *
+     * returns the ip text field
      * @return
      */
     public JTextField getTextIp() {

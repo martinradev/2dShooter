@@ -15,6 +15,11 @@ import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalObject
  */
 public class ClosestPlayerHeuristic {
 
+    /**
+     * returns the closest player to the player p
+     * @param p
+     * @return
+     */
     public Player getClosestPlayer(Player p) {
         Player closestPlayer = null;
         double distance = MathUtil.POSITIVE_INFINITY;

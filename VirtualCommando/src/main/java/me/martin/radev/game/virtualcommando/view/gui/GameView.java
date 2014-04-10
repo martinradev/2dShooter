@@ -15,7 +15,8 @@ import me.martin.radev.game.virtualcommando.view.gui.screens.MenuScreen;
 import me.martin.radev.game.virtualcommando.view.gui.screens.Screen;
 
 /**
- *
+ * The GameView class is the main gui of the game. It contains the current screen
+ * which can be a {@link GameScreen}, {@link MenuScreen}, etc
  * @author Marto
  */
 public class GameView extends JFrame {
@@ -25,7 +26,7 @@ public class GameView extends JFrame {
     private AssetManager assetManager;
     
     /**
-     *
+     * creates a frame with a given width and height
      * @param width
      * @param height
      */
@@ -51,7 +52,7 @@ public class GameView extends JFrame {
         
     }
     /**
-     *
+     * sets a screen on the frame
      * @param scr
      */
     public void setScreen(Screen scr) {
@@ -62,7 +63,7 @@ public class GameView extends JFrame {
     }
 
     /**
-     *
+     * validates the screen by recomputing all of its children components
      */
     @Override
     public void validate() {
@@ -75,7 +76,7 @@ public class GameView extends JFrame {
     }
 
     /**
-     *
+     * returns the current screen
      * @return
      */
     public JPanel getScreen() {

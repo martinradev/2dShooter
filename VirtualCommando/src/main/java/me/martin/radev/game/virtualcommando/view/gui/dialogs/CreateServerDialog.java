@@ -18,11 +18,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import me.martin.radev.game.virtualcommando.Global;
-import me.martin.radev.game.virtualcommando.Settings;
 import me.martin.radev.game.virtualcommando.view.gui.screens.MenuScreen;
 
 /**
- *
+ * It is an instance of {@link JDialog} and contains a form for creating a server.
  * @author Marto
  */
 public class CreateServerDialog extends JDialog {
@@ -35,7 +34,7 @@ public class CreateServerDialog extends JDialog {
     private JFrame owner;
 
     /**
-     *
+     * Creates the dialog with an owner
      * @param owner
      */
     public CreateServerDialog(JFrame owner) {

@@ -7,7 +7,7 @@ package me.martin.radev.game.virtualcommando.view.graphics.entity;
 import java.awt.Image;
 
 /**
- *
+ * A sprite is a wrapper for an image.
  * @author Marto
  */
 public class Sprite {
@@ -15,7 +15,7 @@ public class Sprite {
     private Image image;
     
     /**
-     *
+     * Creates a sprite from an {@link Image} object
      * @param image
      */
     public Sprite(Image image) {
@@ -23,7 +23,7 @@ public class Sprite {
     }
     
     /**
-     *
+     * returns the {@link Image} for this sprite
      * @return
      */
     public Image getImage() {
@@ -31,7 +31,7 @@ public class Sprite {
     }
     
     /**
-     *
+     * returns the width of the sprite
      * @return
      */
     public int getWidth() {
@@ -39,7 +39,7 @@ public class Sprite {
     }
     
     /**
-     *
+     * returns the height of the sprite
      * @return
      */
     public int getHeight() {

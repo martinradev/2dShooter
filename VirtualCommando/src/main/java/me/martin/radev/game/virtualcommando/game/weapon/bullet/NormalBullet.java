@@ -11,7 +11,7 @@ import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalObject
 import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalRectangle;
 
 /**
- *
+ * A normal bullet. This is the most basic bullet in the game.
  * @author Marto
  */
 public class NormalBullet extends Bullet {

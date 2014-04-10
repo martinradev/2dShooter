@@ -165,6 +165,10 @@ public class GameConcurrencyProtocol extends ServerProtocol {
         sendCommand(command);
     }
     
+    /**
+     * sends a command about the respawn of the player
+     * @param p
+     */
     public void respawnPlayer(Player p) {
         String command =
                 commandBuilder.getRespawnPlayerCommand(p);

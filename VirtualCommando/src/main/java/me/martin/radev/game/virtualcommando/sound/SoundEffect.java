@@ -23,7 +23,8 @@ public class SoundEffect implements Sound {
     private Clip clip;
     
     /**
-     *
+     * Creates a sound effect from a {@link File} f. The sound effect
+     * can be for example of shooting, etc.
      * @param f
      */
     public SoundEffect(File f) {
@@ -53,7 +54,7 @@ public class SoundEffect implements Sound {
     }
     
     /**
-     *
+     * plays the sound
      */
     @Override
     public void play() {

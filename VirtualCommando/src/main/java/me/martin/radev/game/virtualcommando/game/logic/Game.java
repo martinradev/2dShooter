@@ -17,17 +17,17 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import me.martin.radev.game.virtualcommando.Global;
 import me.martin.radev.game.virtualcommando.game.Updatable;
-import me.martin.radev.game.virtualcommando.game.logic.respawn.RandomRespawner;
 import me.martin.radev.game.virtualcommando.game.logic.respawn.Respawner;
 import me.martin.radev.game.virtualcommando.game.unit.MyPlayer;
 import me.martin.radev.game.virtualcommando.game.unit.Player;
 import me.martin.radev.game.virtualcommando.map.TiledMap;
-import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalObject;
 import me.martin.radev.game.virtualcommando.view.gui.asset.AssetType;
 import me.martin.radev.game.virtualcommando.view.gui.screens.GameScreen;
 
 /**
- *
+ * A game class. When created it also initialize helpful classes like
+ * game flow classes, etc. The class is abstract and it can be wrapped
+ * by {@link SinglePlayerGame}, {@link MultiPlayerGame}, etc
  * @author Marto
  */
 public abstract class Game {
@@ -57,6 +57,7 @@ public abstract class Game {
     /**
      *
      * @param mapName
+     * @param respawnerType  
      */
     public Game(String mapName, Class respawnerType) {
         this.mapName = mapName;

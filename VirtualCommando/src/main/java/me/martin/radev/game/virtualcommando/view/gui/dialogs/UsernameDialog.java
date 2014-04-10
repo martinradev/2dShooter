@@ -18,7 +18,7 @@ import javax.swing.JTextField;
 import me.martin.radev.game.virtualcommando.Settings;
 
 /**
- *
+ * a dialog which asks you to write your username
  * @author Marto
  */
 public class UsernameDialog extends JDialog {
@@ -29,7 +29,7 @@ public class UsernameDialog extends JDialog {
     private JFrame owner;
     
     /**
-     *
+     * 
      * @param owner
      */
     public UsernameDialog(JFrame owner) {

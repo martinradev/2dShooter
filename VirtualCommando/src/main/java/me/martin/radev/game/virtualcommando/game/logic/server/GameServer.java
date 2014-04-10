@@ -18,7 +18,7 @@ import me.martin.radev.game.virtualcommando.game.unit.ServerPlayer;
 import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
 
 /**
- *
+ * A game server which accepts connections.
  * @author Marto
  */
 public class GameServer implements Runnable {
@@ -143,6 +143,10 @@ public class GameServer implements Runnable {
         return serverSync;
     }
 
+    /**
+     *
+     * @return
+     */
     public ServerCommandBuilder getCommandBuilder() {
         return commandBuilder;
     }

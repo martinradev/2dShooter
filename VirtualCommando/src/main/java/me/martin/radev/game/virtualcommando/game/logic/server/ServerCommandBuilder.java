@@ -42,6 +42,11 @@ public class ServerCommandBuilder {
         return command;
     }
     
+    /**
+     * returns a command for the respawn of the player
+     * @param p
+     * @return
+     */
     public String getRespawnPlayerCommand(Player p) {
         String command;
         command = "gp " + p.getName() 

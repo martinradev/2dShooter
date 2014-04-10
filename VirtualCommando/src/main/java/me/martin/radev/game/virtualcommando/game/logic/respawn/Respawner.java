@@ -60,6 +60,10 @@ public abstract class Respawner {
         }
     }
 
+    /**
+     *
+     * @param p
+     */
     protected void respawn(Player p) {
         playersToRespawn.remove(p);
 

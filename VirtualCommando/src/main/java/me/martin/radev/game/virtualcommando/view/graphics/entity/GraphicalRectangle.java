@@ -10,7 +10,7 @@ import me.martin.radev.game.virtualcommando.geometry.entity.Rectangle;
 import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
 
 /**
- *
+ * A graphical rectangle wraps a geometric rectangle. The graphical rectangle is a rectangle which gets rendered. 
  * @author Marto
  */
 public class GraphicalRectangle extends GraphicalObject {
@@ -18,7 +18,8 @@ public class GraphicalRectangle extends GraphicalObject {
     private Sprite sprite;
 
     /**
-     *
+     * Creates a graphical rectangle with a bottom left corner, width height
+     * and a color
      * @param bottomLeft
      * @param width
      * @param height
@@ -29,7 +30,8 @@ public class GraphicalRectangle extends GraphicalObject {
     }
 
     /**
-     *
+     * Creates a graphical rectangle with the coordinates of its bottom left
+     * corner, width, height and color
      * @param xCoord
      * @param yCoord
      * @param width
@@ -41,7 +43,7 @@ public class GraphicalRectangle extends GraphicalObject {
     }
 
     /**
-     *
+     * renders the the rectangle on a {@link Graphics2D} object with a given offset
      * @param g2d
      * @param xOffset
      * @param yOffset
@@ -63,7 +65,7 @@ public class GraphicalRectangle extends GraphicalObject {
     }
 
     /**
-     *
+     * returns the graphical rectangle on a {@link Graphics2D} object with a given offset and angle of rotation
      * @param g2d
      * @param xOffset
      * @param yOffset
@@ -85,7 +87,7 @@ public class GraphicalRectangle extends GraphicalObject {
     }
 
     /**
-     *
+     * sets a new sprite
      * @param sprite
      */
     public void setSprite(Sprite sprite) {
@@ -93,7 +95,7 @@ public class GraphicalRectangle extends GraphicalObject {
     }
 
     /**
-     *
+     * returns a body of the graphical object
      * @return
      */
     @Override

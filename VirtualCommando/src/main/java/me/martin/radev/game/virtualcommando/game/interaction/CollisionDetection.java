@@ -13,7 +13,8 @@ import me.martin.radev.game.virtualcommando.geometry.entity.Rectangle;
 import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
 
 /**
- *
+ * A collision detector class. It processes whether one object collides with 
+ * another
  * @author Marto
  */
 public class CollisionDetection {

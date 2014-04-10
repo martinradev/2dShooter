@@ -19,7 +19,7 @@ import me.martin.radev.game.virtualcommando.map.loader.ObjectLoader;
 import me.martin.radev.game.virtualcommando.view.graphics.entity.Sprite;
 
 /**
- *
+ * An AssetManager loads and store the needed assets for the game.
  * @author Marto
  */
 public class AssetManager {
@@ -29,7 +29,7 @@ public class AssetManager {
     private String assetDirectory = "assets";
     
     /**
-     *
+     * Creates an asset manager
      * @param exceptionHandler
      */
     public AssetManager(ExceptionHandler exceptionHandler) {
@@ -38,7 +38,7 @@ public class AssetManager {
     }
     
     /**
-     *
+     * loads an {@link Object} with a given {@link AssetType} and a file name
      * @param type
      * @param file
      * @return

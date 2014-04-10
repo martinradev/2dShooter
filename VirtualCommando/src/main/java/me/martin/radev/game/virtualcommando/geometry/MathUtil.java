@@ -8,7 +8,7 @@ import me.martin.radev.game.virtualcommando.geometry.entity.Line;
 import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
 
 /**
- *
+ * The MathUtil class provides useful geometric algorithms and functions
  * @author Marto
  */
 public class MathUtil {
@@ -120,6 +120,14 @@ public class MathUtil {
                 + MathUtil.distance(new Vector2D(0, 0), b)));
     }
     
+    /**
+     * Returns true if the point is in the rectangle defined by lowerBound and
+     * upperBound
+     * @param lowerBound
+     * @param upperBound
+     * @param point
+     * @return
+     */
     public static boolean inBounds(Vector2D lowerBound, Vector2D upperBound,
             Vector2D point) {
         if (lowerBound.getX() > point.getX()) return false;
@@ -129,6 +137,12 @@ public class MathUtil {
         return true;
     }
     
+    /**
+     * returns true if line a intersects line b
+     * @param a
+     * @param b
+     * @return
+     */
     public static boolean linesIntersect(Line a, Line b) {
         return !a.onSameSideOfLine(b.getHead(), b.getTail()) &&
                 !b.onSameSideOfLine(a.getHead(), a.getTail());

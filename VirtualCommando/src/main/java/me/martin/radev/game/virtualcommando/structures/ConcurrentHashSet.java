@@ -8,7 +8,8 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- *
+ * ConcurrencyHashSet uses a {@link ConcurrentHashMap} as a base. Should be used 
+ * when multiple threads are supposed to use the set.
  * @param <K> 
  * @author Marto
  */

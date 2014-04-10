@@ -15,7 +15,8 @@ import me.martin.radev.game.virtualcommando.structures.BinarySpaceTree;
 import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalObject;
 
 /**
- *
+ * A collection of all objects on the map like players, static objects, walls,
+ * respawn points, etc
  * @author Marto
  */
 public class GameEntityContainer {
@@ -182,6 +183,10 @@ public class GameEntityContainer {
         return boundingBox;
     }
 
+    /**
+     * return the binary space tree which contains the static objects
+     * @return
+     */
     public BinarySpaceTree getBinarySpaceTree() {
         return binarySpaceTree;
     }

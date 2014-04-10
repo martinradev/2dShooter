@@ -9,16 +9,17 @@ import me.martin.radev.game.virtualcommando.geometry.entity.GeometricObject;
 import me.martin.radev.game.virtualcommando.game.graphics.Renderable;
 
 /**
- *
+ * an abstract class which defines most of the common methods and variables for a
+ * graphical object
  * @author Marto
  */
-public abstract class GraphicalObject implements Renderable, Cloneable {
+public abstract class GraphicalObject implements Renderable {
     
     private GeometricObject body;
     private Color color;
     
     /**
-     *
+     * creates a graphical object from a body and a color
      * @param body
      * @param color
      */
@@ -28,7 +29,7 @@ public abstract class GraphicalObject implements Renderable, Cloneable {
     }
     
     /**
-     *
+     * returns the body of the graphical object
      * @return
      */
     public GeometricObject getBody() {
@@ -36,7 +37,7 @@ public abstract class GraphicalObject implements Renderable, Cloneable {
     }
 
     /**
-     *
+     * returns the color of the graphical object
      * @return
      */
     public Color getColor() {
@@ -44,29 +45,21 @@ public abstract class GraphicalObject implements Renderable, Cloneable {
     }
 
     /**
-     *
+     * sets a new body for the graphical object
      * @param body
      */
     public void setBody(GeometricObject body) {
         this.body = body;
     }
 
-    /**
-     *
+    /** 
+     * sets a new color
      * @param color
      */
     public void setColor(Color color) {
         this.color = color;
     }
 
-    /**
-     *
-     * @return
-     * @throws CloneNotSupportedException
-     */
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone(); //To change body of generated methods, choose Tools | Templates.
-    }
+
     
 }

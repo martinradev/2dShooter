@@ -11,13 +11,13 @@ import me.martin.radev.game.virtualcommando.geometry.entity.GeometricObject;
 import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
 
 /**
- *
+ * GraphicalEllipse is a wrapper for the geometric ellipse class. 
  * @author Marto
  */
 public class GraphicalEllipse extends GraphicalObject {
     
     /**
-     *
+     * Creates an ellipse from a center, majorAxis, minorAxis and color
      * @param center
      * @param majorAxis
      * @param minorAxis
@@ -28,7 +28,8 @@ public class GraphicalEllipse extends GraphicalObject {
     }
     
     /**
-     *
+     * creates a graphical ellipse from a center defined by xCoord and yCoord,
+     * a major axis, minor axis and a color
      * @param xCoord
      * @param yCoord
      * @param majorAxis
@@ -41,7 +42,8 @@ public class GraphicalEllipse extends GraphicalObject {
     }
     
     /**
-     *
+     * renders the ellipse on a {@link Graphics2D} object with a given x offset and
+     * y offset
      * @param g2d
      * @param xOffset
      * @param yOffset
@@ -56,7 +58,8 @@ public class GraphicalEllipse extends GraphicalObject {
     }
 
     /**
-     *
+     * returns the body of the ellipse. The body is a geometrical object in the
+     * geometric world of the game.
      * @return
      */
     @Override

@@ -23,6 +23,10 @@ public class BSTGuiTest {
     private static BinarySpaceTree bst;
     private static PaintingScreen drawScreen;
     
+    /**
+     *
+     * @param args
+     */
     public static void main( String[] args )
     {
         final int width = 300;

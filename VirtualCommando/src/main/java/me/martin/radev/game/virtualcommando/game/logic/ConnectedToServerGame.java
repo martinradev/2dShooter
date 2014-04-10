@@ -16,7 +16,8 @@ import me.martin.radev.game.virtualcommando.game.unit.MyPlayer;
 import me.martin.radev.game.virtualcommando.view.gui.screens.MenuScreen;
 
 /**
- *
+ * A connected to server game. This means that when the game is started,
+ * it is connected to a remote server.
  * @author Marto
  */
 public class ConnectedToServerGame extends Game  {

@@ -28,6 +28,11 @@ public class Rectangle extends Polygon {
         this.height = height;
     }
     
+    /**
+     *
+     * @param bottomLeftCorner
+     * @param topRightCorner
+     */
     public Rectangle(Vector2D bottomLeftCorner, Vector2D topRightCorner) {
         super(new Vector2D[]{bottomLeftCorner,
             new Vector2D(bottomLeftCorner.getX(), topRightCorner.getY()),

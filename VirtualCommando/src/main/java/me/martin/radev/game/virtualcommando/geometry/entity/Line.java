@@ -16,6 +16,11 @@ public class Line extends GeometricObject {
     private Vector2D head;
     private Vector2D tail;
 
+    /**
+     *
+     * @param head
+     * @param tail
+     */
     public Line(Vector2D head, Vector2D tail) {
         super();
         if (head.getX() < tail.getX()) {
@@ -72,25 +77,47 @@ public class Line extends GeometricObject {
         return new Vector2D[]{head, tail};
     }
 
+    /**
+     *
+     * @return
+     */
     public Vector2D getHead() {
         return head;
     }
 
+    /**
+     *
+     * @return
+     */
     public Vector2D getTail() {
         return tail;
     }
 
+    /**
+     *
+     * @return
+     */
     public Vector2D generateVector() {
         return new Vector2D(head.getX() - tail.getX(),
                 head.getY() - tail.getY());
     }
 
+    /**
+     *
+     * @param l
+     * @return
+     */
     public boolean isParallel(Line l) {
         double areaBetween =
                 MathUtil.crossProduct(generateVector(), l.generateVector());
         return MathUtil.relativelyEqual(areaBetween, 0d);
     }
 
+    /**
+     *
+     * @param point
+     * @return
+     */
     public double distanceToPoint(Vector2D point) {
         Vector2D P = new Vector2D(point);
         Vector2D A = new Vector2D(this.getHead());
@@ -100,18 +127,33 @@ public class Line extends GeometricObject {
         return crossProduct / B.getMagnitude();
     }
 
+    /**
+     *
+     * @param point
+     * @return
+     */
     public boolean liesOnLine(Vector2D point) {
         double distance = distanceToPoint(point);
         return MathUtil.relativelyEqual(distance, 0d)
                 && MathUtil.inBounds(head, tail, point);
     }
     
+    /**
+     *
+     * @param pointA
+     * @param pointB
+     * @return
+     */
     public boolean onSameSideOfLine(Vector2D pointA, Vector2D pointB) {
         double crossA = MathUtil.crossProductFromNewOrigin(head, tail, pointA);
         double crossB = MathUtil.crossProductFromNewOrigin(head, tail, pointB);
         return crossA*crossB >= 0;
     }
     
+    /**
+     *
+     * @return
+     */
     public double getSlope() {
         double dx = tail.getX() - head.getX();
         double dy = tail.getY() - head.getY();

@@ -11,7 +11,7 @@ import me.martin.radev.game.virtualcommando.geometry.MathUtil;
 import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalObject;
 
 /**
- *
+ * Decided whether one player can see another player
  * @author Marto
  */
 public class VisibilityIdentifier {
@@ -19,10 +19,19 @@ public class VisibilityIdentifier {
     private List<GraphicalObject>  mapObjects;
     private final double VISION_RADIUS = 285d;
     
+    /**
+     *
+     */
     public VisibilityIdentifier() {
         mapObjects = Global.getGame().getGameEntities().getMapObjects();
     }
     
+    /**
+     *
+     * @param pointOfView
+     * @param otherObject
+     * @return
+     */
     public boolean canSeeObject(GraphicalObject pointOfView, 
             GraphicalObject otherObject) {
         double distance = MathUtil.distance(pointOfView.getBody().getCenter(),
@@ -30,6 +39,10 @@ public class VisibilityIdentifier {
         return distance <= VISION_RADIUS;
     }
 
+    /**
+     *
+     * @return
+     */
     public double getVISION_RADIUS() {
         return VISION_RADIUS;
     }

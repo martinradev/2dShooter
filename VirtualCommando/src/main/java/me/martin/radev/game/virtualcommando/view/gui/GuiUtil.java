@@ -9,13 +9,13 @@ import java.util.Random;
 import me.martin.radev.game.virtualcommando.Global;
 
 /**
- *
+ * A class containing helpful utility methods for gui
  * @author Marto
  */
 public class GuiUtil {
 
     /**
-     *
+     * rescales the length to a scaling factor for the whole frame
      * @param length
      * @return
      */
@@ -24,7 +24,7 @@ public class GuiUtil {
     }
 
     /**
-     *
+     * returns a random color
      * @return
      */
     public static Color randomColor() {
