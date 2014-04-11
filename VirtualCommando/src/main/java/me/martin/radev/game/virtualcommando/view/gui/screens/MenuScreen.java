@@ -58,7 +58,7 @@ public class MenuScreen extends Screen {
         
         menuGroup.setBackground(Color.black);
         Sprite logoSprite = (Sprite)
-                Global.getAssetManager().load(AssetType.Sprite, "logo.png");
+                Global.getAssetManager().load(AssetType.Sprite, "sprites/logo.png");
         logo = new BackgroundPanel(logoSprite);
         logo.setPreferredSize(new Dimension(logoSprite.getWidth(), logoSprite.getHeight()));
         logo.setAlignmentX(JComponent.CENTER_ALIGNMENT);

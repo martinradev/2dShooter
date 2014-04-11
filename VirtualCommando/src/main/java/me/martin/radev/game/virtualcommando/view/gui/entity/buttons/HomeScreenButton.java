@@ -41,7 +41,8 @@ public class HomeScreenButton extends ScreenButton implements MouseListener {
         this.setFocusPainted(false);
         try {
             Font newFont = Font.createFont(Font.TRUETYPE_FONT,
-                    (File) Global.getAssetManager().load(AssetType.Font, FONT_FILE));
+                    (File) Global.getAssetManager().load(AssetType.Font, "fonts/" +
+                    FONT_FILE));
             this.font = newFont;
             this.setFont(newFont.deriveFont(Font.BOLD, HomeScreenButton.FONT_SIZE));
 

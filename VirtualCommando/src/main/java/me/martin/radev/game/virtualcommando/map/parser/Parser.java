@@ -26,5 +26,5 @@ public interface Parser {
      * @param el
      * @return
      */
-    GraphicalObject parseObject(Element el);
+    GraphicalObject parseObject(Element el, String mapFolder);
 }

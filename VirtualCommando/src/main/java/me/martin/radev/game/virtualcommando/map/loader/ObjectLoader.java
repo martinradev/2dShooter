@@ -74,11 +74,13 @@ public class ObjectLoader implements Loader {
                 
 
                 NodeList nList = this.getListInContainer("objectgroup", "object", doc.getDocumentElement());
-                List<GraphicalObject> mapObjectList = parser.parseObjectContainer(nList);
+                List<GraphicalObject> mapObjectList = parser.parseObjectContainer(nList, 
+                        "maps/" + xmlFile.getParentFile().getName() + "/");
                 som.addStaticObjects(mapObjectList);
                 
                 NodeList respawnList = this.getListInContainer("respawngroup", "object", doc.getDocumentElement());
-                List<GraphicalObject> mapRespawnList = parser.parseObjectContainer(respawnList);
+                List<GraphicalObject> mapRespawnList = parser.parseObjectContainer(respawnList, 
+                        "maps/" + xmlFile.getParentFile().getName() + "/");
                 som.addRespawnPoints(mapRespawnList);
                 
                 return som;

@@ -4,7 +4,7 @@
  */
 package me.martin.radev.game.virtualcommando.game.interaction;
 
-import me.martin.radev.game.virtualcommando.geometry.CollisionDetection;
+import me.martin.radev.game.virtualcommando.game.interaction.CollisionDetection;
 import me.martin.radev.game.virtualcommando.geometry.entity.Ellipse;
 import me.martin.radev.game.virtualcommando.geometry.entity.GeometricObject;
 import me.martin.radev.game.virtualcommando.geometry.entity.Polygon;

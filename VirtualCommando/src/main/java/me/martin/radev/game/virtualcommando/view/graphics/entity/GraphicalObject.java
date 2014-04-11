@@ -17,6 +17,7 @@ public abstract class GraphicalObject implements Renderable {
     
     private GeometricObject body;
     private Color color;
+    protected Sprite sprite;
     
     /**
      * creates a graphical object from a body and a color
@@ -60,6 +61,10 @@ public abstract class GraphicalObject implements Renderable {
         this.color = color;
     }
 
+    public void setSprite(Sprite sprite) {
+        this.sprite = sprite;
+    }
 
+    
     
 }

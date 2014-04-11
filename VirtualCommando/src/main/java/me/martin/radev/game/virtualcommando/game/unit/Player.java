@@ -79,11 +79,12 @@ public abstract class Player extends GraphicalRectangle {
                 (double) gObjectWidth, (double) gObjectHeight, color);
         this.maxHealth = maxHealth;
         this.currentHealth = maxHealth;
-        staticSprite = (Sprite) Global.getAssetManager().load(AssetType.Sprite, "soldier/solid.png");
+        staticSprite = (Sprite) Global.getAssetManager().load(AssetType.Sprite,
+                "sprites/soldier/solid.png");
         super.setSprite(staticSprite);
         walkAnimation = new LinearAnimation();
-        walkAnimation.addSprite((Sprite) Global.getAssetManager().load(AssetType.Sprite, "soldier/frame1.png"));
-        walkAnimation.addSprite((Sprite) Global.getAssetManager().load(AssetType.Sprite, "soldier/frame2.png"));
+        walkAnimation.addSprite((Sprite) Global.getAssetManager().load(AssetType.Sprite, "sprites/soldier/frame1.png"));
+        walkAnimation.addSprite((Sprite) Global.getAssetManager().load(AssetType.Sprite, "sprites/soldier/frame2.png"));
         Global.getGame().bind(walkAnimation);
         lastMovement = new Vector2D(0d, 0d);
         currentAngleOfRotation = 0d;

@@ -68,7 +68,8 @@ public abstract class Game {
 
     private void init() {
         players = new HashMap<>();
-        map = (TiledMap) Global.getAssetManager().load(AssetType.Map, mapName);
+        map = (TiledMap) Global.getAssetManager().load(AssetType.Map, 
+                "maps/" + mapName + "/map.tmx");
         gameEntities = new GameEntityContainer();
         gameEntities.addAllMapObjects(map.getObjects());
         gameEntities.addAllRespawnPoints(map.getRespawnPoints());

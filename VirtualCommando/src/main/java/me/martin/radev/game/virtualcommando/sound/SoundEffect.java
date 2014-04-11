@@ -9,6 +9,7 @@ import java.io.IOException;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import me.martin.radev.game.virtualcommando.Global;
@@ -21,6 +22,7 @@ import me.martin.radev.game.virtualcommando.exception.ExceptionHelper;
 public class SoundEffect implements Sound {
 
     private Clip clip;
+    private File file;
     
     /**
      * Creates a sound effect from a {@link File} f. The sound effect
@@ -28,8 +30,12 @@ public class SoundEffect implements Sound {
      * @param f
      */
     public SoundEffect(File f) {
+        this.file = f;
+    }
+    
+    private void reloadEffect() {
         try {
-            loadSoundEffect(f);
+            loadSoundEffect(file);
         } catch (LineUnavailableException ex) {
             clip = null;
             Global.getExceptionHandler().notificate(
@@ -57,7 +63,13 @@ public class SoundEffect implements Sound {
      * plays the sound
      */
     @Override
-    public void play() {
+    public void play(float decibalDelta) {
+        reloadEffect();
+        
+        FloatControl volumeControl = (FloatControl)
+                clip.getControl(FloatControl.Type.MASTER_GAIN);
+        ;
+        volumeControl.setValue(decibalDelta);
         clip.start();
     }
     

@@ -2,9 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package me.martin.radev.game.virtualcommando.geometry;
+package me.martin.radev.game.virtualcommando.game.interaction;
 
 import java.util.List;
+import me.martin.radev.game.virtualcommando.geometry.MathUtil;
 import me.martin.radev.game.virtualcommando.geometry.entity.Ellipse;
 import me.martin.radev.game.virtualcommando.geometry.entity.GeometricObject;
 import me.martin.radev.game.virtualcommando.geometry.entity.Line;
@@ -128,7 +129,7 @@ public class CollisionDetection {
                 return true;
             }
         }
-        return pol.contains(ell.getCenter());
+        return pol.contains(ell.getComputationCenter());
     }
     
     /**

@@ -6,6 +6,10 @@ package me.martin.radev.game.virtualcommando.view.graphics.entity;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.TexturePaint;
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.Rectangle2D;
+import java.awt.image.BufferedImage;
 import me.martin.radev.game.virtualcommando.geometry.entity.Ellipse;
 import me.martin.radev.game.virtualcommando.geometry.entity.GeometricObject;
 import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
@@ -50,11 +54,21 @@ public class GraphicalEllipse extends GraphicalObject {
      */
     @Override
     public void render(Graphics2D g2d, int xOffset, int yOffset) {
-        g2d.setColor(super.getColor());
         Ellipse body = this.getBody();
         Vector2D center = body.getCenter();
-        g2d.fillOval((int)center.getX() + xOffset, (int)center.getY() + yOffset, 
+        if (sprite != null) {
+            TexturePaint texture = new TexturePaint((BufferedImage)sprite.getImage(), 
+                    new Rectangle2D.Double(91, 
+                    22, body.getMajorAxis(), 
+                    body.getMinorAxis()));
+            g2d.setPaint(texture);
+            g2d.fillOval((int)center.getX(), (int)center.getY(), 
                 (int)body.getMajorAxis(), (int)body.getMinorAxis());
+        } else {
+            g2d.setColor(super.getColor());
+            g2d.fillOval((int)center.getX() + xOffset, (int)center.getY() + yOffset, 
+                (int)body.getMajorAxis(), (int)body.getMinorAxis());
+        }
     }
 
     /**

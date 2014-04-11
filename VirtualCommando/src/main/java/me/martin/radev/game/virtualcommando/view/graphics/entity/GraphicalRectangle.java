@@ -6,6 +6,9 @@ package me.martin.radev.game.virtualcommando.view.graphics.entity;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.TexturePaint;
+import java.awt.geom.Rectangle2D;
+import java.awt.image.BufferedImage;
 import me.martin.radev.game.virtualcommando.geometry.entity.Rectangle;
 import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
 
@@ -14,8 +17,8 @@ import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
  * @author Marto
  */
 public class GraphicalRectangle extends GraphicalObject {
-
-    private Sprite sprite;
+    
+    private TexturePaint texture;
 
     /**
      * Creates a graphical rectangle with a bottom left corner, width height
@@ -53,8 +56,14 @@ public class GraphicalRectangle extends GraphicalObject {
         Vector2D sprV2d = new Vector2D(super.getBody().getCenter());
         g2d.translate(sprV2d.getX()+xOffset, sprV2d.getY());
         if (sprite != null) {
-            g2d.drawImage(sprite.getImage(), -sprite.getWidth() / 2,
-                    -sprite.getHeight() / 2, null);
+            texture = new TexturePaint((BufferedImage)sprite.getImage(), 
+                    new Rectangle2D.Double(0, 
+                    0, sprite.getWidth(), 
+                    sprite.getHeight()));
+            g2d.setPaint(texture);
+            g2d.fillRect(- (int)this.getBody().getWidth() / 2,
+                    -(int)this.getBody().getHeight() / 2,
+                    (int)this.getBody().getWidth(),(int)this.getBody().getHeight());
         } else {
             g2d.setColor(super.getColor());
             g2d.fillRect(- (int)this.getBody().getWidth() / 2,
@@ -84,14 +93,6 @@ public class GraphicalRectangle extends GraphicalObject {
         g2d.rotate(-angle);
         g2d.translate(-sprV2d.getX(), -sprV2d.getY());
 
-    }
-
-    /**
-     * sets a new sprite
-     * @param sprite
-     */
-    public void setSprite(Sprite sprite) {
-        this.sprite = sprite;
     }
 
     /**

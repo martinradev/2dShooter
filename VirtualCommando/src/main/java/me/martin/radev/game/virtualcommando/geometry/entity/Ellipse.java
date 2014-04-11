@@ -13,6 +13,7 @@ public class Ellipse extends GeometricObject {
     private Vector2D center;
     private double majorAxis;
     private double minorAxis;
+    private Vector2D computationCenter;
     
     /**
      * Creates an ellipse with a center, a major and minor axes
@@ -25,6 +26,8 @@ public class Ellipse extends GeometricObject {
         this.center = center;
         this.majorAxis = majorAxis;
         this.minorAxis = minorAxis;
+        computationCenter = new Vector2D(center);
+        computationCenter.translate(0.5*majorAxis, 0.5*minorAxis);
     }
 
     /**
@@ -33,6 +36,8 @@ public class Ellipse extends GeometricObject {
      */
     @Override
     public Vector2D getCenter() {
+        Vector2D newCenter = new Vector2D(center);
+        newCenter.translate(0.5*majorAxis, 0.5*minorAxis);
         return center;
     }
 
@@ -79,8 +84,8 @@ public class Ellipse extends GeometricObject {
     @Override
     public boolean contains(Vector2D v2d) {
         if (v2d == null) return false;
-        double d1 = Math.pow(0.5*majorAxis + this.getCenter().getX() - v2d.getX(),2);
-        double d2 = Math.pow(0.5*minorAxis + this.getCenter().getY() - v2d.getY(),2);
+        double d1 = Math.pow(computationCenter.getX() - v2d.getX(),2);
+        double d2 = Math.pow(computationCenter.getY() - v2d.getY(),2);
         double result = (d1 / (0.25*majorAxis*majorAxis)) + (d2 / (0.25*minorAxis*minorAxis));
         return result <= 1d;
     }
@@ -109,6 +114,10 @@ public class Ellipse extends GeometricObject {
         double maxY = this.getCenter().getY() + this.getMinorAxis();
         boundingBox[1] = new Vector2D(maxX, maxY);
         return boundingBox;
+    }
+
+    public Vector2D getComputationCenter() {
+        return computationCenter;
     }
     
     

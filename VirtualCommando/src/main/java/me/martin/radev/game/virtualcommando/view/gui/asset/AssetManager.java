@@ -99,11 +99,15 @@ public class AssetManager {
         objMap.put(name, obj);
     }
     
+    
     private String buildPath(AssetType type, String fileName) {
+        return this.assetDirectory + "/" + fileName;
+        /*
         if (type == AssetType.Map) {
             return this.assetDirectory + "/" + type.getFolder() + "/" + fileName + "/map.tmx";
         }
         return this.assetDirectory + "/" + type.getFolder() + "/" + fileName;
+        */
     }
     
 }
