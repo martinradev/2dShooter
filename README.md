@@ -1,29 +1,25 @@
-2dShooter
+VirtualCommando 1.0
 =========
 
-A java-based 2d shooter.
+VirtualCommando is a java based 2d shooter which normally operates as a respawn arena where each player (bot ot server player) respawns and kills other players. Currently, there have been implemented very simple bots and a multriplayer which has some latency.
 
-# Idea
-The idea of the project is to develop a relevantly simple 2D shooter in java. Some of the planned feautures:
-- Types of games: single player / multiplayer
-- Bots. Maybe for now they will be implemented using something of the type of A* with just some propability that they will shoot in the right angle + adding some random error.
-- Different weapons. Maybe two types of weapons: a simple one and a laser which will bounce off walls
-- Loading maps from map files. For now I just plan to use a basic tiled map editor which supports objects like polygons and ellipses. Then I will just load the file and use it accordingly.
-- Custom collision detection. For now maybe the collision detection will only work with convex objects since the case is simpler with convect ones.
-- Use a binary space tree to check for possible to collide objects. For now, this MAY be included. It depends on the time it will take to develop the first iterations of the project.
-- Possibly have rounds or even easier - almost immediate respawn.
+# Aspects
+- The game was developed and continiously is without the help of any game frameworks, libraries, etc.
+- Currently, the game supports loading of special cases of tmx maps since there are also respawn points and a waypoint in the future for the bots.
+- Collision detection is quite fast and it works for different geometric objects like convex polygons, ellipses, segements, etc
+- Collision detection is improved by building a binary space tree to reduce the number of checked for collision static objects on the map
+- Multiplayer has been implemented quite straightforward. Currently, the commands sent over a TCP connection are not encrypted. The messages are quite large as well and most probably most of the commands will be store in a short sequence of bits.
+- Bots are entirely smart. They go back and forth and shoot in the direction of the player. Should be added a way point system and either a decision tree, ot fuzzy logic. Possible influence for the AI of the bots: http://www.cs.rochester.edu/~brown/242/docs/QuakeIII.pdf
 
 
-# Development steps
-- Make the basic geometric classes like: Vector2D, GeometricOject, Polygon, Circle
-- Make the tiled map loader and parser
-- Make the map renderer
-- Create abstract game logic, implement single game
-- Create abstract player, create my player
-- Add keyboard listener to my player so that it moves and make sure that everything is rendered correctly
-- Create abstract weapon, normal weapon, abstract bullet, normal bullet. Every object on the map except the background has to use a geometric object as body.
-- Create collision detection. Check with random projectiles as a JUNIT test.
-- Write bot logic. Possible influence: http://www.cs.rochester.edu/~brown/242/docs/QuakeIII.pdf
+# Issues
+- game still contains bugs which are up to be resolved.
 
-## Optional
-- Add multiplayer. Use current user a socket server. Other players will be just socket 
+# Future ideas
+- adding crates for health and new weapons like a lazer or something of that sort.
+- adding a second level and setting a sprite for the walls.
+
+Current screens of the game:
+![Menu screen](https://github.com/martinradev/2dShooter/blob/master/screenshots/menu%20screen.png "Menu screen")
+
+![Game screen](https://github.com/martinradev/2dShooter/blob/master/screenshots/game%20screen.png "Game screen")
