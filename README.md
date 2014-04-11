@@ -20,6 +20,6 @@ VirtualCommando is a java based 2d shooter which normally operates as a respawn 
 - adding a second level and setting a sprite for the walls.
 
 Current screens of the game:
-![Menu screen](https://github.com/martinradev/2dShooter/blob/master/screenshots/menu%20screen.png "Menu screen")
+![Menu screen](https://github.com/martinradev/2dShooter/blob/master/screenshots/menu%20screen.png?raw=true "Menu screen")
 
-![Game screen](https://github.com/martinradev/2dShooter/blob/master/screenshots/game%20screen.png "Game screen")
+![Game screen](https://github.com/martinradev/2dShooter/blob/master/screenshots/game%20screen.png?raw=true "Game screen")
