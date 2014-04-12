@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.Map;
 import me.martin.radev.game.virtualcommando.Global;
 import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
+import me.martin.radev.game.virtualcommando.view.graphics.animation.Animation;
+import me.martin.radev.game.virtualcommando.view.graphics.animation.LinearAnimation;
 import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalEllipse;
 import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalObject;
 import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalPolygon;
@@ -48,14 +50,18 @@ public class ObjectParser implements Parser {
         NodeList propertiesContainer = el.getElementsByTagName("properties");
         NodeList properties = null;
 
-        Sprite sprite = null;
+        Animation animation = null;
         NodeList children = el.getChildNodes();
         for (int i = 0; i < children.getLength(); ++i) {
             Node node = children.item(i);
             if (node.getNodeName().equals("backgroundTexture")) {
                 String srcName = ((Element) node).getAttribute("src");
-                sprite = (Sprite) Global.getAssetManager().load(AssetType.Sprite,
-                        mapFolder + "sprites/" + srcName);
+                Sprite sprite = (Sprite) Global.getAssetManager().
+                        load(AssetType.Sprite,mapFolder + "sprites/" + srcName);
+                if (animation == null) {
+                    animation = new LinearAnimation();
+                }
+                animation.addSprite(sprite);
             }
         }
 
@@ -86,7 +92,12 @@ public class ObjectParser implements Parser {
             }
 
         }
-        gObject.setSprite(sprite);
+        
+        if (animation != null && animation.getSize() != 0) {
+            gObject.setAnimation(animation);
+            Global.getGame().bind(animation);
+        }
+        
         return gObject;
     }
 

@@ -68,6 +68,7 @@ public abstract class Game {
 
     private void init() {
         players = new HashMap<>();
+        toUpdate = new LinkedList<>();
         map = (TiledMap) Global.getAssetManager().load(AssetType.Map, 
                 "maps/" + mapName + "/map.tmx");
         gameEntities = new GameEntityContainer();
@@ -77,7 +78,7 @@ public abstract class Game {
         gameFlow = new GameFlow(gameEntities, respawner);
         Global.setGameFlow(gameFlow);
         
-        toUpdate = new LinkedList<>();
+        
 
         screen = new GameScreen(gameEntities, Global.getWindowWidth(), Global.getWindowHeight());
         Global.getFrame().setScreen(screen);

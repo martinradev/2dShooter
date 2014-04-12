@@ -19,6 +19,8 @@ import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
 public class GraphicalRectangle extends GraphicalObject {
     
     private TexturePaint texture;
+    // should check this TODO
+    private Sprite sprite;
 
     /**
      * Creates a graphical rectangle with a bottom left corner, width height
@@ -55,11 +57,13 @@ public class GraphicalRectangle extends GraphicalObject {
     public void render(Graphics2D g2d, int xOffset, int yOffset) {
         Vector2D sprV2d = new Vector2D(super.getBody().getCenter());
         g2d.translate(sprV2d.getX()+xOffset, sprV2d.getY());
-        if (sprite != null) {
-            texture = new TexturePaint((BufferedImage)sprite.getImage(), 
+        if (animation != null) {
+            Sprite spr = animation.getCurrent();
+            texture = new TexturePaint((BufferedImage)
+                    spr.getImage(),
                     new Rectangle2D.Double(0, 
-                    0, sprite.getWidth(), 
-                    sprite.getHeight()));
+                    0, spr.getWidth(), 
+                    spr.getHeight()));
             g2d.setPaint(texture);
             g2d.fillRect(- (int)this.getBody().getWidth() / 2,
                     -(int)this.getBody().getHeight() / 2,
@@ -103,4 +107,11 @@ public class GraphicalRectangle extends GraphicalObject {
     public Rectangle getBody() {
         return (Rectangle) super.getBody(); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public void setSprite(Sprite sprite) {
+        this.sprite = sprite;
+    }
+    
+    
+    
 }

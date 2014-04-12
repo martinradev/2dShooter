@@ -7,6 +7,7 @@ package me.martin.radev.game.virtualcommando.view.graphics.entity;
 import java.awt.Color;
 import me.martin.radev.game.virtualcommando.geometry.entity.GeometricObject;
 import me.martin.radev.game.virtualcommando.game.graphics.Renderable;
+import me.martin.radev.game.virtualcommando.view.graphics.animation.Animation;
 
 /**
  * an abstract class which defines most of the common methods and variables for a
@@ -17,7 +18,7 @@ public abstract class GraphicalObject implements Renderable {
     
     private GeometricObject body;
     private Color color;
-    protected Sprite sprite;
+    protected Animation animation;
     
     /**
      * creates a graphical object from a body and a color
@@ -61,8 +62,8 @@ public abstract class GraphicalObject implements Renderable {
         this.color = color;
     }
 
-    public void setSprite(Sprite sprite) {
-        this.sprite = sprite;
+    public void setAnimation(Animation animation) {
+        this.animation = animation;
     }
 
     

@@ -16,9 +16,8 @@ import me.martin.radev.game.virtualcommando.view.graphics.entity.Sprite;
  * A linear animation runs all of the sprites in linear fashion.
  * @author Marto
  */
-public class LinearAnimation implements Animation, Updatable {
-
-    private List<Sprite> spriteList;
+public class LinearAnimation extends Animation {
+    
     private int currentIndex;
     private int framesPerSprite;
     private int framesCount;
@@ -29,7 +28,7 @@ public class LinearAnimation implements Animation, Updatable {
      * @param framesPerSprite
      */
     public LinearAnimation(Sprite [] sprites, int framesPerSprite) {
-        spriteList.addAll(Arrays.asList(sprites));
+        super(sprites);
         this.framesPerSprite = framesPerSprite;
         this.framesCount = 0;
     }
@@ -38,7 +37,7 @@ public class LinearAnimation implements Animation, Updatable {
      * Creates an empty animation where the frames per sprite is the FPS of the game.
      */
     public LinearAnimation() {
-        spriteList = new ArrayList<>();
+        super();
         this.framesPerSprite = Global.getFPS()/6;
     }
     
@@ -77,12 +76,6 @@ public class LinearAnimation implements Animation, Updatable {
         }
     }
     
-    /**
-     * adds a new sprite to the sequence
-     * @param spr
-     */
-    public void addSprite(Sprite spr) {
-        this.spriteList.add(spr);
-    }
+    
     
 }

@@ -56,8 +56,9 @@ public class GraphicalEllipse extends GraphicalObject {
     public void render(Graphics2D g2d, int xOffset, int yOffset) {
         Ellipse body = this.getBody();
         Vector2D center = body.getCenter();
-        if (sprite != null) {
-            TexturePaint texture = new TexturePaint((BufferedImage)sprite.getImage(), 
+        if (animation != null) {
+            TexturePaint texture = new TexturePaint((BufferedImage)
+                    animation.getCurrent().getImage(), 
                     new Rectangle2D.Double(91, 
                     22, body.getMajorAxis(), 
                     body.getMinorAxis()));

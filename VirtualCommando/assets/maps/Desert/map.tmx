@@ -72,7 +72,11 @@
   
   <object x="556" y="482" width="232" height="230">
 	<ellipse/>
-	<backgroundTexture src="fountain.png" />
+	<backgroundTexture src="fountain1.png" />
+	<backgroundTexture src="fountain2.png" />
+	<backgroundTexture src="fountain3.png" />
+	<backgroundTexture src="fountain4.png" />
+	<backgroundTexture src="fountain5.png" />
   </object>
   <object x="838" y="86" width="58" height="206">
 	<backgroundTexture src="wall.png" />
