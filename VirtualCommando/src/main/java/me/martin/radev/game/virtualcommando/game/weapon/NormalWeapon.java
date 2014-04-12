@@ -20,7 +20,7 @@ import me.martin.radev.game.virtualcommando.view.gui.asset.AssetType;
  */
 public class NormalWeapon extends Weapon {
     
-    private static final int totalAmmuCapacity = 5;
+    private static final int totalAmmuCapacity = 500;
     
     /**
      *

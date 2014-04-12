@@ -34,6 +34,9 @@ public class GameView extends JFrame {
         super("Virtual Commando 1.0");
         Global.setFrame(this);
         initializeFrame(width, height);
+    }
+    
+    public void openUsernameDialog() {
         new UsernameDialog(this);
     }
     

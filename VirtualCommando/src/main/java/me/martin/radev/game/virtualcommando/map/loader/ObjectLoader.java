@@ -83,6 +83,13 @@ public class ObjectLoader implements Loader {
                         "maps/" + xmlFile.getParentFile().getName() + "/");
                 som.addRespawnPoints(mapRespawnList);
                 
+                
+                NodeList decorationList = 
+                        this.getListInContainer("decorationgroup", "object", doc.getDocumentElement());
+                List<GraphicalObject> mapDecorationList = 
+                        parser.parseObjectContainer(decorationList, 
+                        "maps/" + xmlFile.getParentFile().getName() + "/");
+                som.addDecorationObjects(mapDecorationList);
                 return som;
             } catch (SAXException ex) {
                 exceptionHandler.notificate(ExceptionHelper.SAXException.getTitle(),

@@ -1,0 +1,6 @@
+#surefire
+#Sat Apr 12 15:46:00 EEST 2014
+user.dir=D\:\\2dshooter\\VirtualCommando
+localRepository=C\:\\Users\\Marto\\.m2\\repository
+basedir=D\:\\2dshooter\\VirtualCommando
+test=me.martin.radev.game.virtualcommando.game.weapon.NormalWeaponTest

@@ -128,7 +128,8 @@ public class GameScreenMap extends JPanel {
 
         List<Bullet> bullets = gameEntities.getBullets();
         for (int i = 0; i < bullets.size(); ++i) {
-            Bullet bullet = ((Bullet) bullets.get(i));
+            Bullet bullet = bullets.get(i);
+            if (bullet == null) continue;
             if (visibilityLogic.canSeeObject(mainPlayer, bullet.getObject())) {
                 bullet.render(g2d, 0, 0);
             }

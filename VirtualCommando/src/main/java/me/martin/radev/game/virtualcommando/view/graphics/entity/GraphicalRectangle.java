@@ -90,10 +90,12 @@ public class GraphicalRectangle extends GraphicalObject {
         g2d.rotate(angle);
         g2d.drawImage(sprite.getImage(), -sprite.getWidth() / 2,
                 -sprite.getHeight() / 2, null);
+        /*
         g2d.setColor(Color.yellow);
         g2d.drawRect(-sprite.getWidth() / 2,
                 -sprite.getHeight() / 2,
                 sprite.getWidth(), sprite.getHeight());
+                */
         g2d.rotate(-angle);
         g2d.translate(-sprV2d.getX(), -sprV2d.getY());
 

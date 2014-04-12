@@ -57,10 +57,12 @@ public class GraphicalEllipse extends GraphicalObject {
         Ellipse body = this.getBody();
         Vector2D center = body.getCenter();
         if (animation != null) {
+            // 91 22
+            Vector2D [] box = body.getBoundingBox();
             TexturePaint texture = new TexturePaint((BufferedImage)
                     animation.getCurrent().getImage(), 
-                    new Rectangle2D.Double(91, 
-                    22, body.getMajorAxis(), 
+                    new Rectangle2D.Double((int)center.getX(), 
+                    (int)center.getY(), body.getMajorAxis(), 
                     body.getMinorAxis()));
             g2d.setPaint(texture);
             g2d.fillOval((int)center.getX(), (int)center.getY(), 

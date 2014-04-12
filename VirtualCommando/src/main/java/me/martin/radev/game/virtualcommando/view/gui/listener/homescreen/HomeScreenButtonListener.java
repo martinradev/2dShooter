@@ -31,7 +31,7 @@ public class HomeScreenButtonListener implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
         JButton button = (JButton)ae.getSource();
         if (button.getName().equals(HomeScreenButtonTypes.Singleplayer.toString())) {
-            Game game = new SinglePlayerGame(0);
+            Game game = new SinglePlayerGame(5);
             Global.setGame(game);
         } else if (button.getName().equals(HomeScreenButtonTypes.Multiplayer.toString())) {
             CreateServerDialog csDialog = 

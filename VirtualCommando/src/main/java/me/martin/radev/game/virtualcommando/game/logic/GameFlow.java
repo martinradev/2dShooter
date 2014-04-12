@@ -52,9 +52,11 @@ public class GameFlow {
             p.processShooting();
         }
         List<Bullet> bullets = gameEntities.getBullets();
-        for (int i = 0; i < bullets.size(); ++i) {
+        int size = bullets.size();
+        for (int i = 0; i < size; ++i) {
             Bullet bullet = bullets.get(i);
             bullet.move();
+            size = bullets.size();
         }
     }
     

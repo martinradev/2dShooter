@@ -4,9 +4,15 @@
  */
 package me.martin.radev.game.virtualcommando.game.weapon;
 
+import me.martin.radev.game.virtualcommando.Global;
+import me.martin.radev.game.virtualcommando.game.logic.Game;
+import me.martin.radev.game.virtualcommando.game.logic.SinglePlayerGame;
+import me.martin.radev.game.virtualcommando.game.unit.MyPlayer;
 import me.martin.radev.game.virtualcommando.game.unit.Player;
 import me.martin.radev.game.virtualcommando.game.weapon.bullet.Bullet;
 import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
+import me.martin.radev.game.virtualcommando.view.gui.GameView;
+import me.martin.radev.game.virtualcommando.view.gui.asset.AssetManager;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -21,6 +27,7 @@ import static org.junit.Assert.*;
 public class NormalWeaponTest {
     
     public NormalWeaponTest() {
+        Global.setAssetManager(new AssetManager(null));
     }
     
     @BeforeClass
@@ -47,12 +54,13 @@ public class NormalWeaponTest {
         System.out.println("produceBullet");
         Vector2D direction = new Vector2D(1d,1d);
         Vector2D position = new Vector2D(10d,10d);;
-        Player player = null;
+        Global.setFrame(new GameView(500,500));
+        Game game = new SinglePlayerGame(0); 
         NormalWeapon instance = new NormalWeapon();
-        Bullet result = instance.produceBullet(direction, position, player);
+        Bullet result = instance.produceBullet(direction, position, game.getMainPlayer());
         assertTrue(result!=null);
         instance.setCurrentAmmuCount(0);
-        result = instance.produceBullet(direction, position, player);
+        result = instance.produceBullet(direction, position, game.getMainPlayer());
         assertTrue(result==null);
     }
     

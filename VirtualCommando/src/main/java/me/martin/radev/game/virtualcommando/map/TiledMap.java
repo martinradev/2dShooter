@@ -48,6 +48,8 @@ public abstract class TiledMap {
      */
     public abstract List<GraphicalObject> getRespawnPoints();
     
+    public abstract List<GraphicalObject> getDecorationObjects();
+    
     /**
      * returns the width of the map
      * @return

@@ -44,6 +44,26 @@
    <vector2d/>
   </object>
  </respawngroup>
+ <decorationgroup>
+  <object name="grass" x="62" y="67" width="774" height="113">
+	<backgroundTexture src="grass.png" />
+  </object>
+  <object name="grass" x="32" y="230" width="187" height="1331">
+	<backgroundTexture src="grass.png" />
+  </object>
+  <object name="grass" x="773" y="1174" width="803" height="110">
+	<backgroundTexture src="grass.png" />
+  </object>
+  <object name="grass" x="221" y="1173" width="553" height="130">
+	<backgroundTexture src="grass.png" />
+  </object>
+  <object name="grass" x="231" y="994" width="1346" height="148">
+	<backgroundTexture src="grass.png" />
+  </object>
+  <object name="grass" x="1161" y="37" width="416" height="956">
+	<backgroundTexture src="grass.png" />
+  </object>
+ </decorationgroup>
  <objectgroup name="Object Layer 1" width="160" height="160">
   <object x="0" y="0" width="266" height="67">
 	<backgroundTexture src="wall.png" />
@@ -126,5 +146,6 @@
   <object x="1578" y="10" width="34" height="1288">
 	<backgroundTexture src="wall.png" />
   </object>
+  
  </objectgroup>
 </map>

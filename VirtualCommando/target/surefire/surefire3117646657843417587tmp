@@ -1,0 +1,22 @@
+#surefire
+#Sat Apr 12 15:48:03 EEST 2014
+testClassesDirectory=D\:\\2dshooter\\VirtualCommando\\target\\test-classes
+forkMode=once
+classPathUrl.3=C\:\\Users\\Marto\\.m2\\repository\\org\\hamcrest\\hamcrest-core\\1.1\\hamcrest-core-1.1.jar
+classPathUrl.2=C\:\\Users\\Marto\\.m2\\repository\\junit\\junit\\4.10\\junit-4.10.jar
+useManifestOnlyJar=true
+classPathUrl.1=D\:\\2dshooter\\VirtualCommando\\target\\classes
+classPathUrl.0=D\:\\2dshooter\\VirtualCommando\\target\\test-classes
+reportsDirectory=D\:\\2dshooter\\VirtualCommando\\target\\surefire-reports
+providerConfiguration=org.apache.maven.surefire.junit4.JUnit4Provider
+testSuiteDefinitionTestSourceDirectory=D\:\\2dshooter\\VirtualCommando\\src\\test\\java
+requestedTest=me.martin.radev.game.virtualcommando.game.weapon.NormalWeaponTest
+surefireClassPathUrl.1=C\:\\Users\\Marto\\.m2\\repository\\org\\apache\\maven\\surefire\\surefire-api\\2.10\\surefire-api-2.10.jar
+surefireClassPathUrl.0=C\:\\Users\\Marto\\.m2\\repository\\org\\apache\\maven\\surefire\\surefire-junit4\\2.10\\surefire-junit4-2.10.jar
+runOrder=filesystem
+useSystemClassLoader=true
+isTrimStackTrace=true
+enableAssertions=true
+failIfNoTests=true
+includes0=**/me/martin/radev/game/virtualcommando/game/weapon/NormalWeaponTest.java
+childDelegation=false

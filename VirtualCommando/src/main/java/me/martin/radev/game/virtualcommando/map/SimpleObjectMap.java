@@ -17,6 +17,7 @@ public class SimpleObjectMap extends TiledMap{
     
     private List<GraphicalObject> staticObjects;
     private List<GraphicalObject> respawnPoints;
+    private List<GraphicalObject> decorationObjects;
     
     /**
      * Creates a SimpleObjectMap from a list of static graphical objects,
@@ -42,6 +43,7 @@ public class SimpleObjectMap extends TiledMap{
     public SimpleObjectMap(double width, double height) {
         staticObjects = new ArrayList<>();
         respawnPoints = new ArrayList<>();
+        decorationObjects = new ArrayList<>();
         this.width = width;
         this.height = height;
     }
@@ -72,7 +74,7 @@ public class SimpleObjectMap extends TiledMap{
      * adds a static object to the map
      * @param go
      */
-    public void addStaticObjects(GraphicalObject go) {
+    public void addStaticObject(GraphicalObject go) {
         staticObjects.add(go);
     }
     
@@ -117,6 +119,16 @@ public class SimpleObjectMap extends TiledMap{
     public List<GraphicalObject> getRespawnPoints() {
         return respawnPoints;
     }
+    
+    public void addDecorationObjects(List<GraphicalObject> objects) {
+        this.decorationObjects.addAll(objects);
+    }
+
+    @Override
+    public List<GraphicalObject> getDecorationObjects() {
+        return decorationObjects;
+    }
+    
     
     
     

@@ -44,7 +44,7 @@ public abstract class Player extends GraphicalRectangle {
     /**
      *
      */
-    protected double velocity = 2.2d;
+    protected double velocity = 2.6d;
     /**
      *
      */

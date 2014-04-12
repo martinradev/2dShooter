@@ -20,6 +20,7 @@ public class App
         Global.setDefaultWindowWidth(DEFALUT_WIDTH);
         Global.setDefaultWindowHeight(DEFAULT_HEIGHT);
         GameView gv = new GameView(DEFALUT_WIDTH, DEFAULT_HEIGHT);
+        gv.openUsernameDialog();
     }
     
     /**
