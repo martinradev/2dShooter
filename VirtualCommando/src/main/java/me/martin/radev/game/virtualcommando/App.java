@@ -10,8 +10,8 @@ import me.martin.radev.game.virtualcommando.view.gui.asset.AssetManager;
 public class App 
 {
     
-    private final int DEFALUT_WIDTH=800;
-    private final int DEFAULT_HEIGHT=600;
+    private final int DEFALUT_WIDTH=1000;
+    private final int DEFAULT_HEIGHT=700;
     
     /**
      *

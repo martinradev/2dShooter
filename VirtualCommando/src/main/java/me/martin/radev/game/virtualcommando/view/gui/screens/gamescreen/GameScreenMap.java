@@ -9,6 +9,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
+import java.util.Collection;
 import java.util.List;
 import javax.swing.JPanel;
 import me.martin.radev.game.virtualcommando.Global;
@@ -20,6 +21,7 @@ import me.martin.radev.game.virtualcommando.geometry.MathUtil;
 import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
 import me.martin.radev.game.virtualcommando.map.TiledMap;
 import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalObject;
+import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalRectangle;
 import me.martin.radev.game.virtualcommando.view.gui.screens.Screen;
 
 /**
@@ -97,6 +99,14 @@ public class GameScreenMap extends JPanel {
 
         return offset;
     }
+    
+    private Collection<GraphicalObject> getVisibleStaticObjects(Vector2D offset) {
+        GraphicalRectangle visibilityBox =
+                new GraphicalRectangle(offset, Global.getWindowWidth(),
+                Global.getWindowHeight(), Color.white);
+        Collection<GraphicalObject> objects = gameEntities.getBinarySpaceTree().getObjectsInClosingArea(visibilityBox);
+        return objects;
+    }
 
     /**
      *
@@ -111,9 +121,11 @@ public class GameScreenMap extends JPanel {
 
 
         Vector2D offset = new Vector2D(this.getScreenOffset());
-
+        
+        Collection<GraphicalObject> objects = this.getVisibleStaticObjects(offset);
+        
         g2d.translate(-offset.getX(), -offset.getY());
-        for (GraphicalObject go : gameEntities.getMapObjects()) {
+        for (GraphicalObject go : objects) {
             go.render(g2d, 0, 0);
         }
 

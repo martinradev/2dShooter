@@ -5,6 +5,7 @@
 package me.martin.radev.game.virtualcommando.game.unit;
 
 import java.awt.Color;
+import java.awt.Graphics2D;
 import me.martin.radev.game.virtualcommando.Global;
 import me.martin.radev.game.virtualcommando.game.logic.ConnectedToServerGame;
 import me.martin.radev.game.virtualcommando.game.logic.MultiPlayerGame;
@@ -359,6 +360,29 @@ public abstract class Player extends GraphicalRectangle {
     public boolean equals(Object o) {
         if (o == null) return false;
         return this.getName().equals(((Player)o).getName());
+    }
+
+    @Override
+    public void render(Graphics2D g2d, int xOffset, int yOffset, double angle) {
+        super.render(g2d, xOffset, yOffset, angle);
+        drawHealthBar(g2d, xOffset, yOffset);
+    }
+    
+    private void drawHealthBar(Graphics2D g2d, int xOffset, int yOffset) {
+        int barWidth = 50;
+        int barHeight = 10;
+        int emptyHeightSpace = 8;
+        int startingXCoordinate = -barWidth/2;
+        int startingYCoordinate = -emptyHeightSpace -(int)super.getBody().getHeight()/2 - barHeight;
+        double percentFilled = (double)this.getCurrentHealth() / (double)this.getMaxHealth();
+        Vector2D sprV2d = new Vector2D(super.getBody().getCenter());
+        g2d.translate(sprV2d.getX(), sprV2d.getY());
+        g2d.setColor(Color.black);
+        g2d.drawRect(startingXCoordinate-1, startingYCoordinate-1, barWidth+1, barHeight+1);
+        g2d.setColor(Color.green);
+        g2d.fillRect(startingXCoordinate,  startingYCoordinate,
+                (int)(barWidth*percentFilled), barHeight);
+        g2d.translate(-sprV2d.getX(), -sprV2d.getY());
     }
     
     

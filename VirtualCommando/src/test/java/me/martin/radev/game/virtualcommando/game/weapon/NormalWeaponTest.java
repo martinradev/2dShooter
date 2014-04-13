@@ -27,7 +27,8 @@ import static org.junit.Assert.*;
 public class NormalWeaponTest {
     
     public NormalWeaponTest() {
-        Global.setAssetManager(new AssetManager(null));
+        Global.setFrame(new GameView(500,500));
+        Game game = new SinglePlayerGame(0); 
     }
     
     @BeforeClass
@@ -54,13 +55,12 @@ public class NormalWeaponTest {
         System.out.println("produceBullet");
         Vector2D direction = new Vector2D(1d,1d);
         Vector2D position = new Vector2D(10d,10d);;
-        Global.setFrame(new GameView(500,500));
-        Game game = new SinglePlayerGame(0); 
+        
         NormalWeapon instance = new NormalWeapon();
-        Bullet result = instance.produceBullet(direction, position, game.getMainPlayer());
+        Bullet result = instance.produceBullet(direction, position, Global.getGame().getMainPlayer());
         assertTrue(result!=null);
         instance.setCurrentAmmuCount(0);
-        result = instance.produceBullet(direction, position, game.getMainPlayer());
+        result = instance.produceBullet(direction, position, Global.getGame().getMainPlayer());
         assertTrue(result==null);
     }
     
@@ -69,7 +69,7 @@ public class NormalWeaponTest {
         System.out.println("Weapon ammo count decreases test");
         Vector2D direction = new Vector2D(1d,1d);
         Vector2D position = new Vector2D(10d,10d);
-        Player player = null;
+        Player player = Global.getGame().getMainPlayer();
         NormalWeapon instance = new NormalWeapon();
         int count = instance.getCurrentAmmuCount();
         Bullet result = instance.produceBullet(direction, position, player);
@@ -81,7 +81,7 @@ public class NormalWeaponTest {
         System.out.println("Weapon ammo is not negative");
         Vector2D direction = new Vector2D(1d,1d);
         Vector2D position = new Vector2D(10d,10d);
-        Player player = null;
+        Player player = Global.getGame().getMainPlayer();
         NormalWeapon instance = new NormalWeapon();
         instance.setCurrentAmmuCount(1);
         instance.produceBullet(direction, position, player);
