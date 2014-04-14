@@ -7,6 +7,7 @@ package me.martin.radev.game.virtualcommando.game.unit.action.ai;
 import java.util.ArrayList;
 import java.util.Random;
 import me.martin.radev.game.virtualcommando.game.unit.Player;
+import me.martin.radev.game.virtualcommando.game.unit.action.ai.heuristics.ClosestPlayerHeuristic;
 import me.martin.radev.game.virtualcommando.geometry.MathUtil;
 import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
 import me.martin.radev.game.virtualcommando.structures.Graph;
@@ -23,6 +24,8 @@ public class GoodAILogic implements AILogic {
     private GraphicalObject currentNode;
     private GraphicalObject nextNode;
     private Random rand;
+    private ClosestPlayerHeuristic playerHeuristic;
+    private Player closestPlayer;
     
     public GoodAILogic(Player player, Graph graph) {
         this.player = player;
@@ -30,6 +33,7 @@ public class GoodAILogic implements AILogic {
         currentNode = null;
         nextNode = null;
         rand = new Random();
+        playerHeuristic = new ClosestPlayerHeuristic();
     }
     
     @Override
@@ -68,18 +72,33 @@ public class GoodAILogic implements AILogic {
     @Override
     public float getRotationAngle() {
         if (currentNode == null || nextNode == null) return 0;
+        if (closestPlayer != null) {
+            return (float)(MathUtil.getAngleBetweenPoints(player.getBody().getCenter(),
+                closestPlayer.getBody().getCenter()) - Math.PI/2d);
+        }
         return (float)(MathUtil.getAngleBetweenPoints(player.getBody().getCenter(),
                 nextNode.getBody().getCenter()) - Math.PI/2d);
     }
 
     @Override
     public boolean shouldShoot() {
+        Player p = playerHeuristic.getClosestPlayer(player);
+        double distance = MathUtil.distance(p.getBody().getCenter(),
+                player.getBody().getCenter());
+        float num = rand.nextFloat();
+        if (distance <= 200d && num > 0.98999) {
+            closestPlayer = p;
+            return true;
+        }
         return false;
     }
 
     @Override
     public Vector2D directionOfShooting(Player player) {
-        return null;
+        Vector2D direction = new Vector2D(player.getBody().getCenter());
+        direction.translate(-closestPlayer.getBody().getCenter().getX(), -closestPlayer.getBody().getCenter().getY());
+        direction.scale(-1d);
+        return direction.getUnitVector();
     }
     
 }
