@@ -5,7 +5,9 @@
 package me.martin.radev.game.virtualcommando.game.unit;
 
 import java.awt.Color;
+import me.martin.radev.game.virtualcommando.Global;
 import me.martin.radev.game.virtualcommando.game.unit.action.ai.AILogic;
+import me.martin.radev.game.virtualcommando.game.unit.action.ai.GoodAILogic;
 import me.martin.radev.game.virtualcommando.game.unit.action.ai.RandomAILogic;
 import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
 
@@ -26,7 +28,8 @@ public class Bot extends Player  {
                 new Vector2D(150, 150), PlayerType.EasyBot.getWidth(),
                 PlayerType.EasyBot.getHeight(),
                 new Color(1f, 0f, 0f, .0f));
-        ai = new RandomAILogic();
+        //ai = new RandomAILogic();
+        ai = new GoodAILogic(this, Global.getGame().getMap().getWaypointsGraph());
     }
     
     /**

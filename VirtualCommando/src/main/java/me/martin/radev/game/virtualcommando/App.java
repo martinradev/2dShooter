@@ -1,7 +1,6 @@
 package me.martin.radev.game.virtualcommando;
 
 import me.martin.radev.game.virtualcommando.view.gui.GameView;
-import me.martin.radev.game.virtualcommando.view.gui.asset.AssetManager;
 
 /**
  * Hello world!
@@ -17,6 +16,7 @@ public class App
      *
      */
     public App() {
+        System.setProperty("sun.java2d.opengl","True");
         Global.setDefaultWindowWidth(DEFALUT_WIDTH);
         Global.setDefaultWindowHeight(DEFAULT_HEIGHT);
         GameView gv = new GameView(DEFALUT_WIDTH, DEFAULT_HEIGHT);

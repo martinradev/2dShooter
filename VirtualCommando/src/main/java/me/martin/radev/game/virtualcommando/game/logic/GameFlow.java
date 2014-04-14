@@ -54,9 +54,11 @@ public class GameFlow {
         List<Bullet> bullets = gameEntities.getBullets();
         int size = bullets.size();
         for (int i = 0; i < size; ++i) {
+            size = bullets.size();
+            if (size <= i) break;
             Bullet bullet = bullets.get(i);
             bullet.move();
-            size = bullets.size();
+            
         }
     }
     

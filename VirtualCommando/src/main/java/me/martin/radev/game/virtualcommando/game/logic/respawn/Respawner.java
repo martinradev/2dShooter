@@ -8,11 +8,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import me.martin.radev.game.virtualcommando.Global;
-import me.martin.radev.game.virtualcommando.game.logic.ConnectedToServerGame;
 import me.martin.radev.game.virtualcommando.game.logic.MultiPlayerGame;
-import me.martin.radev.game.virtualcommando.game.logic.SinglePlayerGame;
 import me.martin.radev.game.virtualcommando.game.unit.Player;
-import me.martin.radev.game.virtualcommando.game.unit.ServerPlayer;
 import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
 import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalObject;
 
@@ -82,7 +79,6 @@ public abstract class Respawner {
             ((MultiPlayerGame) Global.getGame()).
                     getServer().getServerSync().respawnPlayer(p);
         }
-
     }
 
     /**

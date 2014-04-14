@@ -1,49 +1,453 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="161.2" height="160.4" tilewidth="10" tileheight="10">
  <respawngroup>
-  <object name="RespawnArea" x="1482" y="76">
+  <object name="1" x="115" y="118">
+  <vector2d/>
+  </object>
+  <object name="2" x="109" y="618">
+  <vector2d/>
+  </object>
+  <object name="3" x="103" y="764">
+  <vector2d/>
+  </object>
+  <object name="4" x="100" y="915">
+  <vector2d/>
+  </object>
+  <object name="5" x="103" y="1073">
    <vector2d/>
   </object>
-  <object name="RespawnArea" x="497" y="261">
+  <object name="6" x="106" y="1324">
    <vector2d/>
   </object>
-  <object name="RespawnArea" x="294" y="479">
+  <object name="8" x="345" y="1333">
    <vector2d/>
   </object>
-  <object name="RespawnArea" x="97" y="100">
+  <object name="9" x="521" y="1224">
    <vector2d/>
   </object>
-  <object name="RespawnArea" x="624" y="758">
+  <object name="10" x="476" y="1497">
    <vector2d/>
   </object>
-  <object name="RespawnArea" x="988" y="824">
+  <object name="12" x="673" y="1361">
    <vector2d/>
   </object>
-  <object name="RespawnArea" x="997" y="318">
+  <object name="13" x="836" y="1233">
    <vector2d/>
   </object>
-  <object name="RespawnArea" x="1403" y="1427">
+  <object name="11" x="833" y="1491">
    <vector2d/>
   </object>
-  <object name="RespawnArea" x="88" y="1476">
+  <object name="14" x="1173" y="1485">
    <vector2d/>
   </object>
-  <object name="RespawnArea" x="300" y="1091">
+  <object name="15" x="1076" y="1336">
    <vector2d/>
   </object>
-  <object name="RespawnArea" x="279" y="891">
+  <object name="16" x="1467" y="1361">
    <vector2d/>
   </object>
-  <object name="RespawnArea" x="1318" y="1094">
+  <object name="17" x="1297" y="1355">
    <vector2d/>
   </object>
-  <object name="RespawnArea" x="664" y="1361">
+  <object name="18" x="1373" y="1352">
    <vector2d/>
   </object>
-  <object name="RespawnArea" x="748" y="173">
+  <object name="19" x="294" y="264">
+   <vector2d/>
+  </object>
+  <object name="20" x="482" y="264">
+   <vector2d/>
+  </object>
+  <object name="21" x="282" y="464">
+   <vector2d/>
+  </object>
+  <object name="22" x="488" y="436">
+   <vector2d/>
+  </object>
+  <object name="23" x="291" y="676">
+   <vector2d/>
+  </object>
+  <object name="24" x="306" y="827">
+   <vector2d/>
+  </object>
+  <object name="25" x="336" y="1073">
+   <vector2d/>
+  </object>
+  <object name="26" x="515" y="958">
+   <vector2d/>
+  </object>
+  <object name="27" x="752" y="1064">
+   <vector2d/>
+  </object>
+  <object name="28" x="664" y="812">
+   <vector2d/>
+  </object>
+  <object name="29" x="1003" y="818">
+   <vector2d/>
+  </object>
+  <object name="30" x="979" y="379">
+   <vector2d/>
+  </object>
+  <object name="31" x="730" y="230">
+   <vector2d/>
+  </object>
+  <object name="32" x="464" y="103">
+   <vector2d/>
+  </object>
+  <object name="33" x="721" y="106">
+   <vector2d/>
+  </object>
+  <object name="34" x="852" y="55">
+   <vector2d/>
+  </object>
+  <object name="35" x="979" y="212">
+   <vector2d/>
+  </object>
+  <object name="36" x="1461" y="91">
+   <vector2d/>
+  </object>
+  <object name="37" x="1282" y="318">
+   <vector2d/>
+  </object>
+  <object name="39" x="1100" y="100">
+   <vector2d/>
+  </object>
+  <object name="41" x="1461" y="518">
+   <vector2d/>
+  </object>
+  <object name="43" x="873" y="570">
+   <vector2d/>
+  </object>
+  <object name="44" x="1103" y="591">
+   <vector2d/>
+  </object>
+  <object name="45" x="1200" y="736">
+   <vector2d/>
+  </object>
+  <object name="46" x="1203" y="1070">
+   <vector2d/>
+  </object>
+  <object name="47" x="1458" y="1064">
+   <vector2d/>
+  </object>
+  <object name="48" x="939" y="1058">
+   <vector2d/>
+  </object>
+  <object name="49" x="1388" y="821">
+   <vector2d/>
+  </object>
+  <object name="50" x="1464" y="1224">
+   <vector2d/>
+  </object>
+  <object name="51" x="1248" y="1212">
+   <vector2d/>
+  </object>
+  <object name="52" x="1012" y="1245">
+   <vector2d/>
+  </object>
+  <object name="7" x="106" y="1491">
+   <vector2d/>
+  </object>
+  <object name="53" x="461" y="748">
    <vector2d/>
   </object>
  </respawngroup>
+ <waypoints>
+  <neighbours>
+	<node value="1">
+		<neighbour value="2" />
+		<neighbour value="32" />
+	</node>
+	<node value="2">
+		<neighbour value="1" />
+		<neighbour value="3" />
+	</node>
+	<node value="3">
+		<neighbour value="2" />
+		<neighbour value="4" />
+	</node>
+	<node value="4">
+		<neighbour value="3" />
+		<neighbour value="5" />
+	</node>
+	<node value="5">
+		<neighbour value="4" />
+		<neighbour value="6" />
+		<neighbour value="25" />
+	</node>
+	<node value="6">
+		<neighbour value="5" />
+		<neighbour value="8" />
+		<neighbour value="10" />
+		<neighbour value="7" />
+		<neighbour value="9" />
+	</node>
+	<node value="7">
+		<neighbour value="6" />
+		<neighbour value="8" />
+		<neighbour value="9" />
+		<neighbour value="10" />
+	</node>
+	
+	<node value="8">
+		<neighbour value="6" />
+		<neighbour value="7" />
+		<neighbour value="9" />
+		<neighbour value="10" />
+	</node>
+	<node value="9">
+		<neighbour value="12" />
+		<neighbour value="13" />
+		<neighbour value="8" />
+		<neighbour value="6" />
+	</node>
+	<node value="10">
+		<neighbour value="6" />
+		<neighbour value="8" />
+		<neighbour value="7" />
+		<neighbour value="11" />
+		<neighbour value="12" />
+	</node>
+	<node value="11">
+		<neighbour value="10" />
+		<neighbour value="12" />
+		<neighbour value="14" />
+		<neighbour value="15" />
+		<neighbour value="17" />
+	</node>
+	<node value="12">
+		<neighbour value="9" />
+		<neighbour value="10" />
+		<neighbour value="13" />
+		<neighbour value="11" />
+	</node>
+	<node value="13">
+		<neighbour value="9" />
+		<neighbour value="12" />
+		<neighbour value="27" />
+		<neighbour value="52" />
+		<neighbour value="15" />
+	</node>
+	<node value="14">
+		<neighbour value="11" />
+		<neighbour value="15" />
+		<neighbour value="9" />
+		<neighbour value="16" />
+		<neighbour value="17" />
+		<neighbour value="18" />
+		<neighbour value="51" />
+	</node>
+	<node value="15">
+		<neighbour value="13" />
+		<neighbour value="52" />
+		<neighbour value="11" />
+		<neighbour value="14" />
+		<neighbour value="17" />
+		<neighbour value="51" />
+	</node>
+	<node value="16">
+		<neighbour value="14" />
+		<neighbour value="18" />
+	</node>
+	<node value="17">
+		<neighbour value="14" />
+		<neighbour value="15" />
+		<neighbour value="52" />
+		<neighbour value="18" />
+	</node>
+	<node value="18">
+		<neighbour value="16" />
+		<neighbour value="17" />
+		<neighbour value="14" />
+	</node>
+	<node value="19">
+		<neighbour value="20" />
+		<neighbour value="21" />
+		<neighbour value="22" />
+	</node>
+	<node value="20">
+		<neighbour value="19" />
+		<neighbour value="21" />
+		<neighbour value="22" />
+	</node>
+	<node value="21">
+		<neighbour value="19" />
+		<neighbour value="20" />
+		<neighbour value="22" />
+	</node>
+	<node value="22">
+		<neighbour value="19" />
+		<neighbour value="20" />
+		<neighbour value="21" />
+		<neighbour value="53" />
+		<neighbour value="30" />
+	</node>
+	<node value="23">
+		<neighbour value="24" />
+		<neighbour value="53" />
+		<neighbour value="26" />
+	</node>
+	<node value="24">
+		<neighbour value="53" />
+		<neighbour value="23" />
+		<neighbour value="28" />
+		<neighbour value="26" />
+	</node>
+	<node value="25">
+		<neighbour value="5" />
+		<neighbour value="26" />
+		<neighbour value="27" />
+	</node>
+	<node value="26">
+		<neighbour value="25" />
+		<neighbour value="27" />
+		<neighbour value="28" />
+		<neighbour value="53" />
+		<neighbour value="24" />
+		<neighbour value="23" />
+	</node>
+	<node value="27">
+		<neighbour value="25" />
+		<neighbour value="26" />
+		<neighbour value="28" />
+		<neighbour value="53" />
+		<neighbour value="13" />
+		<neighbour value="48" />
+	</node>
+	<node value="28">
+		<neighbour value="53" />
+		<neighbour value="24" />
+		<neighbour value="23" />
+		<neighbour value="26" />
+		<neighbour value="27" />
+		<neighbour value="29" />
+		<neighbour value="43" />
+	</node>
+	<node value="29">
+		<neighbour value="28" />
+		<neighbour value="43" />
+		<neighbour value="30" />
+	</node>
+	<node value="30">
+		<neighbour value="43" />
+		<neighbour value="35" />
+		<neighbour value="44" />
+	</node>
+	<node value="31">
+		<neighbour value="33" />
+		<neighbour value="43" />
+	</node>
+	<node value="32">
+		<neighbour value="33" />
+		<neighbour value="1" />
+	</node>
+	<node value="33">
+		<neighbour value="32" />
+		<neighbour value="31" />
+		<neighbour value="34" />
+	</node>
+	<node value="34">
+		<neighbour value="33" />
+		<neighbour value="32" />
+		<neighbour value="39" />
+	</node>
+	<node value="35">
+		<neighbour value="30" />
+		<neighbour value="39" />
+		<neighbour value="43" />
+	</node>
+	<node value="36">
+		<neighbour value="39" />
+		<neighbour value="37" />
+		<neighbour value="41" />
+	</node>
+	<node value="37">
+		<neighbour value="36" />
+		<neighbour value="41" />
+		<neighbour value="45" />
+		<neighbour value="44" />
+	</node>
+	<node value="39">
+		<neighbour value="35" />
+		<neighbour value="36" />
+	</node>
+	<node value="41">
+		<neighbour value="36" />
+		<neighbour value="37" />
+		<neighbour value="44" />
+		<neighbour value="45" />
+		<neighbour value="49" />
+	</node>
+	<node value="43">
+		<neighbour value="30" />
+		<neighbour value="31" />
+		<neighbour value="44" />
+		<neighbour value="29" />
+		<neighbour value="28" />
+	</node>
+	<node value="44">
+		<neighbour value="30" />
+		<neighbour value="43" />
+		<neighbour value="28" />
+		<neighbour value="41" />
+		<neighbour value="37" />
+	</node>
+	<node value="45">
+		<neighbour value="41" />
+		<neighbour value="49" />
+		<neighbour value="46" />
+	</node>
+	<node value="46">
+		<neighbour value="47" />
+		<neighbour value="48" />
+		<neighbour value="49" />
+		<neighbour value="45" />
+	</node>
+	<node value="47">
+		<neighbour value="46" />
+		<neighbour value="49" />
+		<neighbour value="45" />
+		<neighbour value="50" />
+	</node>
+	<node value="48">
+		<neighbour value="27" />
+		<neighbour value="46" />
+		<neighbour value="26" />
+		<neighbour value="28" />
+	</node>
+	<node value="49">
+		<neighbour value="45" />
+		<neighbour value="41" />
+		<neighbour value="37" />
+		<neighbour value="46" />
+		<neighbour value="47" />
+	</node>
+	<node value="50">
+		<neighbour value="51" />
+		<neighbour value="47" />
+	</node>
+	<node value="51">
+		<neighbour value="50" />
+		<neighbour value="52" />
+		<neighbour value="15" />
+		<neighbour value="14" />
+	</node>
+	<node value="52">
+		<neighbour value="13" />
+		<neighbour value="15" />
+		<neighbour value="51" />
+		<neighbour value="17" />
+	</node>
+	<node value="53">
+		<neighbour value="23" />
+		<neighbour value="24" />
+		<neighbour value="26" />
+		<neighbour value="28" />
+		<neighbour value="22" />
+		<neighbour value="27" />
+	</node>
+  </neighbours>
+ </waypoints>
  <decorationgroup>
   <object name="grass" x="62" y="67" width="774" height="113">
 	<backgroundTexture src="grass.png" />

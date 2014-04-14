@@ -14,7 +14,9 @@ import me.martin.radev.game.virtualcommando.exception.ExceptionHandler;
 import me.martin.radev.game.virtualcommando.exception.ExceptionHelper;
 import me.martin.radev.game.virtualcommando.map.TiledMap;
 import me.martin.radev.game.virtualcommando.map.SimpleObjectMap;
+import me.martin.radev.game.virtualcommando.map.parser.GraphParser;
 import me.martin.radev.game.virtualcommando.map.parser.ObjectParser;
+import me.martin.radev.game.virtualcommando.structures.Graph;
 import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalObject;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -90,6 +92,13 @@ public class ObjectLoader implements Loader {
                         parser.parseObjectContainer(decorationList, 
                         "maps/" + xmlFile.getParentFile().getName() + "/");
                 som.addDecorationObjects(mapDecorationList);
+                
+                Element neighbourElement = (Element)mapElement.getElementsByTagName("neighbours").item(0);
+                
+                GraphParser graphParser = new GraphParser(mapRespawnList);
+                Graph<GraphicalObject> graph = graphParser.parseObject(neighbourElement, null);
+                som.setWaypointGraph(graph);
+                
                 return som;
             } catch (SAXException ex) {
                 exceptionHandler.notificate(ExceptionHelper.SAXException.getTitle(),

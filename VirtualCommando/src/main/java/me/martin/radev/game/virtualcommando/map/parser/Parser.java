@@ -13,7 +13,7 @@ import org.w3c.dom.NodeList;
  *
  * @author Marto
  */
-public interface Parser {
+public interface Parser<ObjectType> {
     
     /**
      * parses all properties in a node
@@ -26,5 +26,5 @@ public interface Parser {
      * @param el
      * @return
      */
-    GraphicalObject parseObject(Element el, String mapFolder);
+    ObjectType parseObject(Element el, String mapFolder);
 }

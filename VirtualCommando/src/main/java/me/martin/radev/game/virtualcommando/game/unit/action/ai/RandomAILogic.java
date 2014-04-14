@@ -40,7 +40,7 @@ public class RandomAILogic implements AILogic {
     }
 
     /**
-     * returns a random angl of rotation
+     * returns a random angle of rotation
      * @return
      */
     @Override

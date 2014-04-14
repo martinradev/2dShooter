@@ -25,7 +25,7 @@ public class Global {
     private static double scalingFactor;
     private static GameView frame;
     private static Game game;
-    private static int fps = 90;
+    private static int fps = 120;
     private static GameFlow gameFlow;
     
     /**

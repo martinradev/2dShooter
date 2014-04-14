@@ -5,6 +5,7 @@
 package me.martin.radev.game.virtualcommando.view.graphics.entity;
 
 import java.awt.Color;
+import java.util.Objects;
 import me.martin.radev.game.virtualcommando.geometry.entity.GeometricObject;
 import me.martin.radev.game.virtualcommando.game.graphics.Renderable;
 import me.martin.radev.game.virtualcommando.view.graphics.animation.Animation;
@@ -18,6 +19,7 @@ public abstract class GraphicalObject implements Renderable {
     
     private GeometricObject body;
     private Color color;
+    protected String name;
     protected Animation animation;
     
     /**
@@ -66,6 +68,31 @@ public abstract class GraphicalObject implements Renderable {
         this.animation = animation;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null) return false;
+        if (!(o instanceof GraphicalObject)) return false;
+        GraphicalObject go = (GraphicalObject)o;
+        if (go.getBody().getCenter().equals(this.getBody().getCenter())) return true;
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 71 * hash + Objects.hashCode(this.body);
+        return hash;
+    }
+
+    
     
     
 }

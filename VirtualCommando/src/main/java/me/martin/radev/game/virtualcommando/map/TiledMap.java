@@ -6,6 +6,7 @@ package me.martin.radev.game.virtualcommando.map;
 
 import java.awt.Graphics2D;
 import java.util.List;
+import me.martin.radev.game.virtualcommando.structures.Graph;
 import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalObject;
 
 /**
@@ -49,6 +50,8 @@ public abstract class TiledMap {
     public abstract List<GraphicalObject> getRespawnPoints();
     
     public abstract List<GraphicalObject> getDecorationObjects();
+    
+    public abstract Graph getWaypointsGraph();
     
     /**
      * returns the width of the map

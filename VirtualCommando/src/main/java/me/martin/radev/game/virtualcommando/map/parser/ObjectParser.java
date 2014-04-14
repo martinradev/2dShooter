@@ -28,7 +28,7 @@ import org.w3c.dom.NodeList;
  *
  * @author Marto
  */
-public class ObjectParser implements Parser {
+public class ObjectParser implements Parser<GraphicalObject> {
 
     private final String pointDelimiter = " ";
     private final String coordDelimiter = ",";
@@ -97,7 +97,7 @@ public class ObjectParser implements Parser {
             gObject.setAnimation(animation);
             Global.getGame().bind(animation);
         }
-        
+        gObject.setName(el.getAttribute("name"));
         return gObject;
     }
 
@@ -131,6 +131,8 @@ public class ObjectParser implements Parser {
         }
         return pointList;
     }
+    
+    
 
     private List<Vector2D> parsePointsString(String s) {
         List<Vector2D> pointList = new ArrayList<>();

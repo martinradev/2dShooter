@@ -45,7 +45,7 @@ public abstract class Player extends GraphicalRectangle {
     /**
      *
      */
-    protected double velocity = 2.6d;
+    protected double velocity = 2.0d;
     /**
      *
      */
@@ -103,6 +103,7 @@ public abstract class Player extends GraphicalRectangle {
      * @param direction
      */
     public void move(Vector2D direction) {
+        if (direction == null) return;
         Vector2D xDirection = new Vector2D(direction.getX(), 0);
         Vector2D yDirection = new Vector2D(0, direction.getY());
         xDirection.scale(-velocity);

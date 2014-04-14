@@ -7,6 +7,7 @@ package me.martin.radev.game.virtualcommando.map;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.List;
+import me.martin.radev.game.virtualcommando.structures.Graph;
 import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalObject;
 
 /**
@@ -18,6 +19,7 @@ public class SimpleObjectMap extends TiledMap{
     private List<GraphicalObject> staticObjects;
     private List<GraphicalObject> respawnPoints;
     private List<GraphicalObject> decorationObjects;
+    private Graph<GraphicalObject> waypointGraph;
     
     /**
      * Creates a SimpleObjectMap from a list of static graphical objects,
@@ -127,6 +129,15 @@ public class SimpleObjectMap extends TiledMap{
     @Override
     public List<GraphicalObject> getDecorationObjects() {
         return decorationObjects;
+    }
+
+    public void setWaypointGraph(Graph<GraphicalObject> waypointGraph) {
+        this.waypointGraph = waypointGraph;
+    }
+
+    @Override
+    public Graph<GraphicalObject> getWaypointsGraph() {
+        return waypointGraph;
     }
     
     
