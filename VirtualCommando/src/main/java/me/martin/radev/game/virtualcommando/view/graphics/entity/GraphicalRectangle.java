@@ -56,7 +56,7 @@ public class GraphicalRectangle extends GraphicalObject {
     @Override
     public void render(Graphics2D g2d, int xOffset, int yOffset) {
         Vector2D sprV2d = new Vector2D(super.getBody().getCenter());
-        g2d.translate(sprV2d.getX()+xOffset, sprV2d.getY());
+        g2d.translate(sprV2d.getX(), sprV2d.getY());
         if (animation != null) {
             Sprite spr = animation.getCurrent();
             texture = new TexturePaint((BufferedImage)

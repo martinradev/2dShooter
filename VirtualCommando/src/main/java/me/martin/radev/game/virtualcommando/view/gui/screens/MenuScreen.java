@@ -115,7 +115,6 @@ public class MenuScreen extends Screen {
      */
     @Override
     public void validate() {
-        this.setSize(GuiUtil.rescale(width), GuiUtil.rescale(height));
         super.validate();;
     }
     

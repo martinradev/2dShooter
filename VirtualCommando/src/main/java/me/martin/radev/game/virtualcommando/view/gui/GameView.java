@@ -5,12 +5,14 @@
 package me.martin.radev.game.virtualcommando.view.gui;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import me.martin.radev.game.virtualcommando.Global;
 import me.martin.radev.game.virtualcommando.exception.ExceptionHandler;
 import me.martin.radev.game.virtualcommando.view.gui.asset.AssetManager;
 import me.martin.radev.game.virtualcommando.view.gui.dialogs.UsernameDialog;
+import me.martin.radev.game.virtualcommando.view.gui.screens.GameScreen;
 import me.martin.radev.game.virtualcommando.view.gui.screens.MenuScreen;
 import me.martin.radev.game.virtualcommando.view.gui.screens.Screen;
 
@@ -52,7 +54,8 @@ public class GameView extends JFrame {
         setResizable(false);
         setLayout(new BorderLayout());
         setVisible(true);
-        
+        Global.setWindowWidth(this.getWidth());
+        Global.setWindowHeight(this.getHeight());
     }
     /**
      * sets a screen on the frame
@@ -70,11 +73,8 @@ public class GameView extends JFrame {
      */
     @Override
     public void validate() {
+        if (screen.getClass() == GameScreen.class) return;
         super.validate();
-        Global.setWindowWidth(this.getWidth());
-        Global.setWindowHeight(this.getHeight());
-        double scalingFactor = (double)this.getWidth() / (double)Global.getDefaultWindowWidth();
-        Global.setScalingFactor(scalingFactor);
         this.screen.validate();
     }
 

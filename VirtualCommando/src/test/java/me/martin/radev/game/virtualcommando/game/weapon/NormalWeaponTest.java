@@ -27,12 +27,13 @@ import static org.junit.Assert.*;
 public class NormalWeaponTest {
     
     public NormalWeaponTest() {
-        Global.setFrame(new GameView(500,500));
-        Game game = new SinglePlayerGame(0); 
+        
     }
     
     @BeforeClass
     public static void setUpClass() {
+        Global.setFrame(new GameView(500,500));
+        Game game = new SinglePlayerGame(0); 
     }
     
     @AfterClass

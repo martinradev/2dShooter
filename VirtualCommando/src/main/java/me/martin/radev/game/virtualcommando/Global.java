@@ -22,7 +22,7 @@ public class Global {
     private static int defaultWindowHeight;
     private static int windowWidth;
     private static int windowHeight;
-    private static double scalingFactor;
+    
     private static GameView frame;
     private static Game game;
     private static int fps = 120;
@@ -124,21 +124,7 @@ public class Global {
         return defaultWindowWidth;
     }
 
-    /**
-     *
-     * @param scalingFactor
-     */
-    public static void setScalingFactor(double scalingFactor) {
-        Global.scalingFactor = scalingFactor;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public static double getScalingFactor() {
-        return scalingFactor;
-    }
+   
 
     /**
      *

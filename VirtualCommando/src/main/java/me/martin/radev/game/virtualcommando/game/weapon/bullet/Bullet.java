@@ -64,6 +64,9 @@ public abstract class Bullet {
         Player p = Global.getGameFlow().isBulletCollidingWithPlayer(this);
         if (p!=null) {
             p.takeDamage(this.damage);
+            if (!p.isPlayerActive()) {
+                Global.getGame().getScreen().getScoreBoard().addFrag(owner.getName());
+            }
             dispose();
         }
     }

@@ -162,7 +162,12 @@ public class PlayerMouseKeyBoardAction {
          */
         @Override
         public void keyPressed(KeyEvent ke) {
-            keysToProcess.add(ke.getKeyCode());
+            if (ke.getKeyCode() == KeyEvent.VK_TAB) {
+                Global.getGame().getScreen().showScoreBoard();
+            } else {
+                keysToProcess.add(ke.getKeyCode());
+            }
+            
         }
 
         /**
@@ -171,7 +176,11 @@ public class PlayerMouseKeyBoardAction {
          */
         @Override
         public void keyReleased(KeyEvent ke) {
-            keysToProcess.remove(ke.getKeyCode());
+            if (ke.getKeyCode() == KeyEvent.VK_TAB) {
+                Global.getGame().getScreen().hideScoreBoard();
+            } else {
+                keysToProcess.remove(ke.getKeyCode());
+            }
         }
     }
     

@@ -5,6 +5,7 @@
 package me.martin.radev.game.virtualcommando.view.gui.screens.gamescreen;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import javax.swing.JPanel;
@@ -40,6 +41,7 @@ public class AmmoBar extends JPanel {
         this.setBounds(leftOffset, 
                 (parentHeight-bottomOffset)-startingHeight
                 , startingWidth, startingHeight);
+        this.setPreferredSize(new Dimension(startingWidth, startingHeight));
         this.setForeground(Color.red);
         this.setBackground(new Color(Color.red.getRed(), Color.red.getGreen(), Color.red.getBlue(), 0));
         this.setFont(new Font("Arial", Font.BOLD, FONT_SIZE));

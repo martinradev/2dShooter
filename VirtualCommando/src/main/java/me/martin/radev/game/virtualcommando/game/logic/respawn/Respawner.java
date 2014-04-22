@@ -70,7 +70,7 @@ public abstract class Respawner {
         p.getBody().translate(-p.getBody().getCenter().getX(),
                 -p.getBody().getCenter().getY());
         p.getBody().translate(position.getX(), position.getY());
-        p.regenerateFully();
+        p.revive();
         Global.getGame().getGameEntities().getPlayers().add(p);
 
         if (Global.getGame().getClass() == MultiPlayerGame.class) {

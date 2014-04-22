@@ -35,6 +35,7 @@ public class MyPlayer extends Player {
         actionListener = new PlayerMouseKeyBoardAction(this);
         Global.getFrame().getScreen().addMouseListener(actionListener.getMouseListener());
         Global.getFrame().getScreen().addKeyListener(actionListener.getKeyListener());
+        Global.getFrame().getScreen().setFocusTraversalKeysEnabled(false);
         Global.getFrame().getScreen().addMouseMotionListener(actionListener.getMouseMotionListener());
         Global.getGame().getScreen().getAmmoBar().setTotalAmmo(
                 this.weapon.getTotalAmmu());

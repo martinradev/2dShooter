@@ -139,8 +139,6 @@ public class SimpleObjectMap extends TiledMap{
     public Graph<GraphicalObject> getWaypointsGraph() {
         return waypointGraph;
     }
-    
-    
-    
+
     
 }

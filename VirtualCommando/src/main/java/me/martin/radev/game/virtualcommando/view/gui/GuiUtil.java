@@ -14,15 +14,7 @@ import me.martin.radev.game.virtualcommando.Global;
  */
 public class GuiUtil {
 
-    /**
-     * rescales the length to a scaling factor for the whole frame
-     * @param length
-     * @return
-     */
-    public static int rescale(int length) {
-        return (int) (Global.getScalingFactor() * length);
-    }
-
+  
     /**
      * returns a random color
      * @return

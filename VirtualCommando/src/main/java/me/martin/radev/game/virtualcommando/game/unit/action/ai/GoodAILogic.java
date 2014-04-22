@@ -9,6 +9,7 @@ import java.util.Random;
 import me.martin.radev.game.virtualcommando.game.unit.Player;
 import me.martin.radev.game.virtualcommando.game.unit.action.ai.heuristics.ClosestPlayerHeuristic;
 import me.martin.radev.game.virtualcommando.geometry.MathUtil;
+import me.martin.radev.game.virtualcommando.geometry.entity.Line;
 import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
 import me.martin.radev.game.virtualcommando.structures.Graph;
 import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalObject;
@@ -60,7 +61,8 @@ public class GoodAILogic implements AILogic {
     }
     
     private boolean nodesEqual() {
-        return MathUtil.distance(player.getBody().getCenter(), nextNode.getBody().getCenter()) <= 3d;
+        return MathUtil.distance(
+                player.getBody().getCenter(), nextNode.getBody().getCenter()) <= 7d;
     }
     
     private GraphicalObject getNextNode() {

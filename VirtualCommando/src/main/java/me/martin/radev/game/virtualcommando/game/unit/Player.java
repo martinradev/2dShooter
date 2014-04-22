@@ -6,6 +6,7 @@ package me.martin.radev.game.virtualcommando.game.unit;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.util.Random;
 import me.martin.radev.game.virtualcommando.Global;
 import me.martin.radev.game.virtualcommando.game.logic.ConnectedToServerGame;
 import me.martin.radev.game.virtualcommando.game.logic.MultiPlayerGame;
@@ -64,9 +65,14 @@ public abstract class Player extends GraphicalRectangle {
     protected Weapon weapon;
     private double respawnTime = 0d;
     private String name;
+    private final String[] availableSkins;
+    private String skin;
+    private boolean dead;
 
     /**
-     * Creates a player with a given name, maxHealth, startingPosition, width, height and oclor
+     * Creates a player with a given name, maxHealth, startingPosition, width,
+     * height and oclor
+     *
      * @param name
      * @param maxHealth
      * @param startingPosition
@@ -78,20 +84,29 @@ public abstract class Player extends GraphicalRectangle {
             int gObjectWidth, int gObjectHeight, Color color) {
         super(startingPosition,
                 (double) gObjectWidth, (double) gObjectHeight, color);
+        this.availableSkins = new String[]{"orange", "green", "camouflage", "winter_camouflage"};
+        this.skin = pickSkin();
         this.maxHealth = maxHealth;
         this.currentHealth = maxHealth;
         staticSprite = (Sprite) Global.getAssetManager().load(AssetType.Sprite,
-                "sprites/soldier/solid.png");
+                "sprites/soldier/" + skin + "/solid.png");
         super.setSprite(staticSprite);
         walkAnimation = new LinearAnimation();
-        walkAnimation.addSprite((Sprite) Global.getAssetManager().load(AssetType.Sprite, "sprites/soldier/frame1.png"));
-        walkAnimation.addSprite((Sprite) Global.getAssetManager().load(AssetType.Sprite, "sprites/soldier/frame2.png"));
+        walkAnimation.addSprite((Sprite) Global.getAssetManager().load(AssetType.Sprite, "sprites/soldier/" + skin + "/frame1.png"));
+        walkAnimation.addSprite((Sprite) Global.getAssetManager().load(AssetType.Sprite, "sprites/soldier/" + skin + "/frame2.png"));
         Global.getGame().bind(walkAnimation);
         lastMovement = new Vector2D(0d, 0d);
         currentAngleOfRotation = 0d;
         this.name = name;
         initWeapon();
-
+        Global.getGame().getScreen().getScoreBoard().addRow(name, "0", "0");
+        dead = true;
+    }
+    
+    private String pickSkin() {
+        Random rand = new Random();
+        int index = rand.nextInt(availableSkins.length);
+        return availableSkins[index];
     }
 
     private void initWeapon() {
@@ -99,11 +114,15 @@ public abstract class Player extends GraphicalRectangle {
     }
 
     /**
-     * moves the player to a given direction. The direction is multiplied by the velocity of the player
+     * moves the player to a given direction. The direction is multiplied by the
+     * velocity of the player
+     *
      * @param direction
      */
     public void move(Vector2D direction) {
-        if (direction == null) return;
+        if (direction == null) {
+            return;
+        }
         Vector2D xDirection = new Vector2D(direction.getX(), 0);
         Vector2D yDirection = new Vector2D(0, direction.getY());
         xDirection.scale(-velocity);
@@ -125,35 +144,36 @@ public abstract class Player extends GraphicalRectangle {
         // TODO
         updatePlayerStatus();
     }
-    
+
     private void updatePlayerStatus() {
         if (this.getClass() == MyPlayer.class) {
             if (Global.getGame().getClass() == MultiPlayerGame.class) {
                 GameServer server = ((MultiPlayerGame) Global.getGame()).getServer();
                 server.getServerSync().updatePlayer(this);
             } else if (Global.getGame().getClass() == ConnectedToServerGame.class) {
-                ((ConnectedToServerGame)Global.getGame())
+                ((ConnectedToServerGame) Global.getGame())
                         .getConcurrencyProtocol().updatePlayer(this);
-            } 
+            }
         } else if (this.getClass() == ServerPlayer.class) {
             if (Global.getGame().getClass() == MultiPlayerGame.class) {
                 GameServer server = ((MultiPlayerGame) Global.getGame()).getServer();
                 server.getServerSync().updatePlayer(this);
             }
-        } 
+        }
     }
 
     /**
-     * stops the movements of the player. The sprite of the player will
-     * be set to static.
+     * stops the movements of the player. The sprite of the player will be set
+     * to static.
      */
     public void stopMovement() {
         super.setSprite(staticSprite);
     }
 
     /**
-     * The player shoots at a given direction. 
-     * This produces a bullet. The direction should be a unit vector
+     * The player shoots at a given direction. This produces a bullet. The
+     * direction should be a unit vector
+     *
      * @param direction
      */
     public void shoot(Vector2D direction) {
@@ -173,9 +193,9 @@ public abstract class Player extends GraphicalRectangle {
                 GameServer server = ((MultiPlayerGame) Global.getGame()).getServer();
                 server.getServerSync().shootPlayer(this, direction);
             } else if (Global.getGame().getClass() == ConnectedToServerGame.class) {
-                ((ConnectedToServerGame)Global.getGame())
+                ((ConnectedToServerGame) Global.getGame())
                         .getConcurrencyProtocol().shootPlayer(this, direction);
-            } 
+            }
         } else if (this.getClass() == ServerPlayer.class) {
             if (Global.getGame().getClass() == MultiPlayerGame.class) {
                 GameServer server = ((MultiPlayerGame) Global.getGame()).getServer();
@@ -187,6 +207,7 @@ public abstract class Player extends GraphicalRectangle {
     /**
      * the player takes damage. If the damage is more than the current health,
      * the player is killed
+     *
      * @param damage
      */
     public void takeDamage(int damage) {
@@ -198,6 +219,7 @@ public abstract class Player extends GraphicalRectangle {
 
     /**
      * the player regenerates with a given health.
+     *
      * @param health
      */
     public void regenerate(int health) {
@@ -213,17 +235,20 @@ public abstract class Player extends GraphicalRectangle {
     }
 
     /**
-     * the player is killed. The player is added to be processed by the respawner
-     * and removed from the rendering objects
+     * the player is killed. The player is added to be processed by the
+     * respawner and removed from the rendering objects
      */
     public void kill() {
         this.respawnTime = 0d;
+        this.dead = true;
         Global.getGame().getGameEntities().getPlayers().remove(this);
         Global.getGame().getRespawner().addPlayer(this);
+        Global.getGame().getScreen().getScoreBoard().addDeath(name);
     }
 
     /**
      * returns the current respawn time of the player
+     *
      * @return
      */
     public double getRespawnTime() {
@@ -232,6 +257,7 @@ public abstract class Player extends GraphicalRectangle {
 
     /**
      * sets the respawn time of the player
+     *
      * @param time
      */
     public void setRespawnTime(double time) {
@@ -240,6 +266,7 @@ public abstract class Player extends GraphicalRectangle {
 
     /**
      * returns the current health of the player
+     *
      * @return
      */
     public int getCurrentHealth() {
@@ -263,6 +290,7 @@ public abstract class Player extends GraphicalRectangle {
 
     /**
      * rotates the player to a given angle
+     *
      * @param angle
      */
     public void rotate(double angle) {
@@ -278,34 +306,37 @@ public abstract class Player extends GraphicalRectangle {
             currentAngleOfRotation = angle - angleOffset;
             angleOffset = angle;
         }
-        if (MathUtil.relativelyEqualBigEps(currentAngleOfRotation, 0d)) return;
+        if (MathUtil.relativelyEqualBigEps(currentAngleOfRotation, 0d)) {
+            return;
+        }
         if (this.getClass() == MyPlayer.class) {
             if (Global.getGame().getClass() == MultiPlayerGame.class) {
                 GameServer server = ((MultiPlayerGame) Global.getGame()).getServer();
                 server.getServerSync().rotatePlayer(this, angle);
             } else if (Global.getGame().getClass() == ConnectedToServerGame.class) {
-                ((ConnectedToServerGame)Global.getGame())
+                ((ConnectedToServerGame) Global.getGame())
                         .getConcurrencyProtocol().rotatePlayer(this, angle);
-            } 
+            }
         } else if (this.getClass() == ServerPlayer.class) {
             if (Global.getGame().getClass() == MultiPlayerGame.class) {
                 GameServer server = ((MultiPlayerGame) Global.getGame()).getServer();
                 server.getServerSync().rotatePlayer(this, angle);
             }
         }
-        
+
     }
-    
+
     /**
      *
      * @return
      */
     public boolean isPlayerActive() {
-        return getRespawnTime()<=0d || getRespawnTime() >= Global.getGame().getRespawner().getTimeTillRespawn();
+        return !dead;
     }
 
     /**
      * returns the current angle of rotation
+     *
      * @return
      */
     public double getAngleOffset() {
@@ -314,6 +345,7 @@ public abstract class Player extends GraphicalRectangle {
 
     /**
      * returns the name of the player
+     *
      * @return
      */
     public String getName() {
@@ -322,6 +354,7 @@ public abstract class Player extends GraphicalRectangle {
 
     /**
      * returns the max health of the player
+     *
      * @return
      */
     public int getMaxHealth() {
@@ -330,6 +363,7 @@ public abstract class Player extends GraphicalRectangle {
 
     /**
      * returns the weapon of the player
+     *
      * @return
      */
     public Weapon getWeapon() {
@@ -338,6 +372,7 @@ public abstract class Player extends GraphicalRectangle {
 
     /**
      * sets the max health of the player
+     *
      * @param maxHealth
      */
     public void setMaxHealth(int maxHealth) {
@@ -346,6 +381,7 @@ public abstract class Player extends GraphicalRectangle {
 
     /**
      * returns the current health of the player
+     *
      * @param currentHealth
      */
     public void setCurrentHealth(int currentHealth) {
@@ -359,8 +395,10 @@ public abstract class Player extends GraphicalRectangle {
      */
     @Override
     public boolean equals(Object o) {
-        if (o == null) return false;
-        return this.getName().equals(((Player)o).getName());
+        if (o == null) {
+            return false;
+        }
+        return this.getName().equals(((Player) o).getName());
     }
 
     @Override
@@ -368,24 +406,27 @@ public abstract class Player extends GraphicalRectangle {
         super.render(g2d, xOffset, yOffset, angle);
         drawHealthBar(g2d, xOffset, yOffset);
     }
-    
+
     private void drawHealthBar(Graphics2D g2d, int xOffset, int yOffset) {
         int barWidth = 50;
         int barHeight = 10;
         int emptyHeightSpace = 8;
-        int startingXCoordinate = -barWidth/2;
-        int startingYCoordinate = -emptyHeightSpace -(int)super.getBody().getHeight()/2 - barHeight;
-        double percentFilled = (double)this.getCurrentHealth() / (double)this.getMaxHealth();
+        int startingXCoordinate = -barWidth / 2;
+        int startingYCoordinate = -emptyHeightSpace - (int) super.getBody().getHeight() / 2 - barHeight;
+        double percentFilled = (double) this.getCurrentHealth() / (double) this.getMaxHealth();
         Vector2D sprV2d = new Vector2D(super.getBody().getCenter());
         g2d.translate(sprV2d.getX(), sprV2d.getY());
         g2d.setColor(Color.black);
-        g2d.drawRect(startingXCoordinate-1, startingYCoordinate-1, barWidth+1, barHeight+1);
+        g2d.drawRect(startingXCoordinate - 1, startingYCoordinate - 1, barWidth + 1, barHeight + 1);
         g2d.setColor(Color.green);
-        g2d.fillRect(startingXCoordinate,  startingYCoordinate,
-                (int)(barWidth*percentFilled), barHeight);
+        g2d.fillRect(startingXCoordinate, startingYCoordinate,
+                (int) (barWidth * percentFilled), barHeight);
         g2d.translate(-sprV2d.getX(), -sprV2d.getY());
     }
     
-    
-    
+    public void revive() {
+        dead = false;
+        regenerateFully();
+        updatePlayerStatus();
+    }
 }

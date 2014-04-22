@@ -227,6 +227,10 @@ public abstract class Game {
     public String getMapName() {
         return mapName;
     }
+
+    public void setMainPlayer(MyPlayer mainPlayer) {
+        this.mainPlayer = mainPlayer;
+    }
     
     
     

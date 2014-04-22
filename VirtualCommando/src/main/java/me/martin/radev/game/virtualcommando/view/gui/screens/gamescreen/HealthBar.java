@@ -4,12 +4,9 @@
  */
 package me.martin.radev.game.virtualcommando.view.gui.screens.gamescreen;
 
-import java.awt.AlphaComposite;
 import java.awt.Color;
-import java.awt.Composite;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
@@ -37,6 +34,7 @@ public class HealthBar extends JPanel {
         this.setBounds(leftOffset, 
                 (parentHeight-bottomOffset)-startingHeight
                 , startingWidth, startingHeight);
+        this.setPreferredSize(new Dimension(startingWidth, startingHeight));
         this.setBackground(Color.white);
         percent = 1d;
     }

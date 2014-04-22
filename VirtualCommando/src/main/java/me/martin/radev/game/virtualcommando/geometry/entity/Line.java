@@ -123,6 +123,7 @@ public class Line extends GeometricObject {
         Vector2D A = new Vector2D(this.getHead());
         Vector2D B = new Vector2D(this.getTail());
         P.translate(-A.getX(), -A.getY());
+        B.translate(-A.getX(), -A.getY());
         double crossProduct = MathUtil.crossProduct(P, B);
         return crossProduct / B.getMagnitude();
     }
@@ -165,6 +166,14 @@ public class Line extends GeometricObject {
             }
         }
         return dy/dx;
+    }
+    
+    public Vector2D getPependicularVectorDirection() {
+        Vector2D a = new Vector2D(head);
+        Vector2D b = new Vector2D(tail);
+        b.translate(-a.getX(), -a.getX());
+        b.rotate(Math.PI/2d);
+        return b.getUnitVector();
     }
     
 }
