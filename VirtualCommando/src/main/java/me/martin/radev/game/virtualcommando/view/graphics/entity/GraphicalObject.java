@@ -92,6 +92,10 @@ public abstract class GraphicalObject implements Renderable {
         return hash;
     }
 
+    public Animation getAnimation() {
+        return animation;
+    }
+
     
     
     

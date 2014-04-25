@@ -58,6 +58,19 @@ public class Bot extends Player  {
             super.shoot(ai.directionOfShooting(this));
         }
     }
+
+    public AILogic getAi() {
+        return ai;
+    }
+
+    @Override
+    public void revive() {
+        super.revive();
+        if (this.ai.getClass() == GoodAILogic.class) {
+            ((GoodAILogic)ai).setCurrentNode(null);
+        }
+    }
+    
     
     
     

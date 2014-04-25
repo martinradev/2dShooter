@@ -17,7 +17,9 @@ import me.martin.radev.game.virtualcommando.Global;
 import me.martin.radev.game.virtualcommando.game.graphics.GameEntityContainer;
 import me.martin.radev.game.virtualcommando.game.graphics.statistics.Statistics;
 import me.martin.radev.game.virtualcommando.game.logic.VisibilityIdentifier;
+import me.martin.radev.game.virtualcommando.game.unit.Bot;
 import me.martin.radev.game.virtualcommando.game.unit.Player;
+import me.martin.radev.game.virtualcommando.game.unit.action.ai.GoodAILogic;
 import me.martin.radev.game.virtualcommando.game.weapon.bullet.Bullet;
 import me.martin.radev.game.virtualcommando.geometry.MathUtil;
 import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
@@ -136,6 +138,9 @@ public class GameScreenMap {
             if (visibilityLogic.canSeeObject(mainPlayer, p)) {
                 p.render(g2d, 0, 0, p.getAngleOffset());
             }
+            if (p.getClass() == Bot.class) {
+                //((GoodAILogic)((Bot)p).getAi()).render(g2d, 0, 0);
+            }
         }
 
         List<Bullet> bullets = gameEntities.getBullets();
@@ -150,7 +155,7 @@ public class GameScreenMap {
         }
         Graph<GraphicalObject> ggo = 
                 ((SimpleObjectMap)Global.getGame().getMap()).getWaypointsGraph();
-        ggo.render(g2d, 0, 0);
+        //ggo.render(g2d, 0, 0);
         g2d.translate(offset.getX(), offset.getY());
         offset.setX(mainPlayer.getBody().getCenter().getX() - offset.getX());
         offset.setY(mainPlayer.getBody().getCenter().getY() - offset.getY());

@@ -73,7 +73,7 @@ public abstract class Game {
                 "maps/" + mapName + "/map.tmx");
         gameEntities = new GameEntityContainer();
         gameEntities.addAllMapObjects(map.getObjects());
-        //gameEntities.getMapObjects().addAll(map.getDecorationObjects());
+        gameEntities.getMapObjects().addAll(map.getDecorationObjects());
         gameEntities.addAllRespawnPoints(map.getRespawnPoints());
         initRespawner();
         gameFlow = new GameFlow(gameEntities, respawner);

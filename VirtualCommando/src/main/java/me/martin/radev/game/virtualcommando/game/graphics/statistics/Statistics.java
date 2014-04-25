@@ -25,6 +25,8 @@ public final class Statistics {
     private final int rowHeight = 25;
     private final int xOffset;
     private final int yOffset;
+    private final int leftPadding = 20;
+    private final int topPadding = 10;
     private boolean isVisible;
     private final Color backgroundColor;
     private final int width;
@@ -46,7 +48,7 @@ public final class Statistics {
 
     public void addRow(String name, String kills, String deaths) {
         StatisticsRow sr = new StatisticsRow(name, kills, deaths,
-                (int) width, rowHeight);
+                (int) width - 2*leftPadding, rowHeight);
         entries.put(name, sr);
         orderedEntries.put(sr, sr);
     }
@@ -57,6 +59,8 @@ public final class Statistics {
             orderedEntries.remove(sr);
             sr.addFrag();
             orderedEntries.put(sr,sr);
+        } else {
+            System.out.println("Error: " + name);
         }
     }
 
@@ -66,6 +70,8 @@ public final class Statistics {
             orderedEntries.remove(sr);
             sr.addDeath();
             orderedEntries.put(sr, sr);
+        } else {
+            System.out.println("Error: " + name);
         }
     }
     
@@ -75,7 +81,11 @@ public final class Statistics {
         g2d.fillRect(xOffset, yOffset, width, height);
         int i = 1;
         for (StatisticsRow sr : orderedEntries.values()) {
-            sr.render(g2d, xOffset, yOffset+i*rowHeight);
+            boolean important = false;
+            if (Global.getGame().getMainPlayer().getName().equals(sr.getName())) {
+                important = true;
+            }
+            sr.render(g2d, xOffset+leftPadding, topPadding+yOffset+i*rowHeight, important);
             ++i;
         }
     }

@@ -16,30 +16,19 @@ public class StatisticsComparator implements Comparator<Object> {
     public int compare(Object t, Object t1) {
         if (t == null ) return 1;
         if (t1 == null) return -1;
-        if (t.getClass() == StatisticsRow.class) {
-            StatisticsRow sr1 = (StatisticsRow)t;
-            if (t1.getClass() == StatisticsRow.class) {
-                StatisticsRow sr2 = (StatisticsRow)t1;
-                return sr2.compareTo(sr1);
-            } else if (t1.getClass() == String.class) {
-                return sr1.getName().compareTo(t1.toString());
-            } else {
-                System.out.println("error");
-                return 0;
-            }
-        } else if (t.getClass() == String.class) {
-            if (t1.getClass() == StatisticsRow.class) {
-                StatisticsRow sr2 = (StatisticsRow)t1;
-                return sr2.getName().compareTo(t.toString());
-            } else if (t1.getClass() == String.class) {
-                return t1.toString().compareTo(t.toString());
-            } else {
-                System.out.println("error");
-                return 0;
-            }
-        }
-        System.out.println("error");
-        return 0;
+        StatisticsRow tsr = (StatisticsRow)t;
+        StatisticsRow tsr1 = (StatisticsRow)t1;
+        if (tsr.getName().equals("Name")) return -1;
+        if (tsr1.getName().equals("Name")) return 1;
+        Integer tsrFrags = Integer.parseInt(tsr.getFrags());
+        Integer tsr1Frags = Integer.parseInt(tsr1.getFrags());
+        int fragComp = tsrFrags.compareTo(tsr1Frags);
+        if (fragComp != 0) return -fragComp;
+        Integer tsrDeaths = Integer.parseInt(tsr.getDeaths());
+        Integer tsr1Deaths = Integer.parseInt(tsr1.getDeaths());
+        int deathsComp = tsrDeaths.compareTo(tsr1Deaths);
+        if (deathsComp != 0) return deathsComp;
+        return tsr.getName().compareTo(tsr1.getName());
     }
     
 }

@@ -4,12 +4,14 @@
  */
 package me.martin.radev.game.virtualcommando.game.unit.action.ai;
 
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.Random;
 import me.martin.radev.game.virtualcommando.game.unit.Player;
 import me.martin.radev.game.virtualcommando.game.unit.action.ai.heuristics.ClosestPlayerHeuristic;
 import me.martin.radev.game.virtualcommando.geometry.MathUtil;
-import me.martin.radev.game.virtualcommando.geometry.entity.Line;
 import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
 import me.martin.radev.game.virtualcommando.structures.Graph;
 import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalObject;
@@ -27,7 +29,7 @@ public class GoodAILogic implements AILogic {
     private Random rand;
     private ClosestPlayerHeuristic playerHeuristic;
     private Player closestPlayer;
-    
+
     public GoodAILogic(Player player, Graph graph) {
         this.player = player;
         this.graph = graph;
@@ -36,17 +38,19 @@ public class GoodAILogic implements AILogic {
         rand = new Random();
         playerHeuristic = new ClosestPlayerHeuristic();
     }
-    
+
     @Override
     public Vector2D getDirection() {
         if (currentNode == null) {
             Object obj = graph.getNodeCopy(player);
-            if (obj == null) return null;
+            if (obj == null) {
+                return null;
+            }
             currentNode = (GraphicalObject) obj;
             nextNode = currentNode;
-            
+
         }
-        
+
         if (nextNode == null || nodesEqual()) {
             GraphicalObject next = getNextNode();
             if (nextNode != null) {
@@ -59,12 +63,12 @@ public class GoodAILogic implements AILogic {
                 -player.getBody().getCenter().getY());
         return direction.getUnitVector();
     }
-    
+
     private boolean nodesEqual() {
         return MathUtil.distance(
                 player.getBody().getCenter(), nextNode.getBody().getCenter()) <= 7d;
     }
-    
+
     private GraphicalObject getNextNode() {
         ArrayList<GraphicalObject> nbList = graph.getNeighbours(nextNode);
         int index = rand.nextInt(nbList.size());
@@ -73,13 +77,15 @@ public class GoodAILogic implements AILogic {
 
     @Override
     public float getRotationAngle() {
-        if (currentNode == null || nextNode == null) return 0;
-        if (closestPlayer != null) {
-            return (float)(MathUtil.getAngleBetweenPoints(player.getBody().getCenter(),
-                closestPlayer.getBody().getCenter()) - Math.PI/2d);
+        if (currentNode == null || nextNode == null) {
+            return 0;
         }
-        return (float)(MathUtil.getAngleBetweenPoints(player.getBody().getCenter(),
-                nextNode.getBody().getCenter()) - Math.PI/2d);
+        if (closestPlayer != null) {
+            return (float) (MathUtil.getAngleBetweenPoints(player.getBody().getCenter(),
+                    closestPlayer.getBody().getCenter()) - Math.PI / 2d);
+        }
+        return (float) (MathUtil.getAngleBetweenPoints(player.getBody().getCenter(),
+                nextNode.getBody().getCenter()) - Math.PI / 2d);
     }
 
     @Override
@@ -102,5 +108,29 @@ public class GoodAILogic implements AILogic {
         direction.scale(-1d);
         return direction.getUnitVector();
     }
-    
+
+    public void render(Graphics2D g2d, int xOffset, int yOffset) {
+
+        g2d.setStroke(new BasicStroke(2));
+        if (nextNode != null) {
+            g2d.setColor(Color.blue);
+            g2d.drawLine((int) player.getBody().getCenter().getX(),
+                    (int) player.getBody().getCenter().getY(),
+                    (int) nextNode.getBody().getCenter().getX(),
+                    (int) nextNode.getBody().getCenter().getY());
+        }
+        if (currentNode != null) {
+            g2d.setColor(Color.black);
+            g2d.drawLine(
+                    (int) currentNode.getBody().getCenter().getX(),
+                    (int) currentNode.getBody().getCenter().getY(),
+                    (int) player.getBody().getCenter().getX(),
+                    (int) player.getBody().getCenter().getY());
+        }
+        g2d.setStroke(new BasicStroke(1));
+    }
+
+    public void setCurrentNode(GraphicalObject currentNode) {
+        this.currentNode = currentNode;
+    }
 }

@@ -9,7 +9,9 @@ import java.awt.Graphics2D;
 import me.martin.radev.game.virtualcommando.Global;
 import me.martin.radev.game.virtualcommando.game.unit.Player;
 import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
+import me.martin.radev.game.virtualcommando.view.graphics.animation.Animation;
 import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalObject;
+import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalRectangle;
 
 /**
  *
@@ -19,26 +21,27 @@ public abstract class Bullet {
     
     private int damage;
     private Vector2D direction;
-    private GraphicalObject object;
+    private GraphicalRectangle object;
     private double velocity;
     private Player owner;
     private Vector2D position;
-    
+    private final double angle;
     /**
      *
      * @param damage
      * @param velocity
      */
-    public Bullet(int damage, double velocity) {
+    public Bullet(int damage, double velocity, double angle) {
         this.damage = damage;
         this.velocity = velocity;
+        this.angle = angle;
     }
 
     /**
      *
      * @param object
      */
-    public void setObject(GraphicalObject object) {
+    public void setObject(GraphicalRectangle object) {
         this.object = object;
     }
 
@@ -94,7 +97,7 @@ public abstract class Bullet {
      * @param offsetY
      */
     public void render(Graphics2D g2d, double offsetX, double offsetY) {
-        object.render(g2d, (int)offsetX, (int)offsetY);
+        object.render(g2d, (int)offsetX, (int)offsetY, angle);
     }
 
     /**
@@ -119,5 +122,7 @@ public abstract class Bullet {
     public void dispose() {
         Global.getGame().getGameEntities().getBullets().remove(this);
     }
+    
+    public abstract Bullet getCopy(Vector2D direction, Player owner);
     
 }

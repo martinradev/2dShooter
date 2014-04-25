@@ -29,9 +29,9 @@ public class BSTGuiTest {
      */
     public static void main( String[] args )
     {
-        final int width = 300;
-        final int height = 300;
-        bst = new BinarySpaceTree(width, height, 70, 40);
+        final int width = 600;
+        final int height = 600;
+        bst = new BinarySpaceTree(width, height, 200, 200);
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(width, height);

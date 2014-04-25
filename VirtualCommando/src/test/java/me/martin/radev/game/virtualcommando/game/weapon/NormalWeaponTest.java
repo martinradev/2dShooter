@@ -5,6 +5,7 @@
 package me.martin.radev.game.virtualcommando.game.weapon;
 
 import me.martin.radev.game.virtualcommando.Global;
+import me.martin.radev.game.virtualcommando.Settings;
 import me.martin.radev.game.virtualcommando.game.logic.Game;
 import me.martin.radev.game.virtualcommando.game.logic.SinglePlayerGame;
 import me.martin.radev.game.virtualcommando.game.unit.MyPlayer;
@@ -32,6 +33,7 @@ public class NormalWeaponTest {
     
     @BeforeClass
     public static void setUpClass() {
+        Settings.NAME = "ASD";
         Global.setFrame(new GameView(500,500));
         Game game = new SinglePlayerGame(0); 
     }

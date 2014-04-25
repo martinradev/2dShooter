@@ -8,6 +8,7 @@ import java.io.File;
 import me.martin.radev.game.virtualcommando.Global;
 import me.martin.radev.game.virtualcommando.game.unit.Player;
 import me.martin.radev.game.virtualcommando.game.weapon.bullet.Bullet;
+import me.martin.radev.game.virtualcommando.game.weapon.bullet.Laser;
 import me.martin.radev.game.virtualcommando.game.weapon.bullet.NormalBullet;
 import me.martin.radev.game.virtualcommando.geometry.MathUtil;
 import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
@@ -15,18 +16,15 @@ import me.martin.radev.game.virtualcommando.sound.SoundEffect;
 import me.martin.radev.game.virtualcommando.view.gui.asset.AssetType;
 
 /**
- * It is a normal weapon
+ *
  * @author Marto
  */
-public class NormalWeapon extends Weapon {
+public class LaserCanon extends Weapon {
     
-    private static final int totalAmmuCapacity = 500;
+    private static final int totalAmmuCapacity = 100;
     
-    /**
-     *
-     */
-    public NormalWeapon() {
-        super(new NormalBullet(0d), NormalWeapon.totalAmmuCapacity,
+    public LaserCanon() {
+        super(new Laser(0d), LaserCanon.totalAmmuCapacity,
                 new SoundEffect(
                 (File) Global.getAssetManager().load(
                 AssetType.Sound, "sounds/normalweapon/shoot.wav")));
@@ -48,7 +46,7 @@ public class NormalWeapon extends Weapon {
         }
         double angle = 
                 MathUtil.getAngleBetweenVectors(direction, new Vector2D(0,1));
-        Bullet b = new NormalBullet(angle);
+        Bullet b = new Laser(angle);
         b.setDirection(direction);
         b.setPosition(position);
         b.setOwner(player);
@@ -56,7 +54,4 @@ public class NormalWeapon extends Weapon {
         super.shootingEffect.play(dB);
         return b;
     }
-    
-    
-    
 }

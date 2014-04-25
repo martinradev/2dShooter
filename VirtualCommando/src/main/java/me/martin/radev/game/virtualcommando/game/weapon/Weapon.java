@@ -102,5 +102,11 @@ public abstract class Weapon {
         float dB = (float) (Math.log(gain) / Math.log(10.0) * 20f);
         return dB;
     }
+
+    public Bullet getBulletType() {
+        return bulletType;
+    }
+ 
+    
     
 }
