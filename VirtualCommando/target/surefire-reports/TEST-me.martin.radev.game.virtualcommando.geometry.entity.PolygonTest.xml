@@ -60,6 +60,6 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
+  <testcase time="0" classname="me.martin.radev.game.virtualcommando.geometry.entity.PolygonTest" name="testRotate"/>
   <testcase time="0" classname="me.martin.radev.game.virtualcommando.geometry.entity.PolygonTest" name="testRelativeRotate"/>
-  <testcase time="0.001" classname="me.martin.radev.game.virtualcommando.geometry.entity.PolygonTest" name="testRotate"/>
 </testsuite>

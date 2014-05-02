@@ -60,11 +60,11 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase time="0" classname="me.martin.radev.game.virtualcommando.geometry.entity.Vector2DTest" name="testTranslate"/>
-  <testcase time="0" classname="me.martin.radev.game.virtualcommando.geometry.entity.Vector2DTest" name="testGetUnitVector"/>
   <testcase time="0" classname="me.martin.radev.game.virtualcommando.geometry.entity.Vector2DTest" name="testContains"/>
   <testcase time="0" classname="me.martin.radev.game.virtualcommando.geometry.entity.Vector2DTest" name="testRotate"/>
   <testcase time="0" classname="me.martin.radev.game.virtualcommando.geometry.entity.Vector2DTest" name="testScale"/>
   <testcase time="0" classname="me.martin.radev.game.virtualcommando.geometry.entity.Vector2DTest" name="testEquals"/>
   <testcase time="0" classname="me.martin.radev.game.virtualcommando.geometry.entity.Vector2DTest" name="testToString"/>
+  <testcase time="0" classname="me.martin.radev.game.virtualcommando.geometry.entity.Vector2DTest" name="testTranslate"/>
+  <testcase time="0" classname="me.martin.radev.game.virtualcommando.geometry.entity.Vector2DTest" name="testGetUnitVector"/>
 </testsuite>

@@ -116,6 +116,7 @@ public class UsernameDialog extends JDialog {
         if (name == null) return false;
         name = name.trim();
         if (name.length() < 3) return false;
+        if (name.length() > 12) return false;
         if (name.contains(" ")) return false;
         return true;
     }

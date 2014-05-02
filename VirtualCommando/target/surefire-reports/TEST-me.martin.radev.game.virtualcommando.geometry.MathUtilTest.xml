@@ -60,9 +60,9 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase time="0" classname="me.martin.radev.game.virtualcommando.geometry.MathUtilTest" name="testCrossProduct"/>
-  <testcase time="0" classname="me.martin.radev.game.virtualcommando.geometry.MathUtilTest" name="testDotProduct"/>
-  <testcase time="0" classname="me.martin.radev.game.virtualcommando.geometry.MathUtilTest" name="testRelativelyEqual"/>
   <testcase time="0" classname="me.martin.radev.game.virtualcommando.geometry.MathUtilTest" name="testDistance"/>
   <testcase time="0" classname="me.martin.radev.game.virtualcommando.geometry.MathUtilTest" name="testCrossProductFromNewOrigin"/>
+  <testcase time="0.001" classname="me.martin.radev.game.virtualcommando.geometry.MathUtilTest" name="testCrossProduct"/>
+  <testcase time="0" classname="me.martin.radev.game.virtualcommando.geometry.MathUtilTest" name="testDotProduct"/>
+  <testcase time="0" classname="me.martin.radev.game.virtualcommando.geometry.MathUtilTest" name="testRelativelyEqual"/>
 </testsuite>
