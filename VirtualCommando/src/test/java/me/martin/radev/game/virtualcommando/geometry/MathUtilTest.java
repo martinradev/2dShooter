@@ -14,15 +14,27 @@ import me.martin.radev.game.virtualcommando.geometry.entity.Vector2D;
  */
 public class MathUtilTest extends TestCase {
     
+    /**
+     *
+     * @param testName
+     */
     public MathUtilTest(String testName) {
         super(testName);
     }
     
+    /**
+     *
+     * @throws Exception
+     */
     @Override
     protected void setUp() throws Exception {
         super.setUp();
     }
     
+    /**
+     *
+     * @throws Exception
+     */
     @Override
     protected void tearDown() throws Exception {
         super.tearDown();

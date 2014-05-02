@@ -21,6 +21,10 @@ public class Laser extends Bullet {
     private static final double VELOCITY = 8.3d;
     private static final double BULLET_WIDTH = 2d;
     private static final double BULLET_HEIGHT = 20d;
+    /**
+     *
+     * @param angle
+     */
     public Laser(double angle) {
         super(Laser.DAMAGE, Laser.VELOCITY, angle);
         GraphicalRectangle go = new GraphicalRectangle(0d, 0d,
@@ -29,6 +33,12 @@ public class Laser extends Bullet {
     }
    
     
+    /**
+     *
+     * @param direction
+     * @param owner
+     * @return
+     */
     public Laser getCopy(Vector2D direction, Player owner) {
         double angle = 
                 MathUtil.getAngleBetweenVectors(direction, new Vector2D(0,1));

@@ -116,6 +116,10 @@ public class Ellipse extends GeometricObject {
         return boundingBox;
     }
 
+    /**
+     *
+     * @return
+     */
     public Vector2D getComputationCenter() {
         return computationCenter;
     }

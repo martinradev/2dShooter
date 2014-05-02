@@ -118,6 +118,10 @@ public class GraphicalRectangle extends GraphicalObject {
         return (Rectangle) super.getBody(); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     *
+     * @param sprite
+     */
     public void setSprite(Sprite sprite) {
         this.sprite = sprite;
     }

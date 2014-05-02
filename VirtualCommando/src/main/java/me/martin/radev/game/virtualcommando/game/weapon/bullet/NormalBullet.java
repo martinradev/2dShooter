@@ -24,6 +24,7 @@ public class NormalBullet extends Bullet {
     
     /**
      *
+     * @param angle 
      */
     public NormalBullet(double angle) {
         super(NormalBullet.DAMAGE, NormalBullet.VELOCITY, angle);

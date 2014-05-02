@@ -30,6 +30,7 @@ public abstract class Bullet {
      *
      * @param damage
      * @param velocity
+     * @param angle  
      */
     public Bullet(int damage, double velocity, double angle) {
         this.damage = damage;
@@ -123,6 +124,12 @@ public abstract class Bullet {
         Global.getGame().getGameEntities().getBullets().remove(this);
     }
     
+    /**
+     *
+     * @param direction
+     * @param owner
+     * @return
+     */
     public abstract Bullet getCopy(Vector2D direction, Player owner);
     
 }

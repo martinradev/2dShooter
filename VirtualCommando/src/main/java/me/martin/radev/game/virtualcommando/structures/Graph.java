@@ -13,24 +13,43 @@ import me.martin.radev.game.virtualcommando.view.graphics.entity.GraphicalObject
 
 /**
  *
+ * @param <Node> 
  * @author Marto
  */
 public class Graph<Node> {
     
     private HashMap<Node, ArrayList<Node>> neighbourList;
     
+    /**
+     *
+     */
     public Graph() {
         neighbourList = new HashMap<>();
     }
     
+    /**
+     *
+     * @param node
+     * @param neighbours
+     */
     public void addNode(Node node, ArrayList<Node> neighbours) {
         neighbourList.put(node, neighbours);
     }
     
+    /**
+     *
+     * @param node
+     * @return
+     */
     public ArrayList<Node> getNeighbours(Node node) {
         return neighbourList.get(node);
     }
     
+    /**
+     *
+     * @param go
+     * @return
+     */
     public Node getNodeCopy(Node go) {
         for (Node n : neighbourList.keySet()) {
             if (n == null) continue;
@@ -39,6 +58,12 @@ public class Graph<Node> {
         return null;
     }
     
+    /**
+     *
+     * @param g2d
+     * @param xOffset
+     * @param yOffset
+     */
     public void render(Graphics2D g2d, int xOffset, int yOffset) {
         g2d.setColor(Color.RED);
         for (Entry<Node, ArrayList<Node>> list : neighbourList.entrySet()) {

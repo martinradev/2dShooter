@@ -122,19 +122,35 @@ public class SimpleObjectMap extends TiledMap{
         return respawnPoints;
     }
     
+    /**
+     *
+     * @param objects
+     */
     public void addDecorationObjects(List<GraphicalObject> objects) {
         this.decorationObjects.addAll(objects);
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<GraphicalObject> getDecorationObjects() {
         return decorationObjects;
     }
 
+    /**
+     *
+     * @param waypointGraph
+     */
     public void setWaypointGraph(Graph<GraphicalObject> waypointGraph) {
         this.waypointGraph = waypointGraph;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public Graph<GraphicalObject> getWaypointsGraph() {
         return waypointGraph;

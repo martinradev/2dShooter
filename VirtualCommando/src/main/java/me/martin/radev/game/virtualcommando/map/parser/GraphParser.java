@@ -22,6 +22,10 @@ public class GraphParser implements
 
     private List<GraphicalObject> nodeList;
     
+    /**
+     *
+     * @param nodes
+     */
     public GraphParser(List<GraphicalObject> nodes) {
         nodeList = nodes;
     }

@@ -7,11 +7,17 @@ package me.martin.radev.game.virtualcommando.game.graphics.statistics;
 import java.util.Comparator;
 
 /**
- *
+ * Comparator for the statistics row object
  * @author Marto
  */
 public class StatisticsComparator implements Comparator<Object> {
 
+    /**
+     * compares the statistics entities. by frag, death, name
+     * @param t
+     * @param t1
+     * @return
+     */
     @Override
     public int compare(Object t, Object t1) {
         if (t == null ) return 1;

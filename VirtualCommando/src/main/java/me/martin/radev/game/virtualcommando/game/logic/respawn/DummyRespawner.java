@@ -34,7 +34,7 @@ public class DummyRespawner extends Respawner {
     }
 
     /**
-     *
+     * respawns the player p
      * @param p
      */
     @Override

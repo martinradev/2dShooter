@@ -12,6 +12,7 @@ public interface Sound {
     
     /**
      * plays the sound with no loop.
+     * @param decibalDelta 
      */
     public void play(float decibalDelta);
     

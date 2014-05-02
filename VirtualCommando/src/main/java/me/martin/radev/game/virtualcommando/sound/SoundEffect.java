@@ -65,6 +65,7 @@ public class SoundEffect implements Sound {
     
     /**
      * plays the sound
+     * @param decibalDelta 
      */
     @Override
     public void play(float decibalDelta) {

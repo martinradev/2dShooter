@@ -18,7 +18,7 @@ import me.martin.radev.game.virtualcommando.view.gui.asset.AssetType;
 import me.martin.radev.game.virtualcommando.view.gui.entity.buttons.HomeScreenButton;
 
 /**
- *
+ * A statistics entity containing the name, frags and deaths.
  * @author Marto
  */
 public class StatisticsRow {
@@ -34,6 +34,14 @@ public class StatisticsRow {
     private final Color backgroundColor;
     private final int rowLeftPadding = 8;
 
+    /**
+     * Initializes the statistics row with a given name, frags, deaths, width and height.
+     * @param name
+     * @param frags
+     * @param deaths
+     * @param width
+     * @param height
+     */
     public StatisticsRow(String name, String frags, String deaths, int width, int height) {
         backgroundColor = new Color(Color.gray.getRed() / 255f, Color.gray.getGreen() / 255f,
                 Color.gray.getBlue() / 255f, 0.2f);
@@ -49,6 +57,7 @@ public class StatisticsRow {
         loadFont();
     }
     
+    // loads the font for the statistics row
     private void loadFont() {
         try {
             Font newFont = Font.createFont(Font.TRUETYPE_FONT,
@@ -72,6 +81,11 @@ public class StatisticsRow {
         }
     }
 
+    /**
+     * checks whether the statistics object is equal to another object
+     * @param o
+     * @return
+     */
     @Override
     public boolean equals(Object o) {
         if (o == null) {
@@ -88,18 +102,28 @@ public class StatisticsRow {
         return this.name.equals(s);
     }
 
+    /**
+     * adds a death to the entity
+     */
     public void addDeath() {
         int val = Integer.parseInt(deaths);
         ++val;
         deaths = Integer.toString(val);
     }
 
+    /**
+     * adds a frag to the entity
+     */
     public void addFrag() {
         int val = Integer.parseInt(frags);
         ++val;
         frags = Integer.toString(val);
     }
 
+    /**
+     * returns the score
+     * @return
+     */
     public double getScore() {
         if (name == null) {
             return -1d;
@@ -110,11 +134,22 @@ public class StatisticsRow {
         return Double.parseDouble(frags + 1) / Double.parseDouble(deaths + 1);
     }
 
+    /**
+     * returns the hash code of the entity
+     * @return
+     */
     @Override
     public int hashCode() {
         return name.hashCode();
     }
 
+    /**
+     * renders the entity. If the row is important, then it will be highlighted.
+     * @param g2d
+     * @param xOffset
+     * @param yOffset
+     * @param important
+     */
     public void render(Graphics2D g2d, int xOffset, int yOffset, boolean important) {
         if (important) {
             g2d.setColor(backgroundColor);
@@ -131,14 +166,26 @@ public class StatisticsRow {
         g2d.drawString(deaths, xOffset + 2*width/3, yOffset);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getFrags() {
         return frags;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDeaths() {
         return deaths;
     }

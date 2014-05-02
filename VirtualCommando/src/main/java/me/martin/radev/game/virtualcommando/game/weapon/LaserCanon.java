@@ -23,6 +23,9 @@ public class LaserCanon extends Weapon {
     
     private static final int totalAmmuCapacity = 100;
     
+    /**
+     *
+     */
     public LaserCanon() {
         super(new Laser(0d), LaserCanon.totalAmmuCapacity,
                 new SoundEffect(

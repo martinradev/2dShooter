@@ -168,6 +168,10 @@ public class Line extends GeometricObject {
         return dy/dx;
     }
     
+    /**
+     *
+     * @return
+     */
     public Vector2D getPependicularVectorDirection() {
         Vector2D a = new Vector2D(head);
         Vector2D b = new Vector2D(tail);

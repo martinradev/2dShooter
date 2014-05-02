@@ -27,10 +27,16 @@ import static org.junit.Assert.*;
  */
 public class NormalWeaponTest {
     
+    /**
+     *
+     */
     public NormalWeaponTest() {
         
     }
     
+    /**
+     *
+     */
     @BeforeClass
     public static void setUpClass() {
         Settings.NAME = "ASD";
@@ -38,14 +44,23 @@ public class NormalWeaponTest {
         Game game = new SinglePlayerGame(0); 
     }
     
+    /**
+     *
+     */
     @AfterClass
     public static void tearDownClass() {
     }
     
+    /**
+     *
+     */
     @Before
     public void setUp() {
     }
     
+    /**
+     *
+     */
     @After
     public void tearDown() {
     }
@@ -67,6 +82,9 @@ public class NormalWeaponTest {
         assertTrue(result==null);
     }
     
+    /**
+     *
+     */
     @Test
     public void weaponAmmoCount() {
         System.out.println("Weapon ammo count decreases test");
@@ -79,6 +97,9 @@ public class NormalWeaponTest {
         assertTrue(count-1 == instance.getCurrentAmmuCount());
     }
     
+    /**
+     *
+     */
     @Test
     public void weaponAmmoCountNotNegative() {
         System.out.println("Weapon ammo is not negative");

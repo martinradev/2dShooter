@@ -37,6 +37,7 @@ public class ObjectParser implements Parser<GraphicalObject> {
      * parses an object from an xml element
      *
      * @param el
+     * @param mapFolder 
      * @return
      */
     @Override
@@ -172,6 +173,7 @@ public class ObjectParser implements Parser<GraphicalObject> {
      * parses all objects in a node list
      *
      * @param nList
+     * @param mapFolder 
      * @return
      */
     public List<GraphicalObject> parseObjectContainer(NodeList nList,

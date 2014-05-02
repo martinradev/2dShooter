@@ -19,7 +19,13 @@ public abstract class GraphicalObject implements Renderable {
     
     private GeometricObject body;
     private Color color;
+    /**
+     *
+     */
     protected String name;
+    /**
+     *
+     */
     protected Animation animation;
     
     /**
@@ -64,18 +70,35 @@ public abstract class GraphicalObject implements Renderable {
         this.color = color;
     }
 
+    /**
+     *
+     * @param animation
+     */
     public void setAnimation(Animation animation) {
         this.animation = animation;
     }
 
+    /**
+     *
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     * @param o
+     * @return
+     */
     @Override
     public boolean equals(Object o) {
         if (o == null) return false;
@@ -85,6 +108,10 @@ public abstract class GraphicalObject implements Renderable {
         return false;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
         int hash = 7;
@@ -92,6 +119,10 @@ public abstract class GraphicalObject implements Renderable {
         return hash;
     }
 
+    /**
+     *
+     * @return
+     */
     public Animation getAnimation() {
         return animation;
     }

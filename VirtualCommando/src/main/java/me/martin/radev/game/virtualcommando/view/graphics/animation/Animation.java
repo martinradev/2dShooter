@@ -17,12 +17,22 @@ import me.martin.radev.game.virtualcommando.view.graphics.entity.Sprite;
  */
 public abstract class Animation implements Updatable {
     
+    /**
+     *
+     */
     protected List<Sprite> spriteList;
     
+    /**
+     *
+     * @param sprites
+     */
     public Animation(Sprite [] sprites) {
         spriteList.addAll(Arrays.asList(sprites));
     }
     
+    /**
+     *
+     */
     public Animation() {
         spriteList = new ArrayList<>();
     }
@@ -49,6 +59,10 @@ public abstract class Animation implements Updatable {
         this.spriteList.add(spr);
     }
     
+    /**
+     *
+     * @return
+     */
     public int getSize() {
         return this.spriteList.size();
     }

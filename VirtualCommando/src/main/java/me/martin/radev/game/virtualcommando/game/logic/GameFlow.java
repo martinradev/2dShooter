@@ -42,7 +42,10 @@ public class GameFlow {
         this.processObjectMovement();
         respawnerLogic.processRespawnQueue();
     }
-
+    
+    /**
+     * processes object movement
+     */
     private void processObjectMovement() {
         List<GraphicalObject> players = gameEntities.getPlayers();
         for (int i = 0; i < players.size(); ++i) {

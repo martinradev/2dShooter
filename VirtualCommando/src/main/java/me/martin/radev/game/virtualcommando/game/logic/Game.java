@@ -55,7 +55,7 @@ public abstract class Game {
     protected Map<String, Player> players;
 
     /**
-     *
+     * Creates a game instance with a given map and a respawn class.
      * @param mapName
      * @param respawnerType  
      */
@@ -228,6 +228,10 @@ public abstract class Game {
         return mapName;
     }
 
+    /**
+     *
+     * @param mainPlayer
+     */
     public void setMainPlayer(MyPlayer mainPlayer) {
         this.mainPlayer = mainPlayer;
     }

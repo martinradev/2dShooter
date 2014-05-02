@@ -27,7 +27,7 @@ public class VisibilityIdentifier {
     }
     
     /**
-     *
+     * checks whether pointOfView object can see otherObject
      * @param pointOfView
      * @param otherObject
      * @return
@@ -40,7 +40,7 @@ public class VisibilityIdentifier {
     }
 
     /**
-     *
+     * returns the vision radius
      * @return
      */
     public double getVISION_RADIUS() {

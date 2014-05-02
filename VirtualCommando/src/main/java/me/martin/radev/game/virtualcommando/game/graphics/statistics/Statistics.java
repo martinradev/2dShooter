@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import me.martin.radev.game.virtualcommando.Global;
 
 /**
- *
+ * The {@link Statistics} class keeps information about the statistics in the game. It is a typical Name, Frags, Deaths score board.
  * @author Marto
  */
 public final class Statistics {
@@ -33,6 +33,9 @@ public final class Statistics {
     private final int height;
     
     // name frags deaths
+    /**
+     * Initializes the statistics
+     */
     public Statistics() {
         width = (int) (Global.getWindowWidth() * 0.7);
         height = (int) (Global.getWindowHeight() * 0.7);
@@ -46,6 +49,12 @@ public final class Statistics {
                 60f / 255f, 0.8f);
     }
 
+    /**
+     * adds a row to the statistics board
+     * @param name
+     * @param kills
+     * @param deaths
+     */
     public void addRow(String name, String kills, String deaths) {
         StatisticsRow sr = new StatisticsRow(name, kills, deaths,
                 (int) width - 2*leftPadding, rowHeight);
@@ -53,6 +62,10 @@ public final class Statistics {
         orderedEntries.put(sr, sr);
     }
 
+    /**
+     * adds a frag to the score entity with the given name
+     * @param name
+     */
     public void addFrag(String name) {
         StatisticsRow sr = entries.get(name);
         if (sr != null) {
@@ -64,6 +77,10 @@ public final class Statistics {
         }
     }
 
+    /**
+     * adds a death to the score entity with the given name
+     * @param name
+     */
     public void addDeath(String name) {
         StatisticsRow sr = entries.get(name);
         if (sr != null) {
@@ -75,6 +92,10 @@ public final class Statistics {
         }
     }
     
+    /**
+     * renders the statistics board
+     * @param g
+     */
     public void render(Graphics g) {
         Graphics2D g2d = (Graphics2D)g;
         g2d.setColor(backgroundColor);
@@ -90,10 +111,18 @@ public final class Statistics {
         }
     }
     
+    /**
+     * sets visibility to the statistics board
+     * @param vis
+     */
     public void setVisible(boolean vis) {
         this.isVisible = vis;
     }
     
+    /**
+     * return true if the statistics board is visible on the graphics
+     * @return
+     */
     public boolean isVisible() {
         return isVisible;
     }

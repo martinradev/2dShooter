@@ -30,6 +30,11 @@ public class GoodAILogic implements AILogic {
     private ClosestPlayerHeuristic playerHeuristic;
     private Player closestPlayer;
 
+    /**
+     *
+     * @param player
+     * @param graph
+     */
     public GoodAILogic(Player player, Graph graph) {
         this.player = player;
         this.graph = graph;
@@ -109,6 +114,12 @@ public class GoodAILogic implements AILogic {
         return direction.getUnitVector();
     }
 
+    /**
+     *
+     * @param g2d
+     * @param xOffset
+     * @param yOffset
+     */
     public void render(Graphics2D g2d, int xOffset, int yOffset) {
 
         g2d.setStroke(new BasicStroke(2));
@@ -130,6 +141,10 @@ public class GoodAILogic implements AILogic {
         g2d.setStroke(new BasicStroke(1));
     }
 
+    /**
+     *
+     * @param currentNode
+     */
     public void setCurrentNode(GraphicalObject currentNode) {
         this.currentNode = currentNode;
     }

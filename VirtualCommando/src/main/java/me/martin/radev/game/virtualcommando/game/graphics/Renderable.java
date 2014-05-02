@@ -13,7 +13,7 @@ import java.awt.Graphics2D;
 public interface Renderable {
 
     /**
-     * 
+     * renders on graphics
      * @param g2d
      * @param xOffset
      * @param yOffset

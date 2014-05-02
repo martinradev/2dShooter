@@ -93,22 +93,40 @@ public class GameScreen extends Screen {
         return gameScreenMap;
     }
     
+    /**
+     *
+     */
     public void showScoreBoard() {
         scoreBoard.setVisible(true);
     }
     
+    /**
+     *
+     */
     public void hideScoreBoard() {
         scoreBoard.setVisible(false);
     }
 
+    /**
+     *
+     * @return
+     */
     public Statistics getScoreBoard() {
         return scoreBoard;
     }
 
+    /**
+     *
+     * @return
+     */
     public JLayeredPane getContainer() {
         return container;
     }
 
+    /**
+     *
+     * @param g
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);

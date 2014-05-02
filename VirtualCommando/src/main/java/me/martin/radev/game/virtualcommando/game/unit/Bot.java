@@ -59,10 +59,17 @@ public class Bot extends Player  {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public AILogic getAi() {
         return ai;
     }
 
+    /**
+     *
+     */
     @Override
     public void revive() {
         super.revive();

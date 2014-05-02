@@ -11,7 +11,7 @@ package me.martin.radev.game.virtualcommando.game;
 public interface Updatable {
     
     /**
-     *
+     * updates the Updatable object
      */
     void update();
     

@@ -424,6 +424,9 @@ public abstract class Player extends GraphicalRectangle {
         g2d.translate(-sprV2d.getX(), -sprV2d.getY());
     }
     
+    /**
+     *
+     */
     public void revive() {
         dead = false;
         regenerateFully();

@@ -26,13 +26,20 @@ public abstract class Weapon {
     private int currentAmmuCount;
     private int totalAmmu;
     private Bullet bulletType;
+    /**
+     *
+     */
     protected SoundEffect shootingEffect;
+    /**
+     *
+     */
     protected SoundEffect noAmmoEffect;
 
     /**
      *
      * @param bulletType
      * @param totalAmmu
+     * @param shootingEffect  
      */
     public Weapon(Bullet bulletType, int totalAmmu, SoundEffect shootingEffect) {
         this.bulletType = bulletType;
@@ -95,6 +102,11 @@ public abstract class Weapon {
      */
     public abstract Bullet produceBullet(Vector2D direction, Vector2D position, Player player);
     
+    /**
+     *
+     * @param position
+     * @return
+     */
     protected float getFireVolume(Vector2D position) {
         float distance = ((float)MathUtil.distance(position, Global.getGame().getMainPlayer().getBody().getCenter()));
         distance += 70f;
@@ -103,6 +115,10 @@ public abstract class Weapon {
         return dB;
     }
 
+    /**
+     *
+     * @return
+     */
     public Bullet getBulletType() {
         return bulletType;
     }

@@ -11,6 +11,7 @@ import org.w3c.dom.NodeList;
 
 /**
  *
+ * @param <ObjectType> 
  * @author Marto
  */
 public interface Parser<ObjectType> {
@@ -24,6 +25,7 @@ public interface Parser<ObjectType> {
     /**
      * parses an object
      * @param el
+     * @param mapFolder 
      * @return
      */
     ObjectType parseObject(Element el, String mapFolder);

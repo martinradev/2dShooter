@@ -38,6 +38,9 @@ public class GameView extends JFrame {
         initializeFrame(width, height);
     }
     
+    /**
+     *
+     */
     public void openUsernameDialog() {
         new UsernameDialog(this);
     }

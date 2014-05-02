@@ -49,8 +49,16 @@ public abstract class TiledMap {
      */
     public abstract List<GraphicalObject> getRespawnPoints();
     
+    /**
+     *
+     * @return
+     */
     public abstract List<GraphicalObject> getDecorationObjects();
     
+    /**
+     *
+     * @return
+     */
     public abstract Graph getWaypointsGraph();
     
     /**
