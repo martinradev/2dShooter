@@ -40,30 +40,53 @@ public class Line extends GeometricObject {
         }
 
     }
-
+    
+    /**
+     * returns the center of the line
+     * @return 
+     */
     @Override
     public Vector2D getCenter() {
         return new Vector2D((head.getX() + tail.getX()) / 2d,
                 (head.getY() + tail.getY()) / 2d);
     }
-
+    
+    /**
+     * translates the line with dx, dy
+     * @param dx
+     * @param dy 
+     */
     @Override
     public void translate(double dx, double dy) {
         head.translate(dx, dy);
         tail.translate(dx, dy);
     }
-
+    
+    /**
+     * rotates the line by an angle
+     * @param angle 
+     */
     @Override
     public void rotate(double angle) {
         head.rotate(angle);
         tail.rotate(angle);
     }
 
+    /**
+     * checks whether the line contains the vector
+     * @param v2d
+     * @return 
+     */
     @Override
     public boolean contains(Vector2D v2d) {
         return this.liesOnLine(v2d);
     }
 
+    /**
+     * rotates the line around a new center by a given angle
+     * @param center
+     * @param angle 
+     */
     @Override
     public void relativeRotate(Vector2D center, double angle) {
         head.translate(-center.getX(), -center.getY());
@@ -72,6 +95,10 @@ public class Line extends GeometricObject {
         tail.rotate(angle);
     }
 
+    /**
+     * returns the bounding box of the line
+     * @return 
+     */
     @Override
     public Vector2D[] getBoundingBox() {
         return new Vector2D[]{head, tail};
@@ -94,7 +121,7 @@ public class Line extends GeometricObject {
     }
 
     /**
-     *
+     * generates a vector of the line
      * @return
      */
     public Vector2D generateVector() {
@@ -103,7 +130,7 @@ public class Line extends GeometricObject {
     }
 
     /**
-     *
+     * checks whether {@link Line} l is parallel to the current {@link Line}
      * @param l
      * @return
      */
@@ -114,7 +141,7 @@ public class Line extends GeometricObject {
     }
 
     /**
-     *
+     * returns the distance (perpendicular) distance from the {@link Vector2D} point to the current {@link Line}.
      * @param point
      * @return
      */
@@ -129,7 +156,7 @@ public class Line extends GeometricObject {
     }
 
     /**
-     *
+     * return true if the {@link Vector2D} point lies on the {@link Line}
      * @param point
      * @return
      */
@@ -140,7 +167,7 @@ public class Line extends GeometricObject {
     }
     
     /**
-     *
+     * returns true if {@link Vector2D} pointA and {@link Vector2D} pointB lie on the same line of the {@link Line}.
      * @param pointA
      * @param pointB
      * @return
@@ -152,7 +179,7 @@ public class Line extends GeometricObject {
     }
     
     /**
-     *
+     * returns the slope of the line. If the line is vertical, it will return either {@link MathUtil#NEGATIVE_INFINITY} or {@link MathUtil#POSITIVE_INFINITY}.
      * @return
      */
     public double getSlope() {
@@ -169,7 +196,7 @@ public class Line extends GeometricObject {
     }
     
     /**
-     *
+     * returns a perpendicular unit vector to the line.
      * @return
      */
     public Vector2D getPependicularVectorDirection() {
