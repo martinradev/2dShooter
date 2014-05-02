@@ -16,7 +16,8 @@ public class App
      *
      */
     public App() {
-        System.setProperty("sun.java2d.opengl","True");
+        // commented because some computers with ubuntu do not support opengl? lol?
+        //System.setProperty("sun.java2d.opengl","True");
         Global.setDefaultWindowWidth(DEFALUT_WIDTH);
         Global.setDefaultWindowHeight(DEFAULT_HEIGHT);
         GameView gv = new GameView(DEFALUT_WIDTH, DEFAULT_HEIGHT);

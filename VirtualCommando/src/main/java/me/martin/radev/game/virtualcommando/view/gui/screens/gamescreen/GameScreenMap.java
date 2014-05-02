@@ -130,7 +130,10 @@ public class GameScreenMap {
         for (GraphicalObject go : objects) {
             go.render(g2d, 0, 0);
         }
-
+        
+        for (GraphicalObject go : Global.getGame().getMap().getDecorationObjects()) {
+            go.render(g2d, 0, 0);
+        }
         
         List<GraphicalObject> players = gameEntities.getPlayers();
         for (int i = 0; i < players.size(); ++i) {

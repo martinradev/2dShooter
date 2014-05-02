@@ -6,6 +6,7 @@ package me.martin.radev.game.virtualcommando.geometry.entity;
 
 import static junit.framework.Assert.assertEquals;
 import junit.framework.TestCase;
+import org.junit.Test;
 
 /**
  *
@@ -30,6 +31,7 @@ public class CircleTest extends TestCase {
     /**
      * Test of contains method, of class Circle.
      */
+    @Test
     public void testContains() {
         System.out.println("contains");
         
@@ -52,6 +54,7 @@ public class CircleTest extends TestCase {
     /**
      * Test of rotate method, of class Circle.
      */
+    @Test
     public void testRotate() {
         System.out.println("rotate");
         // shouldn't rotate

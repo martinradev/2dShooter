@@ -449,22 +449,7 @@
   </neighbours>
  </waypoints>
  <decorationgroup>
-  <object name="grass" x="62" y="67" width="774" height="113">
-	<backgroundTexture src="grass.png" />
-  </object>
-  <object name="grass" x="32" y="230" width="187" height="1331">
-	<backgroundTexture src="grass.png" />
-  </object>
-  <object name="grass" x="773" y="1174" width="803" height="110">
-	<backgroundTexture src="grass.png" />
-  </object>
-  <object name="grass" x="221" y="1173" width="553" height="130">
-	<backgroundTexture src="grass.png" />
-  </object>
-  <object name="grass" x="231" y="994" width="1346" height="148">
-	<backgroundTexture src="grass.png" />
-  </object>
-  <object name="grass" x="1161" y="37" width="416" height="956">
+  <object x="70" y="80" width="650" height="100">
 	<backgroundTexture src="grass.png" />
   </object>
  </decorationgroup>
