@@ -68,9 +68,9 @@ public class SoundEffect implements Sound {
      */
     @Override
     public void play(float decibalDelta) {
-        if (clip == null) return;
-        reloadEffect();
         
+        reloadEffect();
+        if (clip == null) return;
         FloatControl volumeControl = (FloatControl)
                 clip.getControl(FloatControl.Type.MASTER_GAIN);
         ;
