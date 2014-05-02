@@ -56,7 +56,11 @@ public class SoundEffect implements Sound {
         clip = AudioSystem.getClip();
         AudioInputStream ais = AudioSystem.
                 getAudioInputStream( f );
-        clip.open(ais);
+        try {
+            clip.open(ais);
+        } catch (IllegalArgumentException iae) {
+            clip = null;
+        }
     }
     
     /**
@@ -64,6 +68,7 @@ public class SoundEffect implements Sound {
      */
     @Override
     public void play(float decibalDelta) {
+        if (clip == null) return;
         reloadEffect();
         
         FloatControl volumeControl = (FloatControl)
